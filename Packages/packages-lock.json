@@ -1,5 +1,13 @@
 {
   "dependencies": {
+    "com.ptc.vuforia.engine": {
+      "version": "file:com.ptc.vuforia.engine-10.10.2.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
+      }
+    },
     "com.unity.adaptiveperformance": {
       "version": "4.0.1",
       "depth": 0,
@@ -101,7 +109,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.services.core": {
-      "version": "1.4.2",
+      "version": "1.4.3",
       "depth": 1,
       "source": "registry",
       "dependencies": {
