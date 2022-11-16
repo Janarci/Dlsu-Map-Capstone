@@ -42,9 +42,9 @@ public class Cat : MonoBehaviour
             ui = gameObject.AddComponent<CatUI>();
             ui.cat = this;
             Debug.Log("cat ui added");
-        }
+        } 
 
-        GameObject.DontDestroyOnLoad(this.gameObject);
+
     }
 
     // Update is called once per frame
@@ -107,6 +107,7 @@ public class Cat : MonoBehaviour
         {
             EventManager.Instance.CatBefriendSuccess(this);
             Debug.Log("The cat has chosen to be your friend");
+            GameObject.DontDestroyOnLoad(this.gameObject);
         }
     }
 
@@ -155,6 +156,7 @@ public class Cat : MonoBehaviour
         {
             EventManager.Instance.CatBefriendSuccess(this);
             Debug.Log("The cat has chosen to be your friend");
+            GameObject.DontDestroyOnLoad(this.gameObject);
         }
     }
 
