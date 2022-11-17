@@ -1,6 +1,6 @@
 {
     "dependencies": {
-    "com.ptc.vuforia.engine": "file:com.ptc.vuforia.engine-10.10.2.tgz",
+    "com.ptc.vuforia.engine": "file:com.ptc.vuforia.engine-10.11.3.tgz",
     "com.unity.adaptiveperformance": "4.0.1",
     "com.unity.adaptiveperformance.samsung.android": "4.0.1",
     "com.unity.collab-proxy": "1.17.2",

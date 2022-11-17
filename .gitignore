@@ -72,3 +72,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Assets/Resources/Mapbox/MapboxConfiguration.txt
 Assets/Resources/Mapbox/MapboxConfiguration.txt.meta
+Packages/com.ptc.vuforia.engine-10.11.3.tgz
