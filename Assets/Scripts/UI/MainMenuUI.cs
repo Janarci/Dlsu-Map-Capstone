@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 public class MainMenuUI : MonoBehaviour
 {
-    [SerializeField] Button befriendCatsBtn;
-    [SerializeField] Button unlockSectorsBtn;
-    [SerializeField] Button openMapBtn;
-    [SerializeField] Button exitBtn;
+    //[SerializeField] Button befriendCatsBtn;
+    //[SerializeField] Button unlockSectorsBtn;
+    //[SerializeField] Button openMapBtn;
+    //[SerializeField] Button exitBtn;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +38,12 @@ public class MainMenuUI : MonoBehaviour
 
     public void GoToMenuScene()
     {
-        LoadScene.LoadMapScene();
+        LoadScene.LoadMenuScene();
+    }
+
+    public void GoToDebugScene()
+    {
+        LoadScene.LoadDebugScene();
     }
 
     public void ExitGame()

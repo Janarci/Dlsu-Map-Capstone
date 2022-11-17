@@ -28,7 +28,12 @@ public class LoadScene : MonoBehaviour
 
     public static void LoadMenuScene()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Splash");
 
+    }
+
+    public static void LoadDebugScene()
+    {
+        SceneManager.LoadScene("Debug");
     }
 }
