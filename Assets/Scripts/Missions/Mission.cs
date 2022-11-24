@@ -29,7 +29,7 @@ public class Mission : MonoBehaviour
     public void CompleteMission()
     {
         isMissionComplete = true;
-        EventManager.Instance.MissionComplete(this.id);
+        EventManager.MissionComplete(this.id);
         DisplayDesignatedUI();
         //EventManager.Instance.MissionTargetDetected(this.id, true);
         

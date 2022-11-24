@@ -5,20 +5,20 @@ using System;
 
 public class EventManager : MonoBehaviour
 {
-    public static EventManager Instance;
-    public event Action<int> OnMissionComplete;
-    public event Action<Cat> OnCatBefriendSuccess;
-    public event Action<Cat> OnCatBefriendFail;
+    
+    public static event Action<int> OnMissionComplete;
+    public static event Action<Cat> OnCatClick;
+    public static event Action<Cat> OnCatBefriendSuccess;
+    public static event Action<Cat, bool> OnCatBefriend;
+
+    public static event Action OnInitializeMap;
+
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-
-        else
-            Destroy(this);
+        
     }
 
-    public void MissionComplete(int missionId)
+    public static void MissionComplete(int missionId)
     {
         if(OnMissionComplete != null)
         {
@@ -26,7 +26,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void CatBefriendSuccess(Cat befriendedCat)
+    public static void CatBefriendSuccess(Cat befriendedCat)
     {
         if (OnCatBefriendSuccess != null)
         {
@@ -35,12 +35,28 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void CatBefriendFail(Cat befriendedCat)
+    public static void CatBefriend(Cat befriendedCat, bool isSuccess)
     {
-        if (OnCatBefriendFail != null)
+        if (OnCatBefriend != null)
         {
-            OnCatBefriendFail(befriendedCat);
-            Debug.Log("fail");
+            OnCatBefriend(befriendedCat, isSuccess);
+            //Debug.Log("");
+        }
+    }
+
+    public static void CatClick(Cat clickedCat)
+    {
+        if(OnCatClick!= null)
+        {
+            OnCatClick(clickedCat);
+        }
+    }
+
+    public static void InitializeMap()
+    {
+        if(OnInitializeMap != null)
+        {
+            OnInitializeMap();
         }
     }
 }

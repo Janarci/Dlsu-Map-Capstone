@@ -8,7 +8,7 @@ public class CatHQ : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EventManager.Instance.OnCatBefriendSuccess += AddCat;
+        EventManager.OnCatBefriend += AddCat;
     }
 
     // Update is called once per frame
@@ -17,13 +17,14 @@ public class CatHQ : MonoBehaviour
         
     }
 
-    public void AddCat(Cat targetCat)
+    public void AddCat(Cat targetCat, bool isBefriended)
     {
-        catList.Add(targetCat.gameObject);
+        if(isBefriended)
+            catList.Add(targetCat.gameObject);
     }
 
     public void OnDestroy()
     {
-        EventManager.Instance.OnCatBefriendSuccess -= AddCat;
+        EventManager.OnCatBefriend -= AddCat;
     }
 }
