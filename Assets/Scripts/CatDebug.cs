@@ -14,8 +14,7 @@ public class CatDebug : MonoBehaviour
         if (Values.befriended_cats == null)
             Values.befriended_cats = new List<GameObject>();
 
-        EventManager.Instance.OnCatBefriendSuccess += RemoveCat;
-        EventManager.Instance.OnCatBefriendFail += RemoveCat;
+        EventManager.OnCatBefriend += RemoveCat;
 
 
     }
@@ -118,8 +117,12 @@ public class CatDebug : MonoBehaviour
         }
     }
 
-    public void RemoveCat(Cat befriendedCat)
+    public void RemoveCat(Cat befriendedCat, bool isCatBefriended)
     {
+        if(isCatBefriended)
+        {
+            Values.befriended_cats.Add(befriendedCat.gameObject);
+        }
         if(befriendedCat = currentCat.GetComponent<Cat>())
         {
             currentCat.SetActive(false);
@@ -139,8 +142,7 @@ public class CatDebug : MonoBehaviour
 
     public void OnDestroy()
     {
-        EventManager.Instance.OnCatBefriendSuccess -= RemoveCat;
-        EventManager.Instance.OnCatBefriendFail -= RemoveCat;
+        EventManager.OnCatBefriend -= RemoveCat;
     }
 
     public void GoToMenu()

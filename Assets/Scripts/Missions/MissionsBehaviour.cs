@@ -8,7 +8,7 @@ public class MissionsBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EventManager.Instance.OnMissionComplete += OnMissionComplete;
+        EventManager.OnMissionComplete += OnMissionComplete;
     }
 
     // Update is called once per frame
@@ -43,6 +43,6 @@ public class MissionsBehaviour : MonoBehaviour
 
     public void OnDestroy()
     {
-        EventManager.Instance.OnMissionComplete -= OnMissionComplete;
+        EventManager.OnMissionComplete -= OnMissionComplete;
     }
 }   

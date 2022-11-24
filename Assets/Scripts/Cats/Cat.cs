@@ -19,8 +19,16 @@ public class Cat : MonoBehaviour
         box
     }
 
+    public enum evolution_material
+    {
+        book,
+        money,
+        script
+    }
+
     Dictionary<food, int> food_Favor;
     Dictionary<toy, int> toy_Favor;
+    Dictionary<evolution_material, int> material_inventory;
 
     private int friendship_value = 0;
     protected int befriendAttempts = 0;
@@ -42,8 +50,11 @@ public class Cat : MonoBehaviour
             ui = gameObject.AddComponent<CatUI>();
             ui.cat = this;
             Debug.Log("cat ui added");
-        } 
+        }
 
+        material_inventory[evolution_material.book] = 0;
+        material_inventory[evolution_material.money] = 0;
+        material_inventory[evolution_material.script] = 0;
 
     }
 
@@ -85,7 +96,7 @@ public class Cat : MonoBehaviour
         if (befriendAttempts >= 5)
         {
             Debug.Log("The cat prefers to be left alone");
-            EventManager.Instance.CatBefriendFail(this);
+            EventManager.CatBefriend(this, false);
             return;
         }
 
@@ -105,7 +116,7 @@ public class Cat : MonoBehaviour
 
         if (getFriendshipPercentage() >= 1.0f)
         {
-            EventManager.Instance.CatBefriendSuccess(this);
+            EventManager.CatBefriend(this, true);
             Debug.Log("The cat has chosen to be your friend");
             GameObject.DontDestroyOnLoad(this.gameObject);
         }
@@ -134,7 +145,7 @@ public class Cat : MonoBehaviour
         if(befriendAttempts >= 5)
         {
             Debug.Log("The cat prefers to be left alone");
-            EventManager.Instance.CatBefriendFail(this);
+            EventManager.CatBefriend(this, false);
             return;
         }
 
@@ -154,7 +165,7 @@ public class Cat : MonoBehaviour
 
         if(getFriendshipPercentage() >= 1.0f)
         {
-            EventManager.Instance.CatBefriendSuccess(this);
+            EventManager.CatBefriend(this, true);
             Debug.Log("The cat has chosen to be your friend");
             GameObject.DontDestroyOnLoad(this.gameObject);
         }
@@ -178,6 +189,23 @@ public class Cat : MonoBehaviour
         ui?.SetFriendshipBarValue(getFriendshipPercentage());
     }
 
+    public void GiveBook()
+    {
+        material_inventory[evolution_material.book] += 1;
+    }
+
+    public void GiveMoney()
+    {
+        material_inventory[evolution_material.money] += 1;
+
+    }
+
+    public void GiveScript()
+    {
+        material_inventory[evolution_material.script] += 1;
+
+    }
+
     public int getFriendshipValue()
     {
         return friendship_value;
@@ -186,5 +214,11 @@ public class Cat : MonoBehaviour
     public float getFriendshipPercentage()
     {
         return friendship_value/60.0f;
+    }
+
+    public void OnMouseUp()
+    {
+        Debug.Log("clicked on cat");
+        EventManager.CatClick(this);
     }
 }
