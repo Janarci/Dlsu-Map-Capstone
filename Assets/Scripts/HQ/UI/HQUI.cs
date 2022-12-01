@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HQUI : MonoBehaviour
 {
     [SerializeField] GameObject camera;
     [SerializeField] GameObject canvas;
+    [SerializeField] GameObject evolutionButtonTemplate;
+    [SerializeField] GameObject availableEvolutionsObj;
+    [SerializeField] GameObject availableEvolutionsContent;
 
     private Cat focusedCat;
     private float zoomTvalue = 0;
@@ -47,6 +51,61 @@ public class HQUI : MonoBehaviour
     {
         focusedCat = null;
         ResetCamera();
+    }
+
+    public void GiveCatBook()
+    {
+        focusedCat?.GiveEvolutionMaterial(evolution_material.homework);
+    }
+
+    public void GiveCatHomework()
+    {
+        focusedCat?.GiveEvolutionMaterial(evolution_material.homework);
+        //Debug.Log(focusedCat?.GetMaterialCount(evolution_material.homework));
+        //Debug.Log(focusedCat?.GetAvailableEvolutions().Contains(cat_type.student_cat));
+    }
+
+    public void GiveCatPaycheck()
+    {
+        focusedCat?.GiveEvolutionMaterial(evolution_material.paycheck);
+    }
+
+    public void DisplayCatAvailableEvolutions()
+    {
+        if(!availableEvolutionsObj.activeInHierarchy)
+        {
+            availableEvolutionsObj?.SetActive(true);
+            if (focusedCat)
+            {
+                foreach (cat_type type in focusedCat.GetAvailableEvolutions())
+                {
+                    GameObject newButtonObj = Instantiate(evolutionButtonTemplate, availableEvolutionsContent.transform);
+                    Button buttonComp = newButtonObj.GetComponent<Button>();
+                    GameObject textComp = newButtonObj.transform.GetChild(0).gameObject;
+                    textComp.GetComponent<Text>().text = type.ToString();
+                }
+            }
+        }
+        
+    }
+
+    public void HideCatAvailableEvolutions()
+    {
+
+        List<GameObject> evolutionsButtonList = new List<GameObject>();
+        Debug.Log(availableEvolutionsContent.transform.childCount);
+        for (int i = 0; i < availableEvolutionsContent.transform.childCount; i++)
+        {
+            evolutionsButtonList.Add(availableEvolutionsContent.transform.GetChild(i).gameObject);
+        }
+        foreach (GameObject buttonObj in evolutionsButtonList)
+        {
+            Destroy(buttonObj);
+        }
+
+        evolutionsButtonList.Clear();
+        availableEvolutionsObj?.SetActive(false);
+
     }
     private void CameraFocusOnCat(GameObject selectedCat)
     {

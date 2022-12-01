@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CanteenCat : Cat
+public class StaffCat : Cat
 {
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,7 @@ public class CanteenCat : Cat
 
     }
 
-    protected override void InitializeCat()
+    protected override void InitializeCatFavors()
     {
         InitializeFoodFavors(20, 20, 20);
         InitializeToyFavors(5, 5, 5);

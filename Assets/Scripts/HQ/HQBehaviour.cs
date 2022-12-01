@@ -10,6 +10,8 @@ public class HQBehaviour : MonoBehaviour
     {
         int j = 0;
         int i = 0;
+
+        if(Values.befriended_cats != null)
         foreach (GameObject go in Values.befriended_cats)
         {
             Debug.Log(i);

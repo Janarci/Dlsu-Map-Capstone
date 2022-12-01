@@ -21,7 +21,7 @@ public class CatUI : MonoBehaviour
 
     public void SetFriendshipBarValue(float value)
     {
-        friendship_bar.fillAmount = value;
+        //friendship_bar.fillAmount = value;
     }
     
     public void SetCat()

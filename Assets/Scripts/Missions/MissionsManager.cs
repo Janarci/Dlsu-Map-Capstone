@@ -22,6 +22,8 @@ public class MissionsManager : MonoBehaviour
         //EventManager.Instance.OnMissionTargetDetected += OnTargetFound;
         GameObject[] missionListObj = GameObject.FindGameObjectsWithTag("MissionTarget");
 
+        if (missionListObj.Length == 0)
+            Debug.Log("missions list is empty");
         foreach(GameObject missionObj in missionListObj)
         {
             if(missionObj.TryGetComponent(out ObserverBehaviour ob))
@@ -32,7 +34,8 @@ public class MissionsManager : MonoBehaviour
             {
                 missionList.Add(mission.getId(), mission);
             }
-            
+
+            Debug.Log("Adding mission " + missionObj.name + " to list of missions");
         }
 
     }

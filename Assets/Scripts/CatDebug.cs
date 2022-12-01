@@ -67,7 +67,7 @@ public class CatDebug : MonoBehaviour
         if (currentCat != null)
         {
             Cat cat = currentCat.GetComponent<Cat>();
-            cat.FeedCatNip();
+            cat.FeedCat(cat_food.cat_nip);
         }
         
     }
@@ -77,7 +77,7 @@ public class CatDebug : MonoBehaviour
         if (currentCat != null)
         {
             Cat cat = currentCat.GetComponent<Cat>();
-            cat.FeedCatFood();
+            cat.FeedCat(cat_food.cat_food);
         }
     }
 
@@ -86,7 +86,7 @@ public class CatDebug : MonoBehaviour
         if (currentCat != null)
         {
             Cat cat = currentCat.GetComponent<Cat>();
-            cat.FeedFish();
+            cat.FeedCat(cat_food.fish);
         }
     }
 
@@ -95,7 +95,7 @@ public class CatDebug : MonoBehaviour
         if (currentCat != null)
         {
             Cat cat = currentCat.GetComponent<Cat>();
-            cat.PlayWithYarn();
+            cat.PlayWithCat(cat_toy.yarn);
         }
     }
 
@@ -104,7 +104,7 @@ public class CatDebug : MonoBehaviour
         if (currentCat != null)
         {
             Cat cat = currentCat.GetComponent<Cat>();
-            cat.PlayWithLaser();
+            cat.PlayWithCat(cat_toy.laser);
         }
     }
 
@@ -113,7 +113,7 @@ public class CatDebug : MonoBehaviour
         if (currentCat != null)
         {
             Cat cat = currentCat.GetComponent<Cat>();
-            cat.PlayWithBox();
+            cat.PlayWithCat(cat_toy.box);
         }
     }
 

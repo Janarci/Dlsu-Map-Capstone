@@ -16,7 +16,7 @@ public class SwimmingPoolCat : Cat
             
     }
 
-    protected override void InitializeCat()
+    protected override void InitializeCatFavors()
     {
         InitializeFoodFavors(-10, -10, 20);
         InitializeToyFavors(5, 0, -20);

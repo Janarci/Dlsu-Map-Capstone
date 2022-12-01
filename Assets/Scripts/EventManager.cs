@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
     public static event Action<int> OnMissionComplete;
     public static event Action<Cat> OnCatClick;
     public static event Action<Cat> OnCatBefriendSuccess;
+    public static event Action<Cat,Cat, cat_type> OnCatEvolve;
     public static event Action<Cat, bool> OnCatBefriend;
 
     public static event Action OnInitializeMap;
@@ -41,6 +42,14 @@ public class EventManager : MonoBehaviour
         {
             OnCatBefriend(befriendedCat, isSuccess);
             //Debug.Log("");
+        }
+    }
+
+    public static void CatEvolve(Cat oldCat, Cat newCat, cat_type evolvedType)
+    {
+        if (OnCatEvolve != null)
+        {
+            OnCatEvolve(oldCat, newCat, evolvedType);
         }
     }
 
