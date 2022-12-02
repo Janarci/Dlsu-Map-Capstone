@@ -13,6 +13,7 @@ public class SectorManager : MonoBehaviour
     void Start()
     {
         EventManager.OnInitializeMap += InitalizeSectors;
+        EventManager.OnMissionComplete += OnMissionComplete;
     }
 
     // Update is called once per frame

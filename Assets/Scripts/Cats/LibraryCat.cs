@@ -16,12 +16,24 @@ public class LibraryCat : Cat
 
     }
 
-    protected override void InitializeCat()
+    protected override void InitializeCatType()
+    {
+        school_tip = "Books can be borrowed from the Library";
+        type = cat_type.library_cat;
+    }
+
+    protected override void InitializeCatFavors()
     {
         InitializeFoodFavors(10, 20, 5);
         InitializeToyFavors(10, 5, 20);
-    }    
         
+    }
+
+    protected override void InitializeEvolutionPath()
+    {
+        
+    }
+
 
 
 }

@@ -16,7 +16,7 @@ public class GymCat : Cat
 
     }
 
-    protected override void InitializeCat()
+    protected override void InitializeCatFavors()
     {
         InitializeFoodFavors(5, 5, 10);
         InitializeToyFavors(20, 20, 20);

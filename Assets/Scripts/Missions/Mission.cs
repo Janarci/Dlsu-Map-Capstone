@@ -32,7 +32,7 @@ public class Mission : MonoBehaviour
         EventManager.MissionComplete(this.id);
         DisplayDesignatedUI();
         //EventManager.Instance.MissionTargetDetected(this.id, true);
-        
+        Debug.Log("Mission " + id + " complete");
     }
 
     public void OnTargetLost()
