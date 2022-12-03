@@ -11,7 +11,12 @@ public class CatSpawn : MonoBehaviour
     [SerializeField] private int defense = 0;
     [SerializeField] private int hp = 0;
 
-    public float SpawnRate
+
+	private void Start()
+	{
+        DontDestroyOnLoad(this);
+	}
+	public float SpawnRate
 	{
 		get { return spawnRate; }
 	}
@@ -35,21 +40,15 @@ public class CatSpawn : MonoBehaviour
 
 	private void OnMouseDown()
 	{
-		
+        Debug.Log("cat click");
+        AnimeowSceneManager[] managers = FindObjectsOfType<AnimeowSceneManager>();
+		foreach (AnimeowSceneManager animeowSceneManager in managers)
+		{
+			if (animeowSceneManager.gameObject.activeSelf)
+			{
+                animeowSceneManager.catTapped(this.gameObject);
+			}
+		}
 
 	}
-
-
-
-	// Start is called before the first frame update
-	void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
