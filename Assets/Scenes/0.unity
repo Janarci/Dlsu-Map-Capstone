@@ -2847,6 +2847,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCat: {fileID: 0}
+  catTooltipUI: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
+    type: 3}
   catObjList:
   - {fileID: 2118915910074965358, guid: caaa45e5847e8db448e7fcbe78876a3d, type: 3}
   - {fileID: 2872336736363694404, guid: 2138677a67d022a4dab272f2fcc62873, type: 3}

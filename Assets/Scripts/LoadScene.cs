@@ -17,7 +17,7 @@ public class LoadScene : MonoBehaviour
 
     public static void LoadSectorUnlockingScene()
     {
-        SceneManager.LoadScene("ARTest");
+        SceneManager.LoadScene("SectorMap");
     }
 
     public static void LoadMapScene()

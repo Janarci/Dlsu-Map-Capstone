@@ -1,22 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CatDebug : MonoBehaviour
 {
+    public GameObject canvas;
     public GameObject currentCat = null;
+    public GameObject catTooltipUI = null;
     public List<GameObject> catObjList;
     public CatUI ui;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (Values.befriended_cats == null)
-            Values.befriended_cats = new List<GameObject>();
-
+        
         EventManager.OnCatBefriend += RemoveCat;
-
-
+        currentCat = GameObject.Instantiate(Values.approached_cat, new Vector3(0, 0, 0), Quaternion.Euler(0, 180, 0), null);
+        currentCat.SetActive(true);
+        Debug.Log(currentCat);
     }
 
     // Update is called once per frame
@@ -67,7 +70,7 @@ public class CatDebug : MonoBehaviour
         if (currentCat != null)
         {
             Cat cat = currentCat.GetComponent<Cat>();
-            cat.FeedCat(cat_food.cat_nip);
+            cat.FeedCat(CatBefriendingItem.cat_befriending_food.cat_nip);
         }
         
     }
@@ -77,7 +80,7 @@ public class CatDebug : MonoBehaviour
         if (currentCat != null)
         {
             Cat cat = currentCat.GetComponent<Cat>();
-            cat.FeedCat(cat_food.cat_food);
+            cat.FeedCat(CatBefriendingItem.cat_befriending_food.cat_food);
         }
     }
 
@@ -86,7 +89,7 @@ public class CatDebug : MonoBehaviour
         if (currentCat != null)
         {
             Cat cat = currentCat.GetComponent<Cat>();
-            cat.FeedCat(cat_food.fish);
+            cat.FeedCat(CatBefriendingItem.cat_befriending_food.fish);
         }
     }
 
@@ -95,7 +98,7 @@ public class CatDebug : MonoBehaviour
         if (currentCat != null)
         {
             Cat cat = currentCat.GetComponent<Cat>();
-            cat.PlayWithCat(cat_toy.yarn);
+            cat.PlayWithCat(CatBefriendingItem.cat_befriending_toy.yarn);
         }
     }
 
@@ -104,7 +107,7 @@ public class CatDebug : MonoBehaviour
         if (currentCat != null)
         {
             Cat cat = currentCat.GetComponent<Cat>();
-            cat.PlayWithCat(cat_toy.laser);
+            cat.PlayWithCat(CatBefriendingItem.cat_befriending_toy.laser);
         }
     }
 
@@ -113,7 +116,7 @@ public class CatDebug : MonoBehaviour
         if (currentCat != null)
         {
             Cat cat = currentCat.GetComponent<Cat>();
-            cat.PlayWithCat(cat_toy.box);
+            cat.PlayWithCat(CatBefriendingItem.cat_befriending_toy.box);
         }
     }
 
@@ -121,7 +124,20 @@ public class CatDebug : MonoBehaviour
     {
         if(isCatBefriended)
         {
-            Values.befriended_cats.Add(befriendedCat.gameObject);
+            GameObject catClone = (GameObject.Instantiate(befriendedCat.gameObject));
+            catClone.SetActive(false);
+            Values.befriended_cats.Add(catClone);
+            GameObject.DontDestroyOnLoad(catClone);
+            if (!(Values.collected_cat_types.Contains(befriendedCat.GetCatType())))
+            {
+                Values.collected_cat_types.Add(befriendedCat.GetCatType());
+                GameObject tooltipObj = GameObject.Instantiate(catTooltipUI, canvas.transform);
+                Text tooltipTxt = tooltipObj.transform.GetChild(0).gameObject.GetComponent<Text>();
+                Button tooltipCloseBtn = tooltipObj.transform.GetChild(1).gameObject.GetComponent<Button>();
+                tooltipCloseBtn.onClick.AddListener(delegate { GameObject.Destroy(tooltipObj); });
+                tooltipTxt.text = befriendedCat.GetCatTooltip();
+            }
+                
         }
         if(befriendedCat = currentCat.GetComponent<Cat>())
         {
