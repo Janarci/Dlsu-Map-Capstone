@@ -17,5 +17,5 @@ MonoBehaviour:
     prefab: {fileID: 1557236772398302, guid: c71927789464440f59ea08b68c2f1073, type: 3}
     scaleDownWithWorld: 1
   _prefabLocations:
-  - 14.565206433219357, 120.99450582000483
+  - 14.348479, 121.065633
   _explicitlyBlockedFeatureIds: []
