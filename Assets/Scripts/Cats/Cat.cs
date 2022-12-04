@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
-using EvolutionMaterialInventory = System.Collections.Generic.Dictionary<evolution_material, int>;
+using EvolutionMaterialInventory = System.Collections.Generic.Dictionary<CatEvolutionItem.cat_evolution_item_type, int>;
 
 public enum cat_type
 {
@@ -16,48 +17,49 @@ public enum cat_type
     staff_cat,
     library_cat
 }
-public enum cat_food
-{
-    cat_nip,
-    cat_food,
-    fish
-}
+//public enum CatBefriendingItem.cat_befriending_food
+//{
+//    cat_nip,
+//    CatBefriendingItem.cat_befriending_food,
+//    fish
+//}
 
-public enum cat_toy
-{
-    yarn,
-    laser,
-    box
-}
+//public enum CatBefriendingItem.cat_befriending_toy
+//{
+//    yarn,
+//    laser,
+//    box
+//}
 
-public enum evolution_material
-{
-    homework,
-    paycheck
-}
+
 
 public class Cat : MonoBehaviour
 {
-   
+    private bool isWalking = false;
+    private float walkingTick = 0.0f;
+    private float changeDirectionInterval = 6.0f;
+    private float changeDirectionIntervalMin = 4.4f;
+    private float changeDirectionIntervalMax = 7.7f;
 
-    
+    private Vector2 walkingDirection = Vector2.zero;
 
-    
-    Dictionary<cat_food, int> food_Favor;
-    Dictionary<cat_toy, int> toy_Favor;
 
-    List<evolution_material> material_list;
+    Dictionary<CatBefriendingItem.cat_befriending_food, int> food_Favor;
+    Dictionary<CatBefriendingItem.cat_befriending_toy, int> toy_Favor;
+
+    //List<CatEvolutionItem.cat_evolution_item_type> material_list;
     EvolutionMaterialInventory material_inventory;
     protected Dictionary<cat_type, EvolutionMaterialInventory> evolution_requirements;
 
     [SerializeField] protected string school_tip = "Welcome to DLSU";
-    private int friendship_value = 0;
+    private float friendship_value = 0;
+    private float relationship_level_value = 0;
     protected int befriendAttempts = 0;
     protected cat_type type = cat_type.basic_cat;
 
     private CatUI ui;
     // Start is called before the first frame update
-    protected void Start()
+    private void Awake()
     {
         InitializeCat();
         if (gameObject.TryGetComponent(out CatUI cat_ui))
@@ -77,13 +79,36 @@ public class Cat : MonoBehaviour
 
         InitializeCat();
 
+
+    }
+    protected void Start()
+    {
+        
+        //Roam();
+        
+
     }
 
-    
+
 
     // Update is called once per frame
     void Update()
     {
+        if(isWalking)
+        {
+            if (walkingTick >= changeDirectionInterval)
+            {
+                walkingTick = 0.0f;
+                RandomizeWalkingDirection();
+                changeDirectionInterval = UnityEngine.Random.Range(changeDirectionIntervalMin, changeDirectionIntervalMax);
+            }
+
+            Vector2 direction = walkingDirection.normalized;
+            gameObject.transform.position += new Vector3(direction.x, 0, direction.y) * Time.deltaTime;
+            gameObject.transform.LookAt(gameObject.transform.position + new Vector3(direction.x, gameObject.transform.position.y, direction.y));
+
+            walkingTick += Time.deltaTime;
+        }
         
     }
 
@@ -104,17 +129,17 @@ public class Cat : MonoBehaviour
 
     protected virtual void InitializeCatFavors()
     {
-        InitializeFoodFavors(10, 10, 10);
-        InitializeToyFavors(10, 10, 10);
+        InitializeFoodFavors(20, 20, 20);
+        InitializeToyFavors(20, 20, 20);
     }
 
     private void InitializeInventory()
     {
         //initialize material inventory by setting all items to 0
         material_inventory = new EvolutionMaterialInventory();
-        for (int i = 0; i < Enum.GetNames(typeof(evolution_material)).Count(); i++)
+        for (int i = 0; i < Enum.GetNames(typeof(CatEvolutionItem.cat_evolution_item_type)).Count(); i++)
         {
-            evolution_material evo_mat = (evolution_material)i;
+            CatEvolutionItem.cat_evolution_item_type evo_mat = (CatEvolutionItem.cat_evolution_item_type)i;
             material_inventory[evo_mat] = 0;
         }
     }
@@ -122,10 +147,10 @@ public class Cat : MonoBehaviour
     protected virtual void InitializeEvolutionPath()
     {
         EvolutionMaterialInventory studentCatEvolutionInventory = new EvolutionMaterialInventory();
-        studentCatEvolutionInventory.Add(evolution_material.homework, 3);
+        studentCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.homework, 3);
 
         EvolutionMaterialInventory staffCatEvolutionInventory = new EvolutionMaterialInventory();
-        staffCatEvolutionInventory.Add(evolution_material.paycheck, 3);
+        staffCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.paycheck, 3);
 
         evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>();
         evolution_requirements[cat_type.student_cat] = studentCatEvolutionInventory;
@@ -134,25 +159,40 @@ public class Cat : MonoBehaviour
 
     protected void InitializeFoodFavors(int cat_nip_favor, int cat_food_favor, int fish_favor)
     {
-        food_Favor = new Dictionary<cat_food, int>();
-        food_Favor.Add(global::cat_food.cat_nip, cat_nip_favor);
-        food_Favor.Add(global::cat_food.cat_food, cat_food_favor);
-        food_Favor.Add(global::cat_food.fish, fish_favor);
+        food_Favor = new Dictionary<CatBefriendingItem.cat_befriending_food, int>();
+        food_Favor.Add(global::CatBefriendingItem.cat_befriending_food.cat_nip, cat_nip_favor);
+        food_Favor.Add(global::CatBefriendingItem.cat_befriending_food.cat_food, cat_food_favor);
+        food_Favor.Add(global::CatBefriendingItem.cat_befriending_food.fish, fish_favor);
 
     }
 
     protected void InitializeToyFavors(int yarn_favor, int laser_favor, int box_favor)
     {
         
-        toy_Favor = new Dictionary<cat_toy, int>();
-        toy_Favor.Add(cat_toy.yarn, yarn_favor);
-        toy_Favor.Add(cat_toy.laser, laser_favor);
-        toy_Favor.Add(cat_toy.box, box_favor);
+        toy_Favor = new Dictionary<CatBefriendingItem.cat_befriending_toy, int>();
+        toy_Favor.Add(CatBefriendingItem.cat_befriending_toy.yarn, yarn_favor);
+        toy_Favor.Add(CatBefriendingItem.cat_befriending_toy.laser, laser_favor);
+        toy_Favor.Add(CatBefriendingItem.cat_befriending_toy.box, box_favor);
+
+    }
+
+    public void InheritCatAttributes(Cat copy_cat)
+    {
+ 
+        //this.material_inventory.Clear();
+        foreach (CatEvolutionItem.cat_evolution_item_type evolution_item in copy_cat.material_inventory.Keys)
+        {
+            this.material_inventory[evolution_item] += copy_cat.material_inventory[evolution_item];
+        }
+
+        this.befriendAttempts = copy_cat.befriendAttempts;
+        this.relationship_level_value = copy_cat.relationship_level_value;
+        this.friendship_value = copy_cat.friendship_value;
 
     }
 
 
-    protected void AttemptBefriendCat(cat_food given_food)
+    protected void AttemptBefriendCat(CatBefriendingItem.cat_befriending_food given_food)
     {
         if (befriendAttempts >= 5)
         {
@@ -179,17 +219,17 @@ public class Cat : MonoBehaviour
         {
             EventManager.CatBefriend(this, true);
             Debug.Log("The cat has chosen to be your friend");
-            GameObject.DontDestroyOnLoad(this.gameObject);
+            //GameObject.DontDestroyOnLoad(this.gameObject);
         }
     }
 
-    public void FeedCat(cat_food toEatFood)
+    public void FeedCat(CatBefriendingItem.cat_befriending_food toEatFood)
     {
         AttemptBefriendCat(toEatFood);
         ui?.SetFriendshipBarValue(getFriendshipPercentage());
     }
 
-    protected void AttemptBefriendCat(cat_toy given_toy)
+    protected void AttemptBefriendCat(CatBefriendingItem.cat_befriending_toy given_toy)
     {
         if(befriendAttempts >= 5)
         {
@@ -216,24 +256,41 @@ public class Cat : MonoBehaviour
         {
             EventManager.CatBefriend(this, true);
             Debug.Log("The cat has chosen to be your friend");
-            GameObject.DontDestroyOnLoad(this.gameObject);
+            //GameObject.DontDestroyOnLoad(this.gameObject);
         }
     }
 
-    public void PlayWithCat(cat_toy toPlayToy)
+    public void PlayWithCat(CatBefriendingItem.cat_befriending_toy toPlayToy)
     {
         AttemptBefriendCat(toPlayToy);
         ui?.SetFriendshipBarValue(getFriendshipPercentage());
     }
 
-    public void GiveEvolutionMaterial(evolution_material mat)
+    public void GiveEvolutionMaterial(CatEvolutionItem.cat_evolution_item_type mat)
     {
         material_inventory[mat] += 1;
     }
 
-    public int GetMaterialCount(evolution_material mat)
+    public int GetMaterialCount(CatEvolutionItem.cat_evolution_item_type mat)
     {
         return material_inventory[mat];
+    }
+
+    public void DisplayCatToolTip()
+    {
+        if(ui)
+        {
+
+        }
+    }
+
+    public string GetCatTooltip()
+    {
+        return this.school_tip;
+    }
+    public cat_type GetCatType()
+    {
+        return this.type;
     }
 
     public List<cat_type> GetPossibleEvolutions()
@@ -254,7 +311,7 @@ public class Cat : MonoBehaviour
         {
             bool canEvolveToType = true;
 
-            foreach(KeyValuePair<evolution_material, int> required_inventory in evolution_requirements_map.Value)
+            foreach(KeyValuePair<CatEvolutionItem.cat_evolution_item_type, int> required_inventory in evolution_requirements_map.Value)
             {
                 if (material_inventory[required_inventory.Key] < required_inventory.Value)
                 {
@@ -275,15 +332,56 @@ public class Cat : MonoBehaviour
         return GetAvailableEvolutions().Contains(evolve_type);
     }
 
-    public void Evolve(cat_type evolve_type)
+    public Cat EvolveTo(cat_type evolve_type)
     {
+        Debug.Log("evolving");
         if(CanEvolveTo(evolve_type))
         {
+            foreach (CatEvolutionItem.cat_evolution_item_type evolution_item in evolution_requirements[evolve_type].Keys)
+            {
+                EvolutionMaterialInventory inv = evolution_requirements[evolve_type];
+                material_inventory[evolution_item] -= inv[evolution_item];
 
+
+            
+            }
+
+            Cat evolvedCat;
+
+            switch(evolve_type)
+            {
+                case cat_type.student_cat:
+                    {
+                        evolvedCat = gameObject.AddComponent(typeof(StudentCat)) as StudentCat;
+                        Debug.Log(evolvedCat.GetCatType());
+                        Debug.Log("student");
+                        Destroy(this);
+                    }
+                    break;
+
+                case cat_type.staff_cat:
+                    {
+                        evolvedCat = gameObject.AddComponent<StaffCat>();
+                        Debug.Log("staff");
+                        Destroy(this);
+                    }
+                    break;
+                default:
+                    {
+                        evolvedCat = this;
+                        Debug.Log("default");
+                    }
+                    break;
+            }
+            Debug.Log(evolvedCat.GetCatType());
+            EventManager.CatEvolve(this, evolvedCat, evolve_type);
+            return evolvedCat;
         }
+
+        return this;
     }
 
-    public int getFriendshipValue()
+    public float getFriendshipValue()
     {
         return friendship_value;
     }
@@ -293,6 +391,29 @@ public class Cat : MonoBehaviour
         return friendship_value/60.0f;
     }
 
+    public void StartRoam()
+    {
+        isWalking = true;
+        gameObject.GetComponent<Animator>().SetBool("isWalking", isWalking);
+
+        RandomizeWalkingDirection();
+        changeDirectionInterval = UnityEngine.Random.Range(changeDirectionIntervalMin, changeDirectionIntervalMax);
+    }
+
+    public void StopRoaming()
+    {
+        isWalking = false;
+        gameObject.GetComponent<Animator>().SetBool("isWalking", isWalking);
+
+        walkingDirection = Vector2.zero;
+        changeDirectionInterval = UnityEngine.Random.Range(changeDirectionIntervalMin, changeDirectionIntervalMax);
+    }
+
+    public void RandomizeWalkingDirection()
+    {
+        walkingDirection.x = UnityEngine.Random.Range(-10, 10);
+        walkingDirection.y = UnityEngine.Random.Range(-10, 10);
+    }
     public void OnMouseUp()
     {
         Debug.Log("clicked on cat");

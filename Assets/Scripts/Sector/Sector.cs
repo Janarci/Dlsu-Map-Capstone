@@ -7,13 +7,16 @@ public class Sector : MonoBehaviour
     [SerializeField] private GameObject sectorBlockerTemplate;
     [SerializeField] private GameObject sectorBlockerObj;
     private int id;
-    private bool isUnlocked = false;
+    public bool isUnlocked
+    { get; private set; }
+
     // Start is called before the first frame update
     
     public void Initialize(int sectorID)
     {
         id = sectorID;
         SpawnBlocker();
+        isUnlocked = false;
     }    
     void Start()
     {
@@ -46,5 +49,10 @@ public class Sector : MonoBehaviour
     private void HideBlocker()
     {
         sectorBlockerObj.SetActive(false);
+    }
+
+    public int getID()
+    {
+        return id;
     }
 }

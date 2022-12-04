@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HQBehaviour : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,14 +16,17 @@ public class HQBehaviour : MonoBehaviour
         foreach (GameObject go in Values.befriended_cats)
         {
             Debug.Log(i);
-            GameObject catCopy = GameObject.Instantiate(go, new Vector3(-12 + (i * 3), 0, -20 + (j * 3)), Quaternion.Euler(new Vector3(-90, 180, 0)));
+            GameObject catCopy = GameObject.Instantiate(go, new Vector3(-12 + (i * 3), 0, -20 + (j * 3)), Quaternion.Euler(new Vector3(0, 180, 0)));
             catCopy.SetActive(true);
+            if(catCopy.GetComponent<Animator>().isActiveAndEnabled)
+                catCopy.GetComponent<Cat>().StartRoam();
             i++;
             if(i >= 9)
             {
                 j++;
                 i = 0;
             }
+
         }
     }
 
@@ -34,6 +38,6 @@ public class HQBehaviour : MonoBehaviour
 
     public void GoToCatCatching()
     {
-        LoadScene.LoadCatBefriendingScene();
+        LoadScene.LoadSectorUnlockingScene();
     }
 }
