@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 3353159124995028216}
   - component: {fileID: 3353159124995028223}
   m_Layer: 0
-  m_Name: BaseCat
+  m_Name: BasicCato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
