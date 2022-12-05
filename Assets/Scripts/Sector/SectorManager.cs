@@ -7,15 +7,15 @@ using UnityEngine;
 public class SectorManager : MonoBehaviour
 {
     public GameObject map;
-    [SerializeField] private GameObject blockerTemplate;
-    public int[] DLSUTiles =
-    {
-        1, 3, 4, 6, 7, 10, 11
-    };
+    //[SerializeField] private GameObject blockerTemplate;
+    //public int[] DLSUTiles =
+    //{
+    //    1, 3, 4, 6, 7, 10, 11
+    //};
 
-    private List<Sector> sectorList;
+    [SerializeField] private List<Sector> sectorList;
 
-    private float spawnCatInterval = 45.0f;
+    private float spawnCatInterval = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -34,21 +34,28 @@ public class SectorManager : MonoBehaviour
 
     private void InitalizeSectors()
     {
-        for (int i = 1; i < map.transform.childCount; i++)
-        {
-            if(DLSUTiles.Contains(i))
-            {
-                GameObject sectorObj = map.transform.GetChild(i).gameObject;
-                Sector newSectorComponent = sectorObj.AddComponent<Sector>();
-                newSectorComponent.SetSectorBlockerObj(blockerTemplate);
+        //for (int i = 1; i < map.transform.childCount; i++)
+        //{
+        //    if(DLSUTiles.Contains(i))
+        //    {
+        //        GameObject sectorObj = map.transform.GetChild(i).gameObject;
+        //        Sector newSectorComponent = sectorObj.AddComponent<Sector>();
+        //        newSectorComponent.SetSectorBlockerObj(blockerTemplate);
 
-                int sectorID = sectorList.Count;
-                newSectorComponent.Initialize(sectorID);
+        //        int sectorID = sectorList.Count;
+        //        newSectorComponent.Initialize(sectorID);
 
-                sectorList.Add(newSectorComponent);
-            }
+        //        sectorList.Add(newSectorComponent);
+        //    }
             
+        //}
+
+        foreach(Sector s in FindObjectsOfType<Sector>()) 
+        {
+            sectorList.Add(s);
+            s.SetSectorBlockerObj(s.gameObject.transform.GetChild(0).gameObject);
         }
+        
 
         for(int i = 0; i < Values.unlocked_sectors.Count;i++)
         {
@@ -101,14 +108,16 @@ public class SectorManager : MonoBehaviour
 
             yield return new WaitForSeconds(spawnCatInterval);
             Debug.Log("here");
-            int sectorIndex = UnityEngine.Random.Range(0, sectorList.Count - 1);
-            Debug.Log(sectorList.Count - 1 + " " + sectorIndex);
+            int sectorIndex = UnityEngine.Random.Range(0, sectorList.Count);
+            Debug.Log(sectorList.Count + " " + sectorIndex);
 
             if (sectorList[sectorIndex].isUnlocked)
             {
                 CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
 
-                csu?.InstantiateDroid(sectorList[sectorIndex].gameObject.transform.position);
+                Rect sectAreaRect = sectorList[sectorIndex].GetAreaRect();
+                if(sectAreaRect != Rect.zero)
+                    csu?.InstantiateDroid(sectorList[sectorIndex].transform, sectorList[sectorIndex].GetAreaRect());
             }
             Debug.Log("here");
 
@@ -128,12 +137,9 @@ public class SectorManager : MonoBehaviour
         Debug.Log("clicked in sectormap scene");
         foreach(Sector s in sectorList)
         {
-            GameObject sectorPlane = s.gameObject;
-            Vector3[] planeVertices = sectorPlane.GetComponent<MeshFilter>().sharedMesh.vertices;
-            Rect sectRect = new Rect(sectorPlane.transform.position.x - (sectorPlane.GetComponent<Renderer>().bounds.size.x / 2),
-                sectorPlane.transform.position.z - (sectorPlane.GetComponent<Renderer>().bounds.size.z / 2),
-                (sectorPlane.GetComponent<Renderer>().bounds.size.x),
-                (sectorPlane.GetComponent<Renderer>().bounds.size.z));
+            GameObject sectorBounds = s.transform.GetChild(0).gameObject;
+            Vector3[] planeVertices = sectorBounds.GetComponent<MeshFilter>().sharedMesh.vertices;
+            Rect sectRect = s.GetAreaRect();
 
             //Debug.Log(s.getID().ToString() + " " + (sectorPlane.transform.position.x - (sectorPlane.GetComponent<Renderer>().bounds.size.x / 2)).ToString() + " " + clickedCat.gameObject.transform.position.x.ToString());
             //Debug.Log(sectRect.xMin.ToString() + " " + sectRect.xMax.ToString());
