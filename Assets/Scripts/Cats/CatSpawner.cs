@@ -6,15 +6,30 @@ using UnityEngine.Assertions;
 public class CatSpawner : Singleton<CatSpawner>
 {
 
-    [SerializeField] private GameObject[] availableDroids;
+    [SerializeField] private CatSpawn[] availableDroids;
     [SerializeField] private GameObject player;
-    [SerializeField] private float waitTime = 180.0f;
+    [SerializeField] private float waitTime = 10.0f;
     [SerializeField] private int startingCats = 5;
     [SerializeField] private float minRange = 5.0f;
     [SerializeField] private float maxRange = 50.0f;
 
 
-	private void Awake()
+    [SerializeField] private List<CatSpawn> liveCats = new List<CatSpawn>();
+    private CatSpawn selectedCat;
+
+
+    public List<CatSpawn> LiveCats
+	{
+		get { return liveCats; }
+	}
+
+    public CatSpawn SelectedCat
+    {
+        get { return selectedCat; }
+    }
+
+
+    private void Awake()
 	{
         Assert.IsNotNull(availableDroids);
         Assert.IsNotNull(player);//player
@@ -26,18 +41,25 @@ public class CatSpawner : Singleton<CatSpawner>
 		for (int i = 0; i < startingCats; i++)
 		{
             InstantiateDroid();
-            
-		}
+        }
+        //
+
         StartCoroutine(GenerateDroids());
     }
 
+    public void CatWasSelected(CatSpawn cat)
+	{
+        selectedCat = cat;
+        liveCats.Remove(cat);
+
+	}
     private IEnumerator GenerateDroids()
 	{
 		while (true)
 		{
             InstantiateDroid();
             yield return new WaitForSeconds(waitTime);
-		}
+        }
 	}
     
 
@@ -48,9 +70,10 @@ public class CatSpawner : Singleton<CatSpawner>
         float z = player.transform.position.z + GenerateRange();
         float y = player.transform.position.y;
 
-        Instantiate(availableDroids[index], new Vector3(x, y, z), Quaternion.identity);
-
-	}
+       // Instantiate(availableDroids[index], new Vector3(x, y, z), Quaternion.identity);
+      
+        liveCats.Add(Instantiate(availableDroids[index], new Vector3(x, y, z), Quaternion.identity));
+    }
 
     private float GenerateRange()
 	{
