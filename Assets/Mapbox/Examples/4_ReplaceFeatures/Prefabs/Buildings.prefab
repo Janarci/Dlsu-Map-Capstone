@@ -4497,6 +4497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2671232011591404883}
   - component: {fileID: 2887036498817667829}
+  - component: {fileID: 1069876604478427814}
   m_Layer: 0
   m_Name: LS Building
   m_TagString: Untagged
@@ -4537,6 +4538,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sectorBlockerObj: {fileID: 0}
+--- !u!114 &1069876604478427814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426737457019835347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216bea2de14261341bf70f5d8cc1a0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingParts: []
+  InfoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
+    type: 3}
+  buildingName: St. La Salle Hall
 --- !u!1 &427201550308747140
 GameObject:
   m_ObjectHideFlags: 0
@@ -29795,6 +29812,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2909096813495034040}
   - component: {fileID: 7090630686138072025}
+  - component: {fileID: 4366794063787884468}
   m_Layer: 0
   m_Name: Andrew
   m_TagString: Untagged
@@ -29832,6 +29850,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sectorBlockerObj: {fileID: 0}
+--- !u!114 &4366794063787884468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961205061828443817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216bea2de14261341bf70f5d8cc1a0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingParts: []
+  InfoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
+    type: 3}
+  buildingName: Bro. Andrew Gonzalez Hall
 --- !u!1 &2973056900215305422
 GameObject:
   m_ObjectHideFlags: 0
@@ -93676,6 +93710,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5484056019687525914}
   - component: {fileID: 3972442412747344601}
+  - component: {fileID: 4143481518223819272}
+  - component: {fileID: 6571475997743121117}
   m_Layer: 0
   m_Name: Henry Building
   m_TagString: Untagged
@@ -93723,6 +93759,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sectorBlockerObj: {fileID: 0}
+--- !u!64 &4143481518223819272
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9131896654153311658}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!114 &6571475997743121117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9131896654153311658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216bea2de14261341bf70f5d8cc1a0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingParts: []
+  InfoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
+    type: 3}
+  buildingName: Henry Sy Sr. Hall
 --- !u!1 &9140800828284651493
 GameObject:
   m_ObjectHideFlags: 0
