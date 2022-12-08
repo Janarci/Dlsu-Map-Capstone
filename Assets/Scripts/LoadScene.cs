@@ -7,7 +7,7 @@ public class LoadScene : MonoBehaviour
 {
     public static void LoadHQScene()
     {
-        SceneManager.LoadScene("HQ");
+        SceneManager.LoadScene("HQWithUI");
     }
 
     public static void LoadCatBefriendingScene()

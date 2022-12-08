@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 224534228}
   - component: {fileID: 224534232}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: InfoCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -870,6 +870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f03207c1086a741b30d9a185f6bc3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  catList: []
 --- !u!1 &578314538 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8138361049286038057, guid: f02811f61c7c8ff4387c18a528d876a7,
