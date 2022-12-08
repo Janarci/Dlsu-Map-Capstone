@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using EvolutionMaterialInventory = System.Collections.Generic.Dictionary<CatEvolutionItem.cat_evolution_item_type, int>;
+
+
 public class StudentCat : Cat
 {
     // Start is called before the first frame update
@@ -32,6 +35,11 @@ public class StudentCat : Cat
 
     protected override void InitializeEvolutionPath()
     {
+        EvolutionMaterialInventory studentCatEvolutionInventory = new EvolutionMaterialInventory();
+        studentCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.homework, 3);
+
+        evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>();
+        evolution_requirements.Add(cat_type.library_cat, studentCatEvolutionInventory);
 
     }
 }

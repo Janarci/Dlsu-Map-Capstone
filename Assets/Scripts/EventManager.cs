@@ -12,6 +12,8 @@ public class EventManager : MonoBehaviour
     public static event Action<Cat,Cat, cat_type> OnCatEvolve;
     public static event Action<Cat, bool> OnCatBefriend;
 
+    public static event Action<Sector> OnInitializeSector;
+
     public static event Action OnInitializeMap;
 
     private void Awake()
@@ -58,6 +60,14 @@ public class EventManager : MonoBehaviour
         if(OnCatClick!= null)
         {
             OnCatClick(clickedCat);
+        }
+    }
+
+    public static void InitializeSector(Sector sector)
+    {
+        if(OnInitializeSector != null)
+        {
+            OnInitializeSector(sector);
         }
     }
 
