@@ -17,7 +17,9 @@ public class CatDebug : MonoBehaviour
     {
         
         EventManager.OnCatBefriend += RemoveCat;
-        currentCat = GameObject.Instantiate(Values.approached_cat, new Vector3(0, 0, 0), Quaternion.Euler(0, 180, 0), null);
+        currentCat = Values.approached_cat;
+        currentCat.transform.position = new Vector3(0, 0, 0);
+        currentCat.transform.rotation = Quaternion.Euler(0, 180, 0);
         currentCat.SetActive(true);
         Debug.Log(currentCat);
     }
@@ -122,12 +124,18 @@ public class CatDebug : MonoBehaviour
 
     public void RemoveCat(Cat befriendedCat, bool isCatBefriended)
     {
-        if(isCatBefriended)
+        if (befriendedCat = currentCat.GetComponent<Cat>())
         {
-            GameObject catClone = (GameObject.Instantiate(befriendedCat.gameObject));
-            catClone.SetActive(false);
-            Values.befriended_cats.Add(catClone);
-            GameObject.DontDestroyOnLoad(catClone);
+            currentCat.SetActive(false);
+            currentCat = null;
+            Debug.Log("remove");
+        }
+
+        if (isCatBefriended)
+        {
+            befriendedCat.gameObject.SetActive(false);
+            Values.befriended_cats.Add(befriendedCat.gameObject);
+            GameObject.DontDestroyOnLoad(befriendedCat);
             if (!(Values.collected_cat_types.Contains(befriendedCat.GetCatType())))
             {
                 Values.collected_cat_types.Add(befriendedCat.GetCatType());
@@ -139,12 +147,12 @@ public class CatDebug : MonoBehaviour
             }
                 
         }
-        if(befriendedCat = currentCat.GetComponent<Cat>())
+
+        else
         {
-            currentCat.SetActive(false);
-            currentCat = null;
-            Debug.Log("remove");
+            Destroy(befriendedCat.gameObject);
         }
+       
     }
 
     public void GoToHQ()
@@ -159,6 +167,7 @@ public class CatDebug : MonoBehaviour
     public void OnDestroy()
     {
         EventManager.OnCatBefriend -= RemoveCat;
+        Destroy(currentCat);
     }
 
     public void GoToMenu()

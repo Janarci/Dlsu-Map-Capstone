@@ -45,8 +45,8 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
         do
         {
             spawnAttempts++;
-            float x = spawnLoc.x + GenerateRange(AreaRect.width/2);
-            float z = spawnLoc.z + GenerateRange(AreaRect.height/2);
+            float x = spawnLoc.x + GenerateRange((AreaRect.width * 0.85f)/2);
+            float z = spawnLoc.z + GenerateRange((AreaRect.height * 0.85f)/2);
             float y = 0;
 
             Vector3 newSpawnLoc = Quaternion.LookRotation(CubeBoundsObj.forward, CubeBoundsObj.up) * (new Vector3(x, y, z) - CubeBoundsObj.position) + CubeBoundsObj.position;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class HQUI : MonoBehaviour
@@ -52,11 +53,15 @@ public class HQUI : MonoBehaviour
 
     private void OnCatSelect(Cat selectedCat)
     {
-        focusedCat = selectedCat;
-        isZoomingOnCat = true;
-        focusedCat.StopRoaming();
-        UpdateCatAvailableEvolutions();
-        UpdateCatMaterialsList();
+        if(focusedCat == null || focusedCat != selectedCat)
+        {
+            focusedCat = selectedCat;
+            isZoomingOnCat = true;
+            focusedCat.StopRoaming();
+            UpdateCatAvailableEvolutions();
+            UpdateCatMaterialsList();
+        }
+        
         
     }
 
@@ -76,7 +81,7 @@ public class HQUI : MonoBehaviour
 
     public void GiveCatHomework()
     {
-        focusedCat?.GiveEvolutionMaterial(CatEvolutionItem.cat_evolution_item_type.homework);
+        HQBehaviour.Instance.GiveCatHomework(focusedCat);
         UpdateCatAvailableEvolutions();
         UpdateCatMaterialsList();
         //Debug.Log(focusedCat?.GetMaterialCount(CatEvolutionitem.cat_evolution_item_type.homework));
@@ -85,7 +90,7 @@ public class HQUI : MonoBehaviour
 
     public void GiveCatPaycheck()
     {
-        focusedCat?.GiveEvolutionMaterial(CatEvolutionItem.cat_evolution_item_type.paycheck);
+        HQBehaviour.Instance.GiveCatPaycheck(focusedCat);
         UpdateCatAvailableEvolutions();
         UpdateCatMaterialsList();
     }
@@ -125,7 +130,7 @@ public class HQUI : MonoBehaviour
                 Button buttonComp = newButtonObj.GetComponent<Button>();
                 GameObject textComp = newButtonObj.transform.GetChild(0).gameObject;
                 textComp.GetComponent<Text>().text = type.ToString();
-                buttonComp.onClick.AddListener(delegate { focusedCat = focusedCat.EvolveTo(type); HideCatAvailableEvolutions(); DisplayCatToolTip(); });
+                buttonComp.onClick.AddListener(delegate { Cat oldCat = focusedCat; focusedCat = focusedCat.EvolveTo(type); if (focusedCat != oldCat) { Destroy(oldCat); } HideCatAvailableEvolutions(); DisplayCatToolTip(); });
 
             }
         }
