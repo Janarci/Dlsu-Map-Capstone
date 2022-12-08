@@ -129,8 +129,16 @@ public class Cat : MonoBehaviour
 
     protected virtual void InitializeCatFavors()
     {
-        InitializeFoodFavors(20, 20, 20);
-        InitializeToyFavors(20, 20, 20);
+        int catnip_food_favor = UnityEngine.Random.Range(5, 20);
+        int catfood_food_favor = UnityEngine.Random.Range(5, 20);
+        int fish_food_favor = UnityEngine.Random.Range(5, 20);
+
+        int yarn_toy_favor = UnityEngine.Random.Range(5, 20);
+        int laser_toy_favor = UnityEngine.Random.Range(5, 20);
+        int box_toy_favor = UnityEngine.Random.Range(5, 20);
+
+        InitializeFoodFavors(catnip_food_favor, catfood_food_favor, fish_food_favor);
+        InitializeToyFavors(yarn_toy_favor, laser_toy_favor, box_toy_favor);
     }
 
     private void InitializeInventory()
@@ -353,6 +361,7 @@ public class Cat : MonoBehaviour
                 case cat_type.student_cat:
                     {
                         evolvedCat = gameObject.AddComponent(typeof(StudentCat)) as StudentCat;
+                        evolvedCat.InheritCatAttributes(this);
                         Debug.Log(evolvedCat.GetCatType());
                         Debug.Log("student");
                         Destroy(this);
@@ -362,10 +371,18 @@ public class Cat : MonoBehaviour
                 case cat_type.staff_cat:
                     {
                         evolvedCat = gameObject.AddComponent<StaffCat>();
+                        evolvedCat.InheritCatAttributes(this);
                         Debug.Log("staff");
                         Destroy(this);
                     }
                     break;
+                case cat_type.library_cat:
+                    {
+                        evolvedCat = gameObject.AddComponent<LibraryCat>();
+                        evolvedCat.InheritCatAttributes(this);
+                        Debug.Log("library");
+                        Destroy(this);
+                    }break;
                 default:
                     {
                         evolvedCat = this;

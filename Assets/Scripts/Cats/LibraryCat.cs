@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using EvolutionMaterialInventory = System.Collections.Generic.Dictionary<CatEvolutionItem.cat_evolution_item_type, int>;
+
+
 public class LibraryCat : Cat
 {
     // Start is called before the first frame update
@@ -31,7 +34,9 @@ public class LibraryCat : Cat
 
     protected override void InitializeEvolutionPath()
     {
-        
+
+        evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>();
+
     }
 
 
