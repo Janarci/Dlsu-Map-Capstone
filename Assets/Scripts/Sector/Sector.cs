@@ -45,14 +45,18 @@ public class Sector : MonoBehaviour
 
     public void DisplayTooltip()
     {
-        if (TooltipUI != null)
-        {
-            GameObject mainCanvas = GameObject.Find("InfoCanvas");
-            GameObject infoUI = Instantiate(TooltipUI, mainCanvas.transform);
-            infoUI.transform.GetChild(0).GetComponent<Text>().text = "You have unlocked Sector: " + id + "\n" + "Directions to next Sector:";
-            infoUI.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(delegate { Destroy(infoUI); });
-        }
-        
+        //if (TooltipUI != null)
+        //{
+        //    GameObject mainCanvas = GameObject.Find("InfoCanvas");
+        //    GameObject infoUI = Instantiate(TooltipUI, mainCanvas.transform);
+        //    infoUI.transform.GetChild(0).GetComponent<Text>().text = "You have unlocked Sector: " + id + "\n" + "Directions to next Sector:";
+        //    infoUI.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(delegate { Destroy(infoUI); });
+        //}
+
+        PopupGenerator pg = FindObjectOfType<PopupGenerator>();
+        pg?.Instance?.GeneratePopup(
+            "You have unlocked Sector: " + id + "\n" + "Directions to next Sector:"
+            );
     }
 
     public void SetSectorBlockerObj(GameObject template)

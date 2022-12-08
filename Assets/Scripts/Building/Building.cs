@@ -48,10 +48,11 @@ public class Building : MonoBehaviour
 
     public void DisplayBuildingInfo()
     {
-        GameObject mainCanvas = GameObject.Find("InfoCanvas");
-        GameObject infoUI = Instantiate(InfoUITemplate, mainCanvas.transform);
-        infoUI.transform.GetChild(0).GetComponent<Text>().text = "Name: " +  buildingName + "\n" + "About:";
-        infoUI.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(delegate { Destroy(infoUI); });
+        PopupGenerator pg = FindObjectOfType<PopupGenerator>();
+        pg.Instance.GeneratePopup(
+            "Name: " + buildingName + "\n" + "About: "
+            );
+
 
     }
 }

@@ -17,7 +17,7 @@ public class Parts : MonoBehaviour
         
     }
 
-    public void OnMouseDown()
+    public void OnMouseUp()
     {
         ownerBuilding?.OnPartsClick();
     }

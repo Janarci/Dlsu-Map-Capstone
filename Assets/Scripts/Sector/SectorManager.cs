@@ -26,7 +26,7 @@ public class SectorManager : MonoBehaviour
     {
         EventManager.OnInitializeMap += InitalizeSectors;
         EventManager.OnMissionComplete += OnMissionComplete;
-        EventManager.OnCatClick += OnCatClickedInSector;
+        //EventManager.OnCatClick += OnCatClickedInSector;
         sectorList = new Dictionary<int, Sector>();
     }
 
@@ -147,48 +147,48 @@ public class SectorManager : MonoBehaviour
         }
     }
 
-    private void OnCatClickedInSector(Cat clickedCat)
-    {
+    //private void OnCatClickedInSector(Cat clickedCat)
+    //{
         
-        int sectorCatIsOn = -1;
+    //    int sectorCatIsOn = -1;
 
-        Debug.Log("clicked in sectormap scene");
-        foreach(Sector s in sectorList.Values)
-        {
-            Debug.Log("Sector id:" + s.getID());
-            GameObject sectorBounds = s.transform.GetChild(0).gameObject;
-            Vector3[] planeVertices = sectorBounds.GetComponent<MeshFilter>().sharedMesh.vertices;
-            Rect sectRect = s.GetAreaRect();
+    //    Debug.Log("clicked in sectormap scene");
+    //    foreach(Sector s in sectorList.Values)
+    //    {
+    //        Debug.Log("Sector id:" + s.getID());
+    //        GameObject sectorBounds = s.transform.GetChild(0).gameObject;
+    //        Vector3[] planeVertices = sectorBounds.GetComponent<MeshFilter>().sharedMesh.vertices;
+    //        Rect sectRect = s.GetAreaRect();
 
-            //Debug.Log(s.getID().ToString() + " " + (sectorPlane.transform.position.x - (sectorPlane.GetComponent<Renderer>().bounds.size.x / 2)).ToString() + " " + clickedCat.gameObject.transform.position.x.ToString());
-            //Debug.Log(sectRect.xMin.ToString() + " " + sectRect.xMax.ToString());
-            if(sectRect.Contains(new Vector2(clickedCat.gameObject.transform.position.x, clickedCat.gameObject.transform.position.z),true))
-            {
+    //        //Debug.Log(s.getID().ToString() + " " + (sectorPlane.transform.position.x - (sectorPlane.GetComponent<Renderer>().bounds.size.x / 2)).ToString() + " " + clickedCat.gameObject.transform.position.x.ToString());
+    //        //Debug.Log(sectRect.xMin.ToString() + " " + sectRect.xMax.ToString());
+    //        if(sectRect.Contains(new Vector2(clickedCat.gameObject.transform.position.x, clickedCat.gameObject.transform.position.z),true))
+    //        {
                 
-            }
+    //        }
 
-            Vector2 cat2Dpos = new Vector2(clickedCat.gameObject.transform.position.x, clickedCat.gameObject.transform.position.z);
+    //        Vector2 cat2Dpos = new Vector2(clickedCat.gameObject.transform.position.x, clickedCat.gameObject.transform.position.z);
 
-            if(s.IsPointWithinSector(clickedCat.transform.position))
-            {
-                Debug.Log(s.getID());
-                sectorCatIsOn = s.getID();
-                Values.approached_cat = GameObject.Instantiate(clickedCat.gameObject);
-                Values.approached_cat.SetActive(false);
-                GameObject.DontDestroyOnLoad(Values.approached_cat);
-            }
+    //        if(s.IsPointWithinSector(clickedCat.transform.position))
+    //        {
+    //            Debug.Log(s.getID());
+    //            sectorCatIsOn = s.getID();
+    //            Values.approached_cat = GameObject.Instantiate(clickedCat.gameObject);
+    //            Values.approached_cat.SetActive(false);
+    //            GameObject.DontDestroyOnLoad(Values.approached_cat);
+    //        }
 
-            Values.belonging_sector = sectorCatIsOn;
-        }
+    //        Values.belonging_sector = sectorCatIsOn;
+    //    }
 
-        if (sectorCatIsOn != -1)
-            LoadScene.LoadCatBefriendingScene();
-    }
+    //    if (sectorCatIsOn != -1)
+    //        LoadScene.LoadCatBefriendingScene();
+    //}
 
     public void OnDestroy()
     {
         EventManager.OnInitializeMap -= InitalizeSectors;
         EventManager.OnMissionComplete -= OnMissionComplete;
-        EventManager.OnCatClick -= OnCatClickedInSector;
+        //EventManager.OnCatClick -= OnCatClickedInSector;
     }
 }

@@ -139,11 +139,16 @@ public class CatDebug : MonoBehaviour
             if (!(Values.collected_cat_types.Contains(befriendedCat.GetCatType())))
             {
                 Values.collected_cat_types.Add(befriendedCat.GetCatType());
-                GameObject tooltipObj = GameObject.Instantiate(catTooltipUI, canvas.transform);
-                Text tooltipTxt = tooltipObj.transform.GetChild(0).gameObject.GetComponent<Text>();
-                Button tooltipCloseBtn = tooltipObj.transform.GetChild(1).gameObject.GetComponent<Button>();
-                tooltipCloseBtn.onClick.AddListener(delegate { GameObject.Destroy(tooltipObj); });
-                tooltipTxt.text = befriendedCat.GetCatTooltip();
+                //GameObject tooltipObj = GameObject.Instantiate(catTooltipUI, canvas.transform);
+                //Text tooltipTxt = tooltipObj.transform.GetChild(0).gameObject.GetComponent<Text>();
+                //Button tooltipCloseBtn = tooltipObj.transform.GetChild(1).gameObject.GetComponent<Button>();
+                //tooltipCloseBtn.onClick.AddListener(delegate { GameObject.Destroy(tooltipObj); });
+                //tooltipTxt.text = befriendedCat.GetCatTooltip();
+
+                PopupGenerator pg = FindObjectOfType<PopupGenerator>();
+                pg.Instance.GeneratePopup(
+                    befriendedCat.GetCatTooltip()
+                    );
             }
                 
         }
