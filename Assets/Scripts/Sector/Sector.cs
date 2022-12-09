@@ -53,7 +53,7 @@ public class Sector : MonoBehaviour
         //    infoUI.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(delegate { Destroy(infoUI); });
         //}
 
-        PopupGenerator.Instance?.GeneratePopup(
+        PopupGenerator.Instance?.GenerateCloseablePopup(
             "You have unlocked Sector: " + id + "\n" + "Directions to next Sector:"
             );
     }

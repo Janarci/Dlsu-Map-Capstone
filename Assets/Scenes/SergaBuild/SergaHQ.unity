@@ -528,7 +528,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 600, y: 400}
+  m_ReferenceResolution: {x: 720, y: 1280}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1574,6 +1574,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstraintCount
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138361048562299190, guid: f02811f61c7c8ff4387c18a528d876a7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 162.99683
       objectReference: {fileID: 0}
     - target: {fileID: 8138361048562299190, guid: f02811f61c7c8ff4387c18a528d876a7,
         type: 3}

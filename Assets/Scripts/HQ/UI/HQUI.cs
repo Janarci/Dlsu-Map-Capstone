@@ -245,7 +245,7 @@ public class HQUI : MonoBehaviour
 
         if(!Values.collected_cat_types.Contains(evolvedType))
         {
-            PopupGenerator.Instance.GeneratePopup(newCat.GetCatTooltip());
+            PopupGenerator.Instance.GenerateCloseablePopup(newCat.GetCatTooltip());
         }
         
     }

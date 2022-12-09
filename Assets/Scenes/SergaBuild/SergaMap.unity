@@ -1470,7 +1470,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Mode
 --- !u!222 &520660199
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3847,9 +3847,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea00e039fb0d7142b056dff6a147937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
+  infoUICloseable: {fileID: 4310657011951552502, guid: 231b7a668b4a86d4cb653741c4ca4a94,
+    type: 3}
+  infoUINextable: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
   infoUIObj: {fileID: 0}
+  dontOverwrite: 0
 --- !u!4 &1524950190
 Transform:
   m_ObjectHideFlags: 0

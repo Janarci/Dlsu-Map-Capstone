@@ -145,7 +145,7 @@ public class CatDebug : MonoBehaviour
                 //tooltipCloseBtn.onClick.AddListener(delegate { GameObject.Destroy(tooltipObj); });
                 //tooltipTxt.text = befriendedCat.GetCatTooltip();
 
-                PopupGenerator.Instance?.GeneratePopup(
+                PopupGenerator.Instance?.GenerateCloseablePopup(
                     befriendedCat.GetCatTooltip()
                     );
             }
