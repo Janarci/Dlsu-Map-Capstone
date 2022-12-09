@@ -10,6 +10,7 @@ public class Building : MonoBehaviour
     [SerializeField] private GameObject InfoUITemplate;
 
     [SerializeField] private string buildingName;
+    [SerializeField] private string buildingAbout;
 
     // Start is called before the first frame update
     void Start()
@@ -48,11 +49,9 @@ public class Building : MonoBehaviour
 
     public void DisplayBuildingInfo()
     {
-        PopupGenerator pg = FindObjectOfType<PopupGenerator>();
-        pg.Instance.GeneratePopup(
-            "Name: " + buildingName + "\n" + "About: "
+        PopupGenerator.Instance?.GeneratePopup(
+            "Name: " + buildingName + "\n" + "About: " + buildingAbout
             );
-
 
     }
 }

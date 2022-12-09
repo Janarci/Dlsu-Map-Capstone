@@ -7,7 +7,7 @@ public class PopupGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject infoUITemplate;
     [SerializeField] private GameObject infoUIObj;
-    [SerializeField] public PopupGenerator Instance;
+    [SerializeField] public static PopupGenerator Instance;
 
     private void Awake()
     {
@@ -28,8 +28,7 @@ public class PopupGenerator : MonoBehaviour
         if (infoUIObj == null)
         {
             GameObject mainCanvas = GameObject.Find("InfoCanvas");
-            if (mainCanvas == null)
-                mainCanvas = GameObject.FindObjectOfType<Canvas>().gameObject;
+            
 
             infoUIObj = Instantiate(infoUITemplate, mainCanvas.transform);
             infoUIObj.transform.GetChild(0).GetComponent<Text>().text = popupMessage;

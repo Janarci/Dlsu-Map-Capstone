@@ -4557,6 +4557,9 @@ MonoBehaviour:
   InfoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
   buildingName: St. La Salle Hall
+  buildingAbout: St. La Salle Hall is an H-shaped four-story structure. The ground
+    floor houses the College of Business. The second floor houses the Chapel of the
+    Most Blessed Sacrament.  The De La Salle brothers reside in the fourth floor
 --- !u!1 &427201550308747140
 GameObject:
   m_ObjectHideFlags: 0
@@ -29969,6 +29972,9 @@ MonoBehaviour:
   InfoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
   buildingName: Bro. Andrew Gonzalez Hall
+  buildingAbout: 'The Br. Andrew Gonzalez Hall is a 20-storey academic complex designed
+    by Philip H. Recto Architects for De La Salle University. Rising to a height
+    of 90 meters, it is said to be the highest educational structure in the Philippines. '
 --- !u!1 &2973056900215305422
 GameObject:
   m_ObjectHideFlags: 0
@@ -73309,6 +73315,9 @@ MonoBehaviour:
   InfoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
   buildingName: Yuchengco Hall
+  buildingAbout: The Don Enrique T. Yuchengco Hall is a nine-storey neoclassical
+    building. It has a controlled central computer for building automation. The building
+    has an art gallery on the second floor and a three-storey auditorium on top
 --- !u!1 &6989688470313393069
 GameObject:
   m_ObjectHideFlags: 0
@@ -94046,6 +94055,10 @@ MonoBehaviour:
   InfoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
   buildingName: Henry Sy Sr. Hall
+  buildingAbout: 'Henry Sy Sr. Hall was built on the concept of a habitable tree.It
+    boasts of a green roof, solar panels, a rainwater collection system, and a water
+    re-use system. The Hall has 14 floors of eco-friendly learning spaces and function
+    areas. '
 --- !u!1 &9140800828284651493
 GameObject:
   m_ObjectHideFlags: 0

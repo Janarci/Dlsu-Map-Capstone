@@ -7,7 +7,11 @@ public class CatEvolutionItem : Item
     public enum cat_evolution_item_type
     {
         homework,
-        paycheck
+        paycheck,
+        script,
+        artifact,
+        costume,
+        book
     }
 
     public cat_evolution_item_type evolutionItemType
