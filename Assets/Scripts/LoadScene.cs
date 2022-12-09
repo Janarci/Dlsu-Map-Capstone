@@ -7,17 +7,17 @@ public class LoadScene : MonoBehaviour
 {
     public static void LoadHQScene()
     {
-        SceneManager.LoadScene("HQWithUI");
+        SceneManager.LoadScene("SergaHQ");
     }
 
     public static void LoadCatBefriendingScene()
     {
-        SceneManager.LoadScene("0");
+        SceneManager.LoadScene("SergaCatBefriending");
     }
 
     public static void LoadSectorUnlockingScene()
     {
-        SceneManager.LoadScene("MapScene");
+        SceneManager.LoadScene("SergaMap");
     }
 
     public static void LoadMapScene()
