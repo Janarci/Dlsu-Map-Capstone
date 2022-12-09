@@ -5,7 +5,7 @@ using UnityEngine;
 using EvolutionMaterialInventory = System.Collections.Generic.Dictionary<CatEvolutionItem.cat_evolution_item_type, int>;
 
 
-public class LibraryCat : Cat
+public class StaffCat : Cat
 {
     // Start is called before the first frame update
     void Start()
@@ -21,24 +21,23 @@ public class LibraryCat : Cat
 
     protected override void InitializeCatType()
     {
-        school_tip = "Books can be borrowed from the Library";
-        type = cat_type.library_cat;
+        school_tip = "There is a DLSU staff directory online. www.dlsu.edu.ph/staff-directory/";
+        type = cat_type.staff_cat;
     }
 
-    protected override void InitializeCatFavors()
-    {
-        InitializeFoodFavors(10, 20, 5);
-        InitializeToyFavors(10, 5, 20);
-        
-    }
+    //protected override void InitializeCatFavors()
+    //{
+    //    InitializeFoodFavors(10, 20, 5);
+    //    InitializeToyFavors(10, 5, 20);
+
+    //}
 
     protected override void InitializeEvolutionPath()
     {
+        EvolutionMaterialInventory libraryCatEvolutionInventory = new EvolutionMaterialInventory();
+        libraryCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.book, 3);
 
         evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>();
-
+        evolution_requirements.Add(cat_type.library_cat, libraryCatEvolutionInventory);
     }
-
-
-
 }

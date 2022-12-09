@@ -16,7 +16,9 @@ public class HQUI : MonoBehaviour
     [SerializeField] GameObject availableEvolutionsObj;
     [SerializeField] GameObject availableMaterialsObj;
     [SerializeField] GameObject availableEvolutionsContent;
-    [SerializeField] GameObject availableMaterialsContent;
+    [SerializeField] GameObject catInventoryContent;
+    [SerializeField] GameObject allMaterialsContent;
+
 
     public GameObject catTooltipUI = null;
 
@@ -32,6 +34,7 @@ public class HQUI : MonoBehaviour
     {
         cameraInitialPos = camera.transform.position;
         EventManager.OnCatClick += OnCatSelect;
+        EventManager.OnCatEvolve += OnCatEvolve;
     }
 
     // Update is called once per frame
@@ -60,6 +63,7 @@ public class HQUI : MonoBehaviour
             focusedCat.StopRoaming();
             UpdateCatAvailableEvolutions();
             UpdateCatMaterialsList();
+            UpdateEvolutionMaterials();
         }
         
         
@@ -97,9 +101,9 @@ public class HQUI : MonoBehaviour
 
     public void UpdateCatMaterialsList()
     {
-        for (int i = 0; i < availableMaterialsContent.transform.childCount; i++)
+        for (int i = 0; i < catInventoryContent.transform.childCount; i++)
         {
-            Destroy(availableMaterialsContent.transform.GetChild(i).gameObject);
+            Destroy(catInventoryContent.transform.GetChild(i).gameObject);
         }
 
         if (focusedCat)
@@ -107,7 +111,7 @@ public class HQUI : MonoBehaviour
 
             for (int i = 0; i < Enum.GetNames(typeof(CatEvolutionItem.cat_evolution_item_type)).Count(); i++)
             {
-                GameObject newTextObj = Instantiate(materialTxtTemplate, availableMaterialsContent.transform);
+                GameObject newTextObj = Instantiate(materialTxtTemplate, catInventoryContent.transform);
                 Text textComp = newTextObj.GetComponent<Text>();
                 CatEvolutionItem.cat_evolution_item_type type = (CatEvolutionItem.cat_evolution_item_type)i;
                 textComp.GetComponent<Text>().text = type.ToString() + ": " + focusedCat.GetMaterialCount(type).ToString();
@@ -130,14 +134,36 @@ public class HQUI : MonoBehaviour
                 Button buttonComp = newButtonObj.GetComponent<Button>();
                 GameObject textComp = newButtonObj.transform.GetChild(0).gameObject;
                 textComp.GetComponent<Text>().text = type.ToString();
-                buttonComp.onClick.AddListener(delegate { Cat oldCat = focusedCat; focusedCat = focusedCat.EvolveTo(type); if (focusedCat != oldCat) { Destroy(oldCat); } HideCatAvailableEvolutions(); DisplayCatToolTip(); });
-
+                buttonComp.onClick.AddListener(delegate { Cat oldCat = focusedCat; focusedCat = focusedCat.EvolveTo(type); UpdateEvolutionMaterials(); UpdateCatMaterialsList(); UpdateEvolutionMaterials(); } );
             }
         }
         
         
         
     }
+
+    public void UpdateEvolutionMaterials()
+    {
+        for (int i = 0; i < allMaterialsContent.transform.childCount; i++)
+        {
+            Destroy(availableEvolutionsContent.transform.GetChild(i).gameObject);
+        }
+
+        if (focusedCat)
+        {
+            for (int i = 0; i < Enum.GetNames(typeof(CatEvolutionItem.cat_evolution_item_type)).Count(); i++)
+            {
+                GameObject newButtonObj = Instantiate(evolutionButtonTemplate, allMaterialsContent.transform);
+                Button buttonComp = newButtonObj.GetComponent<Button>();
+                GameObject textComp = newButtonObj.transform.GetChild(0).gameObject;
+
+                CatEvolutionItem.cat_evolution_item_type type = (CatEvolutionItem.cat_evolution_item_type)i;
+                textComp.GetComponent<Text>().text = type.ToString();
+                buttonComp.onClick.AddListener(delegate { focusedCat?.GiveEvolutionMaterial(type); UpdateCatMaterialsList(); UpdateCatAvailableEvolutions(); });
+            }
+        }
+    }
+
     public void HideCatAvailableEvolutions()
     {
 
@@ -206,8 +232,26 @@ public class HQUI : MonoBehaviour
 
 
     }
+
+    public void OnCatEvolve(Cat oldCat, Cat newCat, cat_type evolvedType)
+    {
+        if (focusedCat == newCat)
+        {
+
+            UpdateCatAvailableEvolutions();
+            UpdateCatMaterialsList();
+            UpdateEvolutionMaterials();
+        }
+
+        if(!Values.collected_cat_types.Contains(evolvedType))
+        {
+            PopupGenerator.Instance.GeneratePopup(newCat.GetCatTooltip());
+        }
+        
+    }
     private void OnDestroy()
     {
         EventManager.OnCatClick -= OnCatSelect;
+        EventManager.OnCatEvolve += OnCatEvolve;
     }
 }

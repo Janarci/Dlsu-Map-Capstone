@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -12,10 +11,13 @@ public enum cat_type
 {
     basic_cat,
 
-    student_cat,
-
+    actor_cat,
+    COB_cat,
+    history_cat,
+    library_cat,
+    purrformer_cat,
     staff_cat,
-    library_cat
+    student_cat
 }
 //public enum CatBefriendingItem.cat_befriending_food
 //{
@@ -58,6 +60,8 @@ public class Cat : MonoBehaviour
     protected cat_type type = cat_type.basic_cat;
 
     private CatUI ui;
+
+    public bool isWalkingTemp = false;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -109,7 +113,8 @@ public class Cat : MonoBehaviour
 
             walkingTick += Time.deltaTime;
         }
-        
+
+        GetComponent<Animator>()?.SetBool("isWalking", isWalkingTemp);
     }
 
     private void InitializeCat()
@@ -277,6 +282,7 @@ public class Cat : MonoBehaviour
     public void GiveEvolutionMaterial(CatEvolutionItem.cat_evolution_item_type mat)
     {
         material_inventory[mat] += 1;
+        Debug.Log("giving");
     }
 
     public int GetMaterialCount(CatEvolutionItem.cat_evolution_item_type mat)
@@ -354,44 +360,70 @@ public class Cat : MonoBehaviour
             
             }
 
-            Cat evolvedCat;
+            Cat evolvedCat = null;
 
-            switch(evolve_type)
+            //switch(evolve_type)
+            //{
+            //    case cat_type.student_cat:
+            //        {
+            //            evolvedCat = gameObject.AddComponent(typeof(StudentCat)) as StudentCat;
+            //            evolvedCat.InheritCatAttributes(this);
+            //            Debug.Log(evolvedCat.GetCatType());
+            //            Debug.Log("student");
+            //            Destroy(this);
+            //        }
+            //        break;
+
+            //    case cat_type.staff_cat:
+            //        {
+            //            evolvedCat = gameObject.AddComponent<StaffCat>();
+            //            evolvedCat.InheritCatAttributes(this);
+            //            Debug.Log("staff");
+            //            Destroy(this);
+            //        }
+            //        break;
+            //    case cat_type.library_cat:
+            //        {
+            //            evolvedCat = gameObject.AddComponent<LibraryCat>();
+            //            evolvedCat.InheritCatAttributes(this);
+            //            Debug.Log("library");
+                        
+            //        }break;
+            //    default:
+            //        {
+            //            evolvedCat = this;
+            //            Debug.Log("default");
+            //        }
+            //        break;
+            //}
+
+            Cat newCat = CatDatabase.Instance.GetCatData(evolve_type).script;
+            //ComponentUtility.CopyComponent(newCat);
+            //ComponentUtility.PasteComponentAsNew(gameObject);
+                
+            string catType = newCat.GetType().ToString();
+            gameObject.AddComponent(Type.GetType(catType));
+            foreach(Cat catComp in gameObject.GetComponents<Cat>())
             {
-                case cat_type.student_cat:
-                    {
-                        evolvedCat = gameObject.AddComponent(typeof(StudentCat)) as StudentCat;
-                        evolvedCat.InheritCatAttributes(this);
-                        Debug.Log(evolvedCat.GetCatType());
-                        Debug.Log("student");
-                        Destroy(this);
-                    }
-                    break;
-
-                case cat_type.staff_cat:
-                    {
-                        evolvedCat = gameObject.AddComponent<StaffCat>();
-                        evolvedCat.InheritCatAttributes(this);
-                        Debug.Log("staff");
-                        Destroy(this);
-                    }
-                    break;
-                case cat_type.library_cat:
-                    {
-                        evolvedCat = gameObject.AddComponent<LibraryCat>();
-                        evolvedCat.InheritCatAttributes(this);
-                        Debug.Log("library");
-                        Destroy(this);
-                    }break;
-                default:
-                    {
-                        evolvedCat = this;
-                        Debug.Log("default");
-                    }
-                    break;
+                if(catComp != this)
+                {
+                    evolvedCat = catComp;
+                }
             }
+
+            evolvedCat.InheritCatAttributes(this);
+            evolvedCat.enabled = true;
+
             Debug.Log(evolvedCat.GetCatType());
             EventManager.CatEvolve(this, evolvedCat, evolve_type);
+
+
+            Destroy(this);
+
+            Destroy(gameObject.transform.GetChild(0).gameObject);
+            GameObject newBody = Instantiate(CatDatabase.Instance?.GetCatData(evolve_type).model, gameObject.transform);
+            newBody.transform.SetAsFirstSibling();
+
             return evolvedCat;
         }
 
@@ -411,7 +443,7 @@ public class Cat : MonoBehaviour
     public void StartRoam()
     {
         isWalking = true;
-        gameObject.GetComponent<Animator>().SetBool("isWalking", isWalking);
+        gameObject.GetComponent<Animator>()?.SetBool("isWalking", isWalking);
 
         RandomizeWalkingDirection();
         changeDirectionInterval = UnityEngine.Random.Range(changeDirectionIntervalMin, changeDirectionIntervalMax);
@@ -420,7 +452,7 @@ public class Cat : MonoBehaviour
     public void StopRoaming()
     {
         isWalking = false;
-        gameObject.GetComponent<Animator>().SetBool("isWalking", isWalking);
+        gameObject.GetComponent<Animator>()?.SetBool("isWalking", isWalking);
 
         walkingDirection = Vector2.zero;
         changeDirectionInterval = UnityEngine.Random.Range(changeDirectionIntervalMin, changeDirectionIntervalMax);

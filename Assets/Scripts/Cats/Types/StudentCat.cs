@@ -26,20 +26,25 @@ public class StudentCat : Cat
         this.type = cat_type.student_cat;
     }
 
-    protected override void InitializeCatFavors()
-    {
-        InitializeFoodFavors(10, 20, 5);
-        InitializeToyFavors(10, 5, 20);
+    //protected override void InitializeCatFavors()
+    //{
+    //    InitializeFoodFavors(10, 20, 5);
+    //    InitializeToyFavors(10, 5, 20);
 
-    }
+    //}
 
     protected override void InitializeEvolutionPath()
     {
-        EvolutionMaterialInventory studentCatEvolutionInventory = new EvolutionMaterialInventory();
-        studentCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.homework, 3);
+        EvolutionMaterialInventory actorCatEvolutionInventory = new EvolutionMaterialInventory();
+        actorCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.script, 3);
+
+        EvolutionMaterialInventory COBCatEvolutionInventory = new EvolutionMaterialInventory();
+        actorCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.paycheck, 3);
 
         evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>();
-        evolution_requirements.Add(cat_type.library_cat, studentCatEvolutionInventory);
+        evolution_requirements.Add(cat_type.actor_cat, actorCatEvolutionInventory);
+        evolution_requirements.Add(cat_type.COB_cat, COBCatEvolutionInventory);
+
 
     }
 }
