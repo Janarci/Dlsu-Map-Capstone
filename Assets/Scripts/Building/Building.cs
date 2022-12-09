@@ -49,7 +49,7 @@ public class Building : MonoBehaviour
 
     public void DisplayBuildingInfo()
     {
-        PopupGenerator.Instance?.GeneratePopup(
+        PopupGenerator.Instance?.GenerateCloseablePopup(
             "Name: " + buildingName + "\n" + "About: " + buildingAbout
             );
 
