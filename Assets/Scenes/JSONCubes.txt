@@ -1,0 +1,47 @@
+{
+	"cubes":[
+	{
+		"name": "KHALIL",
+		"cubePosition": {"x":1.0,"y":1.0,"z":1.0},
+		"Rotation": {"x":75.0,"y":0.0,"z":0.0},
+		"Scale": {"x":5.0,"y":5.0,"z":5.0}
+	},
+	{
+		"name": "Warrior",
+		"cubePosition": {"x":5.0,"y":5.0,"z":1.0}
+	}
+	],
+	"spheres":[
+	{
+		"name": "sphere1",
+		"cubePosition": {"x":120.0,"y":30.0,"z":1.0}
+		
+	},
+	{
+		"name": "sphere2",
+		"cubePosition": {"x":50.0,"y":40.0,"z":3.0}
+	}
+	],
+	"capsules":[
+	{
+		"name": "cap1",
+		"cubePosition": {"x":120.0,"y":30.0,"z":1.0}
+		
+	},
+	{
+		"name": "cap2",
+		"cubePosition": {"x":50.0,"y":40.0,"z":3.0}
+	}
+	],
+	"planes":[
+	{
+		"name": "plane1",
+		"cubePosition": {"x":120.0,"y":30.0,"z":1.0}
+		
+	},
+	{
+		"name": "plane2",
+		"cubePosition": {"x":50.0,"y":40.0,"z":3.0}
+	}
+	]
+}
