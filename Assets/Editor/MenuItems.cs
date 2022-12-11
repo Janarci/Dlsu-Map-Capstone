@@ -40,7 +40,8 @@ public class MenuItems
     {
         DataList dataList = new DataList();
 
-        string path = "Assets/Scenes/JSONCubes.txt";
+       // string path = "Assets/Scenes/JSONCubes.txt";
+        string path = "Assets/Scenes/example.level";
         //string path = "Assets/Scenes/JSONCubesTest.txt";
         string json;
         //Read the text from directly from the test.txt file
