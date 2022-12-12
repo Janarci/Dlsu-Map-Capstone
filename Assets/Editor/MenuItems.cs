@@ -10,9 +10,10 @@ public class MenuItems
     public class Data
     {
         public string name;
-        public Vector3 Position;
-        public Vector3 Rotation;
-        public Vector3 Scale;
+        public Vector3 position;
+        public Vector3 rotation;
+        public Vector3 scale;
+        public bool rigidBody;
     }
 
 
@@ -40,9 +41,10 @@ public class MenuItems
     {
         DataList dataList = new DataList();
 
-       // string path = "Assets/Scenes/JSONCubes.txt";
-        string path = "Assets/Scenes/example.level";
+        //string path = "Assets/Scenes/JSONCubes.txt";
+        //string path = "Assets/Scenes/example.level";
         //string path = "Assets/Scenes/JSONCubesTest.txt";
+        string path = "Assets/Scenes/SavingToThisFile.txt";
         string json;
         //Read the text from directly from the test.txt file
         StreamReader reader = new StreamReader(path);
@@ -56,39 +58,47 @@ public class MenuItems
 		foreach (Data cubeData in dataList.cubes)
 		{
 			GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			cube.transform.position = cubeData.Position;
+			cube.transform.position = cubeData.position;
 			cube.name = cubeData.name;
-			cube.transform.localScale = cubeData.Scale;
+			cube.transform.localScale = cubeData.scale;
 			cube.transform.eulerAngles = new Vector3(
-                cubeData.Rotation.x,
-                cubeData.Rotation.y,
-                cubeData.Rotation.z
+                cubeData.rotation.x,
+                cubeData.rotation.y,
+                cubeData.rotation.z
                 );
             cube.tag = "cube";
+            if (cubeData.rigidBody == true)//put info here abt it having rigidbody
+			{
+                cube.AddComponent<Rigidbody>();
+            }
         }
         foreach (Data sphereData in dataList.spheres)
         {
             GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            sphere.transform.position = sphereData.Position;
+            sphere.transform.position = sphereData.position;
             sphere.name = sphereData.name;
-            sphere.transform.localScale = sphereData.Scale;
+            sphere.transform.localScale = sphereData.scale;
             sphere.transform.eulerAngles = new Vector3(
-                sphereData.Rotation.x,
-                sphereData.Rotation.y,
-                sphereData.Rotation.z
+                sphereData.rotation.x,
+                sphereData.rotation.y,
+                sphereData.rotation.z
                 );
             sphere.tag = "sphere";
+            if (sphereData.rigidBody == true)//put info here abt it having rigidbody
+            {
+                sphere.AddComponent<Rigidbody>();
+            }
         }
         foreach (Data capsuleData in dataList.capsules)
         {
             GameObject capsule = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-            capsule.transform.position = capsuleData.Position;
+            capsule.transform.position = capsuleData.position;
             capsule.name = capsuleData.name;
-            capsule.transform.localScale = capsuleData.Scale;
+            capsule.transform.localScale = capsuleData.scale;
             capsule.transform.eulerAngles = new Vector3(
-                capsuleData.Rotation.x,
-                capsuleData.Rotation.y,
-                capsuleData.Rotation.z
+                capsuleData.rotation.x,
+                capsuleData.rotation.y,
+                capsuleData.rotation.z
                 );
             capsule.tag = "capsule";
 
@@ -96,13 +106,13 @@ public class MenuItems
         foreach (Data planeData in dataList.planes)
         {
             GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-            plane.transform.position = planeData.Position;
+            plane.transform.position = planeData.position;
             plane.name = planeData.name;
-            plane.transform.localScale = planeData.Scale;
+            plane.transform.localScale = planeData.scale;
             plane.transform.eulerAngles = new Vector3(
-                planeData.Rotation.x,
-                planeData.Rotation.y,
-                planeData.Rotation.z
+                planeData.rotation.x,
+                planeData.rotation.y,
+                planeData.rotation.z
                 );
             plane.tag = "plane";
 
@@ -133,9 +143,10 @@ public class MenuItems
             Data data = new Data();
 
             data.name = arrayofcubes[i].name;
-            data.Position = arrayofcubes[i].transform.position;
-            data.Scale = arrayofcubes[i].transform.localScale;
-            data.Rotation = arrayofcubes[i].transform.eulerAngles;
+            data.position = arrayofcubes[i].transform.position;
+            data.scale = arrayofcubes[i].transform.localScale;
+            data.rotation = arrayofcubes[i].transform.eulerAngles;
+            data.rigidBody = true;
             cubeData.Add(data);
 		}
         for (int i = 0; i < arrayofspheres.Length; i++)
@@ -143,9 +154,9 @@ public class MenuItems
             Data data = new Data();
 
             data.name = arrayofspheres[i].name;
-            data.Position = arrayofspheres[i].transform.position;
-            data.Scale = arrayofspheres[i].transform.localScale;
-            data.Rotation = arrayofspheres[i].transform.eulerAngles;
+            data.position = arrayofspheres[i].transform.position;
+            data.scale = arrayofspheres[i].transform.localScale;
+            data.rotation = arrayofspheres[i].transform.eulerAngles;
 
             sphereData.Add(data);
         }
@@ -154,9 +165,9 @@ public class MenuItems
             Data data = new Data();
 
             data.name = arrayofcapsules[i].name;
-            data.Position = arrayofcapsules[i].transform.position;
-            data.Scale = arrayofcapsules[i].transform.localScale;
-            data.Rotation = arrayofcapsules[i].transform.eulerAngles;
+            data.position = arrayofcapsules[i].transform.position;
+            data.scale = arrayofcapsules[i].transform.localScale;
+            data.rotation = arrayofcapsules[i].transform.eulerAngles;
             CapsuleData.Add(data);
         }
         for (int i = 0; i < arrayofplanes.Length; i++)
@@ -164,9 +175,9 @@ public class MenuItems
             Data data = new Data();
 
             data.name = arrayofplanes[i].name;
-            data.Position = arrayofplanes[i].transform.position;
-            data.Scale = arrayofplanes[i].transform.localScale;
-            data.Rotation = arrayofplanes[i].transform.eulerAngles;
+            data.position = arrayofplanes[i].transform.position;
+            data.scale = arrayofplanes[i].transform.localScale;
+            data.rotation = arrayofplanes[i].transform.eulerAngles;
             planeData.Add(data);
         }
 
@@ -189,7 +200,7 @@ public class MenuItems
 
 
 		string json = JsonUtility.ToJson(myCubeDataList2);
-		string path = "Assets/Scenes/JSONCubesTest.txt";
+		string path = "Assets/Scenes/example.txt";
 		FileStream fileStream = new FileStream(path, FileMode.Create);
 
 		using (StreamWriter writer = new StreamWriter(fileStream))

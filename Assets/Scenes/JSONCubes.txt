@@ -1,18 +1,5 @@
 {
-	"cubes":[
-	{
-		"Position": {"x":1.0,"y":1.0,"z":1.0},
-		"Rotation": {"x":75.0,"y":0.0,"z":0.0},
-		"name": "lalala",
-		"Scale": {"x":5.0,"y":5.0,"z":5.0}
-	},
-	{
-		"name": "Warrior",
-		"Position": {"x":5.0,"y":5.0,"z":1.0},
-		"Rotation": {"x":75.0,"y":0.0,"z":0.0},
-		"Scale": {"x":5.0,"y":5.0,"z":5.0}
-	}
-	],
+	
 	"spheres":[
 	{
 		"name": "sphere1",
@@ -24,6 +11,20 @@
 	{
 		"name": "sphere2",
 		"Position": {"x":50.0,"y":40.0,"z":3.0},
+		"Rotation": {"x":75.0,"y":0.0,"z":0.0},
+		"Scale": {"x":5.0,"y":5.0,"z":5.0}
+	}
+	],
+"cubes":[
+	{
+		"Position": {"x":1.0,"y":1.0,"z":1.0},
+		"Rotation": {"x":75.0,"y":0.0,"z":0.0},
+		"name": "lalala",
+		"Scale": {"x":5.0,"y":5.0,"z":5.0}
+	},
+	{
+		"name": "Warrior",
+		"Position": {"x":5.0,"y":5.0,"z":1.0},
 		"Rotation": {"x":75.0,"y":0.0,"z":0.0},
 		"Scale": {"x":5.0,"y":5.0,"z":5.0}
 	}
