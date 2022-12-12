@@ -44,7 +44,8 @@ public class MenuItems
         //string path = "Assets/Scenes/JSONCubes.txt";
         //string path = "Assets/Scenes/example.level";
         //string path = "Assets/Scenes/JSONCubesTest.txt";
-        string path = "Assets/Scenes/SavingToThisFile.txt";
+       // string path = "Assets/Scenes/SavingToThisFile.txt";
+        string path = "Assets/Scenes/test.txt";
         string json;
         //Read the text from directly from the test.txt file
         StreamReader reader = new StreamReader(path);
@@ -102,9 +103,13 @@ public class MenuItems
 				capsuleData.rotation.z
 				);
 			capsule.tag = "capsule";
+            if (capsuleData.rigidBody == true)//put info here abt it having rigidbody
+            {
+            }
+            capsule.AddComponent<Rigidbody>();
 
-		}
-		foreach (Data planeData in dataList.planes)
+        }
+        foreach (Data planeData in dataList.planes)
 		{
 			GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
 			plane.transform.position = planeData.position;
@@ -116,8 +121,11 @@ public class MenuItems
 				planeData.rotation.z
 				);
 			plane.tag = "plane";
-
-		}
+            if (planeData.rigidBody == true)//put info here abt it having rigidbody
+            {
+                plane.AddComponent<Rigidbody>();
+            }
+        }
 
 
 
