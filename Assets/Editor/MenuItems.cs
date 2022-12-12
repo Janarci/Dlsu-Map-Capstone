@@ -52,9 +52,10 @@ public class MenuItems
 
         Debug.Log(reader.ReadToEnd());
 
-        dataList = JsonUtility.FromJson<DataList>(json);
+		dataList = JsonUtility.FromJson<DataList>(json);
 
-        Debug.Log(dataList.cubes[0].name);
+		Debug.Log(dataList.cubes[0].name);
+		Debug.Log(dataList.cubes[0]);
 		foreach (Data cubeData in dataList.cubes)
 		{
 			GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -62,66 +63,66 @@ public class MenuItems
 			cube.name = cubeData.name;
 			cube.transform.localScale = cubeData.scale;
 			cube.transform.eulerAngles = new Vector3(
-                cubeData.rotation.x,
-                cubeData.rotation.y,
-                cubeData.rotation.z
-                );
-            cube.tag = "cube";
-            if (cubeData.rigidBody == true)//put info here abt it having rigidbody
+					  cubeData.rotation.x,
+					  cubeData.rotation.y,
+					  cubeData.rotation.z
+					  );
+			cube.tag = "cube";
+			if (cubeData.rigidBody == true)//put info here abt it having rigidbody
 			{
-                cube.AddComponent<Rigidbody>();
-            }
-        }
-        foreach (Data sphereData in dataList.spheres)
-        {
-            GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            sphere.transform.position = sphereData.position;
-            sphere.name = sphereData.name;
-            sphere.transform.localScale = sphereData.scale;
-            sphere.transform.eulerAngles = new Vector3(
-                sphereData.rotation.x,
-                sphereData.rotation.y,
-                sphereData.rotation.z
-                );
-            sphere.tag = "sphere";
-            if (sphereData.rigidBody == true)//put info here abt it having rigidbody
-            {
-                sphere.AddComponent<Rigidbody>();
-            }
-        }
-        foreach (Data capsuleData in dataList.capsules)
-        {
-            GameObject capsule = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-            capsule.transform.position = capsuleData.position;
-            capsule.name = capsuleData.name;
-            capsule.transform.localScale = capsuleData.scale;
-            capsule.transform.eulerAngles = new Vector3(
-                capsuleData.rotation.x,
-                capsuleData.rotation.y,
-                capsuleData.rotation.z
-                );
-            capsule.tag = "capsule";
+				cube.AddComponent<Rigidbody>();
+			}
+		}
+		foreach (Data sphereData in dataList.spheres)
+		{
+			GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+			sphere.transform.position = sphereData.position;
+			sphere.name = sphereData.name;
+			sphere.transform.localScale = sphereData.scale;
+			sphere.transform.eulerAngles = new Vector3(
+				sphereData.rotation.x,
+				sphereData.rotation.y,
+				sphereData.rotation.z
+				);
+			sphere.tag = "sphere";
+			if (sphereData.rigidBody == true)//put info here abt it having rigidbody
+			{
+				sphere.AddComponent<Rigidbody>();
+			}
+		}
+		foreach (Data capsuleData in dataList.capsules)
+		{
+			GameObject capsule = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+			capsule.transform.position = capsuleData.position;
+			capsule.name = capsuleData.name;
+			capsule.transform.localScale = capsuleData.scale;
+			capsule.transform.eulerAngles = new Vector3(
+				capsuleData.rotation.x,
+				capsuleData.rotation.y,
+				capsuleData.rotation.z
+				);
+			capsule.tag = "capsule";
 
-        }
-        foreach (Data planeData in dataList.planes)
-        {
-            GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-            plane.transform.position = planeData.position;
-            plane.name = planeData.name;
-            plane.transform.localScale = planeData.scale;
-            plane.transform.eulerAngles = new Vector3(
-                planeData.rotation.x,
-                planeData.rotation.y,
-                planeData.rotation.z
-                );
-            plane.tag = "plane";
+		}
+		foreach (Data planeData in dataList.planes)
+		{
+			GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
+			plane.transform.position = planeData.position;
+			plane.name = planeData.name;
+			plane.transform.localScale = planeData.scale;
+			plane.transform.eulerAngles = new Vector3(
+				planeData.rotation.x,
+				planeData.rotation.y,
+				planeData.rotation.z
+				);
+			plane.tag = "plane";
 
-        }
+		}
 
 
 
-        reader.Close();
-    }
+		reader.Close();
+	}
     [MenuItem("Load level/Save File")]
     static void WriteToFile()
 	{
@@ -200,7 +201,7 @@ public class MenuItems
 
 
 		string json = JsonUtility.ToJson(myCubeDataList2);
-		string path = "Assets/Scenes/example.txt";
+		string path = "Assets/Scenes/example.level";
 		FileStream fileStream = new FileStream(path, FileMode.Create);
 
 		using (StreamWriter writer = new StreamWriter(fileStream))
