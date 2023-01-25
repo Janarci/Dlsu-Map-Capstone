@@ -10,6 +10,7 @@ public class CatSpawn : MonoBehaviour
     [SerializeField] private int attack = 0;
     [SerializeField] private int defense = 0;
     [SerializeField] private int hp = 0;
+    [SerializeField] private int lifespan = 0;
 
 
 	private void Start()

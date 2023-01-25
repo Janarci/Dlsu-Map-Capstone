@@ -18,6 +18,9 @@ namespace Mapbox.Examples
 		[SerializeField]
 		Camera _referenceCamera;
 
+		[SerializeField]
+		GameObject PlayerTarget; // reference for player in game
+
 		Quaternion _originalRotation;
 		Vector3 _origin;
 		Vector3 _delta;
@@ -66,6 +69,8 @@ namespace Mapbox.Examples
 
 		void HandleMouseAndKeyBoard()
 		{
+			this.transform.LookAt(PlayerTarget.transform);// constant look at player cahracter
+
 			if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
 			{
 				var mousePosition = Input.mousePosition;
@@ -109,6 +114,10 @@ namespace Mapbox.Examples
 
 		}
 
+		void ResetCamera()
+		{
+			this.transform.LookAt(PlayerTarget.transform);
+		}
 		void Awake()
 		{
 			_originalRotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);

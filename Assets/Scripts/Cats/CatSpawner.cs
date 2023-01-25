@@ -6,15 +6,16 @@ using UnityEngine.Assertions;
 public class CatSpawner : Singleton<CatSpawner>
 {
 
-    [SerializeField] private CatSpawn[] availableDroids;
+    [SerializeField] private CatSpawn[] availableCatTypes; // put differenrt cats here to spawn ?
     [SerializeField] private GameObject player;
     [SerializeField] private float waitTime = 10.0f;
     [SerializeField] private int startingCats = 5;
+    [SerializeField] private int MaxCats = 10;
     [SerializeField] private float minRange = 5.0f;
     [SerializeField] private float maxRange = 50.0f;
 
 
-    [SerializeField] private List<CatSpawn> liveCats = new List<CatSpawn>();
+    [SerializeField] private List<CatSpawn> liveCats = new List<CatSpawn>(); // cats currently in game
     private CatSpawn selectedCat;
 
 
@@ -31,7 +32,7 @@ public class CatSpawner : Singleton<CatSpawner>
 
     private void Awake()
 	{
-        Assert.IsNotNull(availableDroids);
+        Assert.IsNotNull(availableCatTypes);
         Assert.IsNotNull(player);//player
 	}
 
@@ -40,11 +41,11 @@ public class CatSpawner : Singleton<CatSpawner>
     {
 		for (int i = 0; i < startingCats; i++)
 		{
-            InstantiateDroid();
+            InstantiateCats();
         }
         //
 
-        StartCoroutine(GenerateDroids());
+        StartCoroutine(GenerateCats());
     }
 
     public void CatWasSelected(CatSpawn cat)
@@ -53,26 +54,28 @@ public class CatSpawner : Singleton<CatSpawner>
         liveCats.Remove(cat);
 
 	}
-    private IEnumerator GenerateDroids()
+    private IEnumerator GenerateCats()
 	{
-		while (true)
+		while (LiveCats.Count != MaxCats)
 		{
-            InstantiateDroid();
+            InstantiateCats();
             yield return new WaitForSeconds(waitTime);
         }
 	}
     
 
-    private void InstantiateDroid()
+    private void InstantiateCats()
 	{
-        int index = Random.Range(0, availableDroids.Length);
+        //put a check here if they are in an unlocked zone
+
+        int index = Random.Range(0, availableCatTypes.Length);
         float x = player.transform.position.x + GenerateRange();
         float z = player.transform.position.z + GenerateRange();
         float y = player.transform.position.y;
 
        // Instantiate(availableDroids[index], new Vector3(x, y, z), Quaternion.identity);
       
-        liveCats.Add(Instantiate(availableDroids[index], new Vector3(x, y, z), Quaternion.identity));
+        liveCats.Add(Instantiate(availableCatTypes[index], new Vector3(x, y, z), Quaternion.identity));
     }
 
     private float GenerateRange()

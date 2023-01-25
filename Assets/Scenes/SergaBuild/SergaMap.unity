@@ -218,6 +218,7 @@ MonoBehaviour:
   _panSpeed: 20
   _zoomSpeed: 50
   _referenceCamera: {fileID: 8030623}
+  PlayerTarget: {fileID: 413685118}
 --- !u!224 &8030625
 RectTransform:
   m_ObjectHideFlags: 0
@@ -886,6 +887,8 @@ GameObject:
   m_Component:
   - component: {fileID: 294128046}
   - component: {fileID: 294128045}
+  - component: {fileID: 294128047}
+  - component: {fileID: 294128048}
   m_Layer: 0
   m_Name: CatSpawner
   m_TagString: Untagged
@@ -900,7 +903,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294128044}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db9378161b6e6e746bb706650ac5f762, type: 3}
   m_Name: 
@@ -926,6 +929,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &294128047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294128044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b807e11e5006c5b4f912c51f0b33828f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableCatTypes:
+  - {fileID: 3353159124995028223, guid: 621e6ea63805cb146aa118d66f770ce5, type: 3}
+  player: {fileID: 413685118}
+  waitTime: 2
+  startingCats: 1
+  MaxCats: 10
+  minRange: 5
+  maxRange: 50
+  liveCats: []
+--- !u!114 &294128048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294128044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f786b62eb80df0a458bb749155e67651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  catspawner: {fileID: 294128047}
 --- !u!1 &324370347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,6 +1310,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b5c815d91f9d4c3690891f3ed4c3162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &413685118 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1065618987163410, guid: 35ce2bb4caba9434db5e656796b632b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 816941636}
+  m_PrefabAsset: {fileID: 0}
 --- !u!21 &441645272
 Material:
   serializedVersion: 8
@@ -4429,6 +4472,7 @@ MonoBehaviour:
   _panSpeed: 20
   _zoomSpeed: 50
   _referenceCamera: {fileID: 1960707635}
+  PlayerTarget: {fileID: 0}
 --- !u!81 &1960707637
 AudioListener:
   m_ObjectHideFlags: 0
