@@ -69,7 +69,7 @@ namespace Mapbox.Examples
 
 		void HandleMouseAndKeyBoard()
 		{
-			this.transform.LookAt(PlayerTarget.transform);// constant look at player cahracter
+			//this.transform.LookAt(PlayerTarget.transform);// constant look at player cahracter
 
 			if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
 			{
