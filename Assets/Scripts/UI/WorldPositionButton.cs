@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class WorldPositionButton : MonoBehaviour
 {
-    [SerializeField] private Transform targettTransform;
+    [SerializeField] public Transform targettTransform;
 
 
 

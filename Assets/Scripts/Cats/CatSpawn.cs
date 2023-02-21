@@ -16,7 +16,11 @@ public class CatSpawn : MonoBehaviour
 	private void Start()
 	{
         DontDestroyOnLoad(this);
-	}
+        CatDialogueGenerator.Instance?.GenerateCloseablePopup(
+            "THIS IS A CAT SCRIPT WORKING !! " + "\n" + " CATERINOOOO",
+            this.transform
+            );
+    }
 	public float SpawnRate
 	{
 		get { return spawnRate; }

@@ -44,7 +44,7 @@ public class CatSpawner : Singleton<CatSpawner>
             InstantiateCats();
         }
         //
-
+        
         StartCoroutine(GenerateCats());
     }
 
@@ -73,8 +73,11 @@ public class CatSpawner : Singleton<CatSpawner>
         float z = player.transform.position.z + GenerateRange();
         float y = player.transform.position.y;
 
-       // Instantiate(availableDroids[index], new Vector3(x, y, z), Quaternion.identity);
-      
+
+        
+
+        // Instantiate(availableDroids[index], new Vector3(x, y, z), Quaternion.identity);
+
         liveCats.Add(Instantiate(availableCatTypes[index], new Vector3(x, y, z), Quaternion.identity));
     }
 
