@@ -19,21 +19,21 @@ public class SectorManager : MonoBehaviour
      */
     [SerializeField] private Dictionary<int, Sector> sectorList;
 
-    private float spawnCatInterval = 5.0f;
+    private float spawnCatInterval = 100.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         EventManager.OnInitializeMap += InitalizeSectors;
         EventManager.OnMissionComplete += OnMissionComplete;
-        EventManager.OnCatClick += OnCatClickedInSector;
+        //EventManager.OnCatClick += OnCatClickedInSector;
         sectorList = new Dictionary<int, Sector>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void InitalizeSectors()
@@ -51,10 +51,10 @@ public class SectorManager : MonoBehaviour
 
         //        sectorList.Add(newSectorComponent);
         //    }
-            
+
         //}
 
-        foreach(Sector s in FindObjectsOfType<Sector>()) 
+        foreach (Sector s in FindObjectsOfType<Sector>())
         {
             sectorList[s.getID()] = s;
             s.SetSectorBlockerObj(s.gameObject.transform.GetChild(0).gameObject);
@@ -62,21 +62,13 @@ public class SectorManager : MonoBehaviour
         }
 
 
-        //for(int i = 0; i < Values.unlocked_sectors.Count;i++)
-        //{
-        //    Debug.Log("Pre-emptively unlocking sector: " + i);
-        //    UnlockSector(Values.unlocked_sectors[i]);
-        //}
-
-
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < Values.unlocked_sectors.Count; i++)
         {
             Debug.Log("Pre-emptively unlocking sector: " + i);
-            UnlockSector(i);
+            UnlockSector(Values.unlocked_sectors[i]);
         }
 
-
-        //StartCoroutine(GenerateCatsInSector());
+        StartCoroutine(GenerateCatsInSector());
     }
 
     private void UnlockSector(int sectorIndex)
@@ -97,7 +89,7 @@ public class SectorManager : MonoBehaviour
                         Values.unlocked_sectors.Add(0);
 
                     }
-                        
+
                 }
                 break;
 
@@ -110,7 +102,7 @@ public class SectorManager : MonoBehaviour
                         Values.unlocked_sectors.Add(1);
 
                     }
-                    
+
                 }
                 break;
 
@@ -122,7 +114,7 @@ public class SectorManager : MonoBehaviour
                         sectorList[2].DisplayTooltip();
                         Values.unlocked_sectors.Add(2);
                     }
-                        
+
                 }
                 break;
         }
@@ -130,39 +122,13 @@ public class SectorManager : MonoBehaviour
 
     private IEnumerator GenerateCatsInSector()
     {
-
+        Debug.Log("here");
         while (true)
         {
 
             yield return new WaitForSeconds(spawnCatInterval);
-            if(sectorList.Count > 0)
-            {
-                int sectorIndex = UnityEngine.Random.Range(0, sectorList.Count);
-                Debug.Log(sectorList.Count + " " + sectorIndex);
-
-                if (sectorList[sectorIndex].isUnlocked)
-                {
-                    CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
-
-                    Rect sectAreaRect = sectorList[sectorIndex].GetAreaRect();
-                    if (sectAreaRect != Rect.zero)
-                        csu?.InstantiateDroid(sectorList[sectorIndex].transform, sectorList[sectorIndex].GetAreaRect());
-                }
-                //Debug.Log("here");
-
-                Debug.Log(sectorIndex);
-
-            }
-
-
-        }
-    }
-
-    public void SpawnCatInSector(int sectorIndex)
-    {
-        if (sectorList.Count > 0)
-        {
-            //int sectorIndex = UnityEngine.Random.Range(0, sectorList.Count);
+            Debug.Log("here");
+            int sectorIndex = UnityEngine.Random.Range(0, sectorList.Count);
             Debug.Log(sectorList.Count + " " + sectorIndex);
 
             if (sectorList[sectorIndex].isUnlocked)
@@ -173,55 +139,56 @@ public class SectorManager : MonoBehaviour
                 if (sectAreaRect != Rect.zero)
                     csu?.InstantiateDroid(sectorList[sectorIndex].transform, sectorList[sectorIndex].GetAreaRect());
             }
-            //Debug.Log("here");
+            Debug.Log("here");
 
             Debug.Log(sectorIndex);
 
+
         }
     }
 
-    private void OnCatClickedInSector(Cat clickedCat)
-    {
-        
-        int sectorCatIsOn = -1;
+    //private void OnCatClickedInSector(Cat clickedCat)
+    //{
 
-        Debug.Log("clicked in sectormap scene");
-        foreach(Sector s in sectorList.Values)
-        {
-            Debug.Log("Sector id:" + s.getID());
-            GameObject sectorBounds = s.transform.GetChild(0).gameObject;
-            Vector3[] planeVertices = sectorBounds.GetComponent<MeshFilter>().sharedMesh.vertices;
-            Rect sectRect = s.GetAreaRect();
+    //    int sectorCatIsOn = -1;
 
-            //Debug.Log(s.getID().ToString() + " " + (sectorPlane.transform.position.x - (sectorPlane.GetComponent<Renderer>().bounds.size.x / 2)).ToString() + " " + clickedCat.gameObject.transform.position.x.ToString());
-            //Debug.Log(sectRect.xMin.ToString() + " " + sectRect.xMax.ToString());
-            if(sectRect.Contains(new Vector2(clickedCat.gameObject.transform.position.x, clickedCat.gameObject.transform.position.z),true))
-            {
-                
-            }
+    //    Debug.Log("clicked in sectormap scene");
+    //    foreach(Sector s in sectorList.Values)
+    //    {
+    //        Debug.Log("Sector id:" + s.getID());
+    //        GameObject sectorBounds = s.transform.GetChild(0).gameObject;
+    //        Vector3[] planeVertices = sectorBounds.GetComponent<MeshFilter>().sharedMesh.vertices;
+    //        Rect sectRect = s.GetAreaRect();
 
-            Vector2 cat2Dpos = new Vector2(clickedCat.gameObject.transform.position.x, clickedCat.gameObject.transform.position.z);
+    //        //Debug.Log(s.getID().ToString() + " " + (sectorPlane.transform.position.x - (sectorPlane.GetComponent<Renderer>().bounds.size.x / 2)).ToString() + " " + clickedCat.gameObject.transform.position.x.ToString());
+    //        //Debug.Log(sectRect.xMin.ToString() + " " + sectRect.xMax.ToString());
+    //        if(sectRect.Contains(new Vector2(clickedCat.gameObject.transform.position.x, clickedCat.gameObject.transform.position.z),true))
+    //        {
 
-            if(s.IsPointWithinSector(clickedCat.transform.position))
-            {
-                Debug.Log(s.getID());
-                sectorCatIsOn = s.getID();
-                Values.approached_cat = GameObject.Instantiate(clickedCat.gameObject);
-                Values.approached_cat.SetActive(false);
-                GameObject.DontDestroyOnLoad(Values.approached_cat);
-            }
+    //        }
 
-            Values.belonging_sector = sectorCatIsOn;
-        }
+    //        Vector2 cat2Dpos = new Vector2(clickedCat.gameObject.transform.position.x, clickedCat.gameObject.transform.position.z);
 
-        if (sectorCatIsOn != -1)
-            LoadScene.LoadCatBefriendingScene();
-    }
+    //        if(s.IsPointWithinSector(clickedCat.transform.position))
+    //        {
+    //            Debug.Log(s.getID());
+    //            sectorCatIsOn = s.getID();
+    //            Values.approached_cat = GameObject.Instantiate(clickedCat.gameObject);
+    //            Values.approached_cat.SetActive(false);
+    //            GameObject.DontDestroyOnLoad(Values.approached_cat);
+    //        }
+
+    //        Values.belonging_sector = sectorCatIsOn;
+    //    }
+
+    //    if (sectorCatIsOn != -1)
+    //        LoadScene.LoadCatBefriendingScene();
+    //}
 
     public void OnDestroy()
     {
         EventManager.OnInitializeMap -= InitalizeSectors;
         EventManager.OnMissionComplete -= OnMissionComplete;
-        EventManager.OnCatClick -= OnCatClickedInSector;
+        //EventManager.OnCatClick -= OnCatClickedInSector;
     }
 }
