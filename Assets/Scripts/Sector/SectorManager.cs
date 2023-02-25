@@ -60,15 +60,23 @@ public class SectorManager : MonoBehaviour
             s.SetSectorBlockerObj(s.gameObject.transform.GetChild(0).gameObject);
             Debug.Log("adding sector with id: " + s.getID() + " to sector list");
         }
-        
 
-        for(int i = 0; i < Values.unlocked_sectors.Count;i++)
+
+        //for(int i = 0; i < Values.unlocked_sectors.Count;i++)
+        //{
+        //    Debug.Log("Pre-emptively unlocking sector: " + i);
+        //    UnlockSector(Values.unlocked_sectors[i]);
+        //}
+
+
+        for (int i = 0; i < 3; i++)
         {
             Debug.Log("Pre-emptively unlocking sector: " + i);
-            UnlockSector(Values.unlocked_sectors[i]);
+            UnlockSector(i);
         }
 
-        StartCoroutine(GenerateCatsInSector());
+
+        //StartCoroutine(GenerateCatsInSector());
     }
 
     private void UnlockSector(int sectorIndex)
@@ -122,13 +130,39 @@ public class SectorManager : MonoBehaviour
 
     private IEnumerator GenerateCatsInSector()
     {
-        Debug.Log("here");
+
         while (true)
         {
 
             yield return new WaitForSeconds(spawnCatInterval);
-            Debug.Log("here");
-            int sectorIndex = UnityEngine.Random.Range(0, sectorList.Count);
+            if(sectorList.Count > 0)
+            {
+                int sectorIndex = UnityEngine.Random.Range(0, sectorList.Count);
+                Debug.Log(sectorList.Count + " " + sectorIndex);
+
+                if (sectorList[sectorIndex].isUnlocked)
+                {
+                    CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
+
+                    Rect sectAreaRect = sectorList[sectorIndex].GetAreaRect();
+                    if (sectAreaRect != Rect.zero)
+                        csu?.InstantiateDroid(sectorList[sectorIndex].transform, sectorList[sectorIndex].GetAreaRect());
+                }
+                //Debug.Log("here");
+
+                Debug.Log(sectorIndex);
+
+            }
+
+
+        }
+    }
+
+    public void SpawnCatInSector(int sectorIndex)
+    {
+        if (sectorList.Count > 0)
+        {
+            //int sectorIndex = UnityEngine.Random.Range(0, sectorList.Count);
             Debug.Log(sectorList.Count + " " + sectorIndex);
 
             if (sectorList[sectorIndex].isUnlocked)
@@ -136,13 +170,12 @@ public class SectorManager : MonoBehaviour
                 CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
 
                 Rect sectAreaRect = sectorList[sectorIndex].GetAreaRect();
-                if(sectAreaRect != Rect.zero)
+                if (sectAreaRect != Rect.zero)
                     csu?.InstantiateDroid(sectorList[sectorIndex].transform, sectorList[sectorIndex].GetAreaRect());
             }
-            Debug.Log("here");
+            //Debug.Log("here");
 
             Debug.Log(sectorIndex);
-            
 
         }
     }
