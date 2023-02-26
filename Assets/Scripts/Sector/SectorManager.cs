@@ -192,3 +192,4 @@ public class SectorManager : MonoBehaviour
         //EventManager.OnCatClick -= OnCatClickedInSector;
     }
 }
+
