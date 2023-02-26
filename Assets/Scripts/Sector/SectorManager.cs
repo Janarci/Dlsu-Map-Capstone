@@ -33,7 +33,7 @@ public class SectorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void InitalizeSectors()
@@ -51,18 +51,18 @@ public class SectorManager : MonoBehaviour
 
         //        sectorList.Add(newSectorComponent);
         //    }
-
+            
         //}
 
-        foreach (Sector s in FindObjectsOfType<Sector>())
+        foreach(Sector s in FindObjectsOfType<Sector>()) 
         {
             sectorList[s.getID()] = s;
             s.SetSectorBlockerObj(s.gameObject.transform.GetChild(0).gameObject);
             Debug.Log("adding sector with id: " + s.getID() + " to sector list");
         }
+        
 
-
-        for (int i = 0; i < Values.unlocked_sectors.Count; i++)
+        for(int i = 0; i < Values.unlocked_sectors.Count;i++)
         {
             Debug.Log("Pre-emptively unlocking sector: " + i);
             UnlockSector(Values.unlocked_sectors[i]);
@@ -89,7 +89,7 @@ public class SectorManager : MonoBehaviour
                         Values.unlocked_sectors.Add(0);
 
                     }
-
+                        
                 }
                 break;
 
@@ -102,7 +102,7 @@ public class SectorManager : MonoBehaviour
                         Values.unlocked_sectors.Add(1);
 
                     }
-
+                    
                 }
                 break;
 
@@ -114,7 +114,7 @@ public class SectorManager : MonoBehaviour
                         sectorList[2].DisplayTooltip();
                         Values.unlocked_sectors.Add(2);
                     }
-
+                        
                 }
                 break;
         }
@@ -136,20 +136,20 @@ public class SectorManager : MonoBehaviour
                 CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
 
                 Rect sectAreaRect = sectorList[sectorIndex].GetAreaRect();
-                if (sectAreaRect != Rect.zero)
+                if(sectAreaRect != Rect.zero)
                     csu?.InstantiateDroid(sectorList[sectorIndex].transform, sectorList[sectorIndex].GetAreaRect());
             }
             Debug.Log("here");
 
             Debug.Log(sectorIndex);
-
+            
 
         }
     }
 
     //private void OnCatClickedInSector(Cat clickedCat)
     //{
-
+        
     //    int sectorCatIsOn = -1;
 
     //    Debug.Log("clicked in sectormap scene");
@@ -164,7 +164,7 @@ public class SectorManager : MonoBehaviour
     //        //Debug.Log(sectRect.xMin.ToString() + " " + sectRect.xMax.ToString());
     //        if(sectRect.Contains(new Vector2(clickedCat.gameObject.transform.position.x, clickedCat.gameObject.transform.position.z),true))
     //        {
-
+                
     //        }
 
     //        Vector2 cat2Dpos = new Vector2(clickedCat.gameObject.transform.position.x, clickedCat.gameObject.transform.position.z);
