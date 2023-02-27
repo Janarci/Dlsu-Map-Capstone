@@ -10,12 +10,17 @@ public class CatSpawn : MonoBehaviour
     [SerializeField] private int attack = 0;
     [SerializeField] private int defense = 0;
     [SerializeField] private int hp = 0;
+    [SerializeField] private int lifespan = 0;
 
 
 	private void Start()
 	{
         DontDestroyOnLoad(this);
-	}
+        CatDialogueGenerator.Instance?.GenerateCloseablePopup(
+            "THIS IS A CAT SCRIPT WORKING !! " + "\n" + " CATERINOOOO",
+            this.transform
+            );
+    }
 	public float SpawnRate
 	{
 		get { return spawnRate; }
