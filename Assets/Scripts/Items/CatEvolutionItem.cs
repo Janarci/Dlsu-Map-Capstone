@@ -7,7 +7,28 @@ public class CatEvolutionItem : Item
     public enum cat_evolution_item_type
     {
         homework,
-        paycheck
+        paycheck,
+        costume,
+        baton,
+        steering_wheel,
+        pen,
+        book,
+        money,
+        theater_mask,
+        boombox,
+        microphone,
+        trombone,
+        video_camera,
+        newspaper,
+        stethoscope,
+        syringe,
+        dental_probe,
+        usg_flag,
+        cso_flag,
+        scales_of_justice,
+        laptop,
+        basketball,
+        bible
     }
 
     public cat_evolution_item_type evolutionItemType
