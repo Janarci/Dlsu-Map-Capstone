@@ -1,0 +1,191 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5005417869386997193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5005417869386997203}
+  - component: {fileID: 5005417869386997200}
+  - component: {fileID: 5005417869386997206}
+  - component: {fileID: 5005417869386997202}
+  - component: {fileID: 5005417869386997207}
+  - component: {fileID: 5005417869386997204}
+  - component: {fileID: 5005417869386997205}
+  - component: {fileID: 5005417869386997194}
+  - component: {fileID: 5005417869386997195}
+  - component: {fileID: 5005417869386997192}
+  m_Layer: 0
+  m_Name: CatDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5005417869386997203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005417869386997193}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5005417869386997200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005417869386997193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6752d280cb7ec0c478b454e4f0760e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+  - type: 0
+    model: {fileID: 0}
+    script: {fileID: 5005417869386997206}
+  - type: 1
+    model: {fileID: 0}
+    script: {fileID: 5005417869386997202}
+  - type: 2
+    model: {fileID: 0}
+    script: {fileID: 5005417869386997207}
+  - type: 3
+    model: {fileID: 0}
+    script: {fileID: 5005417869386997204}
+  - type: 4
+    model: {fileID: 0}
+    script: {fileID: 5005417869386997205}
+  - type: 5
+    model: {fileID: 0}
+    script: {fileID: 5005417869386997194}
+  - type: 6
+    model: {fileID: 0}
+    script: {fileID: 5005417869386997195}
+  - type: 7
+    model: {fileID: 0}
+    script: {fileID: 5005417869386997192}
+--- !u!114 &5005417869386997206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005417869386997193}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd98a77402745a24ebd0bc19a728bf22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  isWalkingTemp: 0
+--- !u!114 &5005417869386997202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005417869386997193}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e3197281b19604abdc74b510f250f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  isWalkingTemp: 0
+--- !u!114 &5005417869386997207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005417869386997193}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44886a62ffc30143b7136754107f15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  isWalkingTemp: 0
+--- !u!114 &5005417869386997204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005417869386997193}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd20c2ead210a4d499af331f5602759d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  isWalkingTemp: 0
+--- !u!114 &5005417869386997205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005417869386997193}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdc8cbd23b5d1447b70e681b7ded694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  isWalkingTemp: 0
+--- !u!114 &5005417869386997194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005417869386997193}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8202b9c5ebdc13f479b3615b04877f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  isWalkingTemp: 0
+--- !u!114 &5005417869386997195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005417869386997193}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b04902fe7ff7404dbfc97beac4d7697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  isWalkingTemp: 0
+--- !u!114 &5005417869386997192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005417869386997193}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921b79436f8e60d4f94c66d96696eec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  isWalkingTemp: 0
