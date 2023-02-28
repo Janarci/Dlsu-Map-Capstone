@@ -7,6 +7,25 @@ using EvolutionMaterialInventory = System.Collections.Generic.Dictionary<CatEvol
 
 public class StaffCat : Cat
 {
+
+    private static EvolutionMaterialInventory libraryCatEvolutionInventory = new EvolutionMaterialInventory()
+    {
+        { CatEvolutionItem.cat_evolution_item_type.book, 3 },
+    };
+
+    private Dictionary<cat_type, EvolutionMaterialInventory> library_cat_evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>()
+    {
+        {cat_type.library_cat, libraryCatEvolutionInventory }
+    };
+
+    public override IDictionary<cat_type, EvolutionMaterialInventory> evolution_requirements
+    {
+        get
+        {
+            return library_cat_evolution_requirements;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,10 +53,10 @@ public class StaffCat : Cat
 
     protected override void InitializeEvolutionPath()
     {
-        EvolutionMaterialInventory libraryCatEvolutionInventory = new EvolutionMaterialInventory();
-        libraryCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.book, 3);
+        //EvolutionMaterialInventory libraryCatEvolutionInventory = new EvolutionMaterialInventory();
+        //libraryCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.book, 3);
 
-        evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>();
-        evolution_requirements.Add(cat_type.library_cat, libraryCatEvolutionInventory);
+        //evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>();
+        //evolution_requirements.Add(cat_type.library_cat, libraryCatEvolutionInventory);
     }
 }

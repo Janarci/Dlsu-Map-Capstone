@@ -7,6 +7,20 @@ using EvolutionMaterialInventory = System.Collections.Generic.Dictionary<CatEvol
 
 public class HistoryCat : Cat
 {
+    private Dictionary<cat_type, EvolutionMaterialInventory> history_cat_evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>()
+    {
+
+    };
+
+    public override IDictionary<cat_type, EvolutionMaterialInventory> evolution_requirements
+    {
+        get
+        {
+            return history_cat_evolution_requirements;
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +49,7 @@ public class HistoryCat : Cat
 
     protected override void InitializeEvolutionPath()
     {
-        evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>();
+        //evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>();
 
 
     }

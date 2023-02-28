@@ -9,6 +9,7 @@ public class Sector : MonoBehaviour
     [SerializeField] private int id;
     [SerializeField] private GameObject sectorBlockerObj;
     [SerializeField] private GameObject TooltipUI;
+    [SerializeField] List<ChillSpace> chillSpaces;
 
 
     public string tooltip
@@ -23,6 +24,7 @@ public class Sector : MonoBehaviour
         id = sectorID;
         ShowBlocker();
         isUnlocked = false;
+
         EventManager.InitializeSector(this);
     }
     void Start()

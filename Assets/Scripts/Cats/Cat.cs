@@ -51,7 +51,31 @@ public class Cat : MonoBehaviour
 
     //List<CatEvolutionItem.cat_evolution_item_type> material_list;
     EvolutionMaterialInventory material_inventory;
-    protected Dictionary<cat_type, EvolutionMaterialInventory> evolution_requirements;
+
+    private static EvolutionMaterialInventory studentCatEvolutionInventory = new EvolutionMaterialInventory()
+    {
+        { CatEvolutionItem.cat_evolution_item_type.homework, 3 },
+    };
+
+    private static EvolutionMaterialInventory staffCatEvolutionInventory = new EvolutionMaterialInventory()
+    {
+        { CatEvolutionItem.cat_evolution_item_type.paycheck, 3 },
+    };
+
+    private Dictionary<cat_type, EvolutionMaterialInventory> basic_cat_evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>()
+    {
+        {cat_type.student_cat, studentCatEvolutionInventory   },
+        {cat_type.staff_cat, staffCatEvolutionInventory   }
+
+    };
+
+    virtual public IDictionary<cat_type, EvolutionMaterialInventory> evolution_requirements
+    {
+        get
+        {
+            return basic_cat_evolution_requirements;
+        }
+    }
 
     [SerializeField] protected string school_tip = "Welcome to DLSU";
     private float friendship_value = 0;
@@ -87,9 +111,9 @@ public class Cat : MonoBehaviour
     }
     protected void Start()
     {
-        
+
         //Roam();
-        
+
 
     }
 
@@ -98,7 +122,7 @@ public class Cat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isWalking)
+        if (isWalking)
         {
             if (walkingTick >= changeDirectionInterval)
             {
@@ -123,7 +147,7 @@ public class Cat : MonoBehaviour
         InitializeCatFavors();
         InitializeInventory();
         InitializeEvolutionPath();
-        
+
     }
 
     protected virtual void InitializeCatType()
@@ -159,15 +183,15 @@ public class Cat : MonoBehaviour
 
     protected virtual void InitializeEvolutionPath()
     {
-        EvolutionMaterialInventory studentCatEvolutionInventory = new EvolutionMaterialInventory();
-        studentCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.homework, 3);
+        //EvolutionMaterialInventory studentCatEvolutionInventory = new EvolutionMaterialInventory();
+        //studentCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.homework, 3);
 
-        EvolutionMaterialInventory staffCatEvolutionInventory = new EvolutionMaterialInventory();
-        staffCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.paycheck, 3);
+        //EvolutionMaterialInventory staffCatEvolutionInventory = new EvolutionMaterialInventory();
+        //staffCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.paycheck, 3);
 
-        evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>();
-        evolution_requirements[cat_type.student_cat] = studentCatEvolutionInventory;
-        evolution_requirements[cat_type.staff_cat] = staffCatEvolutionInventory;
+        //evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>();
+        //evolution_requirements[cat_type.student_cat] = studentCatEvolutionInventory;
+        //evolution_requirements[cat_type.staff_cat] = staffCatEvolutionInventory;
     }
 
     protected void InitializeFoodFavors(int cat_nip_favor, int cat_food_favor, int fish_favor)
@@ -181,7 +205,7 @@ public class Cat : MonoBehaviour
 
     protected void InitializeToyFavors(int yarn_favor, int laser_favor, int box_favor)
     {
-        
+
         toy_Favor = new Dictionary<CatBefriendingItem.cat_befriending_toy, int>();
         toy_Favor.Add(CatBefriendingItem.cat_befriending_toy.yarn, yarn_favor);
         toy_Favor.Add(CatBefriendingItem.cat_befriending_toy.laser, laser_favor);
@@ -191,7 +215,7 @@ public class Cat : MonoBehaviour
 
     public void InheritCatAttributes(Cat copy_cat)
     {
- 
+
         //this.material_inventory.Clear();
         foreach (CatEvolutionItem.cat_evolution_item_type evolution_item in copy_cat.material_inventory.Keys)
         {
@@ -244,7 +268,7 @@ public class Cat : MonoBehaviour
 
     protected void AttemptBefriendCat(CatBefriendingItem.cat_befriending_toy given_toy)
     {
-        if(befriendAttempts >= 5)
+        if (befriendAttempts >= 5)
         {
             Debug.Log("The cat prefers to be left alone");
             EventManager.CatBefriend(this, false);
@@ -265,7 +289,7 @@ public class Cat : MonoBehaviour
 
         befriendAttempts++;
 
-        if(getFriendshipPercentage() >= 1.0f)
+        if (getFriendshipPercentage() >= 1.0f)
         {
             EventManager.CatBefriend(this, true);
             Debug.Log("The cat has chosen to be your friend");
@@ -292,7 +316,7 @@ public class Cat : MonoBehaviour
 
     public void DisplayCatToolTip()
     {
-        if(ui)
+        if (ui)
         {
 
         }
@@ -310,7 +334,7 @@ public class Cat : MonoBehaviour
     public List<cat_type> GetPossibleEvolutions()
     {
         List<cat_type> possibleEvolutions = new List<cat_type>();
-        foreach(KeyValuePair<cat_type, EvolutionMaterialInventory> pair in evolution_requirements)
+        foreach (KeyValuePair<cat_type, EvolutionMaterialInventory> pair in evolution_requirements)
         {
             possibleEvolutions.Add(pair.Key);
         }
@@ -325,7 +349,7 @@ public class Cat : MonoBehaviour
         {
             bool canEvolveToType = true;
 
-            foreach(KeyValuePair<CatEvolutionItem.cat_evolution_item_type, int> required_inventory in evolution_requirements_map.Value)
+            foreach (KeyValuePair<CatEvolutionItem.cat_evolution_item_type, int> required_inventory in evolution_requirements_map.Value)
             {
                 if (material_inventory[required_inventory.Key] < required_inventory.Value)
                 {
@@ -334,7 +358,7 @@ public class Cat : MonoBehaviour
                 }
             }
 
-            if(canEvolveToType)
+            if (canEvolveToType)
                 availableEvolutions.Add(evolution_requirements_map.Key);
         }
 
@@ -349,7 +373,7 @@ public class Cat : MonoBehaviour
     public Cat EvolveTo(cat_type evolve_type)
     {
         Debug.Log("evolving");
-        if(CanEvolveTo(evolve_type))
+        if (CanEvolveTo(evolve_type))
         {
             foreach (CatEvolutionItem.cat_evolution_item_type evolution_item in evolution_requirements[evolve_type].Keys)
             {
@@ -357,7 +381,7 @@ public class Cat : MonoBehaviour
                 material_inventory[evolution_item] -= inv[evolution_item];
 
 
-            
+
             }
 
             Cat evolvedCat = null;
@@ -387,7 +411,7 @@ public class Cat : MonoBehaviour
             //            evolvedCat = gameObject.AddComponent<LibraryCat>();
             //            evolvedCat.InheritCatAttributes(this);
             //            Debug.Log("library");
-                        
+
             //        }break;
             //    default:
             //        {
@@ -400,12 +424,12 @@ public class Cat : MonoBehaviour
             Cat newCat = CatDatabase.Instance.GetCatData(evolve_type).script;
             //ComponentUtility.CopyComponent(newCat);
             //ComponentUtility.PasteComponentAsNew(gameObject);
-                
+
             string catType = newCat.GetType().ToString();
             gameObject.AddComponent(Type.GetType(catType));
-            foreach(Cat catComp in gameObject.GetComponents<Cat>())
+            foreach (Cat catComp in gameObject.GetComponents<Cat>())
             {
-                if(catComp != this)
+                if (catComp != this)
                 {
                     evolvedCat = catComp;
                 }
@@ -437,7 +461,7 @@ public class Cat : MonoBehaviour
 
     public float getFriendshipPercentage()
     {
-        return friendship_value/60.0f;
+        return friendship_value / 60.0f;
     }
 
     public void StartRoam()
