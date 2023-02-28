@@ -2289,7 +2289,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2041266380}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b04902fe7ff7404dbfc97beac4d7697, type: 3}
+  m_Script: {fileID: 11500000, guid: 46f005f052ddc3e489f3a77cebd75731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   school_tip: Welcome to DLSU
@@ -2373,7 +2373,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2041266380}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a4bbc892d41227409dacab9e6e86387, type: 3}
+  m_Script: {fileID: 11500000, guid: 09e3197281b19604abdc74b510f250f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   school_tip: Welcome to DLSU

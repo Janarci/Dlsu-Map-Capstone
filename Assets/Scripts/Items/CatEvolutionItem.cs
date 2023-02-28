@@ -8,6 +8,7 @@ public class CatEvolutionItem : Item
     {
         homework,
         paycheck,
+        script,
         costume,
         baton,
         steering_wheel,

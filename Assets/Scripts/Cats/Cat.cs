@@ -54,7 +54,7 @@ public class Cat : MonoBehaviour
 
     private static EvolutionMaterialInventory studentCatEvolutionInventory = new EvolutionMaterialInventory()
     {
-        { CatEvolutionItem.cat_evolution_item_type.book, 3 },
+        { CatEvolutionItem.cat_evolution_item_type.homework, 3 },
     };
 
     private static EvolutionMaterialInventory staffCatEvolutionInventory = new EvolutionMaterialInventory()

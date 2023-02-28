@@ -7,7 +7,7 @@ using EvolutionMaterialInventory = System.Collections.Generic.Dictionary<CatEvol
 
 public class HistoryCat : Cat
 {
-    private Dictionary<cat_type, EvolutionMaterialInventory> History_cat_evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>()
+    private Dictionary<cat_type, EvolutionMaterialInventory> history_cat_evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>()
     {
 
     };
@@ -16,7 +16,7 @@ public class HistoryCat : Cat
     {
         get
         {
-            return History_cat_evolution_requirements;
+            return history_cat_evolution_requirements;
         }
     }
 

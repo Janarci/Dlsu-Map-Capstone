@@ -7,7 +7,29 @@ using EvolutionMaterialInventory = System.Collections.Generic.Dictionary<CatEvol
 
 public class StudentCat : Cat
 {
-    // Start is called before the first frame update
+    private static EvolutionMaterialInventory actorCatEvolutionInventory = new EvolutionMaterialInventory()
+    {
+        { CatEvolutionItem.cat_evolution_item_type.script, 3 },
+    };
+
+    private static EvolutionMaterialInventory cobCatEvolutionInventory = new EvolutionMaterialInventory()
+    {
+        { CatEvolutionItem.cat_evolution_item_type.paycheck, 3 },
+    };
+
+    private Dictionary<cat_type, EvolutionMaterialInventory> student_cat_evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>()
+    {
+        {cat_type.actor_cat,  actorCatEvolutionInventory},
+        {cat_type.COB_cat, cobCatEvolutionInventory }
+    };
+
+    public override IDictionary<cat_type, EvolutionMaterialInventory> evolution_requirements
+    {
+        get
+        {
+            return student_cat_evolution_requirements;
+        }
+    }
     void Start()
     {
         base.Start();
@@ -35,15 +57,15 @@ public class StudentCat : Cat
 
     protected override void InitializeEvolutionPath()
     {
-        EvolutionMaterialInventory actorCatEvolutionInventory = new EvolutionMaterialInventory();
-        actorCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.script, 3);
+        //EvolutionMaterialInventory actorCatEvolutionInventory = new EvolutionMaterialInventory();
+        //actorCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.script, 3);
 
-        EvolutionMaterialInventory COBCatEvolutionInventory = new EvolutionMaterialInventory();
-        actorCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.paycheck, 3);
+        //EvolutionMaterialInventory COBCatEvolutionInventory = new EvolutionMaterialInventory();
+        //actorCatEvolutionInventory.Add(CatEvolutionItem.cat_evolution_item_type.paycheck, 3);
 
-        evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>();
-        evolution_requirements.Add(cat_type.actor_cat, actorCatEvolutionInventory);
-        evolution_requirements.Add(cat_type.COB_cat, COBCatEvolutionInventory);
+        //evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>();
+        //evolution_requirements.Add(cat_type.actor_cat, actorCatEvolutionInventory);
+        //evolution_requirements.Add(cat_type.COB_cat, COBCatEvolutionInventory);
 
 
     }
