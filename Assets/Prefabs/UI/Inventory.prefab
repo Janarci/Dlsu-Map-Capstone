@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7266056896035707258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7266056896035707260}
+  - component: {fileID: 7266056896035707261}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7266056896035707260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7266056896035707258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.399813, y: 49.526928, z: -91.30348}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7266056896035707261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7266056896035707258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f07a6047d5c565479ce03396ad33321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allItemsList:
+  - type: 0
+    icon: {fileID: 0}
+  - type: 1
+    icon: {fileID: 0}
+  - type: 2
+    icon: {fileID: 0}
+  - type: 3
+    icon: {fileID: 0}
+  - type: 4
+    icon: {fileID: 0}
+  - type: 5
+    icon: {fileID: 0}
+  - type: 6
+    icon: {fileID: 0}
+  - type: 7
+    icon: {fileID: 0}
+  - type: 8
+    icon: {fileID: 0}
+  - type: 9
+    icon: {fileID: 0}
+  - type: 10
+    icon: {fileID: 0}
+  - type: 11
+    icon: {fileID: 0}
+  - type: 12
+    icon: {fileID: 0}
+  - type: 13
+    icon: {fileID: 0}
+  - type: 14
+    icon: {fileID: 0}
+  - type: 15
+    icon: {fileID: 0}
+  - type: 16
+    icon: {fileID: 0}
+  - type: 17
+    icon: {fileID: 0}
+  - type: 18
+    icon: {fileID: 0}
+  - type: 19
+    icon: {fileID: 0}
+  - type: 20
+    icon: {fileID: 0}
+  - type: 21
+    icon: {fileID: 0}
+  - type: 22
+    icon: {fileID: 0}
+  - type: 23
+    icon: {fileID: 0}
+  inventoryUI: {fileID: 0}
+  itemUI: {fileID: 0}
+  inventoryContent: {fileID: 0}
