@@ -20,8 +20,10 @@ public class CatSpawn : MonoBehaviour
             "THIS IS A CAT SCRIPT WORKING !! " + "\n" + " CATERINOOOO",
             this.transform
             );
+        Debug.Log("cat spawn");
+
     }
-	public float SpawnRate
+    public float SpawnRate
 	{
 		get { return spawnRate; }
 	}
@@ -52,6 +54,10 @@ public class CatSpawn : MonoBehaviour
 			if (animeowSceneManager.gameObject.activeSelf)
 			{
                 animeowSceneManager.catTapped(this.gameObject);
+				Values.approached_cat = GameObject.Instantiate(this.gameObject);
+				Values.approached_cat.SetActive(false);
+				GameObject.DontDestroyOnLoad(Values.approached_cat);
+				LoadScene.LoadCatBefriendingScene();
 			}
 		}
 

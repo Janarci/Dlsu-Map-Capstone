@@ -12,7 +12,8 @@ public class LoadScene : MonoBehaviour
 
     public static void LoadCatBefriendingScene()
     {
-        SceneManager.LoadScene("SergaCatBefriending");
+        //SceneManager.LoadScene("SergaCatBefriending");
+        SceneManager.LoadScene("catbefriend");
     }
 
     public static void LoadSectorUnlockingScene()

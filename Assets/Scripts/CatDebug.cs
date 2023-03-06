@@ -83,6 +83,8 @@ public class CatDebug : MonoBehaviour
         {
             Cat cat = currentCat.GetComponent<Cat>();
             cat.FeedCat(CatBefriendingItem.cat_befriending_food.cat_food);
+            Debug.Log("we are feeding");
+
         }
     }
 

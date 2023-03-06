@@ -138,7 +138,7 @@ public class Cat : MonoBehaviour
             walkingTick += Time.deltaTime;
         }
 
-        GetComponent<Animator>()?.SetBool("isWalking", isWalkingTemp);
+        //GetComponent<Animator>()?.SetBool("isWalking", isWalkingTemp);
     }
 
     private void InitializeCat()
