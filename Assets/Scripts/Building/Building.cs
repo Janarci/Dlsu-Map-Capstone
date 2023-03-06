@@ -11,6 +11,7 @@ public class Building : MonoBehaviour
 
     [SerializeField] private string buildingName;
     [SerializeField] private string buildingAbout;
+    [SerializeField] private GameObject buttonPopup;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +45,8 @@ public class Building : MonoBehaviour
     public void OnPartsClick()
     {
         Debug.Log(buildingName + " was clicked");
-        DisplayBuildingInfo();
+        buttonPopup.SetActive(true);
+        //DisplayBuildingInfo();
     }
 
     public void DisplayBuildingInfo()

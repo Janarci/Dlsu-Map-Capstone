@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CatSpawn : MonoBehaviour
 {
@@ -47,6 +48,10 @@ public class CatSpawn : MonoBehaviour
 
 	private void OnMouseDown()
 	{
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
         Debug.Log("cat click");
         AnimeowSceneManager[] managers = FindObjectsOfType<AnimeowSceneManager>();
 		foreach (AnimeowSceneManager animeowSceneManager in managers)

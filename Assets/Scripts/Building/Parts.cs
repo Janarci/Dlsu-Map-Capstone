@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Parts : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class Parts : MonoBehaviour
 
     public void OnMouseUp()
     {
+		if (EventSystem.current.IsPointerOverGameObject())
+		{
+            return;
+		}
         ownerBuilding?.OnPartsClick();
     }
 
