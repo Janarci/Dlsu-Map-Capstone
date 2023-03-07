@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Active: 1
   _options:
-    prefab: {fileID: 3864507879138473835, guid: b0432b901092eb64facc967e53139959,
+    prefab: {fileID: 3864507879138473835, guid: 3fe4a63c5456c5b4b86d74d17602725b,
       type: 3}
     scaleDownWithWorld: 1
   _prefabLocations:

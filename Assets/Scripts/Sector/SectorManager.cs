@@ -123,7 +123,7 @@ public class SectorManager : MonoBehaviour
     private IEnumerator GenerateCatsInSector()
     {
         Debug.Log("here");
-        while (true)
+        while (false)
         {
 
             yield return new WaitForSeconds(spawnCatInterval);
