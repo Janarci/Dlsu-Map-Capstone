@@ -29,7 +29,8 @@ public class CatEvolutionItem : Item
         scales_of_justice,
         laptop,
         basketball,
-        bible
+        bible,
+        fish
     }
 
     public cat_evolution_item_type evolutionItemType

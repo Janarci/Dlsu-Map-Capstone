@@ -35,6 +35,7 @@ public class Inventory : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this);
+            DontDestroyOnLoad(inventoryUI);
         }
 
 
@@ -47,24 +48,52 @@ public class Inventory : MonoBehaviour
         itemDatabase = new Dictionary<cat_evolution_item_type, ItemData>();
         itemList = new Dictionary<cat_evolution_item_type, int>();
         inventoryItems = new Dictionary<cat_evolution_item_type, GameObject>();
-        foreach (ItemData item in allItemsList)
+        //foreach (ItemData item in allItemsList)
+        //{
+        //    itemDatabase[item.type] = item;
+        //    AddToInventory(item.type, 99);
+        //    Debug.Log("adding item " + item.type);
+        //}
+
+        Debug.Log("Items declared: " + allItemsList.Count);
+        foreach(ItemData item in allItemsList)
         {
             itemDatabase[item.type] = item;
+            AddToInventory(item.type, 99);
+            Debug.Log("initial add of " + item.type);
+            
         }
 
+        for(int i = 0; i < allItemsList.Count; i++)
+        {
+            ItemData item = allItemsList[i];
+            itemDatabase[item.type] = item;
+            AddToInventory(item.type, 99);
+            Debug.Log("initial add of " + item.type);
+        }
+
+
+
+        //for(int i = 0; i < itemList.Count; i++)
+        //{
+        //    ItemData item = itemList.Keys;
+        //    AddToInventory(item.type, 99);
+
+        //}
         //itemList[cat_evolution_item_type.dental_probe] = 6;
         //itemList[cat_evolution_item_type.basketball] = 5;
         //itemList[cat_evolution_item_type.boombox] = 9;
         //itemList[cat_evolution_item_type.book] = 11;
 
 
-        AddToInventory(cat_evolution_item_type.dental_probe, 6);
-        AddToInventory(cat_evolution_item_type.basketball, 9);
-        AddToInventory(cat_evolution_item_type.boombox, 11);
-        AddToInventory(cat_evolution_item_type.book, 15);
+        //AddToInventory(cat_evolution_item_type.dental_probe, 6);
+        //AddToInventory(cat_evolution_item_type.basketball, 9);
+        //AddToInventory(cat_evolution_item_type.boombox, 11);
+        //AddToInventory(cat_evolution_item_type.book, 15);
 
-        AddToInventory(cat_evolution_item_type.dental_probe, 20);
+        //AddToInventory(cat_evolution_item_type.dental_probe, 20);
 
+        //AddToInventory(cat_evolution_item_type.cso_flag, 3);
 
 
         //UpdateInventory();
@@ -88,7 +117,7 @@ public class Inventory : MonoBehaviour
 
     private void UpdateInventory()
     {
-        Debug.Log("adding item to inventory: ");
+        //Debug.Log("adding item to inventory: ");
 
         foreach (KeyValuePair<cat_evolution_item_type, int> pair in itemList)
         {
@@ -131,10 +160,10 @@ public class Inventory : MonoBehaviour
             Sprite itemIcon = itemDatabase[item].icon;
 
             if (itemIcon)
-                itemToAdd.GetComponent<Image>().sprite = itemIcon;
+                itemToAdd.transform.GetChild(0).GetComponent<Image>().sprite = itemIcon;
 
             inventoryItems[item] = itemToAdd;
-        }
+        }   
 
         else
         {
@@ -191,4 +220,51 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public ItemData GetDataInfo(CatEvolutionItem.cat_evolution_item_type item)
+    {
+        return itemDatabase[item];
+    }
+
+    public int Has(CatEvolutionItem.cat_evolution_item_type item)
+    {
+        if (itemList.ContainsKey(item))
+        {
+            return itemList[item];
+        }
+
+        else return 0;
+    }
+
+    public void RestartInventoryUI(GameObject newContent)
+    {
+        if(inventoryContent == null)
+        {
+            inventoryContent = newContent;
+            inventoryItems.Clear();
+            foreach (KeyValuePair<cat_evolution_item_type, int> pair in itemList)
+            {
+                if (!(inventoryItems.ContainsKey(pair.Key)))
+                {
+                    Debug.Log("re-adding new item to inventory: " + pair.Key);
+                    GameObject itemToAdd = Instantiate(itemUI, inventoryContent.transform);
+
+                    Text itemCountTxt = itemToAdd.GetComponentInChildren<Text>();
+                    itemCountTxt.text = pair.Value.ToString();
+
+                    Sprite itemIcon = itemDatabase[pair.Key].icon;
+
+                    if (itemIcon)
+                        itemToAdd.transform.GetChild(0).GetComponent<Image>().sprite = itemIcon;
+
+                    inventoryItems[pair.Key] = itemToAdd;
+                }
+
+                else
+                {
+
+                }
+            }
+        }
+        
+    }
 }

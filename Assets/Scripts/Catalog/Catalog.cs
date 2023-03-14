@@ -16,24 +16,55 @@ public class Catalog : MonoBehaviour
     public GameObject catTypeTxt;
 
     public GameObject catalogMenuObj;
+    public GameObject catListItemObj;
+    public GameObject catListContent;
+
+    public GameObject catalogMenu;
+    public GameObject allBuildingsMenu;
+    public GameObject buildingInfoMenu;
+    public GameObject chillSpaceInfoMenu;
+    public GameObject allCatsMenu;
+    public GameObject catInfoMenu;
+    public GameObject catTreeMenu;
+
+
+
+    public GameObject buildingListItemObj;
+    public GameObject buildingListContent;
+
+
+    public GameObject catsListItemObj2;
+    public GameObject catsListContent2;
+
     int currx = 0; int curry = 0;
 
-    cat_type currentCatTypeDisplayed;
-     
+    CatType.Type currentCatTypeDisplayed;
+
+    [SerializeField] private CatalogBuildingInfo buildingInfo;
+    [SerializeField] private CatalogCatInfo catInfo;
+
     private List<CatDatabase.CatData> catalogCats;
 
     private List<LineRenderer> lr;
+
+    public static List<GameObject> menuHistory;
+    public static GameObject currentMenu;
 
     // Start is called before the first frame update
     void Start()
     {
         catalogCats = new List<CatDatabase.CatData>();
-        DisplayCatalog();
+        //DisplayCatalog();
         
         lr = new List<LineRenderer>();
+
+        Debug.Log("in catalog start");
+
+        menuHistory= new List<GameObject>();
+        currentMenu = catalogMenu;
     }
 
-    private void DisplayEvolutionPathsAvailable(cat_type type, int x, GameObject parentButton )
+    private void DisplayEvolutionPathsAvailable(CatType.Type type, int x, GameObject parentButton )
     {
         
         if(!(catEvolutionPathMenu.activeInHierarchy))
@@ -50,7 +81,7 @@ public class Catalog : MonoBehaviour
             catTypeTxt.GetComponent<Text>().text = type.ToString();
 
         Cat cat = CatDatabase.Instance.GetCatData(type).script;
-        foreach (KeyValuePair<cat_type, Dictionary<CatEvolutionItem.cat_evolution_item_type, int>> pair in cat.evolution_requirements)
+        foreach (KeyValuePair<CatType.Type, Dictionary<CatEvolutionItem.cat_evolution_item_type, int>> pair in cat.evolution_requirements)
         {
             //Debug.Log(pair.Key);
 
@@ -114,11 +145,11 @@ public class Catalog : MonoBehaviour
 
         int index = (int)currentCatTypeDisplayed;
         Debug.Log(index);
-        if(Enum.IsDefined(typeof(cat_type), index + 1))
+        if(Enum.IsDefined(typeof(CatType.Type), index + 1))
         {
             ClearCatalogPageContent();
             index++;
-            cat_type nextCat = (cat_type)index;
+            CatType.Type nextCat = (CatType.Type)index;
             currentCatTypeDisplayed = nextCat;
             Debug.Log(index + " " + nextCat.ToString());
 
@@ -136,11 +167,11 @@ public class Catalog : MonoBehaviour
 
         int index = (int)currentCatTypeDisplayed;
         Debug.Log(index);
-        if (Enum.IsDefined(typeof(cat_type), index - 1))
+        if (Enum.IsDefined(typeof(CatType.Type), index - 1))
         {
             ClearCatalogPageContent();
             index--;
-            cat_type prevCat = (cat_type)index;
+            CatType.Type prevCat = (CatType.Type)index;
             currentCatTypeDisplayed = prevCat;
             Debug.Log(index + " " + prevCat.ToString());
 
@@ -168,6 +199,98 @@ public class Catalog : MonoBehaviour
         curry = 0;
     }
 
+    public void DisplayAllCatsList()
+    {
+        currentMenu.SetActive(false);
+        menuHistory.Add(currentMenu);
+        currentMenu = allCatsMenu;
+        currentMenu.SetActive(true);
+
+
+        //catalogMenu.SetActive(false);
+        //allCatsMenu.SetActive(true);
+        if (catsListContent2.transform.childCount == 0)
+            foreach (CatDatabase.CatData catData in CatDatabase.Instance.data)
+            {
+                //Debug.Log("here");
+                GameObject newButtonObj = Instantiate(catsListItemObj2, catsListContent2.transform);
+                Button buttonComp = newButtonObj.transform.GetChild(1).GetComponent<Button>();
+                GameObject textComp = buttonComp.transform.GetChild(0).gameObject;
+                textComp.GetComponent<Text>().text = catData.type.ToString();
+
+                buttonComp.onClick.AddListener(delegate { DisplayCatInfo(catData.type); });
+            }
+
+
+        
+
+    }
+
+    public void DisplayAllBuildingsList()
+    {
+        currentMenu.SetActive(false);
+        menuHistory.Add(currentMenu);
+        currentMenu = allBuildingsMenu;
+        currentMenu.SetActive(true);
+
+        //catalogMenu.SetActive(false);
+        //allBuildingsMenu.SetActive(true);
+        Debug.Log(BuildingDatabase.Instance.data.Count);
+        if(buildingListContent.transform.childCount == 0)
+        foreach (BuildingDatabase.BuildingData building in BuildingDatabase.Instance.data)
+        {
+            //Debug.Log("here");
+            GameObject newButtonObj = Instantiate(buildingListItemObj, buildingListContent.transform);
+            Button buttonComp = newButtonObj.GetComponent<Button>();
+            GameObject textComp = newButtonObj.transform.GetChild(0).gameObject;
+            textComp.GetComponent<Text>().text = BuildingDatabase.Instance.GetDataInfo(building.type).name.ToString();
+
+            buttonComp.onClick.AddListener(delegate { DisplayBuildingInfo(building); });
+        }
+    }
+
+    public void DisplayBuildingInfo(BuildingDatabase.BuildingData buildingData)
+    {
+        currentMenu.SetActive(false);
+        menuHistory.Add(currentMenu);
+        currentMenu = buildingInfoMenu;
+        currentMenu.SetActive(true);
+
+        //allBuildingsMenu.SetActive(false);
+        //buildingInfoMenu.SetActive(true);
+
+        buildingInfo.SetBuildingDetails(buildingData);
+    }
+
+    public void DisplayCatInfo(CatType.Type catType)
+    {
+        currentMenu.SetActive(false);
+        menuHistory.Add(currentMenu);
+        currentMenu = catInfoMenu;
+        currentMenu.SetActive(true);
+
+        //allCatsMenu.SetActive(false);
+        //catInfoMenu.SetActive(true);
+
+        catInfo.SetCatInfo(catType);
+        catInfo.SetCatHabitats(catType);
+    }
+
+    public void DisplayChillspaceInfo()
+    {
+        currentMenu.SetActive(false);
+        menuHistory.Add(currentMenu);
+        currentMenu = chillSpaceInfoMenu;
+        currentMenu.SetActive(true);
+    }
+
+    public void DisplayCatEvolutionTree()
+    {
+        currentMenu.SetActive(false);
+        menuHistory.Add(currentMenu);
+        currentMenu = catTreeMenu;
+        currentMenu.SetActive(true);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -199,9 +322,22 @@ public class Catalog : MonoBehaviour
         }
     }
 
+    public void GoToPreviousMenu()
+    {
+        currentMenu.SetActive(false);
+        currentMenu = menuHistory.Last();
+        menuHistory.Remove(currentMenu);
+        currentMenu.SetActive(true);
+    }
+
     public void HideCatalog()
     {
         ClearCatalogPageContent();
         catEvolutionPathMenu.SetActive(false);
+    }
+
+    public void GoBackToMapScene()
+    {
+        LoadScene.LoadSectorUnlockingScene();
     }
 }

@@ -10,15 +10,16 @@ public class CatDatabase : MonoBehaviour
     [Serializable]
     public class CatData
     {
-        public cat_type type;
+        public CatType.Type type;
         public GameObject model;
         public Cat script;
+        public Sprite icon;
     }
 
     public static CatDatabase Instance;
 
     public List<CatData> data;
-    private Dictionary<cat_type, CatData> mappedDatabase;
+    private Dictionary<CatType.Type, CatData> mappedDatabase;
 
     private void Awake()
     {
@@ -36,7 +37,7 @@ public class CatDatabase : MonoBehaviour
 
     void Start()
     {
-        mappedDatabase = new Dictionary<cat_type, CatData>();
+        mappedDatabase = new Dictionary<CatType.Type, CatData>();
         foreach(CatData dataInstance in data) 
         {
             mappedDatabase.Add(dataInstance.type, dataInstance);
@@ -49,7 +50,7 @@ public class CatDatabase : MonoBehaviour
         
     }
 
-    public CatData GetCatData(cat_type catData_CatType)
+    public CatData GetCatData(CatType.Type catData_CatType)
     {
         return mappedDatabase[catData_CatType];
     }

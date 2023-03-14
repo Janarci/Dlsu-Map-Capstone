@@ -9,10 +9,10 @@ public class EventManager : MonoBehaviour
     public static event Action<int> OnMissionComplete;
     public static event Action<Cat> OnCatClick;
     public static event Action<Cat> OnCatBefriendSuccess;
-    public static event Action<Cat,Cat, cat_type> OnCatEvolve;
+    public static event Action<Cat,Cat, CatType.Type> OnCatEvolve;
     public static event Action<Cat, bool> OnCatBefriend;
 
-    public static event Action<Sector> OnInitializeSector;
+    public static event Action<Sector, Building> OnInitializeSector;
 
     public static event Action OnInitializeMap;
 
@@ -47,7 +47,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public static void CatEvolve(Cat oldCat, Cat newCat, cat_type evolvedType)
+    public static void CatEvolve(Cat oldCat, Cat newCat, CatType.Type evolvedType)
     {
         if (OnCatEvolve != null)
         {
@@ -63,11 +63,11 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public static void InitializeSector(Sector sector)
+    public static void InitializeSector(Sector sector, Building building)
     {
         if(OnInitializeSector != null)
         {
-            OnInitializeSector(sector);
+            OnInitializeSector(sector, building);
         }
     }
 

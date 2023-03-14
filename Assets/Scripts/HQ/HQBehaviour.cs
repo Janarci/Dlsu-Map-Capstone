@@ -69,7 +69,7 @@ public class HQBehaviour : MonoBehaviour
 
         }
     }
-    public void OnCatEvolve(Cat oldCat, Cat newCat, cat_type type)
+    public void OnCatEvolve(Cat oldCat, Cat newCat, CatType.Type type)
     {
         
     }
@@ -93,6 +93,10 @@ public class HQBehaviour : MonoBehaviour
         foreach(GameObject cat in catList)
         {
             cat.GetComponent<Cat>().StopRoaming();
+            cat.GetComponent<Cat>().ui.ShowAll(false);
+            cat.GetComponent<Cat>().ui.ShowInteractUI(false);
+            cat.GetComponent<Cat>().ui.ShowEvolve(false);
+
             cat.SetActive(false);
         }
         EventManager.OnCatEvolve -= OnCatEvolve;

@@ -6,11 +6,14 @@ public class CameraSwitch : MonoBehaviour
 {
     public Camera ARCamera;
     public Camera WorldCamera;
+    private Vector3 initialPos;
+    private Quaternion initialRot;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        initialPos = WorldCamera.transform.localPosition;
+        initialRot = WorldCamera.transform.localRotation;
     }
 
     // Update is called once per frame
@@ -33,6 +36,13 @@ public class CameraSwitch : MonoBehaviour
             WorldCamera.gameObject.SetActive(false);
         }
         
+    }
+
+    public void ResetWorldCamera()
+    {
+        WorldCamera.transform.localPosition = initialPos;
+
+        WorldCamera.transform.localRotation = initialRot;
     }
 
 

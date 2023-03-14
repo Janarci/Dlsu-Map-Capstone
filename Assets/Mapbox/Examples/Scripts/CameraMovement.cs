@@ -3,6 +3,7 @@ namespace Mapbox.Examples
 	using UnityEngine;
 	using UnityEngine.EventSystems;
 	using Mapbox.Unity.Map;
+	using System;
 
 	public class CameraMovement : MonoBehaviour
 	{
@@ -10,7 +11,7 @@ namespace Mapbox.Examples
 		AbstractMap _map;
 
 		[SerializeField]
-		float _panSpeed = 20f;
+		float _panSpeed = 12.5f;
 
 		[SerializeField]
 		float _zoomSpeed = 50f;
@@ -28,7 +29,9 @@ namespace Mapbox.Examples
 
 		void HandleTouch()
 		{
-			float zoomFactor = 0.0f;
+            Debug.Log("touch");
+
+            float zoomFactor = 0.0f;
 			//pinch to zoom. 
 			switch (Input.touchCount)
 			{
@@ -43,6 +46,7 @@ namespace Mapbox.Examples
 						Touch touchZero = Input.GetTouch(0);
 						Touch touchOne = Input.GetTouch(1);
 
+
 						// Find the position in the previous frame of each touch.
 						Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
 						Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
@@ -52,9 +56,26 @@ namespace Mapbox.Examples
 						float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
 
 						// Find the difference in the distances between each frame.
-						zoomFactor = 0.05f * (touchDeltaMag - prevTouchDeltaMag);
-					}
-					ZoomMapUsingTouchOrMouse(zoomFactor);
+						zoomFactor = 0.0008f * (touchDeltaMag - prevTouchDeltaMag);
+
+
+                        var turnAngleF1 = Vector2.Angle(touchZero.position, touchZero.deltaPosition);
+                        var turnAngleF2 = Vector2.Angle(touchOne.position, touchOne.deltaPosition);
+
+                        var prevDir = touchOnePrevPos - touchZeroPrevPos;
+                        var currDir = touchOne.position - touchZero.position;
+
+                        //var turnAngle = (turnAngleF1 + turnAngleF2) / 2;
+                        var angle = Vector2.SignedAngle(prevDir, currDir);
+
+                        Debug.Log(angle);
+                        transform.Rotate(0, 0, angle * 1.5f);
+                        ZoomMapUsingTouchOrMouse(zoomFactor);
+                        
+                    }
+
+					
+
 					break;
 				default:
 					break;
@@ -63,11 +84,39 @@ namespace Mapbox.Examples
 
 		void ZoomMapUsingTouchOrMouse(float zoomFactor)
 		{
+			Vector3 newPos = Vector3.zero;
 			var y = zoomFactor * _zoomSpeed;
+
 			transform.localPosition += (transform.forward * y);
+			//if(transform.localPosition.x > 0)
+			//	newX = Mathf.Min(transform.localPosition.x, 100.0f);
+			//else
+   //             newX = Mathf.Max(transform.localPosition.x, -100.0f);
+			newPos.x = Math.Clamp(transform.localPosition.x, -50, 50);
+            newPos.y = Math.Clamp(transform.localPosition.y, 55, 80);
+            newPos.z = Math.Clamp(transform.localPosition.z, -50, 50);
+
+
+			//if (transform.localPosition.y > 0)
+			//    newY = Mathf.Min(transform.localPosition.y, 75.0f);
+			//else
+			//    newY = Mathf.Max(transform.localPosition.y, -75.0f);
+
+			//if (transform.localPosition.z > 0)
+			//    newZ = Mathf.Min(transform.localPosition.z, 75.0f);
+			//else
+			//    newZ = Mathf.Max(transform.localPosition.z, -75.0f);
+			transform.localPosition = newPos;
+			Debug.Log(transform.localPosition);
 		}
 
-		void HandleMouseAndKeyBoard()
+        //void RotateMapUsingTouchOrMouse(float rotFactor)
+        //{
+        //    var y = zoomFactor * _zoomSpeed;
+        //    transform.localPosition += (transform.forward * y);
+        //}
+
+        void HandleMouseAndKeyBoard()
 		{
 			//this.transform.LookAt(PlayerTarget.transform);// constant look at player cahracter
 

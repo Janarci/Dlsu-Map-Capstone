@@ -14,12 +14,12 @@ public class ActorCat : Cat
 
     
 
-    private Dictionary<cat_type, EvolutionMaterialInventory> actor_cat_evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>()
+    private Dictionary<CatType.Type, EvolutionMaterialInventory> actor_cat_evolution_requirements = new Dictionary<CatType.Type, EvolutionMaterialInventory>()
     {
-        {cat_type.purrformer_cat, purrformerCatEvolutionInventory }
+        {CatType.Type.purrformer_cat, purrformerCatEvolutionInventory }
     };
 
-    public override IDictionary<cat_type, EvolutionMaterialInventory> evolution_requirements
+    public override IDictionary<CatType.Type, EvolutionMaterialInventory> evolution_requirements
     {
         get
         {
@@ -41,7 +41,7 @@ public class ActorCat : Cat
     protected override void InitializeCatType()
     {
         school_tip = "HTG holds plays at either the Auditorium in Yuchengco Hall, or in Bro. William Hall! Come and support them if you can.";
-        type = cat_type.actor_cat;
+        type = CatType.Type.actor_cat;
     }
 
     //protected override void InitializeCatFavors()

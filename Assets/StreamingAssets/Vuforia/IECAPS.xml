@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="chillspace_marker24" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker23" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker22" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker_21" size="1.000000 1.000000" />
+    <ImageTarget name="sector_marker14" size="1.000000 1.000000" />
+    <ImageTarget name="sector_marker13" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker20" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker19" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker18" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker17" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker16" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker15" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker14" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker13" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker12" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker11" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker10" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker9" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker8" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker7" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker6" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker5" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker4" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker3" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker2" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker1" size="1.000000 1.000000" />
+    <ImageTarget name="sector_marker12" size="1.000000 1.000000" />
+    <ImageTarget name="sector_marker11" size="1.000000 1.000000" />
+    <ImageTarget name="sector_marker10" size="1.000000 1.000000" />
+    <ImageTarget name="sector_marker9" size="1.000000 1.000000" />
+    <ImageTarget name="sector_marker8" size="1.000000 1.000000" />
+    <ImageTarget name="sector_marker7" size="1.000000 1.000000" />
+    <ImageTarget name="sector_marker6" size="1.000000 1.000000" />
+    <ImageTarget name="sector_marker5" size="1.000000 1.000000" />
+    <ImageTarget name="sector_marker4" size="1.000000 1.000000" />
+    <ImageTarget name="sector_marker3" size="1.000000 1.000000" />
+    <ImageTarget name="sector_marker2" size="1.000000 1.000000" />
+    <ImageTarget name="sector_marker1" size="1.000000 1.000000" />
     <ImageTarget name="rounded-rocks-texture-modified" size="1.000000 0.750000" />
     <ImageTarget name="craggy-wall-modified" size="1.000000 0.668945" />
     <ImageTarget name="dlsu-logo-modified" size="1.000000 1.014955" />

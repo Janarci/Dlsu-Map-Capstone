@@ -7,12 +7,36 @@ using EvolutionMaterialInventory = System.Collections.Generic.Dictionary<CatEvol
 
 public class PurrformerCat : Cat
 {
-    private Dictionary<cat_type, EvolutionMaterialInventory> purrformer_cat_evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>()
-    {
 
+    private static EvolutionMaterialInventory bandCatEvolutionInventory = new EvolutionMaterialInventory()
+    {
+        { CatEvolutionItem.cat_evolution_item_type.trombone, 3 },
     };
 
-    public override IDictionary<cat_type, EvolutionMaterialInventory> evolution_requirements
+    private static EvolutionMaterialInventory theaterCatEvolutionInventory = new EvolutionMaterialInventory()
+    {
+        { CatEvolutionItem.cat_evolution_item_type.theater_mask, 3 },
+    };
+
+    private static EvolutionMaterialInventory singerCatEvolutionInventory = new EvolutionMaterialInventory()
+    {
+        { CatEvolutionItem.cat_evolution_item_type.microphone, 3 },
+    };
+
+    private static EvolutionMaterialInventory dancerCatEvolutionInventory = new EvolutionMaterialInventory()
+    {
+        { CatEvolutionItem.cat_evolution_item_type.boombox, 3 },
+    };
+
+    private Dictionary<CatType.Type, EvolutionMaterialInventory> purrformer_cat_evolution_requirements = new Dictionary<CatType.Type, EvolutionMaterialInventory>()
+    {
+        {CatType.Type.band_cat, bandCatEvolutionInventory },
+        {CatType.Type.theater_cat, theaterCatEvolutionInventory },
+        {CatType.Type.singer_cat, singerCatEvolutionInventory },
+        {CatType.Type.dancer_cat, dancerCatEvolutionInventory },
+    };
+
+    public override IDictionary<CatType.Type, EvolutionMaterialInventory> evolution_requirements
     {
         get
         {
@@ -35,8 +59,8 @@ public class PurrformerCat : Cat
 
     protected override void InitializeCatType()
     {
-        school_tip = "HTG funds their own plays through fundraisers like concerts!";
-        this.type = cat_type.purrformer_cat;
+        school_tip = "The Culture and Arts Office houses the performing arts organizations of DLSU! These include the DLSU Chorale, Lasallian Youth Orchestra, De La Salle Innersoul, the Harlequin Theatre Guild, and the La Salle Dance Companies (Contemporary/Street/Folk)";
+        this.type = CatType.Type.purrformer_cat;
     }
 
     //protected override void InitializeCatFavors()

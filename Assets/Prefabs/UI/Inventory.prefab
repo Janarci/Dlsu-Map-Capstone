@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 7266056896035707258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18.399813, y: 49.526928, z: -91.30348}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.9393878, y: 2.9393878, z: 2.9393878}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -45,40 +45,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allItemsList:
-  - type: 0
-    icon: {fileID: 0}
-  - type: 1
-    icon: {fileID: 0}
   - type: 2
     icon: {fileID: 0}
   - type: 3
     icon: {fileID: 0}
   - type: 4
-    icon: {fileID: 0}
+    icon: {fileID: 394679780, guid: 3349ad8121e28c1488b7bddd509d9364, type: 3}
   - type: 5
-    icon: {fileID: 0}
+    icon: {fileID: -1900588904, guid: 3349ad8121e28c1488b7bddd509d9364, type: 3}
   - type: 6
-    icon: {fileID: 0}
+    icon: {fileID: 1839585118, guid: 3349ad8121e28c1488b7bddd509d9364, type: 3}
   - type: 7
-    icon: {fileID: 0}
+    icon: {fileID: -2096424442, guid: 3349ad8121e28c1488b7bddd509d9364, type: 3}
   - type: 8
-    icon: {fileID: 0}
+    icon: {fileID: 1342151948, guid: 3349ad8121e28c1488b7bddd509d9364, type: 3}
   - type: 9
-    icon: {fileID: 0}
+    icon: {fileID: -1966260138, guid: 3349ad8121e28c1488b7bddd509d9364, type: 3}
   - type: 10
-    icon: {fileID: 0}
+    icon: {fileID: -976557076, guid: 3349ad8121e28c1488b7bddd509d9364, type: 3}
   - type: 11
     icon: {fileID: 0}
   - type: 12
-    icon: {fileID: 0}
+    icon: {fileID: 2141437386, guid: 229f0f46a57ab834cbbe6d4f596096de, type: 3}
   - type: 13
-    icon: {fileID: 0}
+    icon: {fileID: 115898594, guid: 229f0f46a57ab834cbbe6d4f596096de, type: 3}
   - type: 14
-    icon: {fileID: 0}
+    icon: {fileID: -807300815, guid: 229f0f46a57ab834cbbe6d4f596096de, type: 3}
   - type: 15
-    icon: {fileID: 0}
+    icon: {fileID: 2106871292, guid: 229f0f46a57ab834cbbe6d4f596096de, type: 3}
   - type: 16
-    icon: {fileID: 0}
+    icon: {fileID: -235982273, guid: 229f0f46a57ab834cbbe6d4f596096de, type: 3}
   - type: 17
     icon: {fileID: 0}
   - type: 18
@@ -88,11 +84,13 @@ MonoBehaviour:
   - type: 20
     icon: {fileID: 0}
   - type: 21
-    icon: {fileID: 0}
+    icon: {fileID: -1632027132, guid: 229f0f46a57ab834cbbe6d4f596096de, type: 3}
   - type: 22
     icon: {fileID: 0}
   - type: 23
     icon: {fileID: 0}
+  - type: 24
+    icon: {fileID: 0}
   inventoryUI: {fileID: 0}
-  itemUI: {fileID: 0}
+  itemUI: {fileID: 5549304053675278431, guid: 1dc706f87f8a31b46a8e026b0779342d, type: 3}
   inventoryContent: {fileID: 0}

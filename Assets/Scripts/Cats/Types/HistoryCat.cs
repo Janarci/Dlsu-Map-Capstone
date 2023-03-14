@@ -7,12 +7,12 @@ using EvolutionMaterialInventory = System.Collections.Generic.Dictionary<CatEvol
 
 public class HistoryCat : Cat
 {
-    private Dictionary<cat_type, EvolutionMaterialInventory> history_cat_evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>()
+    private Dictionary<CatType.Type, EvolutionMaterialInventory> history_cat_evolution_requirements = new Dictionary<CatType.Type, EvolutionMaterialInventory>()
     {
 
     };
 
-    public override IDictionary<cat_type, EvolutionMaterialInventory> evolution_requirements
+    public override IDictionary<CatType.Type, EvolutionMaterialInventory> evolution_requirements
     {
         get
         {
@@ -37,7 +37,7 @@ public class HistoryCat : Cat
     protected override void InitializeCatType()
     {
         school_tip = "There’s a Filipinana Section in Learning Commons! It’s on the 9th floor.";
-        this.type = cat_type.history_cat;
+        this.type = CatType.Type.history_cat;
     }
 
     //protected override void InitializeCatFavors()

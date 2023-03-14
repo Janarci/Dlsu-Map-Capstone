@@ -8,12 +8,17 @@ using EvolutionMaterialInventory = System.Collections.Generic.Dictionary<CatEvol
 public class LibraryCat : Cat
 {
 
-    private Dictionary<cat_type, EvolutionMaterialInventory> library_cat_evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>()
+    private static EvolutionMaterialInventory conferenceCatEvolutionInventory = new EvolutionMaterialInventory()
     {
-
+        { CatEvolutionItem.cat_evolution_item_type.book, 3 },
     };
 
-    public override IDictionary<cat_type, EvolutionMaterialInventory> evolution_requirements
+    private Dictionary<CatType.Type, EvolutionMaterialInventory> library_cat_evolution_requirements = new Dictionary<CatType.Type, EvolutionMaterialInventory>()
+    {
+        {CatType.Type.conference_cat, conferenceCatEvolutionInventory }
+    };
+
+    public override IDictionary<CatType.Type, EvolutionMaterialInventory> evolution_requirements
     {
         get
         {
@@ -34,7 +39,7 @@ public class LibraryCat : Cat
     protected override void InitializeCatType()
     {
         school_tip = "There are self-service printers available in the Library";
-        type = cat_type.library_cat;
+        type = CatType.Type.library_cat;
     }
 
     //protected override void InitializeCatFavors()

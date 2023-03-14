@@ -10,6 +10,7 @@ public class MissionsBehaviour : MonoBehaviour
     void Start()
     {
         EventManager.OnMissionComplete += OnMissionComplete;
+        Debug.Log(gameObject.name);
     }
 
     // Update is called once per frame
@@ -22,43 +23,25 @@ public class MissionsBehaviour : MonoBehaviour
     {
         switch(missionID)
         {
-            case 0:
+            case 11:
                 {
-                    SectorList[0].transform.GetChild(0).gameObject.SetActive(false);
-                    chillSpacesList[0]?.Unlock();
-                    chillSpacesList[1]?.Unlock();
-                    chillSpacesList[2]?.Unlock();
+                    SectorList[missionID].GetComponent<Sector>().Unlock();
+                    SectorList[missionID].transform.GetChild(0).gameObject.SetActive(false);
+                    Debug.Log(SectorList[missionID].gameObject.name); 
 
-
+                    //chillSpacesList[0]?.Unlock();
                 }
                 break;
 
-            case 1:
+            case 29:
                 {
-                    SectorList[1].transform.GetChild(0).gameObject.SetActive(false);
-                    chillSpacesList[3]?.Unlock();
-                    chillSpacesList[4]?.Unlock();
-                    chillSpacesList[5]?.Unlock();
+                    chillSpacesList[missionID-12]?.GiveItem();
+                    Debug.Log("Chill space");
 
                 }
                 break;
-
-            case 2:
-                {
-                    SectorList[2].transform.GetChild(0).gameObject.SetActive(false);
-                    chillSpacesList[6]?.Unlock();
-                    chillSpacesList[7]?.Unlock();
-                    chillSpacesList[8]?.Unlock();
-
-                }
-                break;
-            case 3:
-                {
-                    if (chillSpacesList[0] && !chillSpacesList[0].isLocked)
-                    {
-                        chillSpacesList[0].GiveItem();
-                    }
-                }
+            default:
+                Debug.Log("no mission with id: " + missionID);
                 break;
         }
     }

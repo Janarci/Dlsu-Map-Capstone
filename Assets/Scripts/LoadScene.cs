@@ -13,12 +13,12 @@ public class LoadScene : MonoBehaviour
     public static void LoadCatBefriendingScene()
     {
         //SceneManager.LoadScene("SergaCatBefriending");
-        SceneManager.LoadScene("catbefriend");
+        SceneManager.LoadScene("BefriendingScene");
     }
 
     public static void LoadSectorUnlockingScene()
     {
-        SceneManager.LoadScene("SergaMap");
+        SceneManager.LoadScene("MapScene");
     }
 
     public static void LoadMapScene()
@@ -36,5 +36,11 @@ public class LoadScene : MonoBehaviour
     public static void LoadDebugScene()
     {
         SceneManager.LoadScene("Debug");
+    }
+
+    public static void LoadCatalogScene()
+    {
+        SceneManager.LoadScene("Catalog");
+
     }
 }

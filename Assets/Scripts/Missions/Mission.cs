@@ -30,7 +30,7 @@ public class Mission : MonoBehaviour
     {
         isMissionComplete = true;
         EventManager.MissionComplete(this.id);
-        DisplayDesignatedUI();
+       // DisplayDesignatedUI();
         //EventManager.Instance.MissionTargetDetected(this.id, true);
         Debug.Log("Mission " + id + " complete");
     }

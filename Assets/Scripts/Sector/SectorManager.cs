@@ -19,7 +19,7 @@ public class SectorManager : MonoBehaviour
      */
     [SerializeField] private Dictionary<int, Sector> sectorList;
 
-    private float spawnCatInterval = 100.0f;
+    private float spawnCatInterval = 4.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +58,8 @@ public class SectorManager : MonoBehaviour
         {
             sectorList[s.getID()] = s;
             s.SetSectorBlockerObj(s.gameObject.transform.GetChild(0).gameObject);
-            Debug.Log("adding sector with id: " + s.getID() + " to sector list");
+            //Debug.Log("adding sector with id: " + s.getID() + " to sector list");
+            s.InitializeSector();
         }
         
 
@@ -78,52 +79,26 @@ public class SectorManager : MonoBehaviour
 
     void OnMissionComplete(int missionID)
     {
-        switch (missionID)
+        if (missionID >=0 && missionID <= 13)
         {
-            case 0:
-                {
-                    UnlockSector(0);
-                    if (!Values.unlocked_sectors.Contains(0))
-                    {
-                        sectorList[0].DisplayTooltip();
-                        Values.unlocked_sectors.Add(0);
+         
+            UnlockSector(missionID);
+            if (!Values.unlocked_sectors.Contains(missionID))
+            {
+                sectorList[missionID].DisplayTooltip();
+                Values.unlocked_sectors.Add(missionID);
+            }
 
-                    }
-                        
-                }
-                break;
+            
 
-            case 1:
-                {
-                    UnlockSector(1);
-                    if (!Values.unlocked_sectors.Contains(1))
-                    {
-                        sectorList[1].DisplayTooltip();
-                        Values.unlocked_sectors.Add(1);
-
-                    }
-                    
-                }
-                break;
-
-            case 2:
-                {
-                    UnlockSector(2);
-                    if (!Values.unlocked_sectors.Contains(2))
-                    {
-                        sectorList[2].DisplayTooltip();
-                        Values.unlocked_sectors.Add(2);
-                    }
-                        
-                }
-                break;
         }
+        
     }
 
     private IEnumerator GenerateCatsInSector()
     {
         Debug.Log("here");
-        while (false)
+        while (true)
         {
 
             yield return new WaitForSeconds(spawnCatInterval);

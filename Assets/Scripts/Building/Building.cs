@@ -6,12 +6,33 @@ using UnityEngine.UI;
 
 public class Building : MonoBehaviour
 {
+    public enum Type
+    {
+        br_andrew_gonzalez_hall,
+        br_bloemen_hall,
+        br_connon_hall,
+        br_william_hall,
+        enrique_razon_sports_center,
+        faculty_center,
+        gokongwei_hall,
+        henry_sy_sr_hall,
+        sci_tech_research_center,
+        st_joseph_hall,
+        st_lasalle_hall,
+        st_miguel_hall,
+        velasco_hall,
+        yuchengco_hall
+    }
+
     [SerializeField] private List<Parts> buildingParts;
     [SerializeField] private GameObject InfoUITemplate;
 
-    [SerializeField] private string buildingName;
-    [SerializeField] private string buildingAbout;
+    [SerializeField] public string buildingName;
+    [SerializeField] public string buildingAbout;
+    [SerializeField] public Sprite buildingPic;
     [SerializeField] private GameObject buttonPopup;
+
+    [SerializeField] private Type type;
 
     // Start is called before the first frame update
     void Start()
@@ -55,5 +76,10 @@ public class Building : MonoBehaviour
             "Name: " + buildingName + "\n" + "About: " + buildingAbout
             );
 
+    }
+
+    public Type SetData()
+    {
+        return type;
     }
 }

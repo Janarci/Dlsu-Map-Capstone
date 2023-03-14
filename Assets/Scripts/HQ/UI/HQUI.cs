@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HQUI : MonoBehaviour
 {
@@ -18,8 +19,7 @@ public class HQUI : MonoBehaviour
     [SerializeField] GameObject availableEvolutionsContent;
     [SerializeField] GameObject catInventoryContent;
     [SerializeField] GameObject allMaterialsContent;
-
-
+    [SerializeField] GameObject inventoryUI;
     public GameObject catTooltipUI = null;
 
 
@@ -27,14 +27,18 @@ public class HQUI : MonoBehaviour
     private Cat focusedCat;
     private float zoomTvalue = 0;
     private Vector3 cameraInitialPos;
+    private Quaternion cameraInitialRot;
+
     private bool isZoomingOnCat;
 
     // Start is called before the first frame update
     void Start()
     {
         cameraInitialPos = camera.transform.position;
+        cameraInitialRot = camera.transform.rotation;
         EventManager.OnCatClick += OnCatSelect;
         EventManager.OnCatEvolve += OnCatEvolve;
+        Inventory.Instance?.RestartInventoryUI(inventoryUI);
     }
 
     // Update is called once per frame
@@ -71,11 +75,13 @@ public class HQUI : MonoBehaviour
 
     private void UnselectCat()
     {
+        focusedCat.GetComponent<Cat>().ui.ShowAll(true);
         focusedCat.StartRoam();
         focusedCat = null;
         ResetCamera();
         UpdateCatAvailableEvolutions();
         UpdateCatMaterialsList();
+
     }
 
     public void GiveCatBook()
@@ -128,7 +134,7 @@ public class HQUI : MonoBehaviour
 
         if (focusedCat)
         {
-            foreach (cat_type type in focusedCat.GetAvailableEvolutions())
+            foreach (CatType.Type type in focusedCat.GetAvailableEvolutions())
             {
                 GameObject newButtonObj = Instantiate(evolutionButtonTemplate, availableEvolutionsContent.transform);
                 Button buttonComp = newButtonObj.GetComponent<Button>();
@@ -182,20 +188,41 @@ public class HQUI : MonoBehaviour
         availableEvolutionsObj?.SetActive(false);
 
     }
+
+    
+
     private void CameraFocusOnCat(GameObject selectedCat)
     {
         //Debug.Log(Time.deltaTime);
         zoomTvalue += Time.deltaTime * 0.8f;
 
-        Vector3 catFrontPosition = new Vector3(selectedCat.transform.position.x, selectedCat.transform.position.y + 5, selectedCat.transform.position.z - 5);
+        Vector3 catFrontPosition = new Vector3(selectedCat.transform.position.x, selectedCat.transform.position.y + 12.15f, selectedCat.transform.position.z -26.5f);
+
         Vector3 cameraNewPosition = Vector3.Lerp(camera.transform.position, catFrontPosition, zoomTvalue);
         camera.transform.position = cameraNewPosition;
-        
+
+
         if (zoomTvalue >= 1.0f)
         {
             zoomTvalue = 0.0f;
             isZoomingOnCat = false;
+            camera.transform.LookAt(new Vector3(selectedCat.transform.position.x, selectedCat.transform.position.y + 10, selectedCat.transform.position.z));
             focusedCat.transform.LookAt(new Vector3(camera.transform.position.x, focusedCat.transform.position.y, camera.transform.position.z));
+            //focusedCat.ui.transform.LookAt(camera.transform.position * -1);
+            //focusedCat.ui.transform.localRotation = Quaternion.EulerAngles(focusedCat.ui.transform.localPosition.x + 45.0f, focusedCat.ui.transform.localPosition.x + 180.0f, focusedCat.ui.transform.localPosition.z);
+
+            focusedCat.GetComponent<Cat>().ui.ShowAll(true);
+
+            if(focusedCat.CanEvolve())
+            {
+                focusedCat.GetComponent<Cat>().ui.ShowEvolve(true);
+            }
+
+            else
+            {
+                focusedCat.GetComponent<Cat>().ui.ShowInteractUI(true);
+            }
+
         }
 
     }
@@ -223,6 +250,7 @@ public class HQUI : MonoBehaviour
     private void ResetCamera()
     {
         camera.transform.position = cameraInitialPos;
+        camera.transform.rotation = cameraInitialRot;
         isZoomingOnCat = false;
         
 
@@ -233,15 +261,15 @@ public class HQUI : MonoBehaviour
 
     }
 
-    public void OnCatEvolve(Cat oldCat, Cat newCat, cat_type evolvedType)
+    public void OnCatEvolve(Cat oldCat, Cat newCat, CatType.Type evolvedType)
     {
-        if (focusedCat == newCat)
-        {
+        //if (focusedCat == newCat)
+        //{
 
-            UpdateCatAvailableEvolutions();
-            UpdateCatMaterialsList();
-            UpdateEvolutionMaterials();
-        }
+        //    UpdateCatAvailableEvolutions();
+        //    UpdateCatMaterialsList();
+        //    UpdateEvolutionMaterials();
+        //}
 
         if(!Values.collected_cat_types.Contains(evolvedType))
         {
@@ -252,6 +280,14 @@ public class HQUI : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.OnCatClick -= OnCatSelect;
-        EventManager.OnCatEvolve += OnCatEvolve;
+        EventManager.OnCatEvolve -= OnCatEvolve;
+        SceneManager.sceneLoaded -= OnLoadSceneCallback;
+
+    }
+
+    private void OnLoadSceneCallback(Scene scene, LoadSceneMode sceneMode)
+    {
+        Debug.Log("loaded");
+        Inventory.Instance.RestartInventoryUI(inventoryUI);
     }
 }

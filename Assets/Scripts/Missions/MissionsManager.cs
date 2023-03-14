@@ -35,7 +35,7 @@ public class MissionsManager : MonoBehaviour
                 missionList.Add(mission.getId(), mission);
             }
 
-            Debug.Log("Adding mission " + missionObj.name + " to list of missions");
+            //Debug.Log("Adding mission " + missionObj.name + " to list of missions");
         }
 
     }

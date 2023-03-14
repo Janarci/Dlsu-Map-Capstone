@@ -10,12 +10,12 @@ public class COBCat : Cat
 
 
 
-    private Dictionary<cat_type, EvolutionMaterialInventory> COB_cat_evolution_requirements = new Dictionary<cat_type, EvolutionMaterialInventory>()
+    private Dictionary<CatType.Type, EvolutionMaterialInventory> COB_cat_evolution_requirements = new Dictionary<CatType.Type, EvolutionMaterialInventory>()
     {
         
     };
 
-    public override IDictionary<cat_type, EvolutionMaterialInventory> evolution_requirements
+    public override IDictionary<CatType.Type, EvolutionMaterialInventory> evolution_requirements
     {
         get
         {
@@ -39,7 +39,7 @@ public class COBCat : Cat
     protected override void InitializeCatType()
     {
         school_tip = "Want to look for COB students? They usually hold their classes at St. La Salle Hall!";
-        this.type = cat_type.COB_cat;
+        this.type = CatType.Type.COB_cat;
     }
 
     //protected override void InitializeCatFavors()
