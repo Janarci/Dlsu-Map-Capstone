@@ -574,23 +574,51 @@ public class Cat : MonoBehaviour
     }
     public void InteractWithCat(CatInteraction.Type interaction)
     {
+        //switch (interaction)
+        //{
+        //    case CatInteraction.Type.pet:
+        //        {
+        //            relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]) * (sadnessAilment.currentValue/sadnessAilment.maxValue), 100);
+        //            sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
+        //        }
+        //        break;
+        //    case CatInteraction.Type.feed:
+        //        {
+        //            relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]) * (hungerAilmennt.currentValue / hungerAilmennt.maxValue), 100);
+        //            sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
+        //        }
+        //        break;
+        //    case CatInteraction.Type.play:
+        //        {
+        //            relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]) * (boredomAilment.currentValue / boredomAilment.maxValue), 100);
+        //            sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
+        //        }
+        //        break;
+        //    case CatInteraction.Type.clean:
+        //        {
+        //            relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]), 100);
+        //            sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
+        //        }
+        //        break;
+        //}
+
         switch (interaction)
         {
             case CatInteraction.Type.pet:
                 {
-                    relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]) * (sadnessAilment.currentValue/sadnessAilment.maxValue), 100);
+                    relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]), 100);
                     sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
                 }
                 break;
             case CatInteraction.Type.feed:
                 {
-                    relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]) * (hungerAilmennt.currentValue / hungerAilmennt.maxValue), 100);
+                    relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]), 100);
                     sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
                 }
                 break;
             case CatInteraction.Type.play:
                 {
-                    relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]) * (boredomAilment.currentValue / boredomAilment.maxValue), 100);
+                    relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]), 100);
                     sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
                 }
                 break;
@@ -601,7 +629,7 @@ public class Cat : MonoBehaviour
                 }
                 break;
         }
-        
+
         Debug.Log(relationship_value);
         if (relationship_value >= 100 && relationship_level < 10)
         {

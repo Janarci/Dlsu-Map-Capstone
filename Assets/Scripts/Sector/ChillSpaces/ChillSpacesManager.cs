@@ -33,19 +33,39 @@ public class ChillSpacesManager : MonoBehaviour
     }
     public void UnlockChillSpace(int i)
     {
-        Debug.Log("attempting to unlock and give item from sector: " + i);
+        Debug.Log("attempting to unlock chillspace " + i);
         if (chillSpacesList[i] != null) 
         {
             chillSpacesList[i].Unlock();
-            chillSpacesList[i].GiveItem();
+            
         }
+    }
+
+    public void UnlockChillSpace(ChillSpace.Area area)
+    {
+        Debug.Log("attempting to unlock chillspace: " + area);
+        if (chillspaceData.ContainsKey(area))
+        {
+            chillspaceData[area].Unlock();
+        }
+    }
+
+    public void EndChillspaceCooldown(ChillSpace.Area area)
+    {
+        chillspaceData[area].EndCooldown();
+    }
+
+    public void GetItemFromChillSpace(int i)
+    {
+        chillSpacesList[i].GiveItem();
     }
 
     void OnMissionComplete(int missionID)
     {
-        if (missionID >= 12 && missionID <= 29)
+        if (missionID >= 13 && missionID <= 29)
         {
-            UnlockChillSpace(missionID - 12);
+            if (!(chillSpacesList[missionID - 13]).isLocked)
+                GetItemFromChillSpace(missionID - 13);
         }
     }
 }

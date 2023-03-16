@@ -1,0 +1,715 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3379203564692944414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3379203564692944484}
+  - component: {fileID: 3379203564692944483}
+  - component: {fileID: 3379203564692944492}
+  - component: {fileID: 3379203564692944491}
+  - component: {fileID: 3379203564692944490}
+  - component: {fileID: 3379203564692944489}
+  - component: {fileID: 3379203564692944488}
+  - component: {fileID: 3379203564692944487}
+  - component: {fileID: 3379203564692944486}
+  - component: {fileID: 3379203564692944485}
+  - component: {fileID: 3379203564692944510}
+  - component: {fileID: 3379203564692944509}
+  - component: {fileID: 3379203564692944508}
+  - component: {fileID: 3379203564692944507}
+  - component: {fileID: 3379203564692944506}
+  - component: {fileID: 3379203564692944505}
+  - component: {fileID: 3379203564692944504}
+  - component: {fileID: 3379203564692944503}
+  - component: {fileID: 3379203564692944502}
+  - component: {fileID: 3379203564692944501}
+  - component: {fileID: 3379203564692944500}
+  - component: {fileID: 3379203564692944499}
+  - component: {fileID: 3379203564692944498}
+  - component: {fileID: 3379203564692944497}
+  - component: {fileID: 3379203564692944496}
+  - component: {fileID: 3379203564692944495}
+  - component: {fileID: 3379203564692944494}
+  - component: {fileID: 3379203564692944493}
+  - component: {fileID: 3379203564692944511}
+  - component: {fileID: 3379203564692944454}
+  - component: {fileID: 3379203564692944453}
+  - component: {fileID: 3379203564692944452}
+  - component: {fileID: 3379203564692944451}
+  - component: {fileID: 3379203564692944450}
+  - component: {fileID: 3379203564692944449}
+  - component: {fileID: 3379203564692944448}
+  m_Layer: 0
+  m_Name: CatDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3379203564692944484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3379203564692944483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb664432e4b179c458bf888088e7fa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+  - type: 1
+    model: {fileID: 1264673331477107299, guid: 2fd9c07b3e6984d4081087d34bc7d09b, type: 3}
+    script: {fileID: 3379203564692944492}
+    icon: {fileID: 0}
+  - type: 3
+    model: {fileID: 6902666505144481702, guid: c985316a2e6f0e64283e817ce5f10995, type: 3}
+    script: {fileID: 3379203564692944489}
+    icon: {fileID: 0}
+  - type: 4
+    model: {fileID: 2843625035428882704, guid: 632776de6463dff4c907226623154dea, type: 3}
+    script: {fileID: 3379203564692944488}
+    icon: {fileID: 0}
+  - type: 5
+    model: {fileID: 8557128202915404246, guid: 392b5a5115bac2942a7effebe34b5293, type: 3}
+    script: {fileID: 3379203564692944487}
+    icon: {fileID: 0}
+  - type: 6
+    model: {fileID: 4848135757238175078, guid: ee4b52caff6c2e940b4aa6a068a00243, type: 3}
+    script: {fileID: 3379203564692944486}
+    icon: {fileID: 0}
+  - type: 7
+    model: {fileID: 4302157010469576050, guid: ecc7d0a3c810bc846be2d5184de33c91, type: 3}
+    script: {fileID: 3379203564692944485}
+    icon: {fileID: 0}
+  - type: 8
+    model: {fileID: 1771142429425375353, guid: 18bdbc0538bcd8840862c4e02b0d4b87, type: 3}
+    script: {fileID: 3379203564692944510}
+    icon: {fileID: 0}
+  - type: 9
+    model: {fileID: 3195640339061329943, guid: 1d6fa9d4d9f381e4fb2b6d54d4e57497, type: 3}
+    script: {fileID: 3379203564692944509}
+    icon: {fileID: 0}
+  - type: 10
+    model: {fileID: 293309356383813613, guid: 4946629406cfc924cb593448e3c5adcb, type: 3}
+    script: {fileID: 3379203564692944508}
+    icon: {fileID: 0}
+  - type: 11
+    model: {fileID: 8976987472181143883, guid: 4efd3eccfef9cf747b72cd8595e6c746, type: 3}
+    script: {fileID: 3379203564692944507}
+    icon: {fileID: 0}
+  - type: 12
+    model: {fileID: 4339798561389085235, guid: 6f64402bf104db64ebb76056a248088d, type: 3}
+    script: {fileID: 3379203564692944506}
+    icon: {fileID: 0}
+  - type: 13
+    model: {fileID: 8679810162258229738, guid: ab1c8bc30ac425d49aa06bf90f014360, type: 3}
+    script: {fileID: 3379203564692944505}
+    icon: {fileID: 0}
+  - type: 14
+    model: {fileID: 7273789992295802677, guid: 5fd612675d519424c822254234651905, type: 3}
+    script: {fileID: 3379203564692944504}
+    icon: {fileID: 0}
+  - type: 15
+    model: {fileID: 8922501893108717393, guid: ddc84dca42826f64c9e4a17e6731307e, type: 3}
+    script: {fileID: 3379203564692944503}
+    icon: {fileID: 0}
+  - type: 16
+    model: {fileID: 8663582819300625562, guid: a957d51e552b25c4a91cb34efeba32d1, type: 3}
+    script: {fileID: 3379203564692944502}
+    icon: {fileID: 0}
+  - type: 17
+    model: {fileID: 1499208133324799694, guid: cc8cd1d0758acd84e9189bf649e26c5b, type: 3}
+    script: {fileID: 3379203564692944500}
+    icon: {fileID: 0}
+  - type: 18
+    model: {fileID: 7640891505464791720, guid: b354e65a285a9c3418dd272c5a56c084, type: 3}
+    script: {fileID: 3379203564692944499}
+    icon: {fileID: 0}
+  - type: 19
+    model: {fileID: 3358364281961533963, guid: 64260a91d69bcab46a5b02827b752e94, type: 3}
+    script: {fileID: 3379203564692944498}
+    icon: {fileID: 0}
+  - type: 20
+    model: {fileID: 5438844996569466072, guid: 2f1b850454861ff4aaf8c1277ab29893, type: 3}
+    script: {fileID: 3379203564692944497}
+    icon: {fileID: 0}
+  - type: 21
+    model: {fileID: 3703645196286789089, guid: d4de3f96abe2b00468c3048b58b5a350, type: 3}
+    script: {fileID: 3379203564692944496}
+    icon: {fileID: 0}
+  - type: 22
+    model: {fileID: 353406528931745869, guid: 8c61969f43b4d074780fc8b392f4bb27, type: 3}
+    script: {fileID: 3379203564692944495}
+    icon: {fileID: 0}
+  - type: 23
+    model: {fileID: 5950665037084465165, guid: ad29aafd1561f8f48942303459fa84fd, type: 3}
+    script: {fileID: 3379203564692944494}
+    icon: {fileID: 0}
+  - type: 24
+    model: {fileID: 859276871893585774, guid: e3ba052f484f22445acf7838319afe37, type: 3}
+    script: {fileID: 3379203564692944493}
+    icon: {fileID: 0}
+  - type: 25
+    model: {fileID: 1508325852566070084, guid: b7c1b00c148915446ac68b85ef9fdc49, type: 3}
+    script: {fileID: 3379203564692944511}
+    icon: {fileID: 0}
+  - type: 26
+    model: {fileID: 4302157010469576050, guid: ecc7d0a3c810bc846be2d5184de33c91, type: 3}
+    script: {fileID: 3379203564692944454}
+    icon: {fileID: 0}
+  - type: 27
+    model: {fileID: 4302157010469576050, guid: ecc7d0a3c810bc846be2d5184de33c91, type: 3}
+    script: {fileID: 3379203564692944453}
+    icon: {fileID: 0}
+  - type: 28
+    model: {fileID: 4302157010469576050, guid: ecc7d0a3c810bc846be2d5184de33c91, type: 3}
+    script: {fileID: 3379203564692944452}
+    icon: {fileID: 0}
+  - type: 29
+    model: {fileID: 4302157010469576050, guid: ecc7d0a3c810bc846be2d5184de33c91, type: 3}
+    script: {fileID: 3379203564692944451}
+    icon: {fileID: 0}
+  - type: 30
+    model: {fileID: 4302157010469576050, guid: ecc7d0a3c810bc846be2d5184de33c91, type: 3}
+    script: {fileID: 3379203564692944450}
+    icon: {fileID: 0}
+  - type: 31
+    model: {fileID: 4302157010469576050, guid: ecc7d0a3c810bc846be2d5184de33c91, type: 3}
+    script: {fileID: 3379203564692944448}
+    icon: {fileID: 0}
+  - type: 32
+    model: {fileID: 4302157010469576050, guid: ecc7d0a3c810bc846be2d5184de33c91, type: 3}
+    script: {fileID: 3379203564692944449}
+    icon: {fileID: 0}
+--- !u!114 &3379203564692944492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e3197281b19604abdc74b510f250f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd98a77402745a24ebd0bc19a728bf22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44886a62ffc30143b7136754107f15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd20c2ead210a4d499af331f5602759d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdc8cbd23b5d1447b70e681b7ded694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8202b9c5ebdc13f479b3615b04877f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f005f052ddc3e489f3a77cebd75731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921b79436f8e60d4f94c66d96696eec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ae589d95fb5334ea6279d653f8badf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5574a92f3d1a2f5419263a71edeb6ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7dea4c8bdb01124096a0a3405c0b825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80b1457a210434db76a7d329ee7ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93af7f60965ecd419cf9da9a38c37ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91c14acdb4914544802b504a2ff33ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fdb110b7370254581fe515e156c4e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff4a1326824b9440932954c4f3a72e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 691fd137edc209d469b7285de7a1581f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 691fd137edc209d469b7285de7a1581f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e774af88c1d0e44b5407dc7429a504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64fd9720cf4d8141baf7d8967268ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d5bc238f3428e4ab564aa37b75d7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c5b329282013f4a84680038c82f429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c8b375d702ace1409903deb3e2fae1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442c34dcb687995468bd8cbe07bff7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964e6cbfcdd118f4db0cc164609732e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e55264642f1cac84997698289b274384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae3a0b67e6060d4082b107e116a1a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4068c4ceba47a640aa8d8e864b8d129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0826082c5c0b76d4c84cc606d6097d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2239066663b8e478a08daae7fcb92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f8ac93f5100444a953ca5c9b66a884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 645bf6cb475d4f642924ad610bfddc48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7799743a2bb329c4988608dc74896e14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &3379203564692944448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379203564692944414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7e996013848c94bb72693986cf1a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0

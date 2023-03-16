@@ -35,7 +35,6 @@ public class Inventory : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this);
-            DontDestroyOnLoad(inventoryUI);
         }
 
 
@@ -56,13 +55,6 @@ public class Inventory : MonoBehaviour
         //}
 
         Debug.Log("Items declared: " + allItemsList.Count);
-        foreach(ItemData item in allItemsList)
-        {
-            itemDatabase[item.type] = item;
-            AddToInventory(item.type, 99);
-            Debug.Log("initial add of " + item.type);
-            
-        }
 
         for(int i = 0; i < allItemsList.Count; i++)
         {
@@ -152,6 +144,8 @@ public class Inventory : MonoBehaviour
             itemList[item] = amount;
 
             Debug.Log("adding new item to inventory: " + item);
+            Debug.Log(inventoryContent == null); Debug.Log(itemUI == null);
+
             GameObject itemToAdd = Instantiate(itemUI, inventoryContent.transform);
 
             Text itemCountTxt = itemToAdd.GetComponentInChildren<Text>();

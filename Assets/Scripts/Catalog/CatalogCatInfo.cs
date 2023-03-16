@@ -64,10 +64,16 @@ public class CatalogCatInfo : MonoBehaviour
             {
                 GameObject newButtonObj = Instantiate(habitatItemObj, habitatItemsContent);
                 Button buttonComp = newButtonObj.transform.GetChild(0).gameObject.GetComponent<Button>();
+                Sprite imageComp = buttonComp.GetComponent<Sprite>();
                 GameObject textComp = newButtonObj.transform.GetChild(1).gameObject;
                 textComp.GetComponent<Text>().text = ChillSpaceDatabase.Instance.GetDataInfo(chillspace.area).areaName;
 
                 buttonComp.onClick.AddListener(delegate { chillspaceInfo.SetChillSpaceDetails(ChillSpaceDatabase.Instance.GetDataInfo(chillspace.area)); DisplayHabitatInfo(); });
+
+                if(chillspace.picture)
+                {
+                    imageComp = chillspace.picture;
+                }
             }
         }
     }

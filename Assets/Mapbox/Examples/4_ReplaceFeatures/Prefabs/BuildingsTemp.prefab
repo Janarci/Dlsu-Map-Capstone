@@ -558,7 +558,7 @@ MonoBehaviour:
   buildingAbout: The Science & Technology Research Center, a four-story research
     center along Agno Street that houses various research facilities and laboratories
     belonging to the Colleges of Science and Engineering. (https://en.wikipedia.org/wiki/De_La_Salle_University)
-  buildingPic: {fileID: 0}
+  buildingPic: {fileID: 21300000, guid: 6928d42eca32114479167736e8c52eb9, type: 3}
   buttonPopup: {fileID: 1784674224062672787}
   type: 8
 --- !u!1 &87887212393414122
@@ -4639,7 +4639,7 @@ MonoBehaviour:
     War 2 in 1945. The building houses the Ramon V. del Rosario College of Business
     (RVRCOB) and the School of Economics (SOE). The De La Salle brothers reside on
     the fourth floor."
-  buildingPic: {fileID: 0}
+  buildingPic: {fileID: 21300000, guid: 61219ed083dc43a4fbbee7f02772acb2, type: 3}
   buttonPopup: {fileID: 1851781018020878580}
   type: 10
 --- !u!1 &427201550308747140
@@ -16771,7 +16771,7 @@ MonoBehaviour:
     type: 3}
   buildingName: Br. William Hall
   buildingAbout: 
-  buildingPic: {fileID: 0}
+  buildingPic: {fileID: 21300000, guid: 38b1e666b2225b9459c209c57d882165, type: 3}
   buttonPopup: {fileID: 1784674224062672787}
   type: 3
 --- !u!1 &1556610145774689840
@@ -31723,7 +31723,7 @@ MonoBehaviour:
     Learning Resource Center, the Natividad Fajardo\u2013Rosario Gonzales Auditorium,
     a retreat facility called Center for Lasallian Formation, and offices of various
     colleges especially the Br. Andrew Gonzalez College of Education."
-  buildingPic: {fileID: 21300000, guid: 7a4a03efab48f4c40ade45c2460674ec, type: 3}
+  buildingPic: {fileID: 21300000, guid: c3fd31ef955c4ca4d843ea239724dfb5, type: 3}
   buttonPopup: {fileID: 7936314918533581039}
   type: 0
 --- !u!1 &2973056900215305422
@@ -59649,8 +59649,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5434940804993296512}
   m_LocalRotation: {x: -0, y: 0.024650753, z: -0, w: 0.99969614}
-  m_LocalPosition: {x: 3, y: 50, z: 13}
-  m_LocalScale: {x: 140, y: 100, z: 200}
+  m_LocalPosition: {x: 3, y: 85, z: 13}
+  m_LocalScale: {x: 140, y: 170, z: 200}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7290449959243095718}
@@ -77296,7 +77296,7 @@ MonoBehaviour:
     elevators, 4 exit stairways, 20 classrooms, 6 teleconference rooms, and the Teresa
     G. Yuchengco Auditorium. It also houses various concessionaires on the ground
     floor such as Power Mac Center, the Animo Bookstore, and a self-printing service."
-  buildingPic: {fileID: 0}
+  buildingPic: {fileID: 21300000, guid: 7eae7ef2b16eb524d944d8e3dbaace05, type: 3}
   buttonPopup: {fileID: 1784674224062672787}
   type: 13
 --- !u!1 &6989688470313393069
@@ -77493,7 +77493,7 @@ MonoBehaviour:
   buildingAbout: a 5-story building that houses the University Clinic, Waldo Perfecto
     Seminar Room, discussion rooms, and the offices of various university departments
     and student organizations
-  buildingPic: {fileID: 0}
+  buildingPic: {fileID: 21300000, guid: 6c35ae895d9bcb4428b8cf68412b9217, type: 3}
   buttonPopup: {fileID: 1784674224062672787}
   type: 2
 --- !u!1 &7006635305685240816
@@ -86247,7 +86247,7 @@ MonoBehaviour:
     type: 3}
   buildingName: Gokongwei Hall
   buildingAbout: 
-  buildingPic: {fileID: 21300000, guid: f0377766967579a4b9e8871ab0808662, type: 3}
+  buildingPic: {fileID: 21300000, guid: 4f282b8e9178c324cb12b720c1a7c699, type: 3}
   buttonPopup: {fileID: 1784674224062672787}
   type: 6
 --- !u!1 &7764469531119070050
@@ -93680,7 +93680,7 @@ MonoBehaviour:
   buildingAbout: 'a 6-story building completed in 1956. It was the location of the
     DLSU library from 1956 to 1985. It houses the College of Science and the Lasallian
     Pastoral Office. '
-  buildingPic: {fileID: 0}
+  buildingPic: {fileID: 21300000, guid: 84e20a9e8123e04468e56a09fc727ef7, type: 3}
   buttonPopup: {fileID: 1784674224062672787}
   type: 9
 --- !u!1 &8465320265727830354
@@ -99556,7 +99556,7 @@ MonoBehaviour:
     Library. It is named after its first donor, businessman Henry Sy and was built
     on the concept of a habitable tree. It boasts a green roof, solar panels, a rainwater
     collection system, and a water reuse system.
-  buildingPic: {fileID: 0}
+  buildingPic: {fileID: 21300000, guid: eb18fe468797b104c91c96516a4da82c, type: 3}
   buttonPopup: {fileID: 5332703670297836782}
   type: 7
 --- !u!1 &9140800828284651493

@@ -10,6 +10,7 @@ public class CatDatabase : MonoBehaviour
     [Serializable]
     public class CatData
     {
+        public string catTypeLabel;
         public CatType.Type type;
         public GameObject model;
         public Cat script;

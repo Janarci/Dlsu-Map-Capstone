@@ -36,6 +36,7 @@ public class LoadScene : MonoBehaviour
     public static void LoadDebugScene()
     {
         SceneManager.LoadScene("Debug");
+
     }
 
     public static void LoadCatalogScene()
@@ -43,4 +44,11 @@ public class LoadScene : MonoBehaviour
         SceneManager.LoadScene("Catalog");
 
     }
+
+    public static void LoadEndScene()
+    {
+        SceneManager.LoadScene("EndScene");
+
+    }
+
 }

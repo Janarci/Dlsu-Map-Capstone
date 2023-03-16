@@ -324,10 +324,23 @@ public class Catalog : MonoBehaviour
 
     public void GoToPreviousMenu()
     {
-        currentMenu.SetActive(false);
-        currentMenu = menuHistory.Last();
-        menuHistory.Remove(currentMenu);
-        currentMenu.SetActive(true);
+        if(!(menuHistory.Count == 0))
+        {
+            currentMenu.SetActive(false);
+            currentMenu = menuHistory.Last();
+            menuHistory.Remove(currentMenu);
+            currentMenu.SetActive(true);
+        }
+
+        else
+        {
+            currentMenu.SetActive(false);
+            currentMenu = menuHistory.Last();
+            currentMenu = catalogMenu;
+            catalogMenu.SetActive(true);
+        }
+
+        
     }
 
     public void HideCatalog()

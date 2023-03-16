@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="chillspace_marker29" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker28" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker27" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker26" size="1.000000 1.000000" />
+    <ImageTarget name="chillspace_marker25" size="1.000000 1.000000" />
     <ImageTarget name="chillspace_marker24" size="1.000000 1.000000" />
     <ImageTarget name="chillspace_marker23" size="1.000000 1.000000" />
     <ImageTarget name="chillspace_marker22" size="1.000000 1.000000" />

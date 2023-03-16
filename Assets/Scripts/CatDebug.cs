@@ -9,6 +9,9 @@ public class CatDebug : MonoBehaviour
     public GameObject canvas;
     public GameObject currentCat = null;
     public GameObject catTooltipUI = null;
+    public GameObject befriendSuccess;
+    public GameObject befriendFail;
+
     public List<GameObject> catObjList;
     public CatUI ui;
 
@@ -192,12 +195,14 @@ public class CatDebug : MonoBehaviour
             }
 
             befriendedCat.ui.ShowAffinity(false);
-
+            befriendSuccess.SetActive(true);
         }
 
         else
         {
             Destroy(befriendedCat.gameObject);
+            befriendSuccess.SetActive(false);
+
         }
 
     }
@@ -219,6 +224,6 @@ public class CatDebug : MonoBehaviour
 
     public void GoToMenu()
     {
-        LoadScene.LoadMenuScene();
+        LoadScene.LoadSectorUnlockingScene();
     }
 }

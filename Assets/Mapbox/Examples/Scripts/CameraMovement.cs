@@ -56,7 +56,7 @@ namespace Mapbox.Examples
 						float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
 
 						// Find the difference in the distances between each frame.
-						zoomFactor = 0.0008f * (touchDeltaMag - prevTouchDeltaMag);
+						zoomFactor = 0.0015f * (touchDeltaMag - prevTouchDeltaMag);
 
 
                         var turnAngleF1 = Vector2.Angle(touchZero.position, touchZero.deltaPosition);
@@ -93,7 +93,7 @@ namespace Mapbox.Examples
 			//else
    //             newX = Mathf.Max(transform.localPosition.x, -100.0f);
 			newPos.x = Math.Clamp(transform.localPosition.x, -50, 50);
-            newPos.y = Math.Clamp(transform.localPosition.y, 55, 80);
+            newPos.y = Math.Clamp(transform.localPosition.y, 25, 80);
             newPos.z = Math.Clamp(transform.localPosition.z, -50, 50);
 
 

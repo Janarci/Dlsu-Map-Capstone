@@ -64,18 +64,21 @@ public class ChillSpace : MonoBehaviour
 
     [SerializeField] ChillspaceUI ui;
     [SerializeField] public Detail detail;
-   
-    
+    [SerializeField] bool isCooldown;
+
+
+
     void Start()
     {
         isLocked = false;
 
 
         ui.SetName(detail.areaName);
-        ui.SetInfo(detail.info);
-        ui.SetNumber(detail.contactNumber);
-        ui.SetEmail(detail.email);
-        ui.SetItems(detail.giveawayItems);
+        //ui.SetInfo(detail.info);
+        //ui.SetNumber(detail.contactNumber);
+        //ui.SetEmail(detail.email);
+        //ui.SetItems(detail.giveawayItems);
+        ui.SetPicture(detail.picture);
     }
 
     // Update is called once per frame
@@ -86,16 +89,25 @@ public class ChillSpace : MonoBehaviour
 
     public void Unlock()
     {
+        if(!Values.unlocked_chillspaces.Contains(this.GetArea()))
+        {
+            Values.unlocked_chillspaces.Add(this.GetArea());
+            Timers.Instance?.AddChillspaceAreaCooldown(this.GetArea());
+        }
+
+
+
         isLocked = false;
     }
 
     public void GiveItem()
     {
-        if(!isLocked)
+        if(!isLocked && !isCooldown)
         {
             foreach (CatEvolutionItem.cat_evolution_item_type item in detail.giveawayItems)
             {
-                Inventory.Instance?.AddToInventory(item, 1);
+                Inventory.Instance?.AddToInventory(item, 2);
+                TriggerCooldown();
             }
         }
 
@@ -105,5 +117,20 @@ public class ChillSpace : MonoBehaviour
     public Area GetArea()
     {
         return detail.area;
+    }
+
+    public void TriggerCooldown()
+    {
+        isCooldown = true;
+    }
+
+    public void EndCooldown()
+    {
+        isCooldown = false;
+    }
+
+    public void DisplayChillspaceInfoInCatalog()
+    {
+        ui?.DisplayChillspaceInfoInCatalog(detail);
     }
 }

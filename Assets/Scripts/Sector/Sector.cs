@@ -28,6 +28,10 @@ public class Sector : MonoBehaviour
         id = sectorID;
         ShowBlocker();
         isUnlocked = false;
+        if(chillSpaces == null)
+        {
+            chillSpaces = new List<ChillSpace.Area>();
+        }
 
         EventManager.InitializeSector(this, gameObject.GetComponent<Building>());
     }
@@ -53,9 +57,14 @@ public class Sector : MonoBehaviour
         HideBlocker();
         //DisplayTooltip();
 
-        foreach(ChillSpace.Area cs in chillSpaces) 
+        //foreach(ChillSpace.Area cs in chillSpaces) 
+        //{
+        //    ChillSpacesManager.Instance.UnlockChillSpace(cs);
+        //}
+
+        for(int i = 0; i < chillSpaces.Count; i++)
         {
-            
+            ChillSpacesManager.Instance.UnlockChillSpace(chillSpaces[i]);
         }
     }
 

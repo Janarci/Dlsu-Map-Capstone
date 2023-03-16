@@ -13,6 +13,9 @@ public class MapUI : MonoBehaviour
     public GameObject inventoryUI;
     public GameObject SwitchCameraBtn;
     public GameObject playerIconObj;
+    public GameObject fChar;
+    public GameObject mChar;
+
 
     public Sprite menuBtnDefault;
     public Sprite menuBtnPressed;
@@ -88,10 +91,19 @@ public class MapUI : MonoBehaviour
     public void TogglePlayerIcon()
     {
         if (playerIconObj.GetComponent<Image>().sprite == playerIconM)
+        {
             playerIconObj.GetComponent<Image>().sprite = playerIconF;
+            fChar.SetActive(true);
+            mChar.SetActive(false);
+        }
 
         else
+        {
             playerIconObj.GetComponent<Image>().sprite = playerIconM;
+            fChar.SetActive(false);
+            mChar.SetActive(true);
+        }
+            
     }
 
     private IEnumerator startMiniMenuAnimation()

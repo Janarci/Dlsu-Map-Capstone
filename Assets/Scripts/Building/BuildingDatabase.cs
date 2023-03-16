@@ -58,6 +58,7 @@ public class BuildingDatabase : MonoBehaviour
             data.name = name;
             data.description = about;
             data.chillspaces = sctr.GetChillSpaces();
+            data.icon = bldg.buildingPic;
 
             mappedDatabase[type] = data;
             this.data.Add(data);

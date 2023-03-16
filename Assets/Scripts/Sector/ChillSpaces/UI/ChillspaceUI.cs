@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ChillspaceUI : MonoBehaviour
 {
-    [SerializeField] private Text areaName;
+    [SerializeField] private TextMeshProUGUI areaName;
     [SerializeField] private Text areaInfo;
     [SerializeField] private Text areaContactNumber;
     [SerializeField] private Text areaEmail;
@@ -56,6 +57,20 @@ public class ChillspaceUI : MonoBehaviour
         foreach(CatEvolutionItem.cat_evolution_item_type item in items)
         {
             areaItems.text += (item.ToString() + ",\n");
+        }
+    }
+
+    public void SetPicture(Sprite picture)
+    {
+        image.sprite = picture;
+    }
+
+    public void DisplayChillspaceInfoInCatalog(ChillSpace.Detail detail)
+    {
+        CatalogChillSpaceInfo ccsi = FindObjectOfType<CatalogChillSpaceInfo>(true);
+        if(ccsi)
+        {
+            ccsi.SetChillSpaceDetails(detail);
         }
     }
 }

@@ -73,7 +73,7 @@ public class HQUI : MonoBehaviour
         
     }
 
-    private void UnselectCat()
+    public void UnselectCat()
     {
         focusedCat.GetComponent<Cat>().ui.ShowAll(true);
         focusedCat.StartRoam();
