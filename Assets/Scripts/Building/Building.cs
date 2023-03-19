@@ -55,6 +55,66 @@ public class Building : MonoBehaviour
             }
             
         }
+
+        MakeTransparent();
+        MakeOpaque();
+        MakeTransparent();
+    }
+
+    public void MakeTransparent()
+    {
+        if(buildingParts != null)
+        {
+            if(!(buildingParts.Count == 0))
+            {
+                foreach (Parts part in buildingParts)
+                {
+                    List<Material> mats = GetMaterialsList(part);
+
+                    foreach (Material mat in mats)
+                    {
+                        Debug.Log("setting transparent" + mat.name);
+                        Color transpColor = new Color(0.75f, 0.75f, 0.75f);
+                        transpColor.a = 0.275f;
+                        mat.SetColor("_Color", transpColor);
+                        mat.SetOverrideTag("RenderType", "Transparent");
+                        mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                        mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                        mat.SetInt("_ZWrite", 0);
+                        mat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
+
+                    }
+                }
+            }
+        }
+    }
+
+    public void MakeOpaque()
+    {
+        if (buildingParts != null)
+        {
+            if (!(buildingParts.Count == 0))
+            {
+                foreach (Parts part in buildingParts)
+                {
+                    List<Material> mats = GetMaterialsList(part);
+
+                    foreach (Material mat in mats)
+                    {
+                        Debug.Log("setting transparent" + mat.name);
+                        Color transpColor = new Color(1.0f, 1.0f, 1.0f);
+                        transpColor.a = 1.0f;
+                        mat.SetColor("_Color", transpColor);
+                        mat.SetOverrideTag("RenderType", "Opaque");
+                        mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+                        mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+                        mat.SetInt("_ZWrite", 1);
+                        mat.renderQueue = -1;
+
+                    }
+                }
+            }
+        }
     }
 
     // Update is called once per frame
@@ -76,6 +136,25 @@ public class Building : MonoBehaviour
             "Name: " + buildingName + "\n" + "About: " + buildingAbout
             );
 
+    }
+
+    public List<Material> GetMaterialsList(Parts p)
+    {
+        GameObject partsObject = p.gameObject;
+        List<Renderer> renderers = new List<Renderer>();
+        List<Material> partMats = new List<Material>();
+        List<Material> partMatsTemp = new List<Material>();
+        p.gameObject.GetComponentsInChildren<Renderer>(renderers);
+
+        foreach(Renderer r in renderers)
+        {
+            partMatsTemp = new List<Material>();
+            r.GetMaterials(partMatsTemp);
+        }
+
+        partMats.AddRange(partMatsTemp);
+
+        return partMats;
     }
 
     public Type SetData()

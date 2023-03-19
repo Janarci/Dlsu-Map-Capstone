@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CatDatabase : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class CatDatabase : MonoBehaviour
     public List<CatData> data;
     private Dictionary<CatType.Type, CatData> mappedDatabase;
 
+    public bool isInitialized { get; private set; }
+
     private void Awake()
     {
         if (Instance == null)
@@ -38,11 +41,34 @@ public class CatDatabase : MonoBehaviour
 
     void Start()
     {
+        isInitialized = false;
+        InitializeCatDatabase();
+    }
+
+    void InitializeCatDatabase()
+    {
+        StartCoroutine(Initialize());
+    }
+
+    IEnumerator Initialize()
+    {
+        int i = 0;
         mappedDatabase = new Dictionary<CatType.Type, CatData>();
-        foreach(CatData dataInstance in data) 
+
+        while(i < data.Count)
         {
+            CatData dataInstance = data[i];
             mappedDatabase.Add(dataInstance.type, dataInstance);
+            i++;
+            Debug.Log(i);
+            yield return null;
         }
+
+        isInitialized = true;
+        //foreach (CatData dataInstance in data)
+        //{
+            
+        //}
     }
 
     // Update is called once per frame

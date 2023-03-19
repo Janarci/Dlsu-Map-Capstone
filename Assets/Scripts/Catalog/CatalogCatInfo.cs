@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CatalogCatInfo : MonoBehaviour
 {
+    public Image catPicture;
     public Text catType;
     public Text catTooltip;
     public GameObject catItem;
@@ -30,9 +31,16 @@ public class CatalogCatInfo : MonoBehaviour
         
     }
 
+    public void SetCatPicture(CatType.Type type)
+    {
+        if(CatDatabase.Instance.GetCatData(type).icon != null)
+        {
+            catPicture.sprite = CatDatabase.Instance.GetCatData(type).icon;
+        }
+    }
     public void SetCatInfo(CatType.Type type)
     {
-        catType.text = type.ToString();
+        catType.text = CatDatabase.Instance.GetCatData(type).catTypeLabel.ToString();
         catTooltip.text = CatDatabase.Instance.GetCatData(type).script.GetCatTooltip();
 
         if (catItemsContent.childCount > 0)

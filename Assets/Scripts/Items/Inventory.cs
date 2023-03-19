@@ -54,14 +54,14 @@ public class Inventory : MonoBehaviour
         //    Debug.Log("adding item " + item.type);
         //}
 
-        Debug.Log("Items declared: " + allItemsList.Count);
+        //Debug.Log("Items declared: " + allItemsList.Count);
 
         for(int i = 0; i < allItemsList.Count; i++)
         {
             ItemData item = allItemsList[i];
             itemDatabase[item.type] = item;
             AddToInventory(item.type, 99);
-            Debug.Log("initial add of " + item.type);
+            //Debug.Log("initial add of " + item.type);
         }
 
 
@@ -90,7 +90,6 @@ public class Inventory : MonoBehaviour
 
         //UpdateInventory();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -115,7 +114,7 @@ public class Inventory : MonoBehaviour
         {
             if (!(inventoryItems.ContainsKey(pair.Key)))
             {
-                Debug.Log("adding new item to inventory: " + pair.Key);
+                //Debug.Log("adding new item to inventory: " + pair.Key);
                 GameObject itemToAdd = Instantiate(itemUI, inventoryContent.transform);
 
                 Text itemCountTxt = itemToAdd.GetComponentInChildren<Text>();
@@ -143,8 +142,8 @@ public class Inventory : MonoBehaviour
 
             itemList[item] = amount;
 
-            Debug.Log("adding new item to inventory: " + item);
-            Debug.Log(inventoryContent == null); Debug.Log(itemUI == null);
+            //Debug.Log("adding new item to inventory: " + item);
+            //Debug.Log(inventoryContent == null); Debug.Log(itemUI == null);
 
             GameObject itemToAdd = Instantiate(itemUI, inventoryContent.transform);
 
@@ -239,7 +238,7 @@ public class Inventory : MonoBehaviour
             {
                 if (!(inventoryItems.ContainsKey(pair.Key)))
                 {
-                    Debug.Log("re-adding new item to inventory: " + pair.Key);
+                    //Debug.Log("re-adding new item to inventory: " + pair.Key);
                     GameObject itemToAdd = Instantiate(itemUI, inventoryContent.transform);
 
                     Text itemCountTxt = itemToAdd.GetComponentInChildren<Text>();

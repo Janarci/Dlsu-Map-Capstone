@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Vuforia;
 
 public class CatDebug : MonoBehaviour
 {
@@ -14,11 +14,21 @@ public class CatDebug : MonoBehaviour
 
     public List<GameObject> catObjList;
     public CatUI ui;
+    public GameObject cam;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (CameraManager.Instance)
+        {
+            CameraManager.Instance.EnableARCamera();
+            Destroy(cam);
+        }
 
+        else
+        {
+            cam.SetActive(true);
+        }
         EventManager.OnCatBefriend += RemoveCat;
         currentCat = Values.approached_cat;
         currentCat.transform.position = new Vector3(0, -5, 25);
@@ -30,6 +40,8 @@ public class CatDebug : MonoBehaviour
             currentCat.GetComponent<Cat>().ui.ShowAffinity(true);
             currentCat.GetComponent<Cat>().ui.gameObject.GetComponent<Canvas>().enabled = true;
         }
+
+       
     }
 
     // Update is called once per frame

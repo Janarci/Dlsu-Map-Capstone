@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static CatDatabase;
 
 public class ChillSpacesManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class ChillSpacesManager : MonoBehaviour
     [SerializeField] private Dictionary<ChillSpace.Area, ChillSpace> chillspaceData;
 
     public static ChillSpacesManager Instance;
+
+    public bool isInitialized { get; private set; }
+
     private void Awake()
     {
         if (Instance == null)
@@ -24,12 +28,40 @@ public class ChillSpacesManager : MonoBehaviour
     {
         EventManager.OnMissionComplete += OnMissionComplete;
 
+
+        //foreach(ChillSpace cs in chillSpacesList)
+        //{
+        //    chillspaceData[cs.GetArea()] = cs;
+        //    ChillSpaceDatabase.Instance.AddChillspaceToDatabase(cs);
+        //}
+        isInitialized = false;
+        InitializeChillspaceManager();
+    }
+
+    void InitializeChillspaceManager()
+    {
+        StartCoroutine(Initialize());
+    }
+    IEnumerator Initialize()
+    {
         chillspaceData = new Dictionary<ChillSpace.Area, ChillSpace>();
-        foreach(ChillSpace cs in chillSpacesList)
+        int i = 0;
+
+        while (i < chillSpacesList.Count)
         {
+            ChillSpace cs = chillSpacesList[i];
             chillspaceData[cs.GetArea()] = cs;
             ChillSpaceDatabase.Instance.AddChillspaceToDatabase(cs);
+            i++;
+            Debug.Log(i);
+            if (Values.unlocked_chillspaces.Contains(cs.GetArea()))
+                cs.Unlock();
+
+            yield return null;
         }
+
+        isInitialized = true;
+
     }
     public void UnlockChillSpace(int i)
     {

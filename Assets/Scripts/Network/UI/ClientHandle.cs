@@ -17,7 +17,7 @@ public class ClientHandle : MonoBehaviour
     public static void SpawnCatReceived(Packet _packet)
     {
         int _sectorToSpawn = _packet.ReadInt();
-        SectorManager csu = FindObjectOfType<SectorManager>();
+        SectorManager.Instance.SpawnCatsInSector(_sectorToSpawn);
 
         //csu.SpawnCatInSector(_sectorToSpawn);
     }

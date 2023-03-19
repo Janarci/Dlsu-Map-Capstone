@@ -33,8 +33,8 @@ public class ChillspaceUI : MonoBehaviour
     {
         areaName.text = name;
         
-        Debug.Log("Changing name");
-        Debug.Log(areaName.text);
+        //Debug.Log("Changing name");
+        //Debug.Log(areaName.text);
     }
 
     public void SetInfo(string info)

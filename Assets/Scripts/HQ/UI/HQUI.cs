@@ -49,12 +49,9 @@ public class HQUI : MonoBehaviour
             CameraFocusOnCat(focusedCat.gameObject);
         }
 
-        if(focusedCat != null)
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
-            if(Input.GetKeyUp(KeyCode.Escape))
-            {
-                UnselectCat();
-            }
+            UnselectCat();
         }
     }
 
@@ -75,12 +72,16 @@ public class HQUI : MonoBehaviour
 
     public void UnselectCat()
     {
-        focusedCat.GetComponent<Cat>().ui.ShowAll(true);
-        focusedCat.StartRoam();
-        focusedCat = null;
-        ResetCamera();
-        UpdateCatAvailableEvolutions();
-        UpdateCatMaterialsList();
+        if(focusedCat)
+        {
+            focusedCat.GetComponent<Cat>().ui.ShowAll(false);
+            focusedCat.StartRoam();
+            focusedCat = null;
+            ResetCamera();
+            UpdateCatAvailableEvolutions();
+            UpdateCatMaterialsList();
+
+        }
 
     }
 

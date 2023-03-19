@@ -214,11 +214,17 @@ public class Catalog : MonoBehaviour
             {
                 //Debug.Log("here");
                 GameObject newButtonObj = Instantiate(catsListItemObj2, catsListContent2.transform);
-                Button buttonComp = newButtonObj.transform.GetChild(1).GetComponent<Button>();
+                Image imageComp = newButtonObj.transform.GetChild(1).GetComponent<Image>();
+                Button buttonComp = newButtonObj.transform.GetChild(0).GetComponent<Button>();
                 GameObject textComp = buttonComp.transform.GetChild(0).gameObject;
-                textComp.GetComponent<Text>().text = catData.type.ToString();
+                textComp.GetComponent<Text>().text = CatDatabase.Instance.GetCatData(catData.type).catTypeLabel.ToString();
 
                 buttonComp.onClick.AddListener(delegate { DisplayCatInfo(catData.type); });
+                if(CatDatabase.Instance.GetCatData(catData.type).icon!= null)
+                {
+                    imageComp.sprite = CatDatabase.Instance.GetCatData(catData.type).icon;
+                }
+                
             }
 
 
@@ -272,6 +278,7 @@ public class Catalog : MonoBehaviour
         //allCatsMenu.SetActive(false);
         //catInfoMenu.SetActive(true);
 
+        catInfo.SetCatPicture(catType);
         catInfo.SetCatInfo(catType);
         catInfo.SetCatHabitats(catType);
     }

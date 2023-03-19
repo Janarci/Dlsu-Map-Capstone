@@ -3740,12 +3740,11 @@ MonoBehaviour:
   currentCat: {fileID: 0}
   catTooltipUI: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
-  catObjList:
-  - {fileID: 2118915910074965358, guid: caaa45e5847e8db448e7fcbe78876a3d, type: 3}
-  - {fileID: 2872336736363694404, guid: 2138677a67d022a4dab272f2fcc62873, type: 3}
-  - {fileID: 8990445469275259993, guid: 7c3adde028c53ea4aa7238f77fc34390, type: 3}
-  - {fileID: 5931303217284302286, guid: faec699697469f942a598a3af2e4363b, type: 3}
+  befriendSuccess: {fileID: 1976497033}
+  befriendFail: {fileID: 740630539}
+  catObjList: []
   ui: {fileID: 0}
+  cam: {fileID: 1160047470}
 --- !u!4 &1378065503
 Transform:
   m_ObjectHideFlags: 0

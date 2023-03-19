@@ -33,7 +33,8 @@ public class MapUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Inventory.Instance.RestartInventoryUI(inventoryUI);
+        Inventory.Instance?.RestartInventoryUI(inventoryUI);
+        AudioManager.Instance?.PlayAnimeowIntro();
     }
 
     // Update is called once per frame

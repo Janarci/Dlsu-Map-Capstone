@@ -55,6 +55,7 @@ public class Sector : MonoBehaviour
     {
         isUnlocked = true;
         HideBlocker();
+        MakeDesignatedBuildingOpaque();
         //DisplayTooltip();
 
         //foreach(ChillSpace.Area cs in chillSpaces) 
@@ -132,6 +133,11 @@ public class Sector : MonoBehaviour
     private void HideBlocker()
     {
         sectorBlockerObj.SetActive(false);
+    }
+
+    private void MakeDesignatedBuildingOpaque()
+    {
+        GetComponent<Building>()?.MakeOpaque();
     }
 
     public Rect GetAreaRect()

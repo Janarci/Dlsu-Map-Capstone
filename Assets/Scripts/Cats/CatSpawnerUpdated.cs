@@ -16,8 +16,8 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
 
 	private void Awake()
 	{
-        Assert.IsNotNull(availableDroids);
-        Assert.IsNotNull(player);//player
+        //Assert.IsNotNull(availableDroids);
+        //Assert.IsNotNull(player);//player
 	}
 
 	// Start is called before the first frame update

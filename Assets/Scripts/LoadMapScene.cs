@@ -8,6 +8,8 @@ public class LoadMapScene : MonoBehaviour
 {
     public Image loadingBar;
     public GameObject startBtn;
+    public GameObject loadingObj;
+
     AsyncOperation op;
     // Start is called before the first frame update
     void Start()
@@ -15,34 +17,55 @@ public class LoadMapScene : MonoBehaviour
         //op = SceneManager.LoadSceneAsync("MapScene");
         //op.allowSceneActivation = false;
         //StartCoroutine(LoadMapSceneAsync());
+
+        StartCoroutine(LoadMapSceneAsync());
+        //op = Resources.LoadAsync("");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log(op.progress);
+
     }
+
+
 
     private IEnumerator LoadMapSceneAsync()
     {
 
-        while (!(op.isDone))
+        //while (!(op.isDone))
+        //{
+        //    loadingBar.fillAmount = op.progress;
+
+
+        //    if(op.progress >= 0.9f)
+        //    {
+        //        startBtn.SetActive(true);
+        //        startBtn.GetComponent<Button>().onClick.AddListener(delegate { op.allowSceneActivation = true; LoadMapSceneFromLoadingScreen(); }); ;
+        //        break;
+        //    }
+
+        //    yield return null;
+
+        //}
+        while(
+            (!SectorManager.Instance.isInitialized) 
+            ||
+            (!ChillSpacesManager.Instance.isInitialized)
+            ||
+            (!MissionsManager.Instance.isInitialized)
+            ||
+            (!CatDatabase.Instance.isInitialized)
+            ||
+            (!CameraManager.Instance.isInitialized))
         {
-            loadingBar.fillAmount = op.progress;
-            Debug.Log(op.progress);
-
-            if(op.progress >= 0.9f)
-            {
-                startBtn.SetActive(true);
-                startBtn.GetComponent<Button>().onClick.AddListener(delegate { op.allowSceneActivation = true; LoadMapSceneFromLoadingScreen(); }); ;
-                break;
-            }
-
+            Debug.Log("loading");
             yield return null;
-
         }
-        
 
+        startBtn.SetActive(true);
+        loadingObj.SetActive(false);
         
     }
 
