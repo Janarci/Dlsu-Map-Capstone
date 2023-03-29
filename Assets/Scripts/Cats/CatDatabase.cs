@@ -60,7 +60,7 @@ public class CatDatabase : MonoBehaviour
             CatData dataInstance = data[i];
             mappedDatabase.Add(dataInstance.type, dataInstance);
             i++;
-            Debug.Log(i);
+            //Debug.Log(i);
             yield return null;
         }
 

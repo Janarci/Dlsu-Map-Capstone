@@ -18,6 +18,7 @@ public class SectorManager : MonoBehaviour
      * 2 = Henry Sy
      */
     [SerializeField] private Dictionary<int, Sector> sectorList;
+    public List<Sector> visualList;
 
     private float spawnCatInterval = 4.0f;
 
@@ -45,7 +46,7 @@ public class SectorManager : MonoBehaviour
         //EventManager.OnCatClick += OnCatClickedInSector;
         sectorList = new Dictionary<int, Sector>();
         isInitialized = false;
-
+        visualList = new List<Sector>();
     }
 
     // Update is called once per frame
@@ -77,12 +78,20 @@ public class SectorManager : MonoBehaviour
             
         //}
 
-        foreach(Sector s in FindObjectsOfType<Sector>()) 
+
+        foreach(Sector s in FindObjectsOfType<Sector>(true)) 
         {
+            while(!(ChillSpacesManager.Instance.isInitialized))
+            {
+                yield return null;
+            }
+
+            visualList.Add(s);
             sectorList[s.getID()] = s;
             s.SetSectorBlockerObj(s.gameObject.transform.GetChild(0).gameObject);
-            //Debug.Log("adding sector with id: " + s.getID() + " to sector list");
+            Debug.Log("adding sector with id: " + s.getID() + " to sector list");
             s.InitializeSector();
+            UnlockSector(s.getID());
             yield return null;
         }
         
@@ -91,7 +100,7 @@ public class SectorManager : MonoBehaviour
         {
             Debug.Log("Pre-emptively unlocking sector: " + i);
             UnlockSector(Values.unlocked_sectors[i]);
-            yield return null;
+            //yield return null;
         }
 
         isInitialized = true;
@@ -105,32 +114,44 @@ public class SectorManager : MonoBehaviour
 
     void OnMissionComplete(int missionID)
     {
-        if (missionID >=0 && missionID <= 13)
+        //if (missionID >=0 && missionID <= 14)
+        //{
+        //    if (sectorList[missionID].isUnlocked == false)
+        //    {
+        //        UnlockSector(missionID);
+        //        if (!Values.unlocked_sectors.Contains(missionID))
+        //        {
+        //            sectorList[missionID].DisplayTooltip();
+        //            Values.unlocked_sectors.Add(missionID);
+        //        }
+        //    }
+        //}
+
+        if(sectorList.ContainsKey(missionID))
         {
-         
-            UnlockSector(missionID);
-            if (!Values.unlocked_sectors.Contains(missionID))
+            sectorList[missionID].DisplayTooltip();
+
+            if (sectorList[missionID].isUnlocked == false)
             {
-                sectorList[missionID].DisplayTooltip();
-                Values.unlocked_sectors.Add(missionID);
+                UnlockSector(missionID);
             }
 
             
-
         }
         
     }
 
     private IEnumerator GenerateCatsInSector()
     {
-        Debug.Log("here");
+        //Debug.Log("here");
+
         while (true)
         {
 
             yield return new WaitForSeconds(spawnCatInterval);
-            Debug.Log("here");
+            //Debug.Log("here");
             int sectorIndex = UnityEngine.Random.Range(0, sectorList.Count);
-            Debug.Log(sectorList.Count + " " + sectorIndex);
+            //Debug.Log(sectorList.Count + " " + sectorIndex);
 
             if (sectorList[sectorIndex].isUnlocked)
             {
@@ -140,9 +161,9 @@ public class SectorManager : MonoBehaviour
                 if(sectAreaRect != Rect.zero)
                     csu?.InstantiateDroid(sectorList[sectorIndex].transform, sectorList[sectorIndex].GetAreaRect());
             }
-            Debug.Log("here");
+            //Debug.Log("here");
 
-            Debug.Log(sectorIndex);
+            //Debug.Log(sectorIndex);
             
 
         }
@@ -165,6 +186,15 @@ public class SectorManager : MonoBehaviour
         }
     }
 
+    public Sector GetSector(int i)
+    {
+        return sectorList[i];
+    }
+
+    public int GetSectorCount()
+    {
+        return sectorList.Keys.Count;
+    }
     //private void OnCatClickedInSector(Cat clickedCat)
     //{
         

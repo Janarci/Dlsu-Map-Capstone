@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ChillspaceUI : MonoBehaviour
@@ -17,10 +19,25 @@ public class ChillspaceUI : MonoBehaviour
 
 
     [SerializeField] private Image image;
+    [SerializeField] TextMeshProUGUI cdTxt;
+    [SerializeField] TextMeshProUGUI btnText;
+
+
+    public Action OnChillspaceUIButtonPress;
+    public Action OnChillspaceUIPicturePress;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetBtnText("Locked");
+        if(image.GetComponent<EventTrigger>() != null)
+        {
+            EventTrigger.Entry click = new EventTrigger.Entry();
+            click.eventID = EventTriggerType.PointerDown;
+            click.callback = new EventTrigger.TriggerEvent();
+            click.callback.AddListener(delegate { OnChillspaceUIPicturePress(); });
+            image.GetComponent<EventTrigger>().triggers.Add(click);
+        }
     }
 
     // Update is called once per frame
@@ -65,12 +82,33 @@ public class ChillspaceUI : MonoBehaviour
         image.sprite = picture;
     }
 
-    public void DisplayChillspaceInfoInCatalog(ChillSpace.Detail detail)
+    
+
+    public void SetBtnText(string text)
     {
-        CatalogChillSpaceInfo ccsi = FindObjectOfType<CatalogChillSpaceInfo>(true);
-        if(ccsi)
+        btnText.text = text;
+    }
+
+    public void SetCD(string text)
+    {
+        if (cdTxt == null) Debug.Log("cdText null");
+        cdTxt.text = text;
+    }
+
+    public void ChillspaceUIButtonPress()
+    {
+        if (OnChillspaceUIButtonPress != null)
         {
-            ccsi.SetChillSpaceDetails(detail);
+            OnChillspaceUIButtonPress();
+        }
+    }
+
+    public void ChillspaceUIOnPicturePress()
+    {
+        if(OnChillspaceUIPicturePress != null)
+        {
+            OnChillspaceUIPicturePress();
+
         }
     }
 }

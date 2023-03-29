@@ -68,8 +68,24 @@ namespace Mapbox.Examples
                         //var turnAngle = (turnAngleF1 + turnAngleF2) / 2;
                         var angle = Vector2.SignedAngle(prevDir, currDir);
 
-                        Debug.Log(angle);
-                        transform.Rotate(0, 0, angle * 1.5f);
+                        //Debug.Log(angle);
+
+                        //transform.localRotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, angle * -1.5f, 0));
+
+                        if (RotateMap.shouldRotate)
+                        {
+                            RaycastHit[] hits;
+                            hits = Physics.RaycastAll(transform.position, transform.forward, 200.0f);
+
+                            for (int i = 0; i < hits.Length; i++)
+                            {
+                                if (hits[i].collider.gameObject.tag == "Tile")
+                                {
+                                    transform.RotateAround(hits[i].point, new Vector3(0, 1, 0), angle * -1.5f);
+                                    break;
+                                }
+                            }
+                        }
                         ZoomMapUsingTouchOrMouse(zoomFactor);
                         
                     }
@@ -107,7 +123,7 @@ namespace Mapbox.Examples
 			//else
 			//    newZ = Mathf.Max(transform.localPosition.z, -75.0f);
 			transform.localPosition = newPos;
-			Debug.Log(transform.localPosition);
+			//Debug.Log(transform.localPosition);
 		}
 
         //void RotateMapUsingTouchOrMouse(float rotFactor)

@@ -70,8 +70,10 @@ public class ChillSpace : MonoBehaviour
 
     void Start()
     {
-        isLocked = false;
+        isLocked = true;;
 
+        ui.OnChillspaceUIButtonPress += GiveItem;
+        ui.OnChillspaceUIPicturePress += DisplayChillspaceInfoInCatalog;
 
         ui.SetName(detail.areaName);
         //ui.SetInfo(detail.info);
@@ -84,24 +86,43 @@ public class ChillSpace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Timers.Instance.chillspaceCooldowns.ContainsKey(detail.area))
+        {
+            int intTimeRemaining = (int)Timers.Instance?.chillspaceCooldowns[detail.area].TimeRemaining();
+            ui?.SetCD(intTimeRemaining.ToString());
+        }
         
     }
 
+    public void Lock()
+    {
+        isLocked = true;
+    }
     public void Unlock()
     {
-        if(!Values.unlocked_chillspaces.Contains(this.GetArea()))
+        if(isLocked)
         {
             Values.unlocked_chillspaces.Add(this.GetArea());
             Timers.Instance?.AddChillspaceAreaCooldown(this.GetArea());
+            Debug.Log("Unlocked a chillspace");
+            ui.SetBtnText("Claim Item");
+            isLocked = false;
         }
-
-
-
-        isLocked = false;
     }
 
     public void GiveItem()
     {
+        Debug.Log("giving item");
+        if(isCooldown)
+        {
+            Debug.Log("on cooldown");
+        }
+
+        else if(isLocked)
+        {
+            Debug.Log(detail.areaName + "is locked");
+        }
+
         if(!isLocked && !isCooldown)
         {
             foreach (CatEvolutionItem.cat_evolution_item_type item in detail.giveawayItems)
@@ -122,6 +143,7 @@ public class ChillSpace : MonoBehaviour
     public void TriggerCooldown()
     {
         isCooldown = true;
+        Timers.Instance?.chillspaceCooldowns[detail.area].StartTimer();
     }
 
     public void EndCooldown()
@@ -131,6 +153,27 @@ public class ChillSpace : MonoBehaviour
 
     public void DisplayChillspaceInfoInCatalog()
     {
-        ui?.DisplayChillspaceInfoInCatalog(detail);
+        MapUI mu = FindObjectOfType<MapUI>(true);
+        if (mu != null)
+        {
+            mu.HideMainCanvasUI();
+            mu.CatalogCanvas.SetActive(true);
+        }
+        Catalog c = FindObjectOfType<Catalog>(true);
+        if(c)
+        {
+            //c.Start();
+            c.DisplayChillspaceInfo();
+        }
+        CatalogChillSpaceInfo ccsi = FindObjectOfType<CatalogChillSpaceInfo>(true);
+        if (ccsi)
+        {
+            ccsi.SetChillSpaceDetails(detail);
+        }
+    }
+
+    public void OnDestroy()
+    {
+        ui.OnChillspaceUIButtonPress -= DisplayChillspaceInfoInCatalog;
     }
 }

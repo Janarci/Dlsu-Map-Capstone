@@ -5,8 +5,10 @@ using UnityEngine;
 using static CatDatabase;
 
 public class ChillSpacesManager : MonoBehaviour
-{
-    [SerializeField] private List<ChillSpace> chillSpacesList;
+{   // [SerializeField] private Dictionary<int, ChillSpace> chillSpacesList;
+
+    [SerializeField] private Dictionary<int, ChillSpace> chillSpacesList;
+
     [SerializeField] private Dictionary<ChillSpace.Area, ChillSpace> chillspaceData;
 
     public static ChillSpacesManager Instance;
@@ -18,6 +20,7 @@ public class ChillSpacesManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
             
 
@@ -26,6 +29,7 @@ public class ChillSpacesManager : MonoBehaviour
     }
     void Start()
     {
+        
         EventManager.OnMissionComplete += OnMissionComplete;
 
 
@@ -35,6 +39,7 @@ public class ChillSpacesManager : MonoBehaviour
         //    ChillSpaceDatabase.Instance.AddChillspaceToDatabase(cs);
         //}
         isInitialized = false;
+        //InitializeChillspaceManager();
         InitializeChillspaceManager();
     }
 
@@ -45,15 +50,24 @@ public class ChillSpacesManager : MonoBehaviour
     IEnumerator Initialize()
     {
         chillspaceData = new Dictionary<ChillSpace.Area, ChillSpace>();
+        chillSpacesList = new Dictionary<int, ChillSpace>();
+
         int i = 0;
 
-        while (i < chillSpacesList.Count)
+
+        ChillSpace[] tempChillSpacesList = GameObject.FindObjectsOfType<ChillSpace>(true);
+        //Array.Sort(tempChillSpacesList, tempChillSpacesList.));
+        foreach(ChillSpace cs in tempChillSpacesList)
         {
-            ChillSpace cs = chillSpacesList[i];
-            chillspaceData[cs.GetArea()] = cs;
-            ChillSpaceDatabase.Instance.AddChillspaceToDatabase(cs);
-            i++;
-            Debug.Log(i);
+            if(!chillSpacesList.ContainsKey((cs.gameObject.GetComponent<Mission>().getId() - 15)))
+            {
+                chillSpacesList.Add(cs.gameObject.GetComponent<Mission>().getId()-15, cs);
+                Debug.Log("adding chillspaces index " + (cs.gameObject.GetComponent<Mission>().getId() - 15));
+                chillspaceData[cs.GetArea()] = cs;
+                ChillSpaceDatabase.Instance.AddChillspaceToDatabase(cs);
+            }
+            
+            
             if (Values.unlocked_chillspaces.Contains(cs.GetArea()))
                 cs.Unlock();
 
@@ -82,9 +96,10 @@ public class ChillSpacesManager : MonoBehaviour
         }
     }
 
+
     public void EndChillspaceCooldown(ChillSpace.Area area)
     {
-        chillspaceData[area].EndCooldown();
+        chillspaceData[area]?.EndCooldown();
     }
 
     public void GetItemFromChillSpace(int i)
@@ -94,10 +109,16 @@ public class ChillSpacesManager : MonoBehaviour
 
     void OnMissionComplete(int missionID)
     {
-        if (missionID >= 13 && missionID <= 29)
-        {
-            if (!(chillSpacesList[missionID - 13]).isLocked)
-                GetItemFromChillSpace(missionID - 13);
-        }
+        //Debug.Log("getting item from chillspace1");
+
+        //if (missionID >= 15 && missionID <= 43)
+        //{
+        //    if (!(chillSpacesList[missionID - 15]).isLocked)
+        //    {
+        //        Debug.Log("getting item from chillspace2");
+        //        GetItemFromChillSpace(missionID - 15);
+        //    }
+                
+        //}
     }
 }

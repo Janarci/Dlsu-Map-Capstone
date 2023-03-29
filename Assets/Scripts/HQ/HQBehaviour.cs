@@ -26,23 +26,45 @@ public class HQBehaviour : MonoBehaviour
         int j = 0;
         int i = 0;
 
-        if(Values.befriended_cats != null)
-        foreach (GameObject go in Values.befriended_cats)
-        {
-            Debug.Log(i);
-            go.transform.SetPositionAndRotation(new Vector3(-12 + (i * 3), 0, -20 + (j * 3)), Quaternion.Euler(new Vector3(0, 180, 0)));
-            go.SetActive(true);
-            if(go.GetComponent<Animator>().isActiveAndEnabled)
-                go.GetComponent<Cat>().StartRoam();
-            i++;
-            if(i >= 9)
-            {
-                j++;
-                i = 0;
-            }
+        //if(Values.befriended_cats != null)
+        //foreach (GameObject go in Values.befriended_cats)
+        //{
+        //    //Debug.Log(i);
+        //    go.transform.SetPositionAndRotation(new Vector3(-12 + (i * 3), 0, -20 + (j * 3)), Quaternion.Euler(new Vector3(0, 180, 0)));
+        //    go.SetActive(true);
+        //    if(go.GetComponent<Animator>().isActiveAndEnabled)
+        //        go.GetComponent<Cat>().StartRoam();
+        //    i++;
+        //    if(i >= 9)
+        //    {
+        //        j++;
+        //        i = 0;
+        //    }
 
-            catList.Add(go);
-        }
+        //    catList.Add(go);
+        //}
+
+        if(Values.selected_cats.Length > 0)
+        for(int n = 0; n < 4; n ++)
+        {
+            GameObject go = Values.selected_cats[n];
+            if(go)
+            {
+                go.transform.SetPositionAndRotation(new Vector3(-15 + (i * 15), 0, -20 + (j * 15)), Quaternion.Euler(new Vector3(0, 180, 0)));
+                go.SetActive(true);
+                if (go.GetComponent<Animator>().isActiveAndEnabled)
+                    go.GetComponent<Cat>().StartRoam();
+                i++;
+                if (i >= 9)
+                {
+                    j++;
+                    i = 0;
+                }
+
+                catList.Add(go);
+            }
+            
+        }    
     }
 
 
@@ -92,12 +114,16 @@ public class HQBehaviour : MonoBehaviour
 
         foreach(GameObject cat in catList)
         {
-            cat.GetComponent<Cat>().StopRoaming();
-            cat.GetComponent<Cat>().ui.ShowAll(false);
-            cat.GetComponent<Cat>().ui.ShowInteractUI(false);
-            cat.GetComponent<Cat>().ui.ShowEvolve(false);
+            if(cat)
+            {
+                cat.GetComponent<Cat>().StopRoaming();
+                cat.GetComponent<Cat>().ui.ShowAll(false);
+                cat.GetComponent<Cat>().ui.ShowInteractUI(false);
+                cat.GetComponent<Cat>().ui.ShowEvolve(false);
 
-            cat.SetActive(false);
+                cat.SetActive(false);
+            }
+            
         }
         EventManager.OnCatEvolve -= OnCatEvolve;
     }

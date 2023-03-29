@@ -20,6 +20,13 @@ public class CatUI : MonoBehaviour
     [SerializeField] private GameObject evolve_btn;
     [SerializeField] private GameObject interact_ui;
 
+    [SerializeField] private Canvas evolutionChoiceUI;
+    [SerializeField] private GameObject evolutionChoiceItem;
+    [SerializeField] private Transform evolutionChoiceContent;
+    [SerializeField] private GameObject itemRequirementItem;
+    //[SerializeField] private Transform itemRequirementContent;
+
+
     public Cat cat;
     // Start is called before the first frame update
     void Start()
@@ -114,11 +121,74 @@ public class CatUI : MonoBehaviour
     public void ShowEvolve(bool isShow)
     {
         evolve_btn.SetActive(isShow);
+
     }
 
     public void ShowInteractUI(bool isShow)
     {
         interact_ui.SetActive(isShow);
+    }
+
+    public void ShowEvolutionUI(bool isShow)
+    {
+        evolutionChoiceUI.gameObject.SetActive(isShow);
+    }
+
+    public void AddEvolutions()
+    {
+        for(int i = 0; i < evolutionChoiceContent.childCount; i++)
+        {
+            Destroy(evolutionChoiceContent.GetChild(i).gameObject);
+        }
+
+        foreach(CatType.Type type in cat.evolution_requirements.Keys)
+        {
+            GameObject evolutionChoiceObj = Instantiate(evolutionChoiceItem, evolutionChoiceContent);
+            GameObject evolutionChoiceBtnObj = evolutionChoiceObj.transform.GetChild(0).gameObject;
+            Button evolutionChoiceBtnComp = evolutionChoiceBtnObj.GetComponent<Button>();
+            Image evolutionChoiceImgComp = evolutionChoiceBtnObj.GetComponent<Image>();
+            Text evolutionChoiceTxtComp = evolutionChoiceBtnObj.transform.GetChild(0).gameObject.GetComponent<Text>();
+
+            Transform itemRequirementContent = evolutionChoiceBtnObj.transform.GetChild(1).gameObject.transform;
+
+            evolutionChoiceTxtComp.text = CatDatabase.Instance?.GetCatData(type).catTypeLabel;
+
+
+            if (cat.CanEvolveTo(type))
+            {
+                evolutionChoiceBtnComp.onClick.AddListener(delegate { cat.EvolveTo(type); ShowEvolutionUI(false); });
+                evolutionChoiceImgComp.color = Color.green;
+                Debug.Log("Success");
+            }
+
+            else
+            {
+                evolutionChoiceBtnComp.enabled = false;
+                evolutionChoiceImgComp.color = Color.grey;
+                Debug.Log("Fail");
+            }
+
+            foreach(CatEvolutionItem.cat_evolution_item_type item in cat.evolution_requirements[type].Keys)
+            {
+                GameObject itemRequirementObj = Instantiate(itemRequirementItem, itemRequirementContent);
+                //itemRequirementObj.GetComponent<Image>().sprite = Inventory.Instance?.GetDataInfo(item).icon;
+                //itemRequirementObj.GetComponent<LayoutElement>().preferredHeight = 80;
+                //itemRequirementObj.GetComponent<LayoutElement>().preferredWidth = 80;
+                //itemRequirementObj.transform.GetChild(0).GetComponent<Text>().text = cat.evolution_requirements[type][item].ToString();
+
+            }
+        }
+    }
+
+    public void AddItemRequirement(CatEvolutionItem.cat_evolution_item_type type, Transform tf)
+    {
+        //GameObject 
+    }
+
+    public void OnEvolveBtnPress()
+    {
+        ShowEvolutionUI(true);
+        AddEvolutions();
     }
 
     public void InteractByPetting()

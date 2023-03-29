@@ -50,17 +50,16 @@ public class LoadMapScene : MonoBehaviour
 
         //}
         while(
-            (!SectorManager.Instance.isInitialized) 
-            ||
-            (!ChillSpacesManager.Instance.isInitialized)
-            ||
-            (!MissionsManager.Instance.isInitialized)
-            ||
+            (
             (!CatDatabase.Instance.isInitialized)
             ||
-            (!CameraManager.Instance.isInitialized))
+            (!(SectorManager.Instance.isInitialized))
+            ||
+            (!(ChillSpacesManager.Instance.isInitialized))
+            ||
+            (!CameraManager.Instance.isInitialized)))
         {
-            Debug.Log("loading");
+            //Debug.Log("loading");
             yield return null;
         }
 

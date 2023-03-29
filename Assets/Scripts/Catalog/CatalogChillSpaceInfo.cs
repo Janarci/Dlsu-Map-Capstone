@@ -29,15 +29,30 @@ public class CatalogChillSpaceInfo : MonoBehaviour
 
     public void SetChillSpaceDetails(ChillSpace.Detail data)
     {
+        if(Values.unlocked_chillspaces.Contains(data.area))
+        {
+            chillSpacePicture.sprite = data.picture;
+            chillSpaceName.text = data.areaName;
+            chillSpaceInfo.text = data.info;
 
-        chillSpacePicture.sprite = data.picture;
-        chillSpaceName.text = data.areaName;
-        chillSpaceInfo.text = data.info;
+            hrsTxt.text = data.officeHours;
+            contactsTxt.text = data.email + "\n" + data.contactNumber;
 
-        hrsTxt.text = data.officeHours;
-        contactsTxt.text = data.email + "\n" + data.contactNumber;
+            AddItems(ChillSpaceDatabase.Instance.GetDataInfo(data.area).giveawayItems);
+        }
 
-        AddItems(ChillSpaceDatabase.Instance.GetDataInfo(data.area).giveawayItems);
+        else
+        {
+            chillSpacePicture.sprite = data.picture;
+            chillSpaceName.text = data.areaName;
+            chillSpaceInfo.text = null;
+
+            hrsTxt.text = null;
+            contactsTxt.text = null;
+
+            AddItems(null);
+        }
+        
     }
 
     public void AddItems(List<CatEvolutionItem.cat_evolution_item_type> data)
@@ -52,6 +67,9 @@ public class CatalogChillSpaceInfo : MonoBehaviour
             {
                 Destroy(itemsListContent.transform.GetChild(i).gameObject);
             }
+
+        if (data == null)
+            return;
 
         foreach (CatEvolutionItem.cat_evolution_item_type item in data)
         {

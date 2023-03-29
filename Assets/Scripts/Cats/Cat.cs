@@ -177,7 +177,7 @@ public class Ailment
     {
         this.type = type;
 
-        increaseFrequency = UnityEngine.Random.Range(40, 90);
+        increaseFrequency = UnityEngine.Random.Range(10, 20);
         currentTimer = 0.0f;
     }
 
@@ -284,7 +284,7 @@ public class Cat : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        InitializeCat();
+        //InitializeCat();
         ui = GetComponentInChildren<CatUI>();
 
         if (ui)
@@ -325,7 +325,7 @@ public class Cat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateAilmentStatus();
+        //UpdateAilmentStatus();
         if (isWalking)
         {
             if (walkingTick >= changeDirectionInterval)
@@ -431,7 +431,7 @@ public class Cat : MonoBehaviour
 
     }
 
-    private void UpdateAilmentStatus()
+    public void UpdateAilmentStatus()
     {
         sadnessAilment.UpdateAilmentStatus(Time.deltaTime);
         hungerAilmennt.UpdateAilmentStatus(Time.deltaTime);
@@ -552,6 +552,8 @@ public class Cat : MonoBehaviour
 
     public void AttempBefriendCat(CatInteraction.Type interaction)
     {
+        Debug.Log(CatTrait.GetInteractionFavorFromTrait(trait)[interaction]);
+
         friendship_value = Mathf.Min(friendship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction], 60);
         befriendAttempts++;
 
@@ -613,19 +615,19 @@ public class Cat : MonoBehaviour
             case CatInteraction.Type.feed:
                 {
                     relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]), 100);
-                    sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
+                    hungerAilmennt.currentValue = Mathf.Max(0, hungerAilmennt.currentValue - 10);
                 }
                 break;
             case CatInteraction.Type.play:
                 {
                     relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]), 100);
-                    sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
+                    boredomAilment.currentValue = Mathf.Max(0, boredomAilment.currentValue - 10);
                 }
                 break;
             case CatInteraction.Type.clean:
                 {
                     relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]), 100);
-                    sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
+                    dirtAilment.currentValue = Mathf.Max(0, dirtAilment.currentValue - 10);
                 }
                 break;
         }
@@ -652,6 +654,26 @@ public class Cat : MonoBehaviour
     public void TreatAilment(CatInteraction.Type interaction)
     {
         
+    }
+
+    public float GetSadnessPercentage()
+    {
+        return sadnessAilment.currentValue / sadnessAilment.maxValue;
+    }
+
+    public float GetHungerPercentage()
+    {
+        return hungerAilmennt.currentValue / hungerAilmennt.maxValue;
+    }
+
+    public float GetBoredomPercentage()
+    {
+        return boredomAilment.currentValue / boredomAilment.maxValue;
+    }
+
+    public float GetDirtPercentage()
+    {
+        return dirtAilment.currentValue / dirtAilment.maxValue;
     }
 
     public void GiveEvolutionMaterial(CatEvolutionItem.cat_evolution_item_type mat)

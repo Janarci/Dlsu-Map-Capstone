@@ -20,6 +20,8 @@ public class HQUI : MonoBehaviour
     [SerializeField] GameObject catInventoryContent;
     [SerializeField] GameObject allMaterialsContent;
     [SerializeField] GameObject inventoryUI;
+    [SerializeField] GameObject catsListUI;
+
     public GameObject catTooltipUI = null;
 
 
@@ -59,12 +61,13 @@ public class HQUI : MonoBehaviour
     {
         if(focusedCat == null || focusedCat != selectedCat)
         {
+            UnselectCat();
             focusedCat = selectedCat;
             isZoomingOnCat = true;
             focusedCat.StopRoaming();
-            UpdateCatAvailableEvolutions();
-            UpdateCatMaterialsList();
-            UpdateEvolutionMaterials();
+            //UpdateCatAvailableEvolutions();
+            //UpdateCatMaterialsList();
+            //UpdateEvolutionMaterials();
         }
         
         
@@ -75,6 +78,10 @@ public class HQUI : MonoBehaviour
         if(focusedCat)
         {
             focusedCat.GetComponent<Cat>().ui.ShowAll(false);
+            focusedCat.GetComponent<Cat>().ui.ShowInteractUI(false);
+            focusedCat.GetComponent<Cat>().ui.ShowEvolve(false);
+
+
             focusedCat.StartRoam();
             focusedCat = null;
             ResetCamera();
@@ -175,7 +182,7 @@ public class HQUI : MonoBehaviour
     {
 
         List<GameObject> evolutionsButtonList = new List<GameObject>();
-        Debug.Log(availableEvolutionsContent.transform.childCount);
+        //Debug.Log(availableEvolutionsContent.transform.childCount);
         for (int i = 0; i < availableEvolutionsContent.transform.childCount; i++)
         {
             evolutionsButtonList.Add(availableEvolutionsContent.transform.GetChild(i).gameObject);
@@ -278,6 +285,11 @@ public class HQUI : MonoBehaviour
         }
         
     }
+
+    public void OnCatsListBtnPress()
+    {
+        catsListUI.SetActive(!(catsListUI.gameObject.activeInHierarchy));
+    }
     private void OnDestroy()
     {
         EventManager.OnCatClick -= OnCatSelect;
@@ -290,5 +302,14 @@ public class HQUI : MonoBehaviour
     {
         Debug.Log("loaded");
         Inventory.Instance.RestartInventoryUI(inventoryUI);
+    }
+
+    public void OnBackBtnPress()
+    {
+        if (focusedCat)
+            UnselectCat();
+
+        else
+            LoadScene.LoadSectorUnlockingScene();
     }
 }

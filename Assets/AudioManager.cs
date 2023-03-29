@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class AudioManager : MonoBehaviour
     }
     void Start()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        m_Source= GetComponent<AudioSource>();
         m_Source.Play();
     }
 
@@ -37,5 +40,11 @@ public class AudioManager : MonoBehaviour
     public void StopAnimeowIntro()
     {
         m_Source.Stop();
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.name == "MapScene")
+            AudioManager.Instance?.PlayAnimeowIntro();
     }
 }

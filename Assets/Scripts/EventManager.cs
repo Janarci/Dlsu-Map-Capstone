@@ -21,7 +21,7 @@ public class EventManager : MonoBehaviour
         
     }
 
-    public static void MissionComplete(int missionId)
+    public static void MissionPerformed(int missionId)
     {
         if(OnMissionComplete != null)
         {

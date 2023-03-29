@@ -16,12 +16,16 @@ public class CatDebug : MonoBehaviour
     public CatUI ui;
     public GameObject cam;
 
+    public Vector3 CameraPos;
+    Vector3 InitialPos;
     // Start is called before the first frame update
     void Start()
     {
         if (CameraManager.Instance)
         {
             CameraManager.Instance.EnableARCamera();
+            InitialPos = CameraManager.Instance.ARCamera.transform.localPosition;
+            CameraManager.Instance.ARCamera.transform.localPosition = CameraPos;
             Destroy(cam);
         }
 
@@ -31,7 +35,7 @@ public class CatDebug : MonoBehaviour
         }
         EventManager.OnCatBefriend += RemoveCat;
         currentCat = Values.approached_cat;
-        currentCat.transform.position = new Vector3(0, -5, 25);
+        currentCat.transform.position = new Vector3(0, -5, 2);
         currentCat.transform.rotation = Quaternion.Euler(0, 180, 0);
         currentCat.SetActive(true);
         Debug.Log(currentCat);
@@ -208,12 +212,20 @@ public class CatDebug : MonoBehaviour
 
             befriendedCat.ui.ShowAffinity(false);
             befriendSuccess.SetActive(true);
+
+            if (Values.befriended_cats.Count == 1)
+                Timers.Instance.StartCatShuffleTimer();
+
+            if(Values.befriended_cats.Count <= 4)
+            {
+                Values.selected_cats[Values.befriended_cats.Count - 1] = befriendedCat.gameObject;
+            }
         }
 
         else
         {
             Destroy(befriendedCat.gameObject);
-            befriendSuccess.SetActive(false);
+            befriendFail.SetActive(true);
 
         }
 
@@ -223,13 +235,14 @@ public class CatDebug : MonoBehaviour
     {
         foreach (GameObject go in Values.befriended_cats)
         {
-
+            
         }
         LoadScene.LoadHQScene();
     }
 
     public void OnDestroy()
     {
+        CameraManager.Instance.ARCamera.transform.localPosition = InitialPos;
         EventManager.OnCatBefriend -= RemoveCat;
         Destroy(currentCat);
     }

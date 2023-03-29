@@ -8,6 +8,7 @@ public class MapUI : MonoBehaviour
     public GameObject miniMenu;
     public GameObject mainUIBtn;
     public GameObject inventoryBtn;
+    public GameObject resetCameraBtn;
     public GameObject HQBtn;
     public GameObject CatalogBtn;
     public GameObject inventoryUI;
@@ -24,6 +25,9 @@ public class MapUI : MonoBehaviour
     public Sprite playerIconM;
     public Sprite playerIconF;
 
+    public GameObject LoadingCanvas;
+    public GameObject MainCanvas;
+    public GameObject CatalogCanvas;
 
 
 
@@ -34,19 +38,19 @@ public class MapUI : MonoBehaviour
     void Start()
     {
         Inventory.Instance?.RestartInventoryUI(inventoryUI);
-        AudioManager.Instance?.PlayAnimeowIntro();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void HideMiniMenu()
     {
         miniMenu.SetActive(false);
-        HQBtn.transform.localPosition = Vector3.zero;
+        resetCameraBtn.transform.localPosition = Vector3.zero;
         inventoryBtn.transform.localPosition = Vector3.zero;
         CatalogBtn.transform.localPosition = Vector3.zero;
 
@@ -80,11 +84,13 @@ public class MapUI : MonoBehaviour
         if(SwitchCameraBtn.GetComponent<Image>().sprite == cameraModeBtn1)
         {
             SwitchCameraBtn.GetComponent<Image>().sprite = cameraModeBtn2;
+            RotateMap.shouldRotate = false;
         }
 
         else
         {
             SwitchCameraBtn.GetComponent<Image>().sprite = cameraModeBtn1;
+            RotateMap.shouldRotate = true;
 
         }
     }
@@ -110,7 +116,7 @@ public class MapUI : MonoBehaviour
     private IEnumerator startMiniMenuAnimation()
     {
         float currLerp = 0.0f;
-        Vector3 btn1InitialPos = HQBtn.transform.position;
+        Vector3 btn1InitialPos = resetCameraBtn.transform.position;
         Vector3 btn2InitialPos = inventoryBtn.transform.position;
         Vector3 btn3InitialPos = CatalogBtn.transform.position;
 
@@ -127,7 +133,7 @@ public class MapUI : MonoBehaviour
                 currLerp = 0.0f;
                 break;
             }
-            HQBtn.transform.position = Vector3.Lerp(btn1InitialPos, btn1FinalPos, currLerp);
+            resetCameraBtn.transform.position = Vector3.Lerp(btn1InitialPos, btn1FinalPos, currLerp);
             inventoryBtn.transform.position = Vector3.Lerp(btn2InitialPos, btn2FinalPos, currLerp);
             CatalogBtn.transform.position = Vector3.Lerp(btn3InitialPos, btn3FinalPos, currLerp);
 
@@ -142,5 +148,11 @@ public class MapUI : MonoBehaviour
         inventoryUI.SetActive(true);
     }
 
-
+    public void HideMainCanvasUI()
+    {
+        mainUIBtn.SetActive(false);
+        HQBtn.SetActive(false);
+        playerIconObj.SetActive(false);
+        SwitchCameraBtn.SetActive(false);
+    }
 }

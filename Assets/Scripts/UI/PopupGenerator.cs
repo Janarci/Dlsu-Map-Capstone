@@ -33,11 +33,14 @@ public class PopupGenerator : MonoBehaviour
         {
             GameObject mainCanvas = GameObject.Find("InfoCanvas");
             
-
-            infoUIObj = Instantiate(infoUICloseable, mainCanvas.transform);
-            infoUIObj.transform.GetChild(0).GetComponent<Text>().text = popupMessage;
-            infoUIObj.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(delegate { Destroy(infoUIObj); });
-            dontOverwrite = false;
+            if(mainCanvas)
+            {
+                infoUIObj = Instantiate(infoUICloseable, mainCanvas.transform);
+                infoUIObj.transform.GetChild(0).GetComponent<Text>().text = popupMessage;
+                infoUIObj.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(delegate { Destroy(infoUIObj); });
+                dontOverwrite = false;
+            }
+            
         }
 
         else

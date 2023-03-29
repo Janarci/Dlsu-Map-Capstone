@@ -30,11 +30,36 @@ public class CatalogBuildingInfo : MonoBehaviour
 
     public void SetBuildingDetails(BuildingDatabase.BuildingData data)
     {
-        buildingPicture.sprite = data.icon;
-        buildingName.text = data.name;
-        buildingInfo.text = data.description;
+        bool isSectorUnlocked = false;
 
-        AddChillSpaces(data.chillspaces);
+        for (int i = 0; i < Values.unlocked_sectors.Count; i++)
+        { 
+            int j = Values.unlocked_sectors[i];
+            if (SectorManager.Instance.GetSector(j).GetBuilding().type == data.type)
+            {
+                isSectorUnlocked = true;
+                break;
+                
+            }
+        }
+        
+        if(isSectorUnlocked)
+        {
+            buildingPicture.sprite = data.icon;
+            buildingName.text = data.name;
+            buildingInfo.text = data.description;
+
+            AddChillSpaces(data.chillspaces);
+        }
+        else
+        {
+            buildingPicture.sprite = data.icon;
+            buildingName.text = data.name;
+            buildingInfo.text = "LOCKED";
+
+            AddChillSpaces(null);
+        }
+        
     }
 
     public void AddChillSpaces(List<ChillSpace.Area> data)
@@ -50,15 +75,23 @@ public class CatalogBuildingInfo : MonoBehaviour
             
             Destroy(chillspaceListContent.transform.GetChild(i).gameObject);
         }
+
+        if (data == null)
+            return;
+
+
         foreach (ChillSpace.Area area in data)
         {
             GameObject newButtonObj = Instantiate(chillspaceItem, chillspaceListContent);
             Button buttonComp = newButtonObj.transform.GetChild(0).GetComponent<Button>();
-            GameObject textComp = newButtonObj.transform.GetChild(0).GetChild(0).gameObject;
-            textComp.GetComponent<Text>().text = ChillSpaceDatabase.Instance.GetDataInfo(area).areaName;
+            GameObject textComp1 = newButtonObj.transform.GetChild(0).GetChild(0).gameObject;
+            textComp1.GetComponent<Text>().text = ChillSpaceDatabase.Instance.GetDataInfo(area).areaName;
 
             buttonComp.onClick.AddListener(delegate { chillSpaceInfo.SetChillSpaceDetails(ChillSpaceDatabase.Instance.GetDataInfo(area)); DisplayChillSpaceMenu(); });
-            //chillSpacItemeObj.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = 
+            GameObject textComp2 = newButtonObj.transform.GetChild(1).GetChild(0).gameObject;
+            textComp2.GetComponent<Text>().text = ChillSpaceDatabase.Instance.GetDataInfo(area).location;
+
+            //chillSpaceItemeObj.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = 
         }
     }
     public void SetChillspaceDetails(ChillSpace.Area area)

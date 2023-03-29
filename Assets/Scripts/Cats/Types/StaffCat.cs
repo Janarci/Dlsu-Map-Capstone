@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,6 +75,9 @@ public class StaffCat : Cat
     {
         school_tip = "There is a DLSU staff directory online. www.dlsu.edu.ph/staff-directory/";
         type = CatType.Type.staff_cat;
+
+        int catTraitType = UnityEngine.Random.Range(0, Enum.GetNames(typeof(CatTrait.Type)).Length);
+        trait = (CatTrait.Type)catTraitType;
     }
 
     //protected override void InitializeCatFavors()

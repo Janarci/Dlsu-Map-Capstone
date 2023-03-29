@@ -14,7 +14,7 @@ public class Sector : MonoBehaviour
     [SerializeField] private GameObject TooltipUI;
     [SerializeField] List<ChillSpace.Area> chillSpaces;
 
-    
+    private Building building;
 
     public string tooltip
     { private get; set; }
@@ -42,7 +42,7 @@ public class Sector : MonoBehaviour
     }
     void Start()
     {
-
+        building = gameObject.GetComponent<Building>();
     }
 
     // Update is called once per frame
@@ -53,6 +53,12 @@ public class Sector : MonoBehaviour
 
     public void Unlock()
     {
+        if (!Values.unlocked_sectors.Contains(id))
+        {
+            //DisplayTooltip();
+            Values.unlocked_sectors.Add(id);
+        }
+
         isUnlocked = true;
         HideBlocker();
         MakeDesignatedBuildingOpaque();
@@ -79,9 +85,20 @@ public class Sector : MonoBehaviour
         //    infoUI.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(delegate { Destroy(infoUI); });
         //}
 
-        PopupGenerator.Instance?.GenerateCloseablePopup(
-            "You have unlocked Sector: " + id + "\n" + "Directions to next Sector:"
+        if(!(Values.unlocked_sectors.Contains(id)))
+        {
+            PopupGenerator.Instance?.GenerateCloseablePopup(
+            "You have unlocked Sector: " + id
             );
+        }    
+        
+
+        else
+        {
+            PopupGenerator.Instance?.GenerateCloseablePopup(
+            "Sector " + id + " already unlocked:"
+            );
+        }
     }
 
     public void SetSectorBlockerObj(GameObject template)
@@ -97,6 +114,7 @@ public class Sector : MonoBehaviour
     //void OnDrawGizmos()
     //{
     //    Gizmos.color = Color.red;
+
     //    //    //if(sectorBlockerObj)
     //    //    //Gizmos.DrawLine(new Vector3(GetAreaRect().x - GetAreaRect().width/2, 0, GetAreaRect().y), new Vector3(GetAreaRect().x + GetAreaRect().width / 2, 0, GetAreaRect().y));
     //    //   // Gizmos.DrawLine(new Vector3(GetAreaRect().x, 0, GetAreaRect().y - GetAreaRect().height / 2), new Vector3(GetAreaRect().x, 0, GetAreaRect().y + GetAreaRect().height / 2));
@@ -105,22 +123,54 @@ public class Sector : MonoBehaviour
 
     //    if (sectorBlockerObj)
     //    {
-    //        Gizmos.DrawLine(Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x, 0, GetAreaRect().y) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position,
-    //        Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x + GetAreaRect().width, 0, GetAreaRect().y) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position);
 
-    //        Gizmos.DrawLine(Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x, 0, GetAreaRect().y + GetAreaRect().height) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position,
-    //        Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x + GetAreaRect().width, 0, GetAreaRect().y + GetAreaRect().height) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position);
+    //        DrawLine(Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x, 0, GetAreaRect().y) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position,
+    //        Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x + GetAreaRect().width, 0, GetAreaRect().y) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position, 5);
 
-    //        Gizmos.DrawLine(Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x, 0, GetAreaRect().y) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position,
-    //        Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x, 0, GetAreaRect().y + GetAreaRect().height) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position);
+    //        DrawLine(Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x, 0, GetAreaRect().y + GetAreaRect().height) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position,
+    //        Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x + GetAreaRect().width, 0, GetAreaRect().y + GetAreaRect().height) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position, 5);
 
-    //        Gizmos.DrawLine(Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x + GetAreaRect().width, 0, GetAreaRect().y) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position,
-    //        Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x + GetAreaRect().width, 0, GetAreaRect().y + GetAreaRect().height) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position);
+    //        DrawLine(Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x, 0, GetAreaRect().y) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position,
+    //        Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x, 0, GetAreaRect().y + GetAreaRect().height) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position, 5);
+
+    //        DrawLine(Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x + GetAreaRect().width, 0, GetAreaRect().y) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position,
+    //        Quaternion.LookRotation(sectorBlockerObj.transform.forward, sectorBlockerObj.transform.up) * (new Vector3(GetAreaRect().x + GetAreaRect().width, 0, GetAreaRect().y + GetAreaRect().height) - sectorBlockerObj.transform.position) + sectorBlockerObj.transform.position, 5);
     //    }
 
 
 
 
+    //}
+
+    //public static void DrawLine(Vector3 p1, Vector3 p2, float width)
+    //{
+    //    int count = 1 + Mathf.CeilToInt(width); // how many lines are needed.
+    //    if (count == 1)
+    //    {
+    //        Gizmos.DrawLine(p1, p2);
+    //    }
+    //    else
+    //    {
+    //        Camera c = Camera.current;
+    //        if (c == null)
+    //        {
+    //            Debug.LogError("Camera.current is null");
+    //            return;
+    //        }
+    //        var scp1 = c.WorldToScreenPoint(p1);
+    //        var scp2 = c.WorldToScreenPoint(p2);
+
+    //        Vector3 v1 = (scp2 - scp1).normalized; // line direction
+    //        Vector3 n = Vector3.Cross(v1, Vector3.forward); // normal vector
+
+    //        for (int i = 0; i < count; i++)
+    //        {
+    //            Vector3 o = 0.99f * n * width * ((float)i / (count - 1) - 0.5f);
+    //            Vector3 origin = c.ScreenToWorldPoint(scp1 + o);
+    //            Vector3 destiny = c.ScreenToWorldPoint(scp2 + o);
+    //            Gizmos.DrawLine(origin, destiny);
+    //        }
+    //    }
     //}
 
 
@@ -187,5 +237,10 @@ public class Sector : MonoBehaviour
     public List<ChillSpace.Area> GetChillSpaces()
     {
         return chillSpaces;
+    }
+
+    public Building GetBuilding()
+    {
+        return building;
     }
 }

@@ -56,11 +56,11 @@ public class Inventory : MonoBehaviour
 
         //Debug.Log("Items declared: " + allItemsList.Count);
 
-        for(int i = 0; i < allItemsList.Count; i++)
+        for (int i = 0; i < allItemsList.Count; i++)
         {
             ItemData item = allItemsList[i];
             itemDatabase[item.type] = item;
-            AddToInventory(item.type, 99);
+            //AddToInventory(item.type, 99);
             //Debug.Log("initial add of " + item.type);
         }
 

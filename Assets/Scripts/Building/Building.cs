@@ -26,13 +26,14 @@ public class Building : MonoBehaviour
 
     [SerializeField] private List<Parts> buildingParts;
     [SerializeField] private GameObject InfoUITemplate;
-
     [SerializeField] public string buildingName;
+
+    [TextAreaAttribute]
     [SerializeField] public string buildingAbout;
     [SerializeField] public Sprite buildingPic;
     [SerializeField] private GameObject buttonPopup;
 
-    [SerializeField] private Type type;
+    [SerializeField] public Type type;
 
     // Start is called before the first frame update
     void Start()
@@ -56,8 +57,6 @@ public class Building : MonoBehaviour
             
         }
 
-        MakeTransparent();
-        MakeOpaque();
         MakeTransparent();
     }
 

@@ -50,8 +50,12 @@ public class Catalog : MonoBehaviour
     public static List<GameObject> menuHistory;
     public static GameObject currentMenu;
 
+    public void Awake()
+    {
+        
+    }
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         catalogCats = new List<CatDatabase.CatData>();
         //DisplayCatalog();
@@ -199,6 +203,7 @@ public class Catalog : MonoBehaviour
         curry = 0;
     }
 
+
     public void DisplayAllCatsList()
     {
         currentMenu.SetActive(false);
@@ -224,11 +229,7 @@ public class Catalog : MonoBehaviour
                 {
                     imageComp.sprite = CatDatabase.Instance.GetCatData(catData.type).icon;
                 }
-                
             }
-
-
-        
 
     }
 
@@ -241,7 +242,7 @@ public class Catalog : MonoBehaviour
 
         //catalogMenu.SetActive(false);
         //allBuildingsMenu.SetActive(true);
-        Debug.Log(BuildingDatabase.Instance.data.Count);
+        //Debug.Log(BuildingDatabase.Instance.data.Count);
         if(buildingListContent.transform.childCount == 0)
         foreach (BuildingDatabase.BuildingData building in BuildingDatabase.Instance.data)
         {
@@ -289,6 +290,7 @@ public class Catalog : MonoBehaviour
         menuHistory.Add(currentMenu);
         currentMenu = chillSpaceInfoMenu;
         currentMenu.SetActive(true);
+        Debug.Log("in catalog dcsi");
     }
 
     public void DisplayCatEvolutionTree()
@@ -318,7 +320,7 @@ public class Catalog : MonoBehaviour
                     GameObject textComp = newButtonObj.transform.GetChild(0).gameObject;
                     textComp.GetComponent<Text>().text = type.type.ToString();
 
-                    buttonComp.onClick.AddListener(delegate { DisplayEvolutionPathsAvailable(type.type, 0, null); currentCatTypeDisplayed = type.type; });
+                    //buttonComp.onClick.AddListener(delegate { DisplayEvolutionPathsAvailable(type.type, 0, null); currentCatTypeDisplayed = type.type; });
 
                     catalogCats.Add(type);
                     
@@ -333,18 +335,21 @@ public class Catalog : MonoBehaviour
     {
         if(!(menuHistory.Count == 0))
         {
+            Debug.Log(currentMenu.ToString() + " and " + menuHistory.Last().ToString());
             currentMenu.SetActive(false);
             currentMenu = menuHistory.Last();
             menuHistory.Remove(currentMenu);
             currentMenu.SetActive(true);
+            Debug.Log("nu uh");
+            Debug.Log(menuHistory.Count);
         }
 
         else
         {
             currentMenu.SetActive(false);
-            currentMenu = menuHistory.Last();
             currentMenu = catalogMenu;
-            catalogMenu.SetActive(true);
+            currentMenu.SetActive(true);
+            Debug.Log("yuh");
         }
 
         

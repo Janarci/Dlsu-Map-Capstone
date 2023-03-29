@@ -27,7 +27,7 @@ public class MissionsBehaviour : MonoBehaviour
                 {
                     SectorList[missionID].GetComponent<Sector>().Unlock();
                     SectorList[missionID].transform.GetChild(0).gameObject.SetActive(false);
-                    Debug.Log(SectorList[missionID].gameObject.name); 
+                    //Debug.Log(SectorList[missionID].gameObject.name); 
 
                     //chillSpacesList[0]?.Unlock();
                 }
@@ -36,7 +36,7 @@ public class MissionsBehaviour : MonoBehaviour
             case 29:
                 {
                     chillSpacesList[missionID-12]?.GiveItem();
-                    Debug.Log("Chill space");
+                    //Debug.Log("Chill space");
 
                 }
                 break;

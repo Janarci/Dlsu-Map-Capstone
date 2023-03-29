@@ -538,7 +538,7 @@ MonoBehaviour:
   sectorBlockerObj: {fileID: 5066500569543231791}
   TooltipUI: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
-  chillSpaces: 
+  chillSpaces: 0c000000
 --- !u!114 &8672709541159840849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4616,7 +4616,7 @@ MonoBehaviour:
   sectorBlockerObj: {fileID: 0}
   TooltipUI: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
-  chillSpaces: 16000000
+  chillSpaces: 1700000004000000
 --- !u!114 &1069876604478427814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4638,7 +4638,8 @@ MonoBehaviour:
     and is one of the few buildings that survived the Battle of Manila during World
     War 2 in 1945. The building houses the Ramon V. del Rosario College of Business
     (RVRCOB) and the School of Economics (SOE). The De La Salle brothers reside on
-    the fourth floor."
+    the fourth floor.\n\r\nPopular Amenities:\r\n\r\nGround Floor\r\n-Animo Bookstore\r\n-The
+    Store\r\n-Power Mac Center, Inc.\r\n-Printing Service\r\n-Vending Machines"
   buildingPic: {fileID: 21300000, guid: 61219ed083dc43a4fbbee7f02772acb2, type: 3}
   buttonPopup: {fileID: 1851781018020878580}
   type: 10
@@ -14433,7 +14434,7 @@ MonoBehaviour:
   sectorBlockerObj: {fileID: 8120304534371497276}
   TooltipUI: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
-  chillSpaces: 17000000
+  chillSpaces: 1800000006000000
 --- !u!114 &2958235863093187323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14453,7 +14454,7 @@ MonoBehaviour:
   buildingAbout: a five-story building that houses the university clinic, Waldo Perfecto
     Seminar Room, discussion rooms, and office of various university departments
     and student organizations
-  buildingPic: {fileID: 0}
+  buildingPic: {fileID: 21300000, guid: 460fbc78c6e0ee94fb6ae13d151c8d87, type: 3}
   buttonPopup: {fileID: 1784674224062672787}
   type: 12
 --- !u!1 &1328458787471139774
@@ -27477,7 +27478,7 @@ MonoBehaviour:
   sectorBlockerObj: {fileID: 8921264759831684373}
   TooltipUI: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
-  chillSpaces: 1b000000
+  chillSpaces: 1c000000
 --- !u!114 &7371436805979131968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27494,9 +27495,11 @@ MonoBehaviour:
   InfoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
   buildingName: Faculty Center
-  buildingAbout: 'a 4-story building located behind the St. Joseph Hall, it houses
+  buildingAbout: "a 4-story building located behind the St. Joseph Hall, it houses
     the offices of departments belonging to the College of Liberal Arts and to the
-    College of Business, respectively, and formerly the university library. (https://en.wikipedia.org/wiki/De_La_Salle_University) '
+    College of Business, respectively, and formerly the university library. (https://en.wikipedia.org/wiki/De_La_Salle_University)
+    \n\nPopular Amenities:\r\n\r\nGround Floor\r\n-Vending Machine\r\n-2nd Floor\r\n-Vending
+    Machine"
   buildingPic: {fileID: 21300000, guid: 309a54adb54ace349977a30212152b33, type: 3}
   buttonPopup: {fileID: 1784674224062672787}
   type: 5
@@ -31700,7 +31703,7 @@ MonoBehaviour:
   sectorBlockerObj: {fileID: 4697711558901855547}
   TooltipUI: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
-  chillSpaces: 100000000f000000
+  chillSpaces: 100000000f000000090000000a000000
 --- !u!114 &4366794063787884468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31722,7 +31725,10 @@ MonoBehaviour:
     more than 100 classrooms and faculty rooms, a satellite library called Br. Benedict
     Learning Resource Center, the Natividad Fajardo\u2013Rosario Gonzales Auditorium,
     a retreat facility called Center for Lasallian Formation, and offices of various
-    colleges especially the Br. Andrew Gonzalez College of Education."
+    colleges especially the Br. Andrew Gonzalez College of Education.\r\n\r\n\r\nPopular
+    Amenities:\r\n\r\n2nd Floor\r\n-Photocopying Service\r\n\r\n7th Floor\r\n-Vending
+    Machine\r\n\r\n8th Floor\r\n-Photocopying Service\r\n\r\n15th Floor\r\n-Photocopying
+    Service\r\n\r\n18th Floor\r\n-Vending Machine"
   buildingPic: {fileID: 21300000, guid: c3fd31ef955c4ca4d843ea239724dfb5, type: 3}
   buttonPopup: {fileID: 7936314918533581039}
   type: 0
@@ -38149,6 +38155,7 @@ GameObject:
   - component: {fileID: 3794376370057695581}
   - component: {fileID: 6892188988506374523}
   - component: {fileID: 2989705081152702114}
+  - component: {fileID: 2418100036776199999}
   m_Layer: 0
   m_Name: Enrique_Razon_Sports_Center
   m_TagString: Untagged
@@ -38233,6 +38240,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be2a98a0a760244ab60522e1d0ef9fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &2418100036776199999
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3483208309742337915}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 374627782102971313, guid: fd588228face5ee4ab24b7261ee9c7be, type: 3}
 --- !u!1 &3483840894386973156
 GameObject:
   m_ObjectHideFlags: 0
@@ -61368,7 +61389,7 @@ MonoBehaviour:
   sectorBlockerObj: {fileID: 3400062794186447924}
   TooltipUI: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
-  chillSpaces: 
+  chillSpaces: 000000000d000000
 --- !u!114 &5512011353278907613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61385,9 +61406,11 @@ MonoBehaviour:
   InfoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
   buildingName: St. Miguel Hall
-  buildingAbout: a 4-story building that houses the College of Liberal Arts, academic
+  buildingAbout: "a 4-story building that houses the College of Liberal Arts, academic
     offices, and some laboratories belonging to the College of Engineering. It was
-    originally known as the St. Benilde Hall before being renamed. (https://en.wikipedia.org/wiki/De_La_Salle_University)
+    originally known as the St. Benilde Hall before being renamed. (https://en.wikipedia.org/wiki/De_La_Salle_University)\n\n\n\n\nPopular
+    Amenities:\n\n\nGround Floor\n-Photocopying Service\n\n3rd Floor \n-Photocopying
+    Service\n"
   buildingPic: {fileID: 21300000, guid: 9654674e5fb3b694d95d9e003cd3f3c9, type: 3}
   buttonPopup: {fileID: 1784674224062672787}
   type: 11
@@ -65277,8 +65300,14 @@ MonoBehaviour:
   buildingParts: []
   InfoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
-  buildingName: Br. Bloemmen Hall
-  buildingAbout: houses food stalls and the studio of Green Giant FM.
+  buildingName: Br. Bloemen Hall
+  buildingAbout: "houses food stalls and the studio of Green Giant FM.\r\n\r\n\r\nPopular
+    Amenities:\r\n\r\nGround Floor\r\n-Colonel\u2019s Curry\r\n-Dairy Queen (Philippine
+    Pizza, Inc.)\r\n-Infinitea (Jogg Enterprises)\r\n-LRN Japanese Food Services\r\n-Mongolian
+    Master\r\n-Potato Corner (Chivbei Matfran Company)\r\n-Queggs Food Cart and Atbp.\r\n-Salad
+    Break\r\n-Salikneta (DLS - Araneta University)\r\n-Sandwich Corner (Lito-Alex
+    Sandwich)\r\n-Sinangag Trip Pampangas\u2019s Special\r\n-The Healthy Corner\r\n-Turks
+    Shawarma (Himmel Baum Ent. Co.)\r\n\r\n"
   buildingPic: {fileID: 21300000, guid: c261bb40bf626ba4e82b8b9afe0cb5d7, type: 3}
   buttonPopup: {fileID: 1784674224062672787}
   type: 1
@@ -77274,7 +77303,7 @@ MonoBehaviour:
   sectorBlockerObj: {fileID: 0}
   TooltipUI: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
-  chillSpaces: 19000000
+  chillSpaces: 1a000000
 --- !u!114 &5521911743674273941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77473,7 +77502,7 @@ MonoBehaviour:
   sectorBlockerObj: {fileID: 8327592058771897972}
   TooltipUI: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
-  chillSpaces: 18000000020000000e00000014000000
+  chillSpaces: 1400000019000000020000000e00000015000000
 --- !u!114 &2641708937071316692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86229,7 +86258,7 @@ MonoBehaviour:
   sectorBlockerObj: {fileID: 823663909062612770}
   TooltipUI: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
-  chillSpaces: 12000000
+  chillSpaces: 120000000700000008000000
 --- !u!114 &5152176820640171534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86246,7 +86275,26 @@ MonoBehaviour:
   InfoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
   buildingName: Gokongwei Hall
-  buildingAbout: 
+  buildingAbout: 'a four-story building completed in the 1990s. Originally named
+    the INTELLECT (Information Technology Lecture) Building, the building houses
+    the College of Computer Studies, the university''s Information Technology Services
+    (ITS) facilities, National Service Training Program and Formations Office, and
+    24-hour study hall
+
+
+
+    Popular Amenities:
+
+
+    Ground Hall
+
+    -Study Halls
+
+
+    3rd
+    Floor
+
+    -Photocopying Service'
   buildingPic: {fileID: 21300000, guid: 4f282b8e9178c324cb12b720c1a7c699, type: 3}
   buttonPopup: {fileID: 1784674224062672787}
   type: 6
@@ -89078,7 +89126,7 @@ MonoBehaviour:
   sectorBlockerObj: {fileID: 5434940804993296512}
   TooltipUI: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
-  chillSpaces: 13000000
+  chillSpaces: 130000000b000000
 --- !u!114 &6430075102785302466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89095,9 +89143,24 @@ MonoBehaviour:
   InfoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
   buildingName: Enrique Razon Sports Center
-  buildingAbout: a five-story building that houses the university clinic, Waldo Perfecto
-    Seminar Room, discussion rooms, and office of various university departments
-    and student organizations
+  buildingAbout: "a 10-story building that is the main sports facility of De La Salle
+    University. It was built in 1998 to replace the old Br. Athanasius Sports Complex
+    that was demolished in 2000. The Sports Center houses a variety of sports facilities
+    like an olympic-sized pool, a track and field oval with a balcony, basketball
+    courts, volleyball courts, table tennis courts, a dance studio, a martial arts
+    studio, and weight training rooms. Enrique Razon sports center also has its own
+    Gold\u2019s Gym. Aside from sports and athletics, The George T. Yang Performing
+    Arts Studios can also be found here.\r\n\r\n\r\nPopular Amenities:\r\n\r\nGround
+    Floor\r\n-Health Clinic\r\n-Swimming Pool Area\r\n-Locker Area\r\n-Vending Machines\r\n\r\n2nd
+    Floor\r\n-Orchestra Room\r\n\r\n3rd Floor\r\n-Parking Area\r\n\r\n4th Floor\r\n-Parking
+    Area\r\n\r\n5th Floor\r\n-Parking Area\r\n\r\n6th Floor\r\n-Gold\u2019s Gym\r\n-Archery
+    Range\r\n-Chess Room\r\n-Choral\r\n-Innersoul\r\n-Dance Studio\r\n-Male Athlete\u2019s
+    Study Area\r\n-Female Athlete\u2019s Study Area\r\n\r\n7th Floor\r\n-Basketball/Badminton/Volleyball
+    Court Area\r\n-Table Tennis Area\r\n-Showers\r\n-Locker Areas\r\n\r\n8th Floor\r\n-Multipurpose
+    Area/Oval Track\r\n-Dancing Room\r\n-Judo Room\r\n-Taekwondo Room\r\n\r\n9th
+    Floor\r\n-Iron Works Fitness Gym\r\n-Athlete\u2019s Basketball/Volleyball Court
+    Area\r\n-Multipurpose aREA\r\n-Showers\r\n-Locker Areas\r\n\r\n10th Floor\r\n-Bleachers
+    Area\r\n-Dance Rooms\r\n-Physical Fitness Center\r"
   buildingPic: {fileID: 21300000, guid: ebe011ee646b6b0498f606c998386a50, type: 3}
   buttonPopup: {fileID: 1784674224062672787}
   type: 4
@@ -93679,7 +93742,24 @@ MonoBehaviour:
   buildingName: St. Joseph Hall
   buildingAbout: 'a 6-story building completed in 1956. It was the location of the
     DLSU library from 1956 to 1985. It houses the College of Science and the Lasallian
-    Pastoral Office. '
+    Pastoral Office. (https://en.wikipedia.org/wiki/De_La_Salle_University)
+
+
+
+
+
+    Popular
+    Amenities:
+
+
+
+    Ground Floor
+
+    -Photocopying Service
+
+    -Vending Machine
+
+'
   buildingPic: {fileID: 21300000, guid: 84e20a9e8123e04468e56a09fc727ef7, type: 3}
   buttonPopup: {fileID: 1784674224062672787}
   type: 9
@@ -99533,7 +99613,7 @@ MonoBehaviour:
   sectorBlockerObj: {fileID: 0}
   TooltipUI: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
-  chillSpaces: 1a000000030000001100000015000000
+  chillSpaces: 1b00000005000000030000001100000016000000
 --- !u!114 &6571475997743121117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99550,12 +99630,105 @@ MonoBehaviour:
   InfoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
   buildingName: Henry Sy Sr. Hall
-  buildingAbout: A 14-story building composed of eco-friendly learning spaces and
+  buildingAbout: 'A 14-story building composed of eco-friendly learning spaces and
     functions areas, the Henry Sy Sr, Hall also houses administrative offices, the
     academic services hub and the Learning Commons, also known as the University
     Library. It is named after its first donor, businessman Henry Sy and was built
     on the concept of a habitable tree. It boasts a green roof, solar panels, a rainwater
     collection system, and a water reuse system.
+
+
+
+
+
+    Popular Amenities:
+
+
+
+    Ground
+    Floor
+
+    -BDO ATM Machine
+
+    -Vending Machine
+
+
+
+    5th Floor
+
+    -Multipurpose
+    Hall
+
+    -Chill at the Fifth
+
+
+
+    6th Floor
+
+    -The Coffee Bean & Tea Leaf
+    (Library Cafe)
+
+    -Information Desk
+
+    -CyberSpace
+
+    -Printing Service
+
+
+
+    7th
+    Floor
+
+    -Discussion Rooms 7A-7H
+
+    -Viewing Rooms 7A-7D
+
+    -Conference
+    Room
+
+    -Printing Service
+
+    -Photocopying Service
+
+
+
+    8th Floor
+
+    -Discussion
+    Rooms 8A-8H
+
+    -Quiet Room
+
+    -Conference Room
+
+
+
+    9th Floor
+
+    -Discussion
+    Rooms 9A-9H
+
+    -Printing Service
+
+    -Photocopying Service
+
+
+
+    10th Floor
+
+    -Discussion
+    Rooms 10A-10H
+
+    -Quiet Room
+
+    -Printing Service
+
+    -12th Floor
+
+    -Discussion
+    Rooms 12A-12H
+
+'
   buildingPic: {fileID: 21300000, guid: eb18fe468797b104c91c96516a4da82c, type: 3}
   buttonPopup: {fileID: 5332703670297836782}
   type: 7

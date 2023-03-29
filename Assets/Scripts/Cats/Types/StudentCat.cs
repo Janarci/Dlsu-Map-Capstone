@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,7 @@ public class StudentCat : Cat
     private Dictionary<CatType.Type, EvolutionMaterialInventory> student_cat_evolution_requirements = new Dictionary<CatType.Type, EvolutionMaterialInventory>()
     {
         {CatType.Type.actor_cat,  scholarCatEvolutionInventory},
-        {CatType.Type.COB_cat, cobCatEvolutionInventory }
+        //{CatType.Type.COB_cat, cobCatEvolutionInventory }
     };
 
     public override IDictionary<CatType.Type, EvolutionMaterialInventory> evolution_requirements
@@ -46,6 +47,9 @@ public class StudentCat : Cat
     {
         school_tip = "Students can enter DLSU by scanning the tag found on either their ID or EAF";
         this.type = CatType.Type.student_cat;
+
+        int catTraitType = UnityEngine.Random.Range(0, Enum.GetNames(typeof(CatTrait.Type)).Length);
+        trait = (CatTrait.Type)catTraitType;
     }
 
     //protected override void InitializeCatFavors()

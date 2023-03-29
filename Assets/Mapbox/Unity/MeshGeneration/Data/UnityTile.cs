@@ -170,9 +170,14 @@ namespace Mapbox.Unity.MeshGeneration.Data
 
 		private bool _isInitialized = false;
 
-
-		internal void Initialize(IMapReadable map, UnwrappedTileId tileId, float scale, int zoom, Texture2D loadingTexture = null)
+        private void Awake()
+        {
+			EventManager.OnInitializeMap += OnInitializeMap;
+        }
+        internal void Initialize(IMapReadable map, UnwrappedTileId tileId, float scale, int zoom, Texture2D loadingTexture = null)
 		{
+			
+			gameObject.tag = "Tile";
 			gameObject.hideFlags = HideFlags.DontSave;
 
 			ElevationType = TileTerrainType.None;
@@ -197,10 +202,13 @@ namespace Mapbox.Unity.MeshGeneration.Data
 			IsRecycled = false;
 
 
-			// Setup Loading as initial state - Unregistered
-			// When tile registers with factories, it will set the appropriate state.
-			// None, if Factory source is None, Loading otherwise.
-		}
+            // Setup Loading as initial state - Unregistered
+            // When tile registers with factories, it will set the appropriate state.
+            // None, if Factory source is None, Loading otherwise.
+
+            //MeshCollider mc = gameObject.AddComponent<MeshCollider>();
+
+        }
 
 		internal void Recycle()
 		{
@@ -386,6 +394,15 @@ namespace Mapbox.Unity.MeshGeneration.Data
 			}
 		}
 
+		private void OnInitializeMap()
+		{
+			if(gameObject.TryGetComponent<MeshFilter>(out MeshFilter mf))
+			{
+                MeshCollider mc = gameObject.AddComponent<MeshCollider>();
+				mc.sharedMesh = mf.sharedMesh;
+            }
+			
+		}
 		protected virtual void OnDestroy()
 		{
 			Cancel();
@@ -397,6 +414,9 @@ namespace Mapbox.Unity.MeshGeneration.Data
 			{
 				_rasterData.Destroy();
 			}
-		}
-	}
+
+            EventManager.OnInitializeMap -= OnInitializeMap;
+
+        }
+    }
 }

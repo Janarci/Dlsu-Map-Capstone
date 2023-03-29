@@ -33,6 +33,7 @@ public class CameraManager : MonoBehaviour
         isInitialized = false;
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+        VuforiaApplication.Instance.OnVuforiaStopped += OnVuforiaStopped;
         EnableARCamera();
         InitializeARCamera();
         EnableWorldCamera();
@@ -97,6 +98,11 @@ public class CameraManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         DisableCameras();
+    }
+
+    void OnVuforiaStopped()
+    {
+        Debug.Log("vuforia stopped on its own");
     }
 
 }

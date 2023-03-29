@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -71,7 +72,10 @@ public class OrgCat : Cat
     protected override void InitializeCatType()
     {
         school_tip = "There are many student organizations in DLSU! They each have their own respective offices but overall are managed by the Office of Student Affairs.";
-        this.type = CatType.Type.doctor_cat;
+        this.type = CatType.Type.org_cat;
+
+        int catTraitType = UnityEngine.Random.Range(0, Enum.GetNames(typeof(CatTrait.Type)).Length);
+        trait = (CatTrait.Type)catTraitType;
     }
 
     //protected override void InitializeCatFavors()

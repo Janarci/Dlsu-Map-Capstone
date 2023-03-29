@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using Vuforia;
 
@@ -13,43 +14,68 @@ public class MissionsManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
-        
+            //DontDestroyOnLoad(gameObject);
+        }
+            
+
         else
             Destroy(this);
     }
     void Start()
     {
-        isInitialized = false;
-        InitializeMissionsManager();
+        Initialize();
 
     }
 
 
     void InitializeMissionsManager()
     {
-        StartCoroutine(Initialize());
+        //StartCoroutine(Initialize());
     }
-    private IEnumerator Initialize()
+    private void Initialize()
     {
         missionList = new Dictionary<int, Mission>();
         //EventManager.Instance.OnMissionTargetDetected += OnTargetFound;
-        GameObject[] missionListObj = GameObject.FindGameObjectsWithTag("MissionTarget");
+        //GameObject[] missionListObj = GameObject.FindGameObjectsWithTag("MissionTarget");
 
-        if (missionListObj.Length == 0)
-            Debug.Log("missions list is empty");
-        foreach (GameObject missionObj in missionListObj)
+        //if (missionListObj.Length == 0)
+        //    Debug.Log("missions list is empty");
+        //foreach (GameObject missionObj in missionListObj)
+        //{
+        //    if (missionObj.TryGetComponent(out ObserverBehaviour ob))
+        //    {
+        //        ob.OnTargetStatusChanged += OnTargetStatusChanged;
+        //    }
+        //    if (missionObj.TryGetComponent(out Mission mission))
+        //    {
+        //        missionList.Add(mission.getId(), mission);
+        //    }
+        //    //Debug.Log("Adding mission " + missionObj.name + " to list of missions");
+        //}
+
+        Mission[] missions = FindObjectsOfType<Mission>(true);
+
+        foreach (Mission _mission in missions)
         {
+            GameObject missionObj = _mission.gameObject;
             if (missionObj.TryGetComponent(out ObserverBehaviour ob))
             {
                 ob.OnTargetStatusChanged += OnTargetStatusChanged;
             }
-            if (missionObj.TryGetComponent(out Mission mission))
-            {
-                missionList.Add(mission.getId(), mission);
-            }
-            yield return null;
-            //Debug.Log("Adding mission " + missionObj.name + " to list of missions");
+            //if (missionObj.TryGetComponent(out Mission mission))
+            //{
+            //    missionList.Add(mission.getId(), mission);
+            //}
+            if(!missionList.ContainsKey(_mission.getId()))
+                missionList.Add(_mission.getId(), _mission);
+
+            else
+                Debug.Log(missionList[_mission.getId()].gameObject.name + " | " + _mission.gameObject.name);
+
+
+            Debug.Log("Adding mission " + missionObj.name + " to list of missions");
         }
 
         isInitialized = true;
@@ -65,7 +91,6 @@ public class MissionsManager : MonoBehaviour
     {
         if(targetStatus.Status == Status.TRACKED)
         {
-            
             OnTargetFound(Target.gameObject);
         }
     }
@@ -83,5 +108,22 @@ public class MissionsManager : MonoBehaviour
     public void AddMission(Mission m)
     {
         missionList.Add(m.getId(), m);
+    }
+
+    public void OnDestroy()
+    {
+        //Instance = null;
+
+        foreach (Mission _mission in missionList.Values)
+        {
+            GameObject missionObj = _mission.gameObject;
+            if (missionObj.TryGetComponent(out ObserverBehaviour ob))
+            {
+                ob.OnTargetStatusChanged -= OnTargetStatusChanged;
+            }
+
+
+            Debug.Log("removing mission " + missionObj.name + " to list of missions");
+        }
     }
 }

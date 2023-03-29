@@ -50,7 +50,7 @@ MonoBehaviour:
   - type: 3
     icon: {fileID: 0}
   - type: 4
-    icon: {fileID: 394679780, guid: 3349ad8121e28c1488b7bddd509d9364, type: 3}
+    icon: {fileID: 0}
   - type: 5
     icon: {fileID: -1900588904, guid: 3349ad8121e28c1488b7bddd509d9364, type: 3}
   - type: 6

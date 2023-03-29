@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static BuildingDatabase;
 
 public class ChillSpaceDatabase : MonoBehaviour
 {
-    [SerializeField] private List<ChillSpace.Detail> chillspacesList;
-    [SerializeField] private Dictionary<ChillSpace.Area, ChillSpace.Detail> mappedDatabase;
+    //[SerializeField] private List<ChillSpace.Detail> chillspacesList;
+    [SerializeField] private Dictionary<ChillSpace.Area, ChillSpace.Detail> chillspacesList;
 
     public static ChillSpaceDatabase Instance;
     private void Awake()
@@ -24,8 +25,8 @@ public class ChillSpaceDatabase : MonoBehaviour
     }
     void Start()
     {
-        chillspacesList = new List<ChillSpace.Detail>();
-        mappedDatabase = new Dictionary<ChillSpace.Area, ChillSpace.Detail>();  
+        //chillspacesList = new List<ChillSpace.Detail>();
+        chillspacesList = new Dictionary<ChillSpace.Area, ChillSpace.Detail>();  
     }
 
     // Update is called once per frame
@@ -36,21 +37,21 @@ public class ChillSpaceDatabase : MonoBehaviour
 
     public void AddChillspaceToDatabase(ChillSpace cs)
     {
-        if(!mappedDatabase.ContainsKey(cs.detail.area))
+        if(!chillspacesList.ContainsKey(cs.detail.area))
         {
-            chillspacesList.Add(cs.detail);
-            mappedDatabase[cs.detail.area] = cs.detail;
+            //chillspacesList.Add(cs.detail);
+            chillspacesList[cs.detail.area] = cs.detail;
         }
         
     }
 
     public ChillSpace.Detail GetDataInfo(ChillSpace.Area area)
     {
-        return mappedDatabase[area];
+        return chillspacesList[area];
     }
 
-    public List<ChillSpace.Detail> GetDataList()
+    public List<ChillSpace.Area> GetDataList()
     {
-        return chillspacesList;
+        return chillspacesList.Keys.ToList() ;
     }
 }
