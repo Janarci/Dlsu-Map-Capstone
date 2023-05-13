@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static ChillSpace;
 
@@ -13,6 +14,7 @@ public class Timers : MonoBehaviour
         public float endTime;
         public bool restartTimer;
         public bool isRunning = true;
+        public bool toDestroy = false;
         
         public Timer(float duration, bool isRestart)
         {
@@ -62,6 +64,12 @@ public class Timers : MonoBehaviour
             }
                 
         }
+
+        public virtual void Destroy()
+        {
+            isRunning = false;
+            toDestroy = true;
+        }
     }
 
     public class GameTimer : Timer
@@ -108,7 +116,7 @@ public class Timers : MonoBehaviour
 
     public class ShuffleCatsTimer : Timer
     {
-        public ShuffleCatsTimer() : base(20, true)
+        public ShuffleCatsTimer() : base(720, true)
         {
 
         }
@@ -137,11 +145,91 @@ public class Timers : MonoBehaviour
         }
     }
 
+    public class SpawnCatsTimer : Timer
+    {
+        public SpawnCatsTimer() : base(5, true)
+        {
+
+        }
+        public override void RunTime(float _elapsedTime)
+        {
+            base.RunTime(_elapsedTime);
+        }
+        public override void Execute()
+        {
+            base.Execute();
+            CatsList.AddNewCatToQueue();
+        }
+    }
+
+    public class ReplaceCatTimer : Timer
+    {
+        public ReplaceCatTimer() : base(25, true)
+        {
+
+        }
+        public override void RunTime(float _elapsedTime)
+        {
+            base.RunTime(_elapsedTime);
+        }
+        public override void Execute()
+        {
+            base.Execute();
+            Debug.Log("Executing replace cats");
+            UpdateCats.Instance.CatHQStayRequest();
+        }
+    }
+    public class UnbefriendedCatExistenceCountdown : Timer
+    {
+        public Cat cat
+        {
+            get; private set;
+        }
+        public UnbefriendedCatExistenceCountdown(Cat _cat) : base(150, false)
+        {
+            cat = _cat;
+        }
+        public override void RunTime(float _elapsedTime)
+        {
+            base.RunTime(_elapsedTime);
+        }
+        public override void Execute()
+        {
+            base.Execute();
+            this.Destroy();
+        }
+
+        public override void Destroy()
+        {
+            base.Destroy();
+            
+
+            CatSpawnerUpdated csu = GameObject.FindObjectOfType<CatSpawnerUpdated>();
+            if(csu)
+            {
+                csu.RemoveCatFromSpawnList(cat.gameObject);
+            }
+
+            if (CatsList.stashed_cat_spawns.Contains(cat.gameObject))
+                CatsList.stashed_cat_spawns.Remove(cat.gameObject);
+
+            GameObject.Destroy(cat.gameObject);
+        }
+
+        public void Disable()
+        {
+            base.Destroy();
+        }
+    }
+
     public static Timers Instance;
     private GameTimer gameTimer = null;
     private ShuffleCatsTimer shuffleCatsTimer = null;
+    private SpawnCatsTimer spawnCatsTimer = null;
+    private ReplaceCatTimer replaceCatTimer= null;
 
     public List<Timer> timers = new List<Timer>();
+    public List<UnbefriendedCatExistenceCountdown> catDurationTimers = new List<UnbefriendedCatExistenceCountdown>();
     public Dictionary<ChillSpace.Area, ChillspaceScanCooldown> chillspaceCooldowns;
 
     private void Awake()
@@ -172,6 +260,22 @@ public class Timers : MonoBehaviour
             if(t.isRunning)
                 t.RunTime(Time.deltaTime);
         }
+
+        List<Timer> toDestroyList = new List<Timer>();
+        foreach(Timer t in timers)
+        {
+            if (t.toDestroy)
+            {
+                toDestroyList.Add(t);
+            }
+        }
+
+        foreach(Timer t in toDestroyList)
+        {
+            timers.Remove(t);
+        }
+
+        toDestroyList.Clear();
     }
     
     public void StartGameTimer()
@@ -192,10 +296,56 @@ public class Timers : MonoBehaviour
             timers.Add(shuffleCatsTimer);
         }
     }
+
+    public void StartCatSpawnTimer()
+    {
+        if (spawnCatsTimer == null)
+        {
+            spawnCatsTimer = new SpawnCatsTimer();
+            Debug.LogWarning("NO SPAWN CATS TIMER " + timers.Count);
+            timers.Add(spawnCatsTimer);
+            Debug.LogWarning("ADDED SPAWN CATS TIMER " + timers.Count);
+        }
+
+        
+    }
+
+    public void StartReplaceCatTimer()
+    {
+        if (replaceCatTimer == null)
+        {
+            replaceCatTimer = new ReplaceCatTimer();
+            //replaceCatTimer = new ReplaceCatTimer();
+            Debug.LogWarning("NO SPAWN CATS TIMER " + timers.Count);
+            timers.Add(replaceCatTimer);
+            //Debug.LogWarning("ADDED SPAWN CATS TIMER " + timers.Count);
+        }
+
+
+    }
     public void AddChillspaceAreaCooldown(ChillSpace.Area area)
     {
         ChillspaceScanCooldown cscd = new ChillspaceScanCooldown(area);
         chillspaceCooldowns.Add(area, cscd);
         timers.Add(cscd);
+    }
+
+    public void StartCatDurationCountdown(Cat cat)
+    {
+        UnbefriendedCatExistenceCountdown ucec = new UnbefriendedCatExistenceCountdown(cat);
+        catDurationTimers.Add(ucec);
+        timers.Add(ucec);
+    }
+
+    public void EndCatDurationCountdown(Cat _cat)
+    {
+        foreach(UnbefriendedCatExistenceCountdown ucec in catDurationTimers)
+        {
+            if(ucec.cat == _cat)
+            {
+                ucec.Disable();
+                break;
+            }
+        }
     }
 }

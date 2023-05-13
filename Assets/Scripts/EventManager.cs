@@ -9,8 +9,10 @@ public class EventManager : MonoBehaviour
     public static event Action<int> OnMissionComplete;
     public static event Action<Cat> OnCatClick;
     public static event Action<Cat> OnCatBefriendSuccess;
+    public static event Action<Cat, int> OnHQCatReplace;
     public static event Action<Cat,Cat, CatType.Type> OnCatEvolve;
     public static event Action<Cat, bool> OnCatBefriend;
+
 
     public static event Action<Sector, Building> OnInitializeSector;
 
@@ -44,6 +46,20 @@ public class EventManager : MonoBehaviour
         {
             OnCatBefriend(befriendedCat, isSuccess);
             //Debug.Log("");
+        }
+    }
+
+    public static void HQCatReplaced(Cat replacementCat, int index)
+    {
+        if (OnHQCatReplace != null)
+        {
+            Debug.Log("replaced cat");
+            if(index >= 0 && index<= 3)
+            {
+                Values.selected_cats[index] = replacementCat.gameObject;
+            }
+
+            OnHQCatReplace(replacementCat, index);
         }
     }
 

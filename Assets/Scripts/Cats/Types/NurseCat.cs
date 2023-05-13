@@ -38,7 +38,7 @@ public class NurseCat : Cat
 
     protected override void InitializeCatType()
     {
-        school_tip = "Want to look for COB students? They usually hold their classes at St. La Salle Hall!";
+        school_tip = "The HSO has a list of accredited clinics! You can find them here: https://www.dlsu.edu.ph/wp-content/uploads/pdf/hso/list-of-accredited-clinics.pdf";
         this.type = CatType.Type.nurse_cat;
     }
 

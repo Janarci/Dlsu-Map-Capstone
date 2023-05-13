@@ -104,6 +104,7 @@ public class SectorManager : MonoBehaviour
         }
 
         isInitialized = true;
+        CatsList.num_sectors = sectorList.Count;
         StartCoroutine(GenerateCatsInSector());
     }
 
@@ -143,24 +144,43 @@ public class SectorManager : MonoBehaviour
 
     private IEnumerator GenerateCatsInSector()
     {
-        //Debug.Log("here");
-
         while (true)
         {
+            
 
-            yield return new WaitForSeconds(spawnCatInterval);
+            if(CatsList.queuedSpawns.Count != 0)
+            {
+                if (sectorList[CatsList.queuedSpawns.Last().Value].isUnlocked)
+                {
+                    CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
+
+                    Rect sectAreaRect = sectorList[CatsList.queuedSpawns.Last().Value].GetAreaRect();
+                    if (sectAreaRect != Rect.zero)
+                        csu?.InstantiateDroid(CatsList.queuedSpawns.Last().Key, sectorList[CatsList.queuedSpawns.Last().Value].transform, sectorList[CatsList.queuedSpawns.Last().Value].GetAreaRect());
+
+                    Debug.Log("Spawning cat in sector " + CatsList.queuedSpawns.Last().Value);
+                }
+
+                else
+                    Debug.Log("Cant spawn cat in locked sector");
+
+                CatsList.queuedSpawns.RemoveAt(CatsList.queuedSpawns.Count-1);
+            }
+
+            yield return null;
+            //yield return new WaitForSeconds(spawnCatInterval);
             //Debug.Log("here");
-            int sectorIndex = UnityEngine.Random.Range(0, sectorList.Count);
+            //int sectorIndex = UnityEngine.Random.Range(0, sectorList.Count);
             //Debug.Log(sectorList.Count + " " + sectorIndex);
 
-            if (sectorList[sectorIndex].isUnlocked)
-            {
-                CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
+            //if (sectorList[sectorIndex].isUnlocked)
+            //{
+            //    CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
 
-                Rect sectAreaRect = sectorList[sectorIndex].GetAreaRect();
-                if(sectAreaRect != Rect.zero)
-                    csu?.InstantiateDroid(sectorList[sectorIndex].transform, sectorList[sectorIndex].GetAreaRect());
-            }
+            //    Rect sectAreaRect = sectorList[sectorIndex].GetAreaRect();
+            //    if(sectAreaRect != Rect.zero)
+            //        csu?.InstantiateDroid(sectorList[sectorIndex].transform, sectorList[sectorIndex].GetAreaRect());
+            //}
             //Debug.Log("here");
 
             //Debug.Log(sectorIndex);
@@ -173,14 +193,14 @@ public class SectorManager : MonoBehaviour
     {
         if (sectorList[sectorIndex])
         {
-            if (sectorList[sectorIndex].isUnlocked)
-            {
-                CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
+            //if (sectorList[sectorIndex].isUnlocked)
+            //{
+            //    CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
 
-                Rect sectAreaRect = sectorList[sectorIndex].GetAreaRect();
-                if (sectAreaRect != Rect.zero)
-                    csu?.InstantiateDroid(sectorList[sectorIndex].transform, sectorList[sectorIndex].GetAreaRect());
-            }
+            //    Rect sectAreaRect = sectorList[sectorIndex].GetAreaRect();
+            //    if (sectAreaRect != Rect.zero)
+            //        csu?.InstantiateDroid(sectorList[sectorIndex].transform, sectorList[sectorIndex].GetAreaRect());
+            //}
            
 
         }

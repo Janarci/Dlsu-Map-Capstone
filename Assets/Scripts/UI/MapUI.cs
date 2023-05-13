@@ -120,9 +120,9 @@ public class MapUI : MonoBehaviour
         Vector3 btn2InitialPos = inventoryBtn.transform.position;
         Vector3 btn3InitialPos = CatalogBtn.transform.position;
 
-        Vector3 btn1FinalPos = new Vector3(mainUIBtn.transform.position.x - 200.0f, mainUIBtn.transform.position.y + 90.0f, mainUIBtn.transform.position.z);
-        Vector3 btn2FinalPos = new Vector3(mainUIBtn.transform.position.x, mainUIBtn.transform.position.y + 180.0f, mainUIBtn.transform.position.z);
-        Vector3 btn3FinalPos = new Vector3(mainUIBtn.transform.position.x + 200.0f, mainUIBtn.transform.position.y + 90.0f, mainUIBtn.transform.position.z);
+        Vector3 btn1FinalPos = new Vector3(mainUIBtn.transform.position.x - (220 * (Screen.width/720.0f)) , mainUIBtn.transform.position.y + (90.0f * (Screen.height/1440.0f)), mainUIBtn.transform.position.z);
+        Vector3 btn2FinalPos = new Vector3(mainUIBtn.transform.position.x, mainUIBtn.transform.position.y + (215 * (Screen.height/1440.0f)), mainUIBtn.transform.position.z);
+        Vector3 btn3FinalPos = new Vector3(mainUIBtn.transform.position.x + (220 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (90.0f * (Screen.height/1440.0f)), mainUIBtn.transform.position.z);
 
         isShowingMiniMenu = true;
         while (isShowingMiniMenu)

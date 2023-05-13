@@ -34,9 +34,14 @@ public class CatalogCatInfo : MonoBehaviour
 
     public void SetCatPicture(CatType.Type type)
     {
+
         if(CatDatabase.Instance.GetCatData(type).icon != null)
         {
-            catPicture.sprite = CatDatabase.Instance.GetCatData(type).icon;
+            if (Values.collected_cat_types.Contains(type))
+                catPicture.sprite = CatDatabase.Instance.GetCatData(type).icon;
+
+            else
+                catPicture.sprite = null;
         }
     }
     public void SetCatInfo(CatType.Type type)
@@ -50,25 +55,29 @@ public class CatalogCatInfo : MonoBehaviour
                 Destroy(catItemsContent.GetChild(i).gameObject);
             }
 
-        List<CatEvolutionItem.cat_evolution_item_type> addedItems = new List<CatEvolutionItem.cat_evolution_item_type>();
-        foreach (CatType.Type evolutionType in CatDatabase.Instance.GetCatData(type).script.evolution_requirements.Keys)
+        if(Values.collected_cat_types.Contains(type) )
         {
-            //GameObject _catItem = Instantiate(catItem, catItemsContent);
-            //_catItem.GetComponent<Image>().sprite = Inventory.Instance?.GetDataInfo(item).icon;
-            foreach (CatEvolutionItem.cat_evolution_item_type item in CatDatabase.Instance.GetCatData(type).script.evolution_requirements[evolutionType].Keys)
+            List<CatEvolutionItem.cat_evolution_item_type> addedItems = new List<CatEvolutionItem.cat_evolution_item_type>();
+            foreach (CatType.Type evolutionType in CatDatabase.Instance.GetCatData(type).script.evolution_requirements.Keys)
             {
-                if(!addedItems.Contains(item))
+                //GameObject _catItem = Instantiate(catItem, catItemsContent);
+                //_catItem.GetComponent<Image>().sprite = Inventory.Instance?.GetDataInfo(item).icon;
+                foreach (CatEvolutionItem.cat_evolution_item_type item in CatDatabase.Instance.GetCatData(type).script.evolution_requirements[evolutionType].Keys)
                 {
-                    addedItems.Add(item);
-                    GameObject _catItem = Instantiate(catItem, catItemsContent);
-                    _catItem.GetComponent<Image>().sprite = Inventory.Instance?.GetDataInfo(item).icon;
+                    if (!addedItems.Contains(item))
+                    {
+                        addedItems.Add(item);
+                        GameObject _catItem = Instantiate(catItem, catItemsContent);
+                        _catItem.GetComponent<Image>().sprite = Inventory.Instance?.GetDataInfo(item).icon;
+                    }
+
+
                 }
-                
-
             }
-        }
 
-        addedItems.Clear();
+            addedItems.Clear();
+        }
+        
 
     }
 
@@ -82,21 +91,24 @@ public class CatalogCatInfo : MonoBehaviour
                 Destroy(habitatItemsContent.GetChild(i).gameObject);
             }
 
-        foreach (ChillSpace.Area chillspace in ChillSpaceDatabase.Instance.GetDataList())
+        if(Values.collected_cat_types.Contains(type))
         {
-            if(ChillSpaceDatabase.Instance.GetDataInfo(chillspace).cateredCats.Contains(type))
+            foreach (ChillSpace.Area chillspace in ChillSpaceDatabase.Instance.GetDataList())
             {
-                GameObject newButtonObj = Instantiate(habitatItemObj, habitatItemsContent);
-                Button buttonComp = newButtonObj.transform.GetChild(0).gameObject.GetComponent<Button>();
-                Image imageComp = buttonComp.GetComponent<Image>();
-                GameObject textComp = newButtonObj.transform.GetChild(1).gameObject;
-                textComp.GetComponent<Text>().text = ChillSpaceDatabase.Instance.GetDataInfo(chillspace).areaName;
-
-                buttonComp.onClick.AddListener(delegate { chillspaceInfo.SetChillSpaceDetails(ChillSpaceDatabase.Instance.GetDataInfo(chillspace)); DisplayHabitatInfo(); });
-
-                if(ChillSpaceDatabase.Instance.GetDataInfo(chillspace).picture)
+                if (ChillSpaceDatabase.Instance.GetDataInfo(chillspace).cateredCats.Contains(type))
                 {
-                    imageComp.sprite = ChillSpaceDatabase.Instance.GetDataInfo(chillspace).picture;
+                    GameObject newButtonObj = Instantiate(habitatItemObj, habitatItemsContent);
+                    Button buttonComp = newButtonObj.transform.GetChild(0).gameObject.GetComponent<Button>();
+                    Image imageComp = buttonComp.GetComponent<Image>();
+                    GameObject textComp = newButtonObj.transform.GetChild(1).gameObject;
+                    textComp.GetComponent<Text>().text = ChillSpaceDatabase.Instance.GetDataInfo(chillspace).areaName;
+
+                    buttonComp.onClick.AddListener(delegate { chillspaceInfo.SetChillSpaceDetails(ChillSpaceDatabase.Instance.GetDataInfo(chillspace)); DisplayHabitatInfo(); });
+
+                    if (ChillSpaceDatabase.Instance.GetDataInfo(chillspace).picture)
+                    {
+                        imageComp.sprite = ChillSpaceDatabase.Instance.GetDataInfo(chillspace).picture;
+                    }
                 }
             }
         }

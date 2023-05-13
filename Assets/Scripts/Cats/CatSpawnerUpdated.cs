@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -24,19 +25,21 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
 	void Start()
     {
         EventManager.OnCatClick += OnCatClicked;
+        CatsList.num_base_cats = availableDroids.Length;
+        SpawnStashedCats();
     }
 
-    
+
     public CatSpawnerUpdated getInstance()
     {
         return Instance;
     }
 
-    public void InstantiateDroid(Transform sectorTransform, Rect AreaRect)
+    public void InstantiateDroid(int catSpawnTemplateIndex, Transform sectorTransform, Rect AreaRect)
 	{
         //GameObject newDroid = Instantiate(availableDroids[index], new Vector3(x, y, z), Quaternion.identity);
-        int index = Random.Range(0, availableDroids.Length);
-        GameObject newDroid = Instantiate(availableDroids[index]);
+        //int index = Random.Range(0, availableDroids.Length);
+        GameObject newDroid = Instantiate(availableDroids[catSpawnTemplateIndex]);
 
         Transform CubeBoundsObj = sectorTransform.GetChild(0);
 
@@ -55,7 +58,15 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
         } while (Physics.OverlapBox(newDroid.transform.position, newDroid.GetComponent<BoxCollider>().size / 2).Length > 0 && spawnAttempts < 5);
 
         spawnedCats.Add(newDroid);
-	}
+        DontDestroyOnLoad(newDroid);
+
+        if(newDroid.TryGetComponent<Cat>(out Cat cat))
+        {
+            Timers.Instance.StartCatDurationCountdown(cat);
+
+        }
+
+    }
 
     private float GenerateRange(float maxRange)
 	{
@@ -79,14 +90,33 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
         return catsWithinDetectionRange;
     }
 
+    public void RemoveCatFromSpawnList(GameObject cat)
+    {
+        if(spawnedCats.Contains(cat))
+        {
+            spawnedCats.Remove(cat);
+        }
+    }
+
+    public void SpawnStashedCats()
+    {
+        for(int i = 0; i < CatsList.stashed_cat_spawns.Count; i++)
+        {
+            CatsList.stashed_cat_spawns[i].SetActive(true);
+            spawnedCats.Add(CatsList.stashed_cat_spawns[i]);
+        }
+    }
     public void OnCatClicked(Cat clickedCat)
     {
         Debug.Log(Vector3.Distance(player.transform.position, clickedCat.transform.position));
         if(IsWithinRangeOfCats(player.transform.position).Contains(clickedCat.gameObject))
         {
-            Values.approached_cat = GameObject.Instantiate(clickedCat.gameObject);
+            //Values.approached_cat = GameObject.Instantiate(clickedCat.gameObject);
+            Values.approached_cat = clickedCat.gameObject;
             Values.approached_cat.SetActive(false);
             GameObject.DontDestroyOnLoad(Values.approached_cat);
+            Timers.Instance.EndCatDurationCountdown(clickedCat);
+            spawnedCats.Remove(clickedCat.gameObject);
             LoadScene.LoadCatBefriendingScene();
         }    
     }
@@ -94,6 +124,14 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
     public void OnDestroy()
     {
         EventManager.OnCatClick -= OnCatClicked;
+        for(int i = 0; i < spawnedCats.Count; i++)
+        {
+            spawnedCats[i].SetActive(false);
+
+            if (!(CatsList.stashed_cat_spawns.Contains(spawnedCats[i])))
+                CatsList.stashed_cat_spawns.Add(spawnedCats[i]);
+
+        }
     }
 
 

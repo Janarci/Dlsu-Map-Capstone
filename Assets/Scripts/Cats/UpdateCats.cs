@@ -1,11 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using UnityEngine;
+using System.Linq;
 
 public class UpdateCats : MonoBehaviour
 {
-    static UpdateCats Instance;
+    public static UpdateCats Instance;
+    bool isReplacing = false;
+    private GameObject replacementCat = null;
+    private int replacementIndex = -1;
+    [SerializeField] GameObject HQCatsPanelTemplate;
     private void Awake()
     {
         if (Instance == null)
@@ -21,31 +27,123 @@ public class UpdateCats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Values.befriended_cats.Count > 0)
+        if (Values.befriended_cats.Count > 0)
         {
-            foreach(GameObject cat in Values.befriended_cats)
+            int availableCats = 0;
+
+            foreach (GameObject cat in Values.befriended_cats)
             {
-                Cat catComp = cat.GetComponent<Cat>();
-                catComp.UpdateAilmentStatus();
-                for(int i = 0; i < 4; i++) 
+                if (Array.Exists<GameObject>(Values.selected_cats, selectedCat => selectedCat == cat))
                 {
-                    if (Values.selected_cats[i] == cat)
+                    Cat catComp = cat.GetComponent<Cat>();
+
+                    catComp.Ail();
+                    if ((catComp.GetSadnessPercentage() + catComp.GetHungerPercentage() + catComp.GetBoredomPercentage() + catComp.GetDirtPercentage()) > 2.0f)
                     {
-                        if((catComp.GetSadnessPercentage() + catComp.GetHungerPercentage() + catComp.GetBoredomPercentage() + catComp.GetDirtPercentage()) > 2.0f)
+                        Debug.LogError("Cat has reached ail limit");
+
+                        for (int i = 0; i < 4; i++)
                         {
-                            Debug.LogError("Removing selected cat index " + i);
-                            Values.selected_cats[i] = null;
+                            if (Values.selected_cats[i] == cat)
+                            {
+                                Debug.LogError("Removing selected cat index " + i);
+                                Values.selected_cats[i] = null;
+
+                                PopupGenerator.Instance?.GenerateCloseablePopup(CatDatabase.Instance.GetCatData(catComp.GetCatType()).catTypeLabel + " has left the HQ");
+                                break;
+                            }
                         }
-                        break;
+
                     }
                 }
+
+                else
+                {
+                    //Debug.Log("RECOVERING CAT");
+                    Cat catComp = cat.GetComponent<Cat>();
+                    catComp.Recover();
+                    if ((catComp.GetSadnessPercentage() + catComp.GetHungerPercentage() + catComp.GetBoredomPercentage() + catComp.GetDirtPercentage()) < 0.75f)
+                    {
+                        availableCats++;
+                    }
+                }
+
+                //CatHQStayRequest();
+
             }
         }
+    }
+
+    public void CatHQStayRequest()
+    {
+        if (Values.befriended_cats.Count > 4 && !isReplacing)
+        {
+            Cat catComp = null;
+
+            Debug.Log("Found available cat slot");
+            ConfirmablePopupBehaviour cpb = null;
+            int counter = 0;
+            do
+            {
+                GameObject _replacementCat = Values.befriended_cats[UnityEngine.Random.Range(0, Values.befriended_cats.Count)];
+                if (!(Array.Exists<GameObject>(Values.selected_cats, _cat => _cat == _replacementCat)))
+                {
+                    replacementCat = _replacementCat;
+                    catComp = replacementCat.GetComponent<Cat>();
+                }
+
+                counter++;
+            } while (catComp != null && (catComp.GetSadnessPercentage() + catComp.GetHungerPercentage() + catComp.GetBoredomPercentage() + catComp.GetDirtPercentage()) < 0.75f && counter <= 12);
+
+
+            if (catComp && replacementCat)
+            {
+                cpb = PopupGenerator.Instance?.GenerateConfirmablePopup(CatDatabase.Instance.GetCatData(catComp.GetCatType()).catTypeLabel + " wants to spend time in the HQ. Do you approve?");
+
+                if (cpb)
+                {
+                    isReplacing = true;
+                    cpb.onConfirm += OnAddCatToHQ;
+                    cpb.onCancel += ResetValues;
+                }
+
+                else
+                {
+                    ResetValues();
+                }
+
+
+            }
+        }
+    }
+
+    void OnAddCatToHQ()
+    {
+        if(replacementCat != null)
+        {
+            Debug.Log("Cat entered HQ");
+            //Values.selected_cats[replacementIndex] = replacementCat;
+            //EventManager.HQCatReplaced(replacementCat.GetComponent<Cat>(), replacementIndex);
+            GameObject HQCatsPanelObj = Instantiate(HQCatsPanelTemplate, GameObject.Find("InfoCanvas").transform);
+            for(int i = 0; i < HQCatsPanelObj.transform.childCount; i++)
+            {
+                HQCatsPanelObj.transform.GetChild(i).gameObject.GetComponent<HQCatsPanelIndex>().replacementCat = replacementCat;
+            }
+        }
+
+        ResetValues();
+    }
+
+    void ResetValues()
+    {
+        replacementCat = null;
+        replacementIndex = -1;
+        isReplacing= false;
     }
 }

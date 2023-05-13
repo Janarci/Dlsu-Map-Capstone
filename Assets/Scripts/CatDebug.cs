@@ -206,6 +206,8 @@ public class CatDebug : MonoBehaviour
                 //tooltipTxt.text = befriendedCat.GetCatTooltip();
 
                 PopupGenerator.Instance?.GenerateCloseablePopup(
+                    "You have befriended a " + CatDatabase.Instance?.GetCatData(befriendedCat.GetCatType()).catTypeLabel +
+                    "\n" +
                     befriendedCat.GetCatTooltip()
                     );
             }
@@ -214,7 +216,11 @@ public class CatDebug : MonoBehaviour
             befriendSuccess.SetActive(true);
 
             if (Values.befriended_cats.Count == 1)
+            {
                 Timers.Instance.StartCatShuffleTimer();
+                Timers.Instance.StartReplaceCatTimer();
+            }
+                
 
             if(Values.befriended_cats.Count <= 4)
             {

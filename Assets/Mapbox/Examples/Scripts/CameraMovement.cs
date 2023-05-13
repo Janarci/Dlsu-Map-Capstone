@@ -88,6 +88,11 @@ namespace Mapbox.Examples
                         }
                         ZoomMapUsingTouchOrMouse(zoomFactor);
                         
+						if(touchZero.phase == TouchPhase.Ended || touchOne.phase == TouchPhase.Ended)
+						{
+							_shouldDrag = false;
+
+                        }
                     }
 
 					
@@ -100,7 +105,6 @@ namespace Mapbox.Examples
 
 		void ZoomMapUsingTouchOrMouse(float zoomFactor)
 		{
-			Vector3 newPos = Vector3.zero;
 			var y = zoomFactor * _zoomSpeed;
 
 			transform.localPosition += (transform.forward * y);
@@ -108,10 +112,6 @@ namespace Mapbox.Examples
 			//	newX = Mathf.Min(transform.localPosition.x, 100.0f);
 			//else
    //             newX = Mathf.Max(transform.localPosition.x, -100.0f);
-			newPos.x = Math.Clamp(transform.localPosition.x, -50, 50);
-            newPos.y = Math.Clamp(transform.localPosition.y, 25, 80);
-            newPos.z = Math.Clamp(transform.localPosition.z, -50, 50);
-
 
 			//if (transform.localPosition.y > 0)
 			//    newY = Mathf.Min(transform.localPosition.y, 75.0f);
@@ -122,7 +122,6 @@ namespace Mapbox.Examples
 			//    newZ = Mathf.Min(transform.localPosition.z, 75.0f);
 			//else
 			//    newZ = Mathf.Max(transform.localPosition.z, -75.0f);
-			transform.localPosition = newPos;
 			//Debug.Log(transform.localPosition);
 		}
 
@@ -181,8 +180,15 @@ namespace Mapbox.Examples
 
 		void ResetCamera()
 		{
-			this.transform.LookAt(PlayerTarget.transform);
-		}
+            Vector3 newPos = Vector3.zero;
+
+            newPos.x = Math.Clamp(transform.localPosition.x, -120, 120);
+            newPos.y = Math.Clamp(transform.localPosition.y, 25, 80);
+            newPos.z = Math.Clamp(transform.localPosition.z, -120, 120);
+
+
+            transform.localPosition = newPos;
+        }
 		void Awake()
 		{
 			_originalRotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
@@ -206,6 +212,7 @@ namespace Mapbox.Examples
 			}
 		}
 
+
 		void LateUpdate()
 		{
 
@@ -217,6 +224,8 @@ namespace Mapbox.Examples
 			{
 				HandleMouseAndKeyBoard();
 			}
-		}
+
+            ResetCamera();
+        }
 	}
 }

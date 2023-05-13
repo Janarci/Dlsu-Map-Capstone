@@ -13,19 +13,55 @@ public class CatventoryItem : MonoBehaviour
     [SerializeField] Image hungerBar;
     [SerializeField] Image boredomBar;
     [SerializeField] Image dirtBar;
+    [SerializeField] GameObject interactUI;
 
 
-    public void SetValues(CatType.Type type, float sadnessPercentage, float hungerPercentage, float boredomPercentage, float dirtPercentage)
+    Cat cat;
+
+    public void SetValues(Cat _cat)
     {
+        cat = _cat;
+        CatType.Type type = _cat.GetCatType();
         if(CatDatabase.Instance)
         {
             typeTxt.text = CatDatabase.Instance.GetCatData(type).catTypeLabel;
             catIcon.sprite = CatDatabase.Instance.GetCatData(type).icon;
         }    
         
-        sadnessBar.fillAmount= sadnessPercentage;
-        hungerBar.fillAmount= hungerPercentage;
-        boredomBar.fillAmount= boredomPercentage;
-        dirtBar.fillAmount= dirtPercentage;
+        sadnessBar.fillAmount= cat.GetSadnessPercentage();
+        hungerBar.fillAmount= cat.GetHungerPercentage();
+        boredomBar.fillAmount= cat.GetBoredomPercentage();
+        dirtBar.fillAmount= cat.GetDirtPercentage();
+    }
+
+    public void InteractByPetting()
+    {
+        cat?.InteractWithCat(CatInteraction.Type.pet);
+        sadnessBar.fillAmount = cat.GetSadnessPercentage();
+
+    }
+
+    public void InteractByFeeding()
+    {
+        cat?.InteractWithCat(CatInteraction.Type.feed);
+        hungerBar.fillAmount = cat.GetHungerPercentage();
+
+    }
+    public void InteractByPlaying()
+    {
+        cat?.InteractWithCat(CatInteraction.Type.play);
+        boredomBar.fillAmount = cat.GetBoredomPercentage();
+
+    }
+    public void InteractByCleaning()
+    {
+        cat?.InteractWithCat(CatInteraction.Type.clean);
+        dirtBar.fillAmount = cat.GetDirtPercentage();
+
+    }
+
+    public void ShowInteractUI(bool isShow)
+    {
+        interactUI.SetActive(isShow);
     }
 }

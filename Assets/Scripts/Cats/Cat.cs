@@ -181,17 +181,32 @@ public class Ailment
         currentTimer = 0.0f;
     }
 
-    public void UpdateAilmentStatus(float deltaTime)
+    public void Ail(float deltaTime)
     {
         //Debug.Log(deltaTime);
         currentTimer += deltaTime;
         if (currentTimer >= increaseFrequency && !isMaxedOut())
         {
 
-            currentValue = Math.Min(currentValue + 5, maxValue);
-            Debug.Log(type.ToString() + " | " + currentValue);
+            currentValue = Math.Min(currentValue + 4, maxValue);
+            Debug.Log("[AILING] " +type.ToString() + " | " + currentValue);
             currentTimer = 0.0f;
-            increaseFrequency = UnityEngine.Random.Range(40, 90);
+            increaseFrequency = UnityEngine.Random.Range(12, 18);
+
+        }
+    }
+
+    public void Recover(float deltaTime)
+    {
+        //Debug.Log(deltaTime);
+        currentTimer += deltaTime;
+        if (currentTimer >= increaseFrequency && !isZero())
+        {
+
+            currentValue = Math.Max(currentValue - 2.5f, 0);
+            Debug.Log("[RECOVERING] " + type.ToString() + " | " + currentValue);
+            currentTimer = 0.0f;
+            increaseFrequency = 15;
 
         }
     }
@@ -199,6 +214,11 @@ public class Ailment
     public bool isMaxedOut()
     {
         return currentValue == maxValue;
+    }
+
+    public bool isZero()
+    {
+        return currentValue == 0;
     }
 
     public float currentValue = 0;
@@ -352,7 +372,6 @@ public class Cat : MonoBehaviour
         InitializeInventory();
         InitializeEvolutionPath();
         InitializeAilments();
-
     }
 
     protected virtual void InitializeCatType()
@@ -431,14 +450,23 @@ public class Cat : MonoBehaviour
 
     }
 
-    public void UpdateAilmentStatus()
+    public void Ail()
     {
-        sadnessAilment.UpdateAilmentStatus(Time.deltaTime);
-        hungerAilmennt.UpdateAilmentStatus(Time.deltaTime);
-        boredomAilment.UpdateAilmentStatus(Time.deltaTime);
-        dirtAilment.UpdateAilmentStatus(Time.deltaTime);
+        sadnessAilment.Ail(Time.deltaTime);
+        hungerAilmennt.Ail(Time.deltaTime);
+        boredomAilment.Ail(Time.deltaTime);
+        dirtAilment.Ail(Time.deltaTime);
         UpdateAilmentBars();
 
+    }
+
+    public void Recover()
+    {
+        sadnessAilment.Recover(Time.deltaTime);
+        hungerAilmennt.Recover(Time.deltaTime);
+        boredomAilment.Recover(Time.deltaTime);
+        dirtAilment.Recover(Time.deltaTime);
+        UpdateAilmentBars();
     }
 
     private void UpdateAilmentBars()

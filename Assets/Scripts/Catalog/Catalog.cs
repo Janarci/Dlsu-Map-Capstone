@@ -67,7 +67,6 @@ public class Catalog : MonoBehaviour
         menuHistory= new List<GameObject>();
         currentMenu = catalogMenu;
     }
-
     private void DisplayEvolutionPathsAvailable(CatType.Type type, int x, GameObject parentButton )
     {
         
@@ -303,7 +302,10 @@ public class Catalog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            GoToPreviousMenu();
+        }
     }
 
     public void DisplayCatalog()
