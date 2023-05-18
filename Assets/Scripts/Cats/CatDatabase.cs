@@ -42,12 +42,15 @@ public class CatDatabase : MonoBehaviour
     void Start()
     {
         isInitialized = false;
-        InitializeCatDatabase();
+        //InitializeCatDatabase();
     }
 
-    void InitializeCatDatabase()
+    public void InitializeCatDatabase()
     {
-        StartCoroutine(Initialize());
+        if(!isInitialized)
+        {
+            StartCoroutine(Initialize());
+        }
     }
 
     IEnumerator Initialize()

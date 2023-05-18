@@ -34,8 +34,21 @@
 		{
 			if (_isInitialized)
 			{
+				Vector3 initialPos = transform.localPosition;
 				var map = LocationProviderFactory.Instance.mapManager;
 				transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
+				Vector3 finalPos = transform.localPosition;
+
+				if(initialPos != finalPos)
+				{
+					//walk
+				}
+
+				else
+				{
+					//dont walk
+				}
+
 			}
 		}
 	}

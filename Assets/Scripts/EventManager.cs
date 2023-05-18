@@ -36,7 +36,7 @@ public class EventManager : MonoBehaviour
         if (OnCatBefriendSuccess != null)
         {
             OnCatBefriendSuccess(befriendedCat);
-            Values.befriended_cats.Add(befriendedCat.gameObject);
+            CatsList.instance.befriended_cats.Add(befriendedCat.gameObject);
         }
     }
 
@@ -56,7 +56,7 @@ public class EventManager : MonoBehaviour
             Debug.Log("replaced cat");
             if(index >= 0 && index<= 3)
             {
-                Values.selected_cats[index] = replacementCat.gameObject;
+                CatsList.instance.selected_cats[index] = replacementCat.gameObject;
             }
 
             OnHQCatReplace(replacementCat, index);

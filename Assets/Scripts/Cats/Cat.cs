@@ -189,7 +189,7 @@ public class Ailment
         {
 
             currentValue = Math.Min(currentValue + 4, maxValue);
-            Debug.Log("[AILING] " +type.ToString() + " | " + currentValue);
+            //Debug.Log("[AILING] " +type.ToString() + " | " + currentValue);
             currentTimer = 0.0f;
             increaseFrequency = UnityEngine.Random.Range(12, 18);
 
@@ -204,7 +204,7 @@ public class Ailment
         {
 
             currentValue = Math.Max(currentValue - 2.5f, 0);
-            Debug.Log("[RECOVERING] " + type.ToString() + " | " + currentValue);
+            //Debug.Log("[RECOVERING] " + type.ToString() + " | " + currentValue);
             currentTimer = 0.0f;
             increaseFrequency = 15;
 
@@ -372,6 +372,19 @@ public class Cat : MonoBehaviour
         InitializeInventory();
         InitializeEvolutionPath();
         InitializeAilments();
+    }
+
+    public void InitializeCat(float _friendshipValue, float _relationshipValue, int _relationshipLevel, int _befriendAttempts, CatTrait.Type _trait, float _sadnessValue, float _boredomValue, float _dirtValue, float _hungerValue)
+    {
+        friendship_value = _friendshipValue;
+        relationship_value = _relationshipValue;
+        relationship_level= _relationshipLevel;
+        befriendAttempts= _befriendAttempts;
+        trait = _trait;
+        sadnessAilment.currentValue = _sadnessValue;
+        boredomAilment.currentValue = _boredomValue;
+        dirtAilment.currentValue = _dirtValue;
+        hungerAilmennt.currentValue = _hungerValue;
     }
 
     protected virtual void InitializeCatType()
@@ -599,7 +612,7 @@ public class Cat : MonoBehaviour
 
         }
         ui?.SetFriendshipBarValue(getFriendshipPercentage());
-        
+
         Debug.Log(getFriendshipValue());
     }
     public void InteractWithCat(CatInteraction.Type interaction)
@@ -671,7 +684,7 @@ public class Cat : MonoBehaviour
 
         ui?.SetRelationshipBarValue(getRelationshipPercentage());
         UpdateAilmentBars();
-        if(CanEvolve())
+        if (CanEvolve())
         {
             ui?.ShowInteractUI(false);
             ui?.ShowEvolve(true);
@@ -681,7 +694,7 @@ public class Cat : MonoBehaviour
 
     public void TreatAilment(CatInteraction.Type interaction)
     {
-        
+
     }
 
     public float GetSadnessPercentage()
@@ -783,7 +796,7 @@ public class Cat : MonoBehaviour
             int evolutionIndex = UnityEngine.Random.Range(0, availableEvolutions.Count);
             EvolveTo(availableEvolutions[evolutionIndex]);
         }
-        
+
     }
 
     public Cat EvolveTo(CatType.Type evolve_type)
@@ -869,7 +882,7 @@ public class Cat : MonoBehaviour
 
             Destroy(this);
 
-            
+
 
             return evolvedCat;
         }
@@ -887,9 +900,43 @@ public class Cat : MonoBehaviour
         return friendship_value / 60.0f;
     }
 
+    public float getRelationshipValue()
+    {
+        return relationship_value;
+    }
+
     public float getRelationshipPercentage()
     {
         return relationship_value / 100.0f;
+    }
+
+    public int getRelationshipLevel()
+    {
+        return relationship_level;
+    }
+
+    public int getBefriendAttempts()
+    {
+        return befriendAttempts;
+    }
+
+    public CatTrait.Type getTrait()
+    {
+        return trait;
+    }
+
+    public float getAilmentValue(Ailment.Type ailmentType)
+    {
+        float currentAilmentValue = 0;
+        switch(ailmentType)
+        {
+            case Ailment.Type.sadness: currentAilmentValue = sadnessAilment.currentValue; break;
+            case Ailment.Type.boredom: currentAilmentValue = boredomAilment.currentValue; break;
+            case Ailment.Type.dirt: currentAilmentValue = dirtAilment.currentValue; break;
+            case Ailment.Type.hunger: currentAilmentValue = hungerAilmennt.currentValue; break;
+        }
+
+        return currentAilmentValue;
     }
 
     public void StartRoam()

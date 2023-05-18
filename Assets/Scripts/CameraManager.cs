@@ -34,19 +34,18 @@ public class CameraManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
         VuforiaApplication.Instance.OnVuforiaStopped += OnVuforiaStopped;
-        EnableARCamera();
-        InitializeARCamera();
-        EnableWorldCamera();
-
-        isInitialized = true;
     }
 
-    private void InitializeARCamera()
+    public void InitializeARCamera()
     {
+        EnableARCamera();
         ARCamera.gameObject.GetComponent<VuforiaBehaviour>().enabled = true;
         ARCamera.gameObject.GetComponent<DefaultInitializationErrorHandler>().enabled = true;
 
         VuforiaApplication.Instance.Initialize();
+        EnableWorldCamera();
+        isInitialized = true;
+
     }
 
     void Update()

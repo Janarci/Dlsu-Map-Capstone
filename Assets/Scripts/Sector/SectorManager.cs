@@ -41,7 +41,7 @@ public class SectorManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EventManager.OnInitializeMap += InitializeSectors;
+        //EventManager.OnInitializeMap += InitializeSectors;
         EventManager.OnMissionComplete += OnMissionComplete;
         //EventManager.OnCatClick += OnCatClickedInSector;
         sectorList = new Dictionary<int, Sector>();
@@ -55,8 +55,9 @@ public class SectorManager : MonoBehaviour
         
     }
 
-    void InitializeSectors()
+    public void InitializeSectors()
     {
+        if(!isInitialized)
         StartCoroutine(Initialize());
     }
 
@@ -78,6 +79,10 @@ public class SectorManager : MonoBehaviour
             
         //}
 
+        while(!MapTracker.isMapInitialized)
+        {
+            yield return null;
+        }
 
         foreach(Sector s in FindObjectsOfType<Sector>(true)) 
         {
@@ -96,15 +101,15 @@ public class SectorManager : MonoBehaviour
         }
         
 
-        for(int i = 0; i < Values.unlocked_sectors.Count;i++)
+        for(int i = 0; i < DataPersistenceManager.instance.gameData.unlocked_sectors.Count;i++)
         {
             Debug.Log("Pre-emptively unlocking sector: " + i);
-            UnlockSector(Values.unlocked_sectors[i]);
+            UnlockSector(DataPersistenceManager.instance.gameData.unlocked_sectors[i]);
             //yield return null;
         }
 
         isInitialized = true;
-        CatsList.num_sectors = sectorList.Count;
+        CatsList.instance.num_sectors = sectorList.Count;
         StartCoroutine(GenerateCatsInSector());
     }
 
@@ -148,23 +153,23 @@ public class SectorManager : MonoBehaviour
         {
             
 
-            if(CatsList.queuedSpawns.Count != 0)
+            if(CatsList.instance.queuedSpawns.Count != 0)
             {
-                if (sectorList[CatsList.queuedSpawns.Last().Value].isUnlocked)
+                if (sectorList[CatsList.instance.queuedSpawns.Last().Value].isUnlocked)
                 {
                     CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
 
-                    Rect sectAreaRect = sectorList[CatsList.queuedSpawns.Last().Value].GetAreaRect();
+                    Rect sectAreaRect = sectorList[CatsList.instance.queuedSpawns.Last().Value].GetAreaRect();
                     if (sectAreaRect != Rect.zero)
-                        csu?.InstantiateDroid(CatsList.queuedSpawns.Last().Key, sectorList[CatsList.queuedSpawns.Last().Value].transform, sectorList[CatsList.queuedSpawns.Last().Value].GetAreaRect());
+                        csu?.InstantiateDroid(CatsList.instance.queuedSpawns.Last().Key, sectorList[CatsList.instance.queuedSpawns.Last().Value].transform, sectorList[CatsList.instance.queuedSpawns.Last().Value].GetAreaRect());
 
-                    Debug.Log("Spawning cat in sector " + CatsList.queuedSpawns.Last().Value);
+                    Debug.Log("Spawning cat in sector " + CatsList.instance.queuedSpawns.Last().Value);
                 }
 
                 else
                     Debug.Log("Cant spawn cat in locked sector");
 
-                CatsList.queuedSpawns.RemoveAt(CatsList.queuedSpawns.Count-1);
+                CatsList.instance.queuedSpawns.RemoveAt(CatsList.instance.queuedSpawns.Count-1);
             }
 
             yield return null;
@@ -255,7 +260,7 @@ public class SectorManager : MonoBehaviour
 
     public void OnDestroy()
     {
-        EventManager.OnInitializeMap -= InitializeSectors;
+        //EventManager.OnInitializeMap -= InitializeSectors;
         EventManager.OnMissionComplete -= OnMissionComplete;
         //EventManager.OnCatClick -= OnCatClickedInSector;
     }

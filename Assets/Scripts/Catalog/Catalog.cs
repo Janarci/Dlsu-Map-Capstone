@@ -105,7 +105,7 @@ public class Catalog : MonoBehaviour
 
             newButtonObj.transform.localPosition = new Vector3((x * 100) + 100, (curry * -100) - 200, 0);
 
-            if(Values.collected_cat_types.Contains(pair.Key))
+            if(DataPersistenceManager.instance.gameData.collected_cat_types.Contains(pair.Key))
             {
                 textComp.GetComponent<Text>().text = pair.Key.ToString();
                 buttonComp.onClick.AddListener(delegate { PopupGenerator.Instance?.GenerateCloseablePopup(tooltip); });

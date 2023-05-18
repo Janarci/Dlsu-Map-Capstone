@@ -32,9 +32,9 @@ public class CatalogBuildingInfo : MonoBehaviour
     {
         bool isSectorUnlocked = false;
 
-        for (int i = 0; i < Values.unlocked_sectors.Count; i++)
+        for (int i = 0; i < DataPersistenceManager.instance.gameData.unlocked_sectors.Count; i++)
         { 
-            int j = Values.unlocked_sectors[i];
+            int j = DataPersistenceManager.instance.gameData.unlocked_sectors[i];
             if (SectorManager.Instance.GetSector(j).GetBuilding().type == data.type)
             {
                 isSectorUnlocked = true;

@@ -29,7 +29,7 @@ public class CatalogChillSpaceInfo : MonoBehaviour
 
     public void SetChillSpaceDetails(ChillSpace.Detail data)
     {
-        if(Values.unlocked_chillspaces.Contains(data.area))
+        if(DataPersistenceManager.instance.gameData.unlocked_chillspaces.Contains(data.area))
         {
             chillSpacePicture.sprite = data.picture;
             chillSpaceName.text = data.areaName;

@@ -34,7 +34,7 @@ public class CatDebug : MonoBehaviour
             cam.SetActive(true);
         }
         EventManager.OnCatBefriend += RemoveCat;
-        currentCat = Values.approached_cat;
+        currentCat = DataPersistenceManager.instance.gameData.approached_cat;
         currentCat.transform.position = new Vector3(0, -5, 2);
         currentCat.transform.rotation = Quaternion.Euler(0, 180, 0);
         currentCat.SetActive(true);
@@ -194,11 +194,11 @@ public class CatDebug : MonoBehaviour
         if (isCatBefriended)
         {
             befriendedCat.gameObject.SetActive(false);
-            Values.befriended_cats.Add(befriendedCat.gameObject);
+            CatsList.instance.befriended_cats.Add(befriendedCat.gameObject);
             GameObject.DontDestroyOnLoad(befriendedCat);
-            if (!(Values.collected_cat_types.Contains(befriendedCat.GetCatType())))
+            if (!(DataPersistenceManager.instance.gameData.collected_cat_types.Contains(befriendedCat.GetCatType())))
             {
-                Values.collected_cat_types.Add(befriendedCat.GetCatType());
+                DataPersistenceManager.instance.gameData.collected_cat_types.Add(befriendedCat.GetCatType());
                 //GameObject tooltipObj = GameObject.Instantiate(catTooltipUI, canvas.transform);
                 //Text tooltipTxt = tooltipObj.transform.GetChild(0).gameObject.GetComponent<Text>();
                 //Button tooltipCloseBtn = tooltipObj.transform.GetChild(1).gameObject.GetComponent<Button>();
@@ -215,16 +215,16 @@ public class CatDebug : MonoBehaviour
             befriendedCat.ui.ShowAffinity(false);
             befriendSuccess.SetActive(true);
 
-            if (Values.befriended_cats.Count == 1)
+            if (CatsList.instance.befriended_cats.Count == 1)
             {
                 Timers.Instance.StartCatShuffleTimer();
                 Timers.Instance.StartReplaceCatTimer();
             }
                 
 
-            if(Values.befriended_cats.Count <= 4)
+            if(CatsList.instance.befriended_cats.Count <= 4)
             {
-                Values.selected_cats[Values.befriended_cats.Count - 1] = befriendedCat.gameObject;
+                CatsList.instance.selected_cats[CatsList.instance.befriended_cats.Count - 1] = befriendedCat.gameObject;
             }
         }
 
@@ -239,7 +239,7 @@ public class CatDebug : MonoBehaviour
 
     public void GoToHQ()
     {
-        foreach (GameObject go in Values.befriended_cats)
+        foreach (GameObject go in CatsList.instance.befriended_cats)
         {
             
         }

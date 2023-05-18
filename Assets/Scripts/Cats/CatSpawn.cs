@@ -59,9 +59,9 @@ public class CatSpawn : MonoBehaviour
 			if (animeowSceneManager.gameObject.activeSelf)
 			{
                 animeowSceneManager.catTapped(this.gameObject);
-				Values.approached_cat = GameObject.Instantiate(this.gameObject);
-				Values.approached_cat.SetActive(false);
-				GameObject.DontDestroyOnLoad(Values.approached_cat);
+                DataPersistenceManager.instance.gameData.approached_cat = GameObject.Instantiate(this.gameObject);
+                DataPersistenceManager.instance.gameData.approached_cat.SetActive(false);
+				GameObject.DontDestroyOnLoad(DataPersistenceManager.instance.gameData.approached_cat);
 				LoadScene.LoadCatBefriendingScene();
 			}
 		}

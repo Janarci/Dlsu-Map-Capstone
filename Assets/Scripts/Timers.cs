@@ -87,7 +87,7 @@ public class Timers : MonoBehaviour
         public override void Execute()
         {
             base.Execute();
-            Values.runTime = elapsedTime;
+            DataPersistenceManager.instance.gameData.runTime = elapsedTime;
             LoadScene.LoadEndScene();
         }
     }
@@ -127,7 +127,7 @@ public class Timers : MonoBehaviour
         public override void Execute()
         {
             base.Execute();
-            if(Values.befriended_cats.Count > 4)
+            if(CatsList.instance.befriended_cats.Count > 4)
             {
                 List<int> holders = new List<int> { -1, -1, -1, -1 };
                 for(int i = 0; i < 4; i++)
@@ -135,10 +135,10 @@ public class Timers : MonoBehaviour
                     int rnd = 0;
                     do
                     {
-                        rnd = UnityEngine.Random.Range(0, Values.befriended_cats.Count - 1);
+                        rnd = UnityEngine.Random.Range(0, CatsList.instance.befriended_cats.Count - 1);
                     } while (holders.Contains(rnd));
 
-                    Values.selected_cats[i] = Values.befriended_cats[rnd];
+                    CatsList.instance.selected_cats[i] = CatsList.instance.befriended_cats[rnd];
                     holders[i] = rnd;
                 }
             }
@@ -158,7 +158,7 @@ public class Timers : MonoBehaviour
         public override void Execute()
         {
             base.Execute();
-            CatsList.AddNewCatToQueue();
+            CatsList.instance.AddNewCatToQueue();
         }
     }
 
@@ -210,8 +210,8 @@ public class Timers : MonoBehaviour
                 csu.RemoveCatFromSpawnList(cat.gameObject);
             }
 
-            if (CatsList.stashed_cat_spawns.Contains(cat.gameObject))
-                CatsList.stashed_cat_spawns.Remove(cat.gameObject);
+            if (CatsList.instance.stashed_cat_spawns.Contains(cat.gameObject))
+                CatsList.instance.stashed_cat_spawns.Remove(cat.gameObject);
 
             GameObject.Destroy(cat.gameObject);
         }

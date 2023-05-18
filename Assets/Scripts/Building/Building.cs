@@ -149,9 +149,9 @@ public class Building : MonoBehaviour
         {
             partMatsTemp = new List<Material>();
             r.GetMaterials(partMatsTemp);
+            partMats.AddRange(partMatsTemp);
         }
 
-        partMats.AddRange(partMatsTemp);
 
         return partMats;
     }

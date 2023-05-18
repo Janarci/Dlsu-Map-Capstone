@@ -40,11 +40,12 @@ public class ChillSpacesManager : MonoBehaviour
         //}
         isInitialized = false;
         //InitializeChillspaceManager();
-        InitializeChillspaceManager();
+        //InitializeChillspaceManager();
     }
 
-    void InitializeChillspaceManager()
+    public void InitializeChillspaceManager()
     {
+        if(!isInitialized)
         StartCoroutine(Initialize());
     }
     IEnumerator Initialize()
@@ -68,7 +69,7 @@ public class ChillSpacesManager : MonoBehaviour
             }
             
             
-            if (Values.unlocked_chillspaces.Contains(cs.GetArea()))
+            if (DataPersistenceManager.instance.gameData.unlocked_chillspaces.Contains(cs.GetArea()))
                 cs.Unlock();
 
             yield return null;

@@ -53,10 +53,10 @@ public class Sector : MonoBehaviour
 
     public void Unlock()
     {
-        if (!Values.unlocked_sectors.Contains(id))
+        if (!DataPersistenceManager.instance.gameData.unlocked_sectors.Contains(id))
         {
             //DisplayTooltip();
-            Values.unlocked_sectors.Add(id);
+            DataPersistenceManager.instance.gameData.unlocked_sectors.Add(id);
         }
 
         isUnlocked = true;
@@ -85,7 +85,7 @@ public class Sector : MonoBehaviour
         //    infoUI.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(delegate { Destroy(infoUI); });
         //}
 
-        if(!(Values.unlocked_sectors.Contains(id)))
+        if(!(DataPersistenceManager.instance.gameData.unlocked_sectors.Contains(id)))
         {
             PopupGenerator.Instance?.GenerateCloseablePopup(
             "You have unlocked Sector: " + id

@@ -33,13 +33,13 @@ public class UpdateCats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Values.befriended_cats.Count > 0)
+        if (CatsList.instance.befriended_cats.Count > 0)
         {
             int availableCats = 0;
 
-            foreach (GameObject cat in Values.befriended_cats)
+            foreach (GameObject cat in CatsList.instance.befriended_cats)
             {
-                if (Array.Exists<GameObject>(Values.selected_cats, selectedCat => selectedCat == cat))
+                if (Array.Exists<GameObject>(CatsList.instance.selected_cats, selectedCat => selectedCat == cat))
                 {
                     Cat catComp = cat.GetComponent<Cat>();
 
@@ -50,10 +50,10 @@ public class UpdateCats : MonoBehaviour
 
                         for (int i = 0; i < 4; i++)
                         {
-                            if (Values.selected_cats[i] == cat)
+                            if (CatsList.instance.selected_cats[i] == cat)
                             {
                                 Debug.LogError("Removing selected cat index " + i);
-                                Values.selected_cats[i] = null;
+                                CatsList.instance.selected_cats[i] = null;
 
                                 PopupGenerator.Instance?.GenerateCloseablePopup(CatDatabase.Instance.GetCatData(catComp.GetCatType()).catTypeLabel + " has left the HQ");
                                 break;
@@ -82,7 +82,7 @@ public class UpdateCats : MonoBehaviour
 
     public void CatHQStayRequest()
     {
-        if (Values.befriended_cats.Count > 4 && !isReplacing)
+        if (CatsList.instance.befriended_cats.Count > 4 && !isReplacing)
         {
             Cat catComp = null;
 
@@ -91,8 +91,8 @@ public class UpdateCats : MonoBehaviour
             int counter = 0;
             do
             {
-                GameObject _replacementCat = Values.befriended_cats[UnityEngine.Random.Range(0, Values.befriended_cats.Count)];
-                if (!(Array.Exists<GameObject>(Values.selected_cats, _cat => _cat == _replacementCat)))
+                GameObject _replacementCat = CatsList.instance.befriended_cats[UnityEngine.Random.Range(0, CatsList.instance.befriended_cats.Count)];
+                if (!(Array.Exists<GameObject>(CatsList.instance.selected_cats, _cat => _cat == _replacementCat)))
                 {
                     replacementCat = _replacementCat;
                     catComp = replacementCat.GetComponent<Cat>();

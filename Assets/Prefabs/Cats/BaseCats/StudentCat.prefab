@@ -996,7 +996,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1542949750351094304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1880,6 +1880,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CatCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695736132472725308, guid: 576d7483e2f883a4797049f0039351e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4163892310211107104, guid: 576d7483e2f883a4797049f0039351e9,
         type: 3}

@@ -239,9 +239,9 @@ public class HQUI : MonoBehaviour
     {
         if(catTooltipUI)
         {
-            if (!(Values.collected_cat_types.Contains(focusedCat.GetCatType())))
+            if (!(DataPersistenceManager.instance.gameData.collected_cat_types.Contains(focusedCat.GetCatType())))
             {
-                Values.collected_cat_types.Add(focusedCat.GetCatType());
+                DataPersistenceManager.instance.gameData.collected_cat_types.Add(focusedCat.GetCatType());
                 GameObject tooltipObj = GameObject.Instantiate(catTooltipUI, canvas.transform);
                 Text tooltipTxt = tooltipObj.transform.GetChild(0).gameObject.GetComponent<Text>();
                 Button tooltipCloseBtn = tooltipObj.transform.GetChild(1).gameObject.GetComponent<Button>();
@@ -279,7 +279,7 @@ public class HQUI : MonoBehaviour
         //    UpdateEvolutionMaterials();
         //}
 
-        if(!Values.collected_cat_types.Contains(evolvedType))
+        if(!DataPersistenceManager.instance.gameData.collected_cat_types.Contains(evolvedType))
         {
             PopupGenerator.Instance.GenerateCloseablePopup(newCat.GetCatTooltip());
         }

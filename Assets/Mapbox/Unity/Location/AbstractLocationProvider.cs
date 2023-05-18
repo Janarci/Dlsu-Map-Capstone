@@ -25,5 +25,7 @@
 		{
 			OnLocationUpdated(location);
 		}
-	}
+
+       
+    }
 }

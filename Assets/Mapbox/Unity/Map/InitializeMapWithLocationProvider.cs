@@ -28,6 +28,7 @@
 		{
 			_locationProvider.OnLocationUpdated -= LocationProvider_OnLocationUpdated;
 			_map.Initialize(location.LatitudeLongitude, _map.AbsoluteZoom);
+			MapTracker.isMapInitialized = true;
 			EventManager.InitializeMap();
 		}
 	}

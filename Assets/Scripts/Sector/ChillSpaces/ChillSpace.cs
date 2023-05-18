@@ -102,7 +102,7 @@ public class ChillSpace : MonoBehaviour
     {
         if(isLocked)
         {
-            Values.unlocked_chillspaces.Add(this.GetArea());
+            DataPersistenceManager.instance.gameData.unlocked_chillspaces.Add(this.GetArea());
             Timers.Instance?.AddChillspaceAreaCooldown(this.GetArea());
             Debug.Log("Unlocked a chillspace");
             ui.SetBtnText("Claim Item");

@@ -25,7 +25,7 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
 	void Start()
     {
         EventManager.OnCatClick += OnCatClicked;
-        CatsList.num_base_cats = availableDroids.Length;
+        CatsList.instance.num_base_cats = availableDroids.Length;
         SpawnStashedCats();
     }
 
@@ -100,10 +100,10 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
 
     public void SpawnStashedCats()
     {
-        for(int i = 0; i < CatsList.stashed_cat_spawns.Count; i++)
+        for(int i = 0; i < CatsList.instance.stashed_cat_spawns.Count; i++)
         {
-            CatsList.stashed_cat_spawns[i].SetActive(true);
-            spawnedCats.Add(CatsList.stashed_cat_spawns[i]);
+            CatsList.instance.stashed_cat_spawns[i].SetActive(true);
+            spawnedCats.Add(CatsList.instance.stashed_cat_spawns[i]);
         }
     }
     public void OnCatClicked(Cat clickedCat)
@@ -112,9 +112,9 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
         if(IsWithinRangeOfCats(player.transform.position).Contains(clickedCat.gameObject))
         {
             //Values.approached_cat = GameObject.Instantiate(clickedCat.gameObject);
-            Values.approached_cat = clickedCat.gameObject;
-            Values.approached_cat.SetActive(false);
-            GameObject.DontDestroyOnLoad(Values.approached_cat);
+            DataPersistenceManager.instance.gameData.approached_cat = clickedCat.gameObject;
+            DataPersistenceManager.instance.gameData.approached_cat.SetActive(false);
+            GameObject.DontDestroyOnLoad(DataPersistenceManager.instance.gameData.approached_cat);
             Timers.Instance.EndCatDurationCountdown(clickedCat);
             spawnedCats.Remove(clickedCat.gameObject);
             LoadScene.LoadCatBefriendingScene();
@@ -126,10 +126,14 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
         EventManager.OnCatClick -= OnCatClicked;
         for(int i = 0; i < spawnedCats.Count; i++)
         {
-            spawnedCats[i].SetActive(false);
+            if (spawnedCats[i])
+            {
+                spawnedCats[i].SetActive(false);
 
-            if (!(CatsList.stashed_cat_spawns.Contains(spawnedCats[i])))
-                CatsList.stashed_cat_spawns.Add(spawnedCats[i]);
+                if (!(CatsList.instance.stashed_cat_spawns.Contains(spawnedCats[i])))
+                    CatsList.instance.stashed_cat_spawns.Add(spawnedCats[i]);
+            }
+            
 
         }
     }

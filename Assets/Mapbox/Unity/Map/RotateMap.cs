@@ -21,4 +21,9 @@ public class RotateMap : MonoBehaviour
     {
         shouldRotate = _shouldRotate;
     }
+
+    public void OnDestroy()
+    {
+        MapTracker.isMapInitialized = false;
+    }
 }

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,17 +50,39 @@ public class LoadMapScene : MonoBehaviour
         //    yield return null;
 
         //}
-        while(
-            (
-            (!CatDatabase.Instance.isInitialized)
-            ||
-            (!(SectorManager.Instance.isInitialized))
-            ||
-            (!(ChillSpacesManager.Instance.isInitialized))
-            ||
-            (!CameraManager.Instance.isInitialized)))
+
+        CameraManager.Instance.InitializeARCamera();
+        while(!CameraManager.Instance.isInitialized)
         {
-            //Debug.Log("loading");
+            Debug.Log("Initializing Camera");
+            yield return null;
+        }
+
+        CatDatabase.Instance.InitializeCatDatabase();
+        while (!CatDatabase.Instance.isInitialized)
+        {
+            Debug.Log("Initializing Cats");
+            yield return null;
+        }
+
+        DataPersistenceManager.instance.InitializeGameData();
+        while (!DataPersistenceManager.instance.isInitialized)
+        {
+            Debug.Log("Initializing Game Data");
+            yield return null;
+        }
+
+        ChillSpacesManager.Instance.InitializeChillspaceManager();
+        while (!ChillSpacesManager.Instance.isInitialized)
+        {
+            Debug.Log("Initializing Chillspaces");
+            yield return null;
+        }
+
+        SectorManager.Instance.InitializeSectors();
+        while (!SectorManager.Instance.isInitialized)
+        {
+            Debug.Log("Initializing Sectors");
             yield return null;
         }
 
