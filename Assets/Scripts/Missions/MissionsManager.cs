@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -16,7 +17,7 @@ public class MissionsManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
         }
             
 
@@ -25,16 +26,20 @@ public class MissionsManager : MonoBehaviour
     }
     void Start()
     {
-        Initialize();
+        isInitialized = false;
+        //Initialize();
 
     }
 
 
-    void InitializeMissionsManager()
+    public void InitializeMissionsManager()
     {
-        //StartCoroutine(Initialize());
+        if(!isInitialized)
+        {
+            StartCoroutine(Initialize());
+        }
     }
-    private void Initialize()
+    private IEnumerator Initialize()
     {
         missionList = new Dictionary<int, Mission>();
         //EventManager.Instance.OnMissionTargetDetected += OnTargetFound;
@@ -76,6 +81,7 @@ public class MissionsManager : MonoBehaviour
 
 
             Debug.Log("Adding mission " + missionObj.name + " to list of missions");
+            yield return null;
         }
 
         isInitialized = true;
@@ -114,16 +120,20 @@ public class MissionsManager : MonoBehaviour
     {
         //Instance = null;
 
-        foreach (Mission _mission in missionList.Values)
+        if(missionList != null)
         {
-            GameObject missionObj = _mission.gameObject;
-            if (missionObj.TryGetComponent(out ObserverBehaviour ob))
+            foreach (Mission _mission in missionList.Values)
             {
-                ob.OnTargetStatusChanged -= OnTargetStatusChanged;
+                GameObject missionObj = _mission.gameObject;
+                if (missionObj.TryGetComponent(out ObserverBehaviour ob))
+                {
+                    ob.OnTargetStatusChanged -= OnTargetStatusChanged;
+                }
+
+
+                Debug.Log("removing mission " + missionObj.name + " to list of missions");
             }
-
-
-            Debug.Log("removing mission " + missionObj.name + " to list of missions");
         }
+        
     }
 }

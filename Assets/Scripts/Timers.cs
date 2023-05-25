@@ -147,7 +147,7 @@ public class Timers : MonoBehaviour
 
     public class SpawnCatsTimer : Timer
     {
-        public SpawnCatsTimer() : base(5, true)
+        public SpawnCatsTimer() : base(2, true)
         {
 
         }

@@ -21,12 +21,12 @@ public class Mission : MonoBehaviour
         return target;
     }
 
-    void Start()
+    protected void Start()
     {
         
     }
 
-    public void CompleteMission()
+    public virtual void CompleteMission()
     {
         //isMissionComplete = true;
         EventManager.MissionPerformed(this.id);

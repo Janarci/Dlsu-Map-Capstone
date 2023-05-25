@@ -84,7 +84,7 @@ public class Catalog : MonoBehaviour
             catTypeTxt.GetComponent<Text>().text = type.ToString();
 
         Cat cat = CatDatabase.Instance.GetCatData(type).script;
-        foreach (KeyValuePair<CatType.Type, Dictionary<CatEvolutionItem.cat_evolution_item_type, int>> pair in cat.evolution_requirements)
+        foreach (CatEvolutionRequirement evolution in CatDatabase.Instance.GetCatData(type).evolutions)
         {
             //Debug.Log(pair.Key);
 
@@ -97,17 +97,17 @@ public class Catalog : MonoBehaviour
             GameObject textComp = newButtonObj.transform.GetChild(0).gameObject;
             
 
-            if(pair.Key != cat.evolution_requirements.Keys.First())
+            if(evolution != CatDatabase.Instance.GetCatData(type).evolutions[0])
             curry++;
 
-            Cat nextCat = CatDatabase.Instance.GetCatData(pair.Key).script;
+            Cat nextCat = CatDatabase.Instance.GetCatData(evolution.catType).script;
             string tooltip = nextCat.GetCatTooltip();
 
             newButtonObj.transform.localPosition = new Vector3((x * 100) + 100, (curry * -100) - 200, 0);
 
-            if(DataPersistenceManager.instance.gameData.collected_cat_types.Contains(pair.Key))
+            if(CatsList.instance.collected_cat_types.Contains(evolution.catType))
             {
-                textComp.GetComponent<Text>().text = pair.Key.ToString();
+                textComp.GetComponent<Text>().text = CatDatabase.Instance.GetCatData(evolution.catType).catTypeLabel;
                 buttonComp.onClick.AddListener(delegate { PopupGenerator.Instance?.GenerateCloseablePopup(tooltip); });
             }
 
@@ -136,7 +136,7 @@ public class Catalog : MonoBehaviour
                 lr.Add(newLine);
             }
             
-            DisplayEvolutionPathsAvailable(pair.Key, x+1, newButtonObj);
+            DisplayEvolutionPathsAvailable(evolution.catType, x+1, newButtonObj);
 
 
         }

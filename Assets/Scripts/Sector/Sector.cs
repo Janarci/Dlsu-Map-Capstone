@@ -12,7 +12,8 @@ public class Sector : MonoBehaviour
     [SerializeField] private int id;
     [SerializeField] private GameObject sectorBlockerObj;
     [SerializeField] private GameObject TooltipUI;
-    [SerializeField] List<ChillSpace.Area> chillSpaces;
+    public Building.Type type;
+    //[SerializeField] List<ChillSpace.Area> chillSpaces;
 
     private Building building;
 
@@ -28,10 +29,10 @@ public class Sector : MonoBehaviour
         id = sectorID;
         ShowBlocker();
         isUnlocked = false;
-        if(chillSpaces == null)
-        {
-            chillSpaces = new List<ChillSpace.Area>();
-        }
+        //if(chillSpaces == null)
+        //{
+        //    chillSpaces = new List<ChillSpace.Area>();
+        //}
 
         EventManager.InitializeSector(this, gameObject.GetComponent<Building>());
     }
@@ -53,10 +54,10 @@ public class Sector : MonoBehaviour
 
     public void Unlock()
     {
-        if (!DataPersistenceManager.instance.gameData.unlocked_sectors.Contains(id))
+        if (!DataPersistenceManager.instance.gameData.unlocked_sectors.Contains(type))
         {
             //DisplayTooltip();
-            DataPersistenceManager.instance.gameData.unlocked_sectors.Add(id);
+            DataPersistenceManager.instance.gameData.unlocked_sectors.Add(type);
         }
 
         isUnlocked = true;
@@ -68,10 +69,12 @@ public class Sector : MonoBehaviour
         //{
         //    ChillSpacesManager.Instance.UnlockChillSpace(cs);
         //}
+        int csCount = BuildingDatabase.Instance.GetDataInfo(type).chillspaces.Count;
 
-        for(int i = 0; i < chillSpaces.Count; i++)
+        for (int i = 0; i < csCount; i++)
         {
-            ChillSpacesManager.Instance.UnlockChillSpace(chillSpaces[i]);
+            ChillSpace.Area cs = BuildingDatabase.Instance.GetDataInfo(type).chillspaces[i];
+            ChillSpacesManager.Instance.UnlockChillSpace(cs);
         }
     }
 
@@ -85,7 +88,7 @@ public class Sector : MonoBehaviour
         //    infoUI.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(delegate { Destroy(infoUI); });
         //}
 
-        if(!(DataPersistenceManager.instance.gameData.unlocked_sectors.Contains(id)))
+        if(!(DataPersistenceManager.instance.gameData.unlocked_sectors.Contains(type)))
         {
             PopupGenerator.Instance?.GenerateCloseablePopup(
             "You have unlocked Sector: " + id
@@ -234,10 +237,10 @@ public class Sector : MonoBehaviour
         return id;
     }
 
-    public List<ChillSpace.Area> GetChillSpaces()
-    {
-        return chillSpaces;
-    }
+    //public List<ChillSpace.Area> GetChillSpaces()
+    //{
+    //    return chillSpaces;
+    //}
 
     public Building GetBuilding()
     {

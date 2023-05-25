@@ -33,19 +33,20 @@ public class CatalogBuildingInfo : MonoBehaviour
         bool isSectorUnlocked = false;
 
         for (int i = 0; i < DataPersistenceManager.instance.gameData.unlocked_sectors.Count; i++)
-        { 
-            int j = DataPersistenceManager.instance.gameData.unlocked_sectors[i];
-            if (SectorManager.Instance.GetSector(j).GetBuilding().type == data.type)
+        {
+            //int j = DataPersistenceManager.instance.gameData.unlocked_sectors[i];
+            Building.Type bldgType = DataPersistenceManager.instance.gameData.unlocked_sectors[i];
+
+            if (bldgType == data.type)
             {
                 isSectorUnlocked = true;
                 break;
-                
             }
         }
         
         if(isSectorUnlocked)
         {
-            buildingPicture.sprite = data.icon;
+            buildingPicture.sprite = data.picture;
             buildingName.text = data.name;
             buildingInfo.text = data.description;
 
@@ -53,7 +54,7 @@ public class CatalogBuildingInfo : MonoBehaviour
         }
         else
         {
-            buildingPicture.sprite = data.icon;
+            buildingPicture.sprite = data.picture;
             buildingName.text = data.name;
             buildingInfo.text = "LOCKED";
 

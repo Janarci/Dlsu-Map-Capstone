@@ -17,7 +17,7 @@ public class SectorManager : MonoBehaviour
      * 1 = LS
      * 2 = Henry Sy
      */
-    [SerializeField] private Dictionary<int, Sector> sectorList;
+    [SerializeField] private Dictionary<Building.Type, Sector> sectorList;
     public List<Sector> visualList;
 
     private float spawnCatInterval = 4.0f;
@@ -44,7 +44,7 @@ public class SectorManager : MonoBehaviour
         //EventManager.OnInitializeMap += InitializeSectors;
         EventManager.OnMissionComplete += OnMissionComplete;
         //EventManager.OnCatClick += OnCatClickedInSector;
-        sectorList = new Dictionary<int, Sector>();
+        sectorList = new Dictionary<Building.Type, Sector>();
         isInitialized = false;
         visualList = new List<Sector>();
     }
@@ -92,11 +92,11 @@ public class SectorManager : MonoBehaviour
             }
 
             visualList.Add(s);
-            sectorList[s.getID()] = s;
+            sectorList[s.type] = s;
             s.SetSectorBlockerObj(s.gameObject.transform.GetChild(0).gameObject);
             Debug.Log("adding sector with id: " + s.getID() + " to sector list");
             s.InitializeSector();
-            UnlockSector(s.getID());
+            UnlockSector(s.type);
             yield return null;
         }
         
@@ -113,9 +113,15 @@ public class SectorManager : MonoBehaviour
         StartCoroutine(GenerateCatsInSector());
     }
 
-    private void UnlockSector(int sectorIndex)
+    //private void UnlockSector(int sectorIndex)
+    //{
+    //    sectorList[sectorIndex]?.Unlock();
+    //}
+
+    public void UnlockSector(Building.Type bldgType)
     {
-        sectorList[sectorIndex]?.Unlock();
+        if(sectorList.ContainsKey(bldgType))
+            sectorList[bldgType].Unlock();
     }
 
     void OnMissionComplete(int missionID)
@@ -133,17 +139,17 @@ public class SectorManager : MonoBehaviour
         //    }
         //}
 
-        if(sectorList.ContainsKey(missionID))
-        {
-            sectorList[missionID].DisplayTooltip();
+        //if(sectorList.ContainsKey(missionID))
+        //{
+        //    sectorList[missionID].DisplayTooltip();
 
-            if (sectorList[missionID].isUnlocked == false)
-            {
-                UnlockSector(missionID);
-            }
+        //    if (sectorList[missionID].isUnlocked == false)
+        //    {
+        //        UnlockSector(missionID);
+        //    }
 
             
-        }
+        //}
         
     }
 
@@ -155,13 +161,14 @@ public class SectorManager : MonoBehaviour
 
             if(CatsList.instance.queuedSpawns.Count != 0)
             {
-                if (sectorList[CatsList.instance.queuedSpawns.Last().Value].isUnlocked)
+                Building.Type sctr = (Building.Type)CatsList.instance.queuedSpawns.Last().Value;
+                if (sectorList[sctr].isUnlocked)
                 {
                     CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
 
-                    Rect sectAreaRect = sectorList[CatsList.instance.queuedSpawns.Last().Value].GetAreaRect();
+                    Rect sectAreaRect = sectorList[sctr].GetAreaRect();
                     if (sectAreaRect != Rect.zero)
-                        csu?.InstantiateDroid(CatsList.instance.queuedSpawns.Last().Key, sectorList[CatsList.instance.queuedSpawns.Last().Value].transform, sectorList[CatsList.instance.queuedSpawns.Last().Value].GetAreaRect());
+                        csu?.InstantiateDroid(CatsList.instance.queuedSpawns.Last().Key, sectorList[sctr].transform, sectorList[sctr].GetAreaRect());
 
                     Debug.Log("Spawning cat in sector " + CatsList.instance.queuedSpawns.Last().Value);
                 }
@@ -196,7 +203,8 @@ public class SectorManager : MonoBehaviour
     
     public void SpawnCatsInSector(int sectorIndex)
     {
-        if (sectorList[sectorIndex])
+        Building.Type sectorType = (Building.Type)sectorIndex;
+        if (sectorList[sectorType])
         {
             //if (sectorList[sectorIndex].isUnlocked)
             //{
@@ -211,9 +219,9 @@ public class SectorManager : MonoBehaviour
         }
     }
 
-    public Sector GetSector(int i)
+    public Sector GetSector(Building.Type bldgType)
     {
-        return sectorList[i];
+        return sectorList[bldgType];
     }
 
     public int GetSectorCount()

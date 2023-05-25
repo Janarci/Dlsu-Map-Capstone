@@ -196,9 +196,9 @@ public class CatDebug : MonoBehaviour
             befriendedCat.gameObject.SetActive(false);
             CatsList.instance.befriended_cats.Add(befriendedCat.gameObject);
             GameObject.DontDestroyOnLoad(befriendedCat);
-            if (!(DataPersistenceManager.instance.gameData.collected_cat_types.Contains(befriendedCat.GetCatType())))
+            if (!(CatsList.instance.collected_cat_types.Contains(befriendedCat.GetCatType())))
             {
-                DataPersistenceManager.instance.gameData.collected_cat_types.Add(befriendedCat.GetCatType());
+                CatsList.instance.UnlockCatType(befriendedCat.GetCatType());
                 //GameObject tooltipObj = GameObject.Instantiate(catTooltipUI, canvas.transform);
                 //Text tooltipTxt = tooltipObj.transform.GetChild(0).gameObject.GetComponent<Text>();
                 //Button tooltipCloseBtn = tooltipObj.transform.GetChild(1).gameObject.GetComponent<Button>();

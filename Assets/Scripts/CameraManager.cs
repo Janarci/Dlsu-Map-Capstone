@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;
+using Vuforia.Internal;
 using UnityEngine.SceneManagement;
 public class CameraManager : MonoBehaviour
 {
@@ -39,14 +40,24 @@ public class CameraManager : MonoBehaviour
     public void InitializeARCamera()
     {
         EnableARCamera();
-        ARCamera.gameObject.GetComponent<VuforiaBehaviour>().enabled = true;
-        ARCamera.gameObject.GetComponent<DefaultInitializationErrorHandler>().enabled = true;
+        StartCoroutine(LoadVuforia());
+    }
 
+    IEnumerator LoadVuforia()
+    {
+        ARCamera.gameObject.GetComponent<VuforiaBehaviour>().enabled = true;
+        yield return null;
+
+        ARCamera.gameObject.GetComponent<DefaultInitializationErrorHandler>().enabled = true;
+        yield return null;
+        
+        Debug.Log("Loading vuforia");
         VuforiaApplication.Instance.Initialize();
-        EnableWorldCamera();
         isInitialized = true;
+        EnableWorldCamera();
 
     }
+
 
     void Update()
     {

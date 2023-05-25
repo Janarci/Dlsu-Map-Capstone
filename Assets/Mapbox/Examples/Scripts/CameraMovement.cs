@@ -182,9 +182,9 @@ namespace Mapbox.Examples
 		{
             Vector3 newPos = Vector3.zero;
 
-            newPos.x = Math.Clamp(transform.localPosition.x, -120, 120);
-            newPos.y = Math.Clamp(transform.localPosition.y, 25, 80);
-            newPos.z = Math.Clamp(transform.localPosition.z, -120, 120);
+            newPos.x = Math.Clamp(transform.localPosition.x, -300, 300);
+            newPos.y = Math.Clamp(transform.localPosition.y, 62.5f, 200);
+            newPos.z = Math.Clamp(transform.localPosition.z, -300, 300);
 
 
             transform.localPosition = newPos;

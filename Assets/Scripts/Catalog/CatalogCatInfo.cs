@@ -37,7 +37,7 @@ public class CatalogCatInfo : MonoBehaviour
 
         if(CatDatabase.Instance.GetCatData(type).icon != null)
         {
-            //if (DataPersistenceManager.instance.gameData.collected_cat_types.Contains(type))
+            //if (CatsList.instance.collected_cat_types.Contains(type))
             //    catPicture.sprite = CatDatabase.Instance.GetCatData(type).icon;
 
             //else
@@ -58,20 +58,22 @@ public class CatalogCatInfo : MonoBehaviour
                 Destroy(catItemsContent.GetChild(i).gameObject);
             }
 
-        if(DataPersistenceManager.instance.gameData.collected_cat_types.Contains(type) )
+        if(CatsList.instance.collected_cat_types.Contains(type))
         {
             List<CatEvolutionItem.cat_evolution_item_type> addedItems = new List<CatEvolutionItem.cat_evolution_item_type>();
-            foreach (CatType.Type evolutionType in CatDatabase.Instance.GetCatData(type).script.evolution_requirements.Keys)
+            foreach (CatEvolutionRequirement direct_evolutions in CatDatabase.Instance.GetCatData(type).evolutions)
             {
                 //GameObject _catItem = Instantiate(catItem, catItemsContent);
                 //_catItem.GetComponent<Image>().sprite = Inventory.Instance?.GetDataInfo(item).icon;
-                foreach (CatEvolutionItem.cat_evolution_item_type item in CatDatabase.Instance.GetCatData(type).script.evolution_requirements[evolutionType].Keys)
+                foreach (CatEvolutionRequirement.EvolutionRequirement requirement in direct_evolutions.requirement)
                 {
+                    CatEvolutionItem.cat_evolution_item_type item = requirement.item;
                     if (!addedItems.Contains(item))
                     {
                         addedItems.Add(item);
                         GameObject _catItem = Instantiate(catItem, catItemsContent);
                         _catItem.GetComponent<Image>().sprite = Inventory.Instance?.GetDataInfo(item).icon;
+                        Debug.Log("added item: " + item);
                     }
 
 
@@ -94,7 +96,7 @@ public class CatalogCatInfo : MonoBehaviour
                 Destroy(habitatItemsContent.GetChild(i).gameObject);
             }
 
-        if(DataPersistenceManager.instance.gameData.collected_cat_types.Contains(type))
+        if(CatsList.instance.collected_cat_types.Contains(type))
         {
             foreach (ChillSpace.Area chillspace in ChillSpaceDatabase.Instance.GetDataList())
             {

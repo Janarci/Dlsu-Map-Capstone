@@ -7,7 +7,9 @@
 	public class ImmediatePositionWithLocationProvider : MonoBehaviour
 	{
 
+		[SerializeField] Animator animator;
 		bool _isInitialized;
+		bool _isMoving = false;
 
 		ILocationProvider _locationProvider;
 		ILocationProvider LocationProvider
@@ -42,14 +44,26 @@
 				if(initialPos != finalPos)
 				{
 					//walk
+					if(animator && !_isMoving)
+					{
+						Debug.Log("start walking");
+						_isMoving = true;
+						animator.SetTrigger("Walk");
+					}
 				}
 
 				else
 				{
-					//dont walk
-				}
+                    //dont walk
+					if(animator && _isMoving)
+					{
+						_isMoving = false;
+                        animator.SetTrigger("Stop");
+                    }
 
-			}
+                }
+
+            }
 		}
 	}
 }
