@@ -39,7 +39,7 @@ public class TheaterCat : Cat
     protected override void InitializeCatType()
     {
         school_tip = "Are you into theater? Then you might be interested in joining the Harlequin Theatre Guild (HTG)!";
-        this.type = CatType.Type.IT_cat;
+        this.type = CatType.Type.theater_cat;
     }
 
     //protected override void InitializeCatFavors()

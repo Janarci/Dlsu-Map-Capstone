@@ -45,7 +45,8 @@ public class CatType
         singer_cat,
         theater_cat,
         USG_cat,
-        varisty_cat
+        varisty_cat,
+        scholar_cat
     }
 
     public Type type = Type.basic_cat;
@@ -244,6 +245,7 @@ public class Ailment
 
 public class Cat : MonoBehaviour
 {
+    public int id { get; private set; }
     private bool isWalking = false;
     private float walkingTick = 0.0f;
     private float changeDirectionInterval = 6.0f;
@@ -304,6 +306,7 @@ public class Cat : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        id = -1;
         //InitializeCat();
         ui = GetComponentInChildren<CatUI>();
 
@@ -367,6 +370,10 @@ public class Cat : MonoBehaviour
 
     private void InitializeCat()
     {
+
+        if (id == -1 && CatsManager.instance)
+            id = CatsManager.instance.spawn_index;
+
         InitializeCatType();
         InitializeCatFavors();
         InitializeInventory();
@@ -374,8 +381,9 @@ public class Cat : MonoBehaviour
         InitializeAilments();
     }
 
-    public void InitializeCat(float _friendshipValue, float _relationshipValue, int _relationshipLevel, int _befriendAttempts, CatTrait.Type _trait, float _sadnessValue, float _boredomValue, float _dirtValue, float _hungerValue)
+    public void InitializeCat(int _id, float _friendshipValue, float _relationshipValue, int _relationshipLevel, int _befriendAttempts, CatTrait.Type _trait, float _sadnessValue, float _boredomValue, float _dirtValue, float _hungerValue)
     {
+        id = _id;
         friendship_value = _friendshipValue;
         relationship_value = _relationshipValue;
         relationship_level= _relationshipLevel;
@@ -514,6 +522,7 @@ public class Cat : MonoBehaviour
         this.befriendAttempts = copy_cat.befriendAttempts;
         this.relationship_value = 0;
         this.friendship_value = copy_cat.friendship_value;
+        this.id = copy_cat.id;
     }
 
 
@@ -609,7 +618,7 @@ public class Cat : MonoBehaviour
         else if (befriendAttempts >= 5)
         {
             EventManager.CatBefriend(this, false);
-
+            AchievementsManager.instance?.ProgressQuest(Quest.QuestCode.befriend_cats,1);
         }
         ui?.SetFriendshipBarValue(getFriendshipPercentage());
 
@@ -680,6 +689,23 @@ public class Cat : MonoBehaviour
             relationship_value = 0;
             ui?.SetLevel(relationship_level);
             Debug.Log(relationship_level);
+
+            if (relationship_level % 2 == 0)
+            {
+                if (CatDatabase.Instance.GetCatData(type).tooltips.Count() >= (relationship_level/2) && !(CatsManager.instance.unlocked_tooltips[type][(relationship_level/2)]))
+                {
+                    CatsManager.instance.unlocked_tooltips[type][(relationship_level / 2)] = true;
+                    if(PopupGenerator.Instance && CatDatabase.Instance)
+                    {
+                        PopupGenerator.Instance?.GenerateCloseablePopup(
+                            CatDatabase.Instance?.GetCatData(type).catTypeLabel + "says: " +
+                            "\n" +
+                            CatDatabase.Instance?.GetCatData(type).tooltips[relationship_level/2]
+                            );
+                    }
+                    
+                }
+            }
         }
 
         ui?.SetRelationshipBarValue(getRelationshipPercentage());
@@ -748,9 +774,9 @@ public class Cat : MonoBehaviour
     public List<CatType.Type> GetPossibleEvolutions()
     {
         List<CatType.Type> possibleEvolutions = new List<CatType.Type>();
-        foreach (KeyValuePair<CatType.Type, EvolutionMaterialInventory> pair in evolution_requirements)
+        foreach (CatEvolutionRequirement evolutions in CatDatabase.Instance.GetCatData(type).evolutions)
         {
-            possibleEvolutions.Add(pair.Key);
+            possibleEvolutions.Add(evolutions.catType);
         }
 
         return possibleEvolutions;
@@ -759,13 +785,31 @@ public class Cat : MonoBehaviour
     public List<CatType.Type> GetAvailableEvolutions()
     {
         List<CatType.Type> availableEvolutions = new List<CatType.Type>();
-        foreach (KeyValuePair<CatType.Type, EvolutionMaterialInventory> evolution_requirements_map in evolution_requirements)
+        //foreach (KeyValuePair<CatType.Type, EvolutionMaterialInventory> evolution_requirements_map in evolution_requirements)
+        //{
+        //    bool canEvolveToType = true;
+
+        //    foreach (KeyValuePair<CatEvolutionItem.cat_evolution_item_type, int> required_inventory in evolution_requirements_map.Value)
+        //    {
+        //        if (Inventory.Instance.Has(required_inventory.Key) < required_inventory.Value)
+        //        {
+        //            canEvolveToType = false;
+        //            break;
+        //        }
+        //    }
+
+        //    if (canEvolveToType)
+        //        availableEvolutions.Add(evolution_requirements_map.Key);
+        //}
+
+        foreach (CatEvolutionRequirement evolutions in CatDatabase.Instance.GetCatData(type).evolutions)
         {
             bool canEvolveToType = true;
 
-            foreach (KeyValuePair<CatEvolutionItem.cat_evolution_item_type, int> required_inventory in evolution_requirements_map.Value)
+            
+            foreach (CatEvolutionRequirement.EvolutionRequirement item_req in evolutions.requirement)
             {
-                if (Inventory.Instance.Has(required_inventory.Key) < required_inventory.Value)
+                if (Inventory.Instance.Has(item_req.item) < item_req.amount)
                 {
                     canEvolveToType = false;
                     break;
@@ -773,7 +817,7 @@ public class Cat : MonoBehaviour
             }
 
             if (canEvolveToType)
-                availableEvolutions.Add(evolution_requirements_map.Key);
+                availableEvolutions.Add(evolutions.catType);
         }
 
         return availableEvolutions;
@@ -804,11 +848,12 @@ public class Cat : MonoBehaviour
         Debug.Log("evolving");
         if (CanEvolveTo(evolve_type))
         {
-            foreach (CatEvolutionItem.cat_evolution_item_type evolution_item in evolution_requirements[evolve_type].Keys)
+            foreach (CatEvolutionRequirement.EvolutionRequirement req in (CatDatabase.Instance.GetCatData(type).evolutions.Find(_evo => _evo.catType == evolve_type)).requirement)
             {
-                EvolutionMaterialInventory inv = evolution_requirements[evolve_type];
-                material_inventory[evolution_item] -= inv[evolution_item];
-                Inventory.Instance.RemoveFromInventory(evolution_item, inv[evolution_item]);
+                //CatEvolutionItem.cat_evolution_item_type evolution_item = req.item;
+                //EvolutionMaterialInventory inv = evolution_requirements[evolve_type];
+                //material_inventory[evolution_item] -= inv[evolution_item];
+                Inventory.Instance.RemoveFromInventory(req.item, req.amount);
             }
 
             Cat evolvedCat = null;

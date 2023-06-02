@@ -141,8 +141,9 @@ public class CatUI : MonoBehaviour
             Destroy(evolutionChoiceContent.GetChild(i).gameObject);
         }
 
-        foreach(CatType.Type type in cat.evolution_requirements.Keys)
+        foreach(CatEvolutionRequirement cer in CatDatabase.Instance.GetCatData(cat.GetCatType()).evolutions)
         {
+            CatType.Type type = cer.catType;
             GameObject evolutionChoiceObj = Instantiate(evolutionChoiceItem, evolutionChoiceContent);
             GameObject evolutionChoiceBtnObj = evolutionChoiceObj.transform.GetChild(0).gameObject;
             Button evolutionChoiceBtnComp = evolutionChoiceBtnObj.GetComponent<Button>();
@@ -168,8 +169,9 @@ public class CatUI : MonoBehaviour
                 Debug.Log("Fail");
             }
 
-            foreach(CatEvolutionItem.cat_evolution_item_type item in cat.evolution_requirements[type].Keys)
+            foreach(CatEvolutionRequirement.EvolutionRequirement req in cer.requirement)
             {
+                CatEvolutionItem.cat_evolution_item_type item = req.item;
                 GameObject itemRequirementObj = Instantiate(itemRequirementItem, itemRequirementContent);
                 //itemRequirementObj.GetComponent<Image>().sprite = Inventory.Instance?.GetDataInfo(item).icon;
                 //itemRequirementObj.GetComponent<LayoutElement>().preferredHeight = 80;

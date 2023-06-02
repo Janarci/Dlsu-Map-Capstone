@@ -105,7 +105,7 @@ public class Catalog : MonoBehaviour
 
             newButtonObj.transform.localPosition = new Vector3((x * 100) + 100, (curry * -100) - 200, 0);
 
-            if(CatsList.instance.collected_cat_types.Contains(evolution.catType))
+            if(CatsManager.instance.collected_cat_types.Contains(evolution.catType))
             {
                 textComp.GetComponent<Text>().text = CatDatabase.Instance.GetCatData(evolution.catType).catTypeLabel;
                 buttonComp.onClick.AddListener(delegate { PopupGenerator.Instance?.GenerateCloseablePopup(tooltip); });

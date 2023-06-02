@@ -36,7 +36,7 @@ public class Building : MonoBehaviour
     [SerializeField] public Type type;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //for(int i = 1; i < gameObject.transform.childCount; i++)
         //{
@@ -53,11 +53,16 @@ public class Building : MonoBehaviour
                 Parts childPartsComp = c.gameObject.AddComponent<Parts>();
                 childPartsComp.SetBuilding(this);
                 buildingParts.Add(childPartsComp);
+                Debug.Log("Adding parts to building: " + buildingName);
             }
             
         }
 
-        MakeTransparent();
+        Debug.Log("Not yet opaque parts: " + buildingParts.Count);
+
+
+
+        //MakeTransparent();
     }
 
     public void MakeTransparent()
@@ -76,10 +81,13 @@ public class Building : MonoBehaviour
                         Color transpColor = new Color(0.75f, 0.75f, 0.75f);
                         transpColor.a = 0.275f;
                         mat.SetColor("_Color", transpColor);
-                        mat.SetOverrideTag("RenderType", "Transparent");
+                        mat.SetInt("_Mode", 2);
                         mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
                         mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
                         mat.SetInt("_ZWrite", 0);
+                        mat.DisableKeyword("_ALPHATEST_ON");
+                        mat.EnableKeyword("_ALPHABLEND_ON");
+                        mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
                         mat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
 
                     }
@@ -90,8 +98,10 @@ public class Building : MonoBehaviour
 
     public void MakeOpaque()
     {
+        Debug.Log("Make opaque");
         if (buildingParts != null)
         {
+            Debug.Log("Parts to opaque: " + buildingParts.Count);
             if (!(buildingParts.Count == 0))
             {
                 foreach (Parts part in buildingParts)
@@ -100,15 +110,18 @@ public class Building : MonoBehaviour
 
                     foreach (Material mat in mats)
                     {
-                        Debug.Log("setting transparent" + mat.name);
+                        Debug.Log("setting opaque" + mat.name);
                         Color transpColor = new Color(1.0f, 1.0f, 1.0f);
                         transpColor.a = 1.0f;
                         mat.SetColor("_Color", transpColor);
-                        mat.SetOverrideTag("RenderType", "Opaque");
+                        mat.SetInt("_Mode", 0);
                         mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
                         mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
                         mat.SetInt("_ZWrite", 1);
-                        mat.renderQueue = -1;
+                        mat.DisableKeyword("_ALPHATEST_ON");
+                        mat.DisableKeyword("_ALPHABLEND_ON");
+                        mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                        mat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.GeometryLast;
 
                     }
                 }

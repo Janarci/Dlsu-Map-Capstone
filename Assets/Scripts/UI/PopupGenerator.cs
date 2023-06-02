@@ -9,6 +9,7 @@ public class PopupGenerator : MonoBehaviour
     [SerializeField] private GameObject infoUICloseable;
     [SerializeField] private GameObject infoUINextable;
     [SerializeField] private GameObject infoUIConfirmable;
+    [SerializeField] private GameObject infoUIAchievement;
 
     [SerializeField] private GameObject infoUIObj;
     [SerializeField] public static PopupGenerator Instance;
@@ -128,5 +129,19 @@ public class PopupGenerator : MonoBehaviour
             Destroy(infoUIObj);
             infoUIObj = null;
         }
+    }
+
+    public void GenerateAchievementPopup(Achievement.AchievementCode _type)
+    {
+
+        GameObject mainCanvas = GameObject.Find("InfoCanvas");
+
+
+        GameObject newInfoUIObj = Instantiate(infoUIAchievement, mainCanvas.transform);
+        newInfoUIObj.GetComponent<AchievementPopupBehaviour>().SetInfo(_type);
+        newInfoUIObj.SetActive(false);
+
+        popupQueue.Enqueue(newInfoUIObj);
+        Debug.Log(popupQueue.Count);
     }
 }

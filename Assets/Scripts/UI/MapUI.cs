@@ -9,9 +9,11 @@ public class MapUI : MonoBehaviour
     public GameObject mainUIBtn;
     public GameObject inventoryBtn;
     public GameObject resetCameraBtn;
+    public GameObject questsBtn;
     public GameObject HQBtn;
     public GameObject CatalogBtn;
     public GameObject inventoryUI;
+    public GameObject questsUI;
     public GameObject SwitchCameraBtn;
     public GameObject playerIconObj;
     public GameObject fChar;
@@ -37,8 +39,12 @@ public class MapUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Inventory.Instance?.RestartInventoryUI(inventoryUI);
-        
+        Inventory.Instance?.StartInventoryUI(inventoryUI);
+        questsUI.TryGetComponent<QuestsList>(out QuestsList ql);
+        if(ql)
+        {
+            ql.StartQuestsUI();
+        }
     }
 
     // Update is called once per frame
@@ -53,6 +59,7 @@ public class MapUI : MonoBehaviour
         resetCameraBtn.transform.localPosition = Vector3.zero;
         inventoryBtn.transform.localPosition = Vector3.zero;
         CatalogBtn.transform.localPosition = Vector3.zero;
+        questsBtn.transform.localPosition = Vector3.zero;
 
     }
 
@@ -119,10 +126,12 @@ public class MapUI : MonoBehaviour
         Vector3 btn1InitialPos = resetCameraBtn.transform.position;
         Vector3 btn2InitialPos = inventoryBtn.transform.position;
         Vector3 btn3InitialPos = CatalogBtn.transform.position;
+        Vector3 btn4InitialPos = questsBtn.transform.position;
 
         Vector3 btn1FinalPos = new Vector3(mainUIBtn.transform.position.x - (220 * (Screen.width/720.0f)) , mainUIBtn.transform.position.y + (90.0f * (Screen.height/1440.0f)), mainUIBtn.transform.position.z);
-        Vector3 btn2FinalPos = new Vector3(mainUIBtn.transform.position.x, mainUIBtn.transform.position.y + (215 * (Screen.height/1440.0f)), mainUIBtn.transform.position.z);
+        Vector3 btn2FinalPos = new Vector3(mainUIBtn.transform.position.x - (110 * (Screen.width/720.0f)), mainUIBtn.transform.position.y + (215 * (Screen.height/1440.0f)), mainUIBtn.transform.position.z);
         Vector3 btn3FinalPos = new Vector3(mainUIBtn.transform.position.x + (220 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (90.0f * (Screen.height/1440.0f)), mainUIBtn.transform.position.z);
+        Vector3 btn4FinalPos = new Vector3(mainUIBtn.transform.position.x + (110 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (215 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
 
         isShowingMiniMenu = true;
         while (isShowingMiniMenu)
@@ -136,6 +145,7 @@ public class MapUI : MonoBehaviour
             resetCameraBtn.transform.position = Vector3.Lerp(btn1InitialPos, btn1FinalPos, currLerp);
             inventoryBtn.transform.position = Vector3.Lerp(btn2InitialPos, btn2FinalPos, currLerp);
             CatalogBtn.transform.position = Vector3.Lerp(btn3InitialPos, btn3FinalPos, currLerp);
+            questsBtn.transform.position = Vector3.Lerp(btn4InitialPos, btn4FinalPos, currLerp);
 
             currLerp += Time.deltaTime * 5.0f;
             yield return null;
@@ -148,11 +158,23 @@ public class MapUI : MonoBehaviour
         inventoryUI.SetActive(true);
     }
 
+    public void DisplayQuests()
+    {
+        HideMiniMenu();
+        questsUI.SetActive(true);
+    }
+
     public void HideMainCanvasUI()
     {
         mainUIBtn.SetActive(false);
         HQBtn.SetActive(false);
         playerIconObj.SetActive(false);
         SwitchCameraBtn.SetActive(false);
+    }
+
+    public void TestAchievement()
+    {
+        //AchievementsManager.instance.AccomplishAchievemnt(Accomplishment.Type.BefriendedFirstCat);
+        AchievementsManager.instance.ProgressQuest(Quest.QuestCode.befriend_cats, 1);
     }
 }

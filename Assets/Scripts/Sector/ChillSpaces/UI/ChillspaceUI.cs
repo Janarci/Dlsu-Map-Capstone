@@ -33,7 +33,7 @@ public class ChillspaceUI : MonoBehaviour
         if(image.GetComponent<EventTrigger>() != null)
         {
             EventTrigger.Entry click = new EventTrigger.Entry();
-            click.eventID = EventTriggerType.PointerDown;
+            click.eventID = EventTriggerType.Select;
             click.callback = new EventTrigger.TriggerEvent();
             click.callback.AddListener(delegate { OnChillspaceUIPicturePress(); });
             image.GetComponent<EventTrigger>().triggers.Add(click);

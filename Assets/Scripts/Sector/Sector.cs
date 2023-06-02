@@ -24,6 +24,7 @@ public class Sector : MonoBehaviour
 
     // Start is called before the first frame update
 
+
     public void Initialize(int sectorID)
     {
         id = sectorID;
@@ -44,6 +45,7 @@ public class Sector : MonoBehaviour
     void Start()
     {
         building = gameObject.GetComponent<Building>();
+        InitializeSector();
     }
 
     // Update is called once per frame
@@ -54,11 +56,11 @@ public class Sector : MonoBehaviour
 
     public void Unlock()
     {
-        if (!DataPersistenceManager.instance.gameData.unlocked_sectors.Contains(type))
-        {
-            //DisplayTooltip();
-            DataPersistenceManager.instance.gameData.unlocked_sectors.Add(type);
-        }
+        //if (!DataPersistenceManager.instance.gameData.unlocked_sectors.Contains(type))
+        //{
+        //    //DisplayTooltip();
+        //    DataPersistenceManager.instance.gameData.unlocked_sectors.Add(type);
+        //}
 
         isUnlocked = true;
         HideBlocker();
@@ -75,6 +77,20 @@ public class Sector : MonoBehaviour
         {
             ChillSpace.Area cs = BuildingDatabase.Instance.GetDataInfo(type).chillspaces[i];
             ChillSpacesManager.Instance.UnlockChillSpace(cs);
+        }
+    }
+
+    public void Lock()
+    {
+        isUnlocked = false;
+        ShowBlocker();
+        MakeDesignatedBuildingTransparent();
+
+        int csCount = BuildingDatabase.Instance.GetDataInfo(type).chillspaces.Count;
+        for (int i = 0; i < csCount; i++)
+        {
+            ChillSpace.Area cs = BuildingDatabase.Instance.GetDataInfo(type).chillspaces[i];
+            ChillSpacesManager.Instance.LockChillSpace(cs);
         }
     }
 
@@ -190,7 +206,13 @@ public class Sector : MonoBehaviour
 
     private void MakeDesignatedBuildingOpaque()
     {
+        Debug.Log("Making designated building opaque");
         GetComponent<Building>()?.MakeOpaque();
+    }
+
+    private void MakeDesignatedBuildingTransparent()
+    {
+        GetComponent<Building>()?.MakeTransparent();
     }
 
     public Rect GetAreaRect()
@@ -245,5 +267,10 @@ public class Sector : MonoBehaviour
     public Building GetBuilding()
     {
         return building;
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.ReleaseSector(this, gameObject.GetComponent<Building>());
     }
 }

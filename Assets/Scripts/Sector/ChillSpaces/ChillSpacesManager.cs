@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CatDatabase;
 
-public class ChillSpacesManager : MonoBehaviour
+public class ChillSpacesManager : MonoBehaviour, IDataPersistence
 {   // [SerializeField] private Dictionary<int, ChillSpace> chillSpacesList;
 
     [SerializeField] private Dictionary<int, ChillSpace> chillSpacesList;
@@ -46,7 +46,7 @@ public class ChillSpacesManager : MonoBehaviour
     public void InitializeChillspaceManager()
     {
         if(!isInitialized)
-        StartCoroutine(Initialize());
+            StartCoroutine(Initialize());
     }
     IEnumerator Initialize()
     {
@@ -67,10 +67,6 @@ public class ChillSpacesManager : MonoBehaviour
                 chillspaceData[cs.GetArea()] = cs;
                 ChillSpaceDatabase.Instance.AddChillspaceToDatabase(cs);
             }
-            
-            
-            if (DataPersistenceManager.instance.gameData.unlocked_chillspaces.Contains(cs.GetArea()))
-                cs.Unlock();
 
             yield return null;
         }
@@ -94,6 +90,15 @@ public class ChillSpacesManager : MonoBehaviour
         if (chillspaceData.ContainsKey(area))
         {
             chillspaceData[area].Unlock();
+        }
+    }
+
+    public void LockChillSpace(ChillSpace.Area area)
+    {
+        Debug.Log("attempting to lock chillspace: " + area);
+        if (chillspaceData.ContainsKey(area))
+        {
+            chillspaceData[area].Lock();
         }
     }
 
@@ -121,5 +126,25 @@ public class ChillSpacesManager : MonoBehaviour
         //    }
                 
         //}
+    }
+
+    public void LoadGameData(GameData gameData)
+    {
+        foreach (ChillSpace.Area cs in gameData.unlocked_chillspaces)
+            chillspaceData[cs].Unlock();
+    }
+
+    public void SaveGameData(ref GameData gameData)
+    {
+        foreach(ChillSpace.Area cs in chillspaceData.Keys)
+        {
+            if (!chillspaceData[cs].isLocked)
+            {
+                if(!gameData.unlocked_chillspaces.Contains(cs))
+                {
+                    gameData.unlocked_chillspaces.Add(cs);
+                }
+            }
+        }
     }
 }

@@ -15,8 +15,13 @@ public class EventManager : MonoBehaviour
 
 
     public static event Action<Sector, Building> OnInitializeSector;
+    public static event Action<Sector, Building> OnReleaseSector;
+
 
     public static event Action OnInitializeMap;
+
+    public static event Action<Achievement.AchievementCode> OnAchievementUnlock;
+    public static event Action<Quest.QuestCode> OnQuestProgress;
 
     private void Awake()
     {
@@ -36,7 +41,7 @@ public class EventManager : MonoBehaviour
         if (OnCatBefriendSuccess != null)
         {
             OnCatBefriendSuccess(befriendedCat);
-            CatsList.instance.befriended_cats.Add(befriendedCat.gameObject);
+            CatsManager.instance.befriended_cats.Add(befriendedCat.gameObject);
         }
     }
 
@@ -56,7 +61,7 @@ public class EventManager : MonoBehaviour
             Debug.Log("replaced cat");
             if(index >= 0 && index<= 3)
             {
-                CatsList.instance.selected_cats[index] = replacementCat.gameObject;
+                CatsManager.instance.selected_cats[index] = replacementCat.gameObject;
             }
 
             OnHQCatReplace(replacementCat, index);
@@ -87,11 +92,35 @@ public class EventManager : MonoBehaviour
         }
     }
 
+    public static void ReleaseSector(Sector sector, Building building)
+    {
+        if (OnReleaseSector != null)
+        {
+            OnReleaseSector(sector, building);
+        }
+    }
+
     public static void InitializeMap()
     {
         if(OnInitializeMap != null)
         {
             OnInitializeMap();
+        }
+    }
+
+    public static void UnlockAchievement(Achievement.AchievementCode _code)
+    {
+        if(OnAchievementUnlock != null)
+        {
+            OnAchievementUnlock(_code);
+        }
+    }
+
+    public static void ProgressQuest(Quest.QuestCode _code)
+    {
+        if(OnQuestProgress != null)
+        {
+            OnQuestProgress(_code);
         }
     }
 }

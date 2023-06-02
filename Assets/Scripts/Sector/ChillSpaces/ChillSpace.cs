@@ -94,19 +94,31 @@ public class ChillSpace : MonoBehaviour
         
     }
 
-    public void Lock()
-    {
-        isLocked = true;
-    }
+    //public void Lock()
+    //{
+    //    isLocked = true;
+    //}
     public void Unlock()
     {
         if(isLocked)
         {
-            DataPersistenceManager.instance.gameData.unlocked_chillspaces.Add(this.GetArea());
+            //DataPersistenceManager.instance.gameData.unlocked_chillspaces.Add(this.GetArea());
             Timers.Instance?.AddChillspaceAreaCooldown(this.GetArea());
             Debug.Log("Unlocked a chillspace");
             ui.SetBtnText("Claim Item");
             isLocked = false;
+        }
+    }
+
+    public void Lock()
+    {
+        if (!isLocked)
+        {
+            //DataPersistenceManager.instance.gameData.unlocked_chillspaces.Add(this.GetArea());
+            Timers.Instance?.RemoveChillspaceAreaCooldoown(this.GetArea());
+            Debug.Log("Lock a chillspace");
+            ui.SetBtnText("LOCKED");
+            isLocked = true;
         }
     }
 

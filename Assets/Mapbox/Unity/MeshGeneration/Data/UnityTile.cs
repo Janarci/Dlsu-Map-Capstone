@@ -400,6 +400,7 @@ namespace Mapbox.Unity.MeshGeneration.Data
 			{
                 MeshCollider mc = gameObject.AddComponent<MeshCollider>();
 				mc.sharedMesh = mf.sharedMesh;
+				gameObject.layer = 6;
             }
 			
 		}

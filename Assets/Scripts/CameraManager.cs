@@ -39,12 +39,15 @@ public class CameraManager : MonoBehaviour
 
     public void InitializeARCamera()
     {
-        EnableARCamera();
-        StartCoroutine(LoadVuforia());
+
+        if(!isInitialized)
+            StartCoroutine(LoadVuforia());
     }
 
     IEnumerator LoadVuforia()
     {
+        EnableARCamera();
+
         ARCamera.gameObject.GetComponent<VuforiaBehaviour>().enabled = true;
         yield return null;
 
@@ -53,8 +56,9 @@ public class CameraManager : MonoBehaviour
         
         Debug.Log("Loading vuforia");
         VuforiaApplication.Instance.Initialize();
-        isInitialized = true;
         EnableWorldCamera();
+
+        isInitialized = true;
 
     }
 

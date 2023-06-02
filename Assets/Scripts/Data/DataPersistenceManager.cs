@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
 
@@ -42,8 +43,12 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void InitializeGameData()
     {
-        LoadGame();
-        isInitialized = true;
+        if(!isInitialized)
+        {
+            LoadGame();
+            isInitialized = true;
+        }
+        
     }
     
     public void NewGame()
@@ -78,8 +83,19 @@ public class DataPersistenceManager : MonoBehaviour
     }
 
 
+    private void OnApplicationPause()
+    {
+        if(isInitialized)
+        {
+            SaveGame();
+        }
+    }
+
     private void OnApplicationQuit()
     {
-        SaveGame();
+        if(isInitialized)
+        {
+            SaveGame();
+        }
     }
 }

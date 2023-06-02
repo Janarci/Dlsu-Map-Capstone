@@ -194,11 +194,11 @@ public class CatDebug : MonoBehaviour
         if (isCatBefriended)
         {
             befriendedCat.gameObject.SetActive(false);
-            CatsList.instance.befriended_cats.Add(befriendedCat.gameObject);
+            CatsManager.instance.befriended_cats.Add(befriendedCat.gameObject);
             GameObject.DontDestroyOnLoad(befriendedCat);
-            if (!(CatsList.instance.collected_cat_types.Contains(befriendedCat.GetCatType())))
+            if (!(CatsManager.instance.collected_cat_types.Contains(befriendedCat.GetCatType())))
             {
-                CatsList.instance.UnlockCatType(befriendedCat.GetCatType());
+                CatsManager.instance.UnlockCatType(befriendedCat.GetCatType());
                 //GameObject tooltipObj = GameObject.Instantiate(catTooltipUI, canvas.transform);
                 //Text tooltipTxt = tooltipObj.transform.GetChild(0).gameObject.GetComponent<Text>();
                 //Button tooltipCloseBtn = tooltipObj.transform.GetChild(1).gameObject.GetComponent<Button>();
@@ -215,16 +215,16 @@ public class CatDebug : MonoBehaviour
             befriendedCat.ui.ShowAffinity(false);
             befriendSuccess.SetActive(true);
 
-            if (CatsList.instance.befriended_cats.Count == 1)
+            if (CatsManager.instance.befriended_cats.Count == 1)
             {
                 Timers.Instance.StartCatShuffleTimer();
                 Timers.Instance.StartReplaceCatTimer();
             }
                 
 
-            if(CatsList.instance.befriended_cats.Count <= 4)
+            if(CatsManager.instance.befriended_cats.Count <= 4)
             {
-                CatsList.instance.selected_cats[CatsList.instance.befriended_cats.Count - 1] = befriendedCat.gameObject;
+                CatsManager.instance.selected_cats[CatsManager.instance.befriended_cats.Count - 1] = befriendedCat.gameObject;
             }
         }
 
@@ -239,7 +239,7 @@ public class CatDebug : MonoBehaviour
 
     public void GoToHQ()
     {
-        foreach (GameObject go in CatsList.instance.befriended_cats)
+        foreach (GameObject go in CatsManager.instance.befriended_cats)
         {
             
         }

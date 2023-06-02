@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     [SerializeField] AudioSource m_Source;
-    public static AudioManager Instance;
+    [SerializeField] List<AudioClip> m_Clips;
+    public static SoundManager Instance;
+
+    bool isStart = false;
     private void Awake()
     {
         if (Instance == null)
@@ -45,6 +48,6 @@ public class AudioManager : MonoBehaviour
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if(scene.name == "MapScene")
-            AudioManager.Instance?.PlayAnimeowIntro();
+            SoundManager.Instance?.PlayAnimeowIntro();
     }
 }

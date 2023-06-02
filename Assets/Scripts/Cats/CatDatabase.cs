@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,10 @@ public class CatDatabase : MonoBehaviour
         public GameObject model;
         public Cat script;
         public Sprite icon;
+        public List<CatEvolutionRequirement> evolutions;
+        [TextArea(8, 11)]
+        public string[] tooltips;
+
     }
 
     public static CatDatabase Instance;

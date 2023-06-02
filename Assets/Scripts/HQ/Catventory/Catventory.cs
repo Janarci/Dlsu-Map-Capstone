@@ -28,9 +28,9 @@ public class Catventory : MonoBehaviour
 
     public void AddCats()
     {
-        if(!(CatsList.instance.befriended_cats.Count == 0))
+        if(!(CatsManager.instance.befriended_cats.Count == 0))
         {
-            foreach(GameObject befriended_cat in CatsList.instance.befriended_cats)
+            foreach(GameObject befriended_cat in CatsManager.instance.befriended_cats)
             {
                 GameObject catventory_item = Instantiate(catventoryItemTemplate, catventoryPrimaryContent);
                 Cat catComp = befriended_cat.GetComponent<Cat>();

@@ -21,24 +21,48 @@ public class GameData
         public float dirtAilmentValue;
     }
 
+    [Serializable]
+    public class ItemData
+    {
+        public CatEvolutionItem.cat_evolution_item_type type;
+        public int amount = 0;
+    }
+
+    [Serializable]
+    public class QuestData
+    {
+        public Quest.QuestCode type;
+        public int progress = 0;
+    }
+
+    public int spawn_index;
     public  List<CatData> befriended_cats;
     public  List<CatType.Type> collected_cat_types;
-    public  List<int> unlocked_sectors;
+    public  List<Building.Type> unlocked_sectors;
     public  List<ChillSpace.Area> unlocked_chillspaces;
-    public  List<Item> inventory;
+    public List<ItemData> inventory_items;
+    public List<QuestData> quest_progress;
+    public string unlocked_tooltips;
+    public List<Item> inventory;
     public  CatData[] selected_cats;
     public  GameObject approached_cat;
-    public  int belonging_sector;
+    public int belonging_sector;
     public  float runTime = 0.0f;
 
     public GameData()
     {
+        spawn_index = 0;
         befriended_cats = new List<CatData>();
         collected_cat_types= new List<CatType.Type>();
-        unlocked_sectors = new List<int>();
+        unlocked_sectors = new List<Building.Type>();
         unlocked_chillspaces = new List<ChillSpace.Area>();
+        inventory_items = new List<ItemData>();
+        quest_progress = new List<QuestData>();
+        unlocked_tooltips = string.Empty;
         approached_cat = null;
         belonging_sector = -1;
         selected_cats = new CatData[4];
     }
+
+    
 }

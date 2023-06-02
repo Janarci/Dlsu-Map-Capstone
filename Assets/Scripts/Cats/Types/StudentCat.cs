@@ -20,7 +20,7 @@ public class StudentCat : Cat
 
     private Dictionary<CatType.Type, EvolutionMaterialInventory> student_cat_evolution_requirements = new Dictionary<CatType.Type, EvolutionMaterialInventory>()
     {
-        {CatType.Type.actor_cat,  scholarCatEvolutionInventory},
+        {CatType.Type.scholar_cat,  scholarCatEvolutionInventory},
         //{CatType.Type.COB_cat, cobCatEvolutionInventory }
     };
 

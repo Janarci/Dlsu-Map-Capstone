@@ -58,7 +58,7 @@ public class CatalogCatInfo : MonoBehaviour
                 Destroy(catItemsContent.GetChild(i).gameObject);
             }
 
-        if(CatsList.instance.collected_cat_types.Contains(type))
+        if(CatsManager.instance.collected_cat_types.Contains(type))
         {
             List<CatEvolutionItem.cat_evolution_item_type> addedItems = new List<CatEvolutionItem.cat_evolution_item_type>();
             foreach (CatEvolutionRequirement direct_evolutions in CatDatabase.Instance.GetCatData(type).evolutions)
@@ -96,7 +96,7 @@ public class CatalogCatInfo : MonoBehaviour
                 Destroy(habitatItemsContent.GetChild(i).gameObject);
             }
 
-        if(CatsList.instance.collected_cat_types.Contains(type))
+        if(CatsManager.instance.collected_cat_types.Contains(type))
         {
             foreach (ChillSpace.Area chillspace in ChillSpaceDatabase.Instance.GetDataList())
             {

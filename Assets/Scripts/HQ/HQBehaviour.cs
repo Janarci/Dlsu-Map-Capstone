@@ -44,10 +44,10 @@ public class HQBehaviour : MonoBehaviour
         //    catList.Add(go);
         //}
 
-        if(CatsList.instance.selected_cats.Length > 0)
+        if(CatsManager.instance.selected_cats.Length > 0)
         for(int n = 0; n < 4; n ++)
         {
-            GameObject go = CatsList.instance.selected_cats[n];
+            GameObject go = CatsManager.instance.selected_cats[n];
             if(go)
             {
                 go.transform.SetPositionAndRotation(new Vector3(-15 + (i * 15), 0, -20 + (j * 15)), Quaternion.Euler(new Vector3(0, 180, 0)));

@@ -32,16 +32,41 @@
 			LocationProviderFactory.Instance.mapManager.OnInitialized += () => _isInitialized = true;
 		}
 
-		void LateUpdate()
+        
+
+        void LateUpdate()
 		{
 			if (_isInitialized)
 			{
-				Vector3 initialPos = transform.localPosition;
-				var map = LocationProviderFactory.Instance.mapManager;
-				transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
-				Vector3 finalPos = transform.localPosition;
+				Vector3 initialPos = initialPos = transform.localPosition;
+                
+                var map = LocationProviderFactory.Instance.mapManager;
+				if (SettingsModes.locationMode == SettingsModes.Location.Automated)
+				{
+                    transform.localPosition = map.GeoToWorldPosition(new Utils.Vector2d(14.56473f, 120.993796f));
+					
+				}
 
-				if(initialPos != finalPos)
+				else if (SettingsModes.locationMode == SettingsModes.Location.Tracking)
+				{
+                    transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
+                }
+                Vector3 finalPos = transform.localPosition;
+
+
+				if (Vector3.Distance(transform.position, CameraManager.Instance.transform.position) > 900.0f)
+				{
+					CameraManager.Instance.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+					CameraManager.Instance.SetWorldCameraPosition(new Vector3(transform.position.x, transform.position.y + 50, transform.position.z - 20));
+				}
+
+				//else
+				//{
+				//	Debug.Log(Vector3.Distance(transform.position, CameraManager.Instance.transform.position));
+				//}
+
+
+				if (initialPos != finalPos)
 				{
 					//walk
 					if(animator && !_isMoving)

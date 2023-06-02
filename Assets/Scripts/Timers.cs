@@ -127,7 +127,7 @@ public class Timers : MonoBehaviour
         public override void Execute()
         {
             base.Execute();
-            if(CatsList.instance.befriended_cats.Count > 4)
+            if(CatsManager.instance.befriended_cats.Count > 4)
             {
                 List<int> holders = new List<int> { -1, -1, -1, -1 };
                 for(int i = 0; i < 4; i++)
@@ -135,10 +135,10 @@ public class Timers : MonoBehaviour
                     int rnd = 0;
                     do
                     {
-                        rnd = UnityEngine.Random.Range(0, CatsList.instance.befriended_cats.Count - 1);
+                        rnd = UnityEngine.Random.Range(0, CatsManager.instance.befriended_cats.Count - 1);
                     } while (holders.Contains(rnd));
 
-                    CatsList.instance.selected_cats[i] = CatsList.instance.befriended_cats[rnd];
+                    CatsManager.instance.selected_cats[i] = CatsManager.instance.befriended_cats[rnd];
                     holders[i] = rnd;
                 }
             }
@@ -158,7 +158,7 @@ public class Timers : MonoBehaviour
         public override void Execute()
         {
             base.Execute();
-            CatsList.instance.AddNewCatToQueue();
+            CatsManager.instance.AddNewCatToQueue();
         }
     }
 
@@ -210,8 +210,8 @@ public class Timers : MonoBehaviour
                 csu.RemoveCatFromSpawnList(cat.gameObject);
             }
 
-            if (CatsList.instance.stashed_cat_spawns.Contains(cat.gameObject))
-                CatsList.instance.stashed_cat_spawns.Remove(cat.gameObject);
+            if (CatsManager.instance.stashed_cat_spawns.Contains(cat.gameObject))
+                CatsManager.instance.stashed_cat_spawns.Remove(cat.gameObject);
 
             GameObject.Destroy(cat.gameObject);
         }
@@ -329,6 +329,16 @@ public class Timers : MonoBehaviour
         chillspaceCooldowns.Add(area, cscd);
         timers.Add(cscd);
     }
+
+    public void RemoveChillspaceAreaCooldoown(ChillSpace.Area area)
+    {
+        if (chillspaceCooldowns.ContainsKey(area))
+        {
+            chillspaceCooldowns.Remove(area, out ChillspaceScanCooldown cscd);
+            timers.Remove(cscd);
+        }
+    }
+
 
     public void StartCatDurationCountdown(Cat cat)
     {

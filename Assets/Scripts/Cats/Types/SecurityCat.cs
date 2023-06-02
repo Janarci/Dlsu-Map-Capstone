@@ -39,7 +39,7 @@ public class SecurityCat : Cat
     protected override void InitializeCatType()
     {
         school_tip = "Students have to scan their school IDs or present their EAFs with valid ID to enter the gates.";
-        this.type = CatType.Type.IT_cat;
+        this.type = CatType.Type.security_cat;
     }
 
     //protected override void InitializeCatFavors()

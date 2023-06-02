@@ -25,7 +25,7 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
 	void Start()
     {
         EventManager.OnCatClick += OnCatClicked;
-        CatsList.instance.num_base_cats = availableDroids.Length;
+        CatsManager.instance.num_base_cats = availableDroids.Length;
         SpawnStashedCats();
     }
 
@@ -35,27 +35,27 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
         return Instance;
     }
 
-    public void InstantiateDroid(int catSpawnTemplateIndex, Transform sectorTransform, Rect AreaRect)
+    public GameObject InstantiateDroid()
 	{
         //GameObject newDroid = Instantiate(availableDroids[index], new Vector3(x, y, z), Quaternion.identity);
-        //int index = Random.Range(0, availableDroids.Length);
-        GameObject newDroid = Instantiate(availableDroids[catSpawnTemplateIndex]);
+        int index = Random.Range(0, availableDroids.Length);
+        GameObject newDroid = Instantiate(availableDroids[index]);
 
-        Transform CubeBoundsObj = sectorTransform.GetChild(0);
+        //Transform CubeBoundsObj = sectorTransform.GetChild(0);
 
-        int spawnAttempts = 0;
+        //int spawnAttempts = 0;
 
-        Vector3 spawnLoc = CubeBoundsObj.position;
-        do
-        {
-            spawnAttempts++;
-            float x = spawnLoc.x + GenerateRange((AreaRect.width * 0.85f)/2);
-            float z = spawnLoc.z + GenerateRange((AreaRect.height * 0.85f)/2);
-            float y = 0;
+        //Vector3 spawnLoc = CubeBoundsObj.position;
+        //do
+        //{
+        //    spawnAttempts++;
+        //    float x = spawnLoc.x + GenerateRange((AreaRect.width * 0.85f)/2);
+        //    float z = spawnLoc.z + GenerateRange((AreaRect.height * 0.85f)/2);
+        //    float y = 0;
 
-            Vector3 newSpawnLoc = Quaternion.LookRotation(CubeBoundsObj.forward, CubeBoundsObj.up) * (new Vector3(x, y, z) - CubeBoundsObj.position) + CubeBoundsObj.position;
-            newDroid.transform.position = newSpawnLoc;
-        } while (Physics.OverlapBox(newDroid.transform.position, newDroid.GetComponent<BoxCollider>().size / 2).Length > 0 && spawnAttempts < 5);
+        //    Vector3 newSpawnLoc = Quaternion.LookRotation(CubeBoundsObj.forward, CubeBoundsObj.up) * (new Vector3(x, y, z) - CubeBoundsObj.position) + CubeBoundsObj.position;
+        //    newDroid.transform.position = newSpawnLoc;
+        //} while (Physics.OverlapBox(newDroid.transform.position, newDroid.GetComponent<BoxCollider>().size / 2).Length > 0 && spawnAttempts < 5);
 
         spawnedCats.Add(newDroid);
         DontDestroyOnLoad(newDroid);
@@ -63,17 +63,13 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
         if(newDroid.TryGetComponent<Cat>(out Cat cat))
         {
             Timers.Instance.StartCatDurationCountdown(cat);
-
         }
+
+        return newDroid;
 
     }
 
-    private float GenerateRange(float maxRange)
-	{
-        float randomNum = Random.Range(minRange, maxRange);
-        bool isPositive = Random.Range(0, 10) < 5;
-        return randomNum * (isPositive ? 1 : -1);
-	}
+    
 
     List<GameObject> IsWithinRangeOfCats(Vector3 pointOfComparison)
     {
@@ -81,7 +77,7 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
 
         foreach(GameObject spawnedCatObj in spawnedCats)
         {
-            if(Vector3.Distance(pointOfComparison, spawnedCatObj.transform.position) <= 30.0f)
+            if(Vector3.Distance(pointOfComparison, spawnedCatObj.transform.position) <= 300.0f)
             {
                 catsWithinDetectionRange.Add(spawnedCatObj);
             }
@@ -100,10 +96,10 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
 
     public void SpawnStashedCats()
     {
-        for(int i = 0; i < CatsList.instance.stashed_cat_spawns.Count; i++)
+        for(int i = 0; i < CatsManager.instance.stashed_cat_spawns.Count; i++)
         {
-            CatsList.instance.stashed_cat_spawns[i].SetActive(true);
-            spawnedCats.Add(CatsList.instance.stashed_cat_spawns[i]);
+            CatsManager.instance.stashed_cat_spawns[i].SetActive(true);
+            spawnedCats.Add(CatsManager.instance.stashed_cat_spawns[i]);
         }
     }
     public void OnCatClicked(Cat clickedCat)
@@ -130,8 +126,8 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
             {
                 spawnedCats[i].SetActive(false);
 
-                if (!(CatsList.instance.stashed_cat_spawns.Contains(spawnedCats[i])))
-                    CatsList.instance.stashed_cat_spawns.Add(spawnedCats[i]);
+                if (!(CatsManager.instance.stashed_cat_spawns.Contains(spawnedCats[i])))
+                    CatsManager.instance.stashed_cat_spawns.Add(spawnedCats[i]);
             }
             
 

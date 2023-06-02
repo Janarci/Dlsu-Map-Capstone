@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using static CatDatabase;
 using static CatEvolutionItem;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, IDataPersistence
 {
     [Serializable]
     public class ItemData
@@ -28,6 +28,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject itemUI;
     [SerializeField] private GameObject inventoryContent;
 
+    public bool isInitialized { get; private set; }
+
 
     private void Awake()
     {
@@ -47,6 +49,7 @@ public class Inventory : MonoBehaviour
         itemDatabase = new Dictionary<cat_evolution_item_type, ItemData>();
         itemList = new Dictionary<cat_evolution_item_type, int>();
         inventoryItems = new Dictionary<cat_evolution_item_type, GameObject>();
+        isInitialized = false;
         //foreach (ItemData item in allItemsList)
         //{
         //    itemDatabase[item.type] = item;
@@ -56,13 +59,7 @@ public class Inventory : MonoBehaviour
 
         //Debug.Log("Items declared: " + allItemsList.Count);
 
-        for (int i = 0; i < allItemsList.Count; i++)
-        {
-            ItemData item = allItemsList[i];
-            itemDatabase[item.type] = item;
-            //AddToInventory(item.type, 99);
-            //Debug.Log("initial add of " + item.type);
-        }
+        
 
 
 
@@ -96,6 +93,25 @@ public class Inventory : MonoBehaviour
 
     }
 
+    public void InitializeInventory()
+    {
+        if(!isInitialized)
+        StartCoroutine(Initialize());
+    }
+
+    IEnumerator Initialize()
+    {
+        for (int i = 0; i < allItemsList.Count; i++)
+        {
+            ItemData item = allItemsList[i];
+            itemDatabase[item.type] = item;
+            //AddToInventory(item.type, 99);
+            //Debug.Log("initial add of " + item.type);
+            yield return null;
+        }
+
+        isInitialized = true;
+    }
     public void OpenInventory()
     {
         inventoryUI.SetActive(true);
@@ -169,6 +185,41 @@ public class Inventory : MonoBehaviour
                 
         }
     }
+
+    //public void AddToInventory(cat_evolution_item_type item, int amount, Transform _inventoryContent)
+    //{
+    //    if (!(inventoryItems.ContainsKey(item)))
+    //    {
+
+    //        itemList[item] = amount;
+
+    //        //Debug.Log("adding new item to inventory: " + item);
+    //        //Debug.Log(inventoryContent == null); Debug.Log(itemUI == null);
+
+    //        GameObject itemToAdd = Instantiate(itemUI, inventoryContent.transform);
+
+    //        Text itemCountTxt = itemToAdd.GetComponentInChildren<Text>();
+    //        itemCountTxt.text = amount.ToString();
+
+    //        Sprite itemIcon = itemDatabase[item].icon;
+
+    //        if (itemIcon)
+    //            itemToAdd.transform.GetChild(0).GetComponent<Image>().sprite = itemIcon;
+
+    //        inventoryItems[item] = itemToAdd;
+    //    }
+
+    //    else
+    //    {
+    //        itemList[item] += amount;
+    //        Text textComp = inventoryItems[item].GetComponentInChildren<Text>();
+    //        if (textComp)
+    //        {
+    //            textComp.text = itemList[item].ToString();
+    //        }
+
+    //    }
+    //}
 
     public void RemoveFromInventory(cat_evolution_item_type item, int amount)
     {
@@ -258,6 +309,74 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void StartInventoryUI(GameObject newContent)
+    {
+        if (inventoryContent == null)
+        {
+            inventoryContent = newContent;
+            inventoryItems.Clear();
+            foreach (KeyValuePair<cat_evolution_item_type, int> pair in itemList)
+            {
+                if (!(inventoryItems.ContainsKey(pair.Key)))
+                {
+                    //Debug.Log("re-adding new item to inventory: " + pair.Key);
+                    GameObject itemToAdd = Instantiate(itemUI, inventoryContent.transform);
+
+                    Text itemCountTxt = itemToAdd.GetComponentInChildren<Text>();
+                    itemCountTxt.text = pair.Value.ToString();
+
+                    Sprite itemIcon = itemDatabase[pair.Key].icon;
+
+                    if (itemIcon)
+                        itemToAdd.transform.GetChild(0).GetComponent<Image>().sprite = itemIcon;
+
+                    inventoryItems[pair.Key] = itemToAdd;
+                }
+
+                else
+                {
+
+                }
+            }
+        }
+    }
+
+    public void LoadGameData(GameData gameData)
+    {
+        foreach (GameData.ItemData _item in gameData.inventory_items)
+        {
+            AddToInventory(_item.type, _item.amount);
+        }
+    }
+
+    public void SaveGameData(ref GameData gameData)
+    {
         
+        foreach (CatEvolutionItem.cat_evolution_item_type _type in itemList.Keys)
+        {
+            GameData.ItemData new_item = null;
+            bool isNewItem = true;
+            foreach (GameData.ItemData _itemData in gameData.inventory_items)
+            {
+                if(_itemData.type == _type)
+                {
+                    isNewItem = false;
+                    _itemData.amount = itemList[_type];
+                    break;
+
+
+                }
+            }
+
+            if(isNewItem)
+            {
+                new_item = new GameData.ItemData();
+                new_item.type = _type;
+                new_item.amount = itemList[_type];
+                gameData.inventory_items.Add(new_item);
+            }
+        }
     }
 }

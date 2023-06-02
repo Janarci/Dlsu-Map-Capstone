@@ -39,7 +39,7 @@ public class VarsityCat : Cat
     protected override void InitializeCatType()
     {
         school_tip = "Athletes and varsity members may enjoy full or partial scholarship or tuition discounts!";
-        this.type = CatType.Type.IT_cat;
+        this.type = CatType.Type.varisty_cat;
     }
 
     //protected override void InitializeCatFavors()

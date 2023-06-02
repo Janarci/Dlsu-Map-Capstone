@@ -4,7 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SectorManager : MonoBehaviour
+public class SectorManager : MonoBehaviour, IDataPersistence
 {
     public GameObject map;
     //[SerializeField] private GameObject blockerTemplate;
@@ -44,6 +44,8 @@ public class SectorManager : MonoBehaviour
         //EventManager.OnInitializeMap += InitializeSectors;
         EventManager.OnMissionComplete += OnMissionComplete;
         //EventManager.OnCatClick += OnCatClickedInSector;
+        EventManager.OnInitializeSector += OnInitalizeSector;
+        EventManager.OnReleaseSector += OnReleaseSector;
         sectorList = new Dictionary<Building.Type, Sector>();
         isInitialized = false;
         visualList = new List<Sector>();
@@ -58,7 +60,7 @@ public class SectorManager : MonoBehaviour
     public void InitializeSectors()
     {
         if(!isInitialized)
-        StartCoroutine(Initialize());
+            StartCoroutine(Initialize());
     }
 
     private IEnumerator Initialize()
@@ -81,36 +83,84 @@ public class SectorManager : MonoBehaviour
 
         while(!MapTracker.isMapInitialized)
         {
+            Debug.Log("Map not initialized");
             yield return null;
         }
 
-        foreach(Sector s in FindObjectsOfType<Sector>(true)) 
+        while (!(ChillSpacesManager.Instance.isInitialized))
         {
-            while(!(ChillSpacesManager.Instance.isInitialized))
-            {
-                yield return null;
-            }
+            Debug.Log("Chill spaces not initialized");
+            yield return null;
+        }
 
-            visualList.Add(s);
+        //foreach (Sector s in FindObjectsOfType<Sector>(true))
+        //{
+        //    InitializeSectorIndividual(s);
+        //    yield return null;
+        //}
+
+
+        //for(int i = 0; i < DataPersistenceManager.instance.gameData.unlocked_sectors.Count;i++)
+        //{
+        //    Debug.Log("Pre-emptively unlocking sector: " + i);
+        //    UnlockSector(DataPersistenceManager.instance.gameData.unlocked_sectors[i]);
+        //    //yield return null;
+        //}
+
+        isInitialized = true;
+        StartCoroutine(GenerateCatsInSector());
+    }
+
+    private void OnInitalizeSector(Sector s, Building b)
+    {
+        if(!visualList.Contains(s))
+        visualList.Add(s);
+
+        if(!sectorList.ContainsKey(s.type))
+        {
             sectorList[s.type] = s;
             s.SetSectorBlockerObj(s.gameObject.transform.GetChild(0).gameObject);
             Debug.Log("adding sector with id: " + s.getID() + " to sector list");
-            s.InitializeSector();
+            //s.InitializeSector();
             UnlockSector(s.type);
-            yield return null;
-        }
-        
 
-        for(int i = 0; i < DataPersistenceManager.instance.gameData.unlocked_sectors.Count;i++)
+            CatsManager.instance.num_sectors = sectorList.Keys.Count;
+
+            //if(DataPersistenceManager.instance.isInitialized)
+            //{
+            //    if(DataPersistenceManager.instance.gameData.unlocked_sectors.Contains(s.type))
+            //    {
+            //        UnlockSector(s.type);
+            //        b.MakeOpaque();
+            //    }
+
+            //    else
+            //    {
+            //        b.MakeTransparent();
+            //    }
+            //}
+        }
+
+
+
+    }
+
+    private void OnReleaseSector(Sector s, Building b)
+    {
+        if(visualList.Contains(s))
         {
-            Debug.Log("Pre-emptively unlocking sector: " + i);
-            UnlockSector(DataPersistenceManager.instance.gameData.unlocked_sectors[i]);
-            //yield return null;
+            visualList.Remove(s);
         }
 
-        isInitialized = true;
-        CatsList.instance.num_sectors = sectorList.Count;
-        StartCoroutine(GenerateCatsInSector());
+        if(sectorList.ContainsKey(s.type))
+        {
+            sectorList.Remove(s.type);
+            Debug.Log("removing sector with id: " + s.getID() + " from sector list");
+
+        }
+
+        CatsManager.instance.num_sectors = sectorList.Keys.Count;
+
     }
 
     //private void UnlockSector(int sectorIndex)
@@ -121,7 +171,9 @@ public class SectorManager : MonoBehaviour
     public void UnlockSector(Building.Type bldgType)
     {
         if(sectorList.ContainsKey(bldgType))
+        {
             sectorList[bldgType].Unlock();
+        }
     }
 
     void OnMissionComplete(int missionID)
@@ -159,24 +211,33 @@ public class SectorManager : MonoBehaviour
         {
             
 
-            if(CatsList.instance.queuedSpawns.Count != 0)
+            if(CatsManager.instance.queuedSpawns.Count != 0)
             {
-                Building.Type sctr = (Building.Type)CatsList.instance.queuedSpawns.Last().Value;
-                if (sectorList[sctr].isUnlocked)
+                Building.Type sctr = (Building.Type)CatsManager.instance.queuedSpawns.Last().Value;
+                if(sectorList.ContainsKey(sctr))
                 {
-                    CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
+                    if (sectorList[sctr].isUnlocked)
+                    {
+                        CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
 
-                    Rect sectAreaRect = sectorList[sctr].GetAreaRect();
-                    if (sectAreaRect != Rect.zero)
-                        csu?.InstantiateDroid(CatsList.instance.queuedSpawns.Last().Key, sectorList[sctr].transform, sectorList[sctr].GetAreaRect());
+                        Rect sectAreaRect = sectorList[sctr].GetAreaRect();
+                        if (sectAreaRect != Rect.zero)
+                            CatsManager.instance.SpawnCat(sectorList[sctr].transform, sectorList[sctr].GetAreaRect());
 
-                    Debug.Log("Spawning cat in sector " + CatsList.instance.queuedSpawns.Last().Value);
+                        Debug.Log("Spawning cat in sector " + CatsManager.instance.queuedSpawns.Last().Value);
+                    }
+
+                    else
+                        Debug.Log("Cant spawn cat in locked sector");
                 }
 
                 else
-                    Debug.Log("Cant spawn cat in locked sector");
+                {
+                    Debug.Log("Sector list doesnt contain key: " + sctr);
+                }
+                
 
-                CatsList.instance.queuedSpawns.RemoveAt(CatsList.instance.queuedSpawns.Count-1);
+                CatsManager.instance.queuedSpawns.RemoveAt(CatsManager.instance.queuedSpawns.Count-1);
             }
 
             yield return null;
@@ -230,7 +291,7 @@ public class SectorManager : MonoBehaviour
     }
     //private void OnCatClickedInSector(Cat clickedCat)
     //{
-        
+
     //    int sectorCatIsOn = -1;
 
     //    Debug.Log("clicked in sectormap scene");
@@ -245,7 +306,7 @@ public class SectorManager : MonoBehaviour
     //        //Debug.Log(sectRect.xMin.ToString() + " " + sectRect.xMax.ToString());
     //        if(sectRect.Contains(new Vector2(clickedCat.gameObject.transform.position.x, clickedCat.gameObject.transform.position.z),true))
     //        {
-                
+
     //        }
 
     //        Vector2 cat2Dpos = new Vector2(clickedCat.gameObject.transform.position.x, clickedCat.gameObject.transform.position.z);
@@ -265,12 +326,35 @@ public class SectorManager : MonoBehaviour
     //    if (sectorCatIsOn != -1)
     //        LoadScene.LoadCatBefriendingScene();
     //}
+    public void LoadGameData(GameData gameData)
+    {
+        foreach(Building.Type b in gameData.unlocked_sectors)
+        {
+
+            UnlockSector(b);
+        }
+    }
+
+    public void SaveGameData(ref GameData gameData)
+    {
+        foreach(Building.Type b in sectorList.Keys)
+        {
+            if (sectorList[b].isUnlocked)
+            {
+                if(!gameData.unlocked_sectors.Contains(b))
+                {
+                    gameData.unlocked_sectors.Add(b);
+                }
+            }
+        }
+    }
 
     public void OnDestroy()
     {
         //EventManager.OnInitializeMap -= InitializeSectors;
         EventManager.OnMissionComplete -= OnMissionComplete;
         //EventManager.OnCatClick -= OnCatClickedInSector;
+        EventManager.OnInitializeSector -= OnInitalizeSector;
     }
 }
 

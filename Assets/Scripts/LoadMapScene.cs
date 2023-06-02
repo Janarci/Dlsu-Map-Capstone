@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -55,6 +56,16 @@ public class LoadMapScene : MonoBehaviour
         while(!CameraManager.Instance.isInitialized)
         {
             Debug.Log("Initializing Camera");
+            loadingObj.GetComponent<TextMeshProUGUI>().text = "Loading Camera...";
+            yield return null;
+        }
+
+
+        Inventory.Instance.InitializeInventory();
+        while (!Inventory.Instance.isInitialized)
+        {
+            Debug.Log("Initializing Inventory");
+            loadingObj.GetComponent<TextMeshProUGUI>().text = "Loading Inventory...";
             yield return null;
         }
 
@@ -62,20 +73,40 @@ public class LoadMapScene : MonoBehaviour
         while (!CatDatabase.Instance.isInitialized)
         {
             Debug.Log("Initializing Cats");
+            loadingObj.GetComponent<TextMeshProUGUI>().text = "Loading Cats...";
             yield return null;
         }
 
-        DataPersistenceManager.instance.InitializeGameData();
-        while (!DataPersistenceManager.instance.isInitialized)
+        BuildingDatabase.Instance.InitializeBuildingDatabase();
+        while (!BuildingDatabase.Instance.isInitialized)
         {
-            Debug.Log("Initializing Game Data");
+            Debug.Log("Initializing Buildings");
+            loadingObj.GetComponent<TextMeshProUGUI>().text = "Loading Buildings...";
+            yield return null;
+        }
+
+        AccomplishmentDatabase.Instance.InitializeAchievementsAndQuests();
+        while (!AccomplishmentDatabase.Instance.isInitialized)
+        {
+            Debug.Log("Initializing achievements");
+            loadingObj.GetComponent<TextMeshProUGUI>().text = "Loading Quests and Achievements...";
+            yield return null;
+        }
+
+
+        MissionsManager.Instance.InitializeMissionsManager();
+        while (!MissionsManager.Instance.isInitialized)
+        {
+            Debug.Log("Initializing Missions");
+            loadingObj.GetComponent<TextMeshProUGUI>().text = "Loading Missions...";
             yield return null;
         }
 
         ChillSpacesManager.Instance.InitializeChillspaceManager();
         while (!ChillSpacesManager.Instance.isInitialized)
         {
-            Debug.Log("Initializing Chillspaces");
+            //Debug.Log("Initializing Chillspaces");
+            loadingObj.GetComponent<TextMeshProUGUI>().text = "Loading Chillspaces...";
             yield return null;
         }
 
@@ -83,8 +114,32 @@ public class LoadMapScene : MonoBehaviour
         while (!SectorManager.Instance.isInitialized)
         {
             Debug.Log("Initializing Sectors");
+            loadingObj.GetComponent<TextMeshProUGUI>().text = "Loading Sectors...";
             yield return null;
         }
+
+        AchievementsManager.instance.InitializeAccomplishmentsManager();
+        while (!AchievementsManager.instance.isInitialized)
+        {
+            Debug.Log("Initializing accomplishments manager");
+            loadingObj.GetComponent<TextMeshProUGUI>().text = "Loading quests and achievements 2...";
+            yield return null;
+        }
+
+        DataPersistenceManager.instance.InitializeGameData();
+        while (!DataPersistenceManager.instance.isInitialized)
+        {
+            Debug.Log("Initializing Game Data");
+            loadingObj.GetComponent<TextMeshProUGUI>().text = "Loading Game Data...";
+            yield return null;
+        }
+
+        
+
+        
+
+        
+
 
         startBtn.SetActive(true);
         loadingObj.SetActive(false);
