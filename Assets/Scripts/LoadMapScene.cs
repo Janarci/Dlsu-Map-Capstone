@@ -51,7 +51,8 @@ public class LoadMapScene : MonoBehaviour
         //    yield return null;
 
         //}
-
+        
+        //everything here is a singleton
         CameraManager.Instance.InitializeARCamera();
         while(!CameraManager.Instance.isInitialized)
         {
@@ -148,6 +149,8 @@ public class LoadMapScene : MonoBehaviour
 
     public void LoadMapSceneFromLoadingScreen()
     {
+
+        //called by button in scene
         LoadScene.LoadSectorUnlockingScene();
     }
 }
