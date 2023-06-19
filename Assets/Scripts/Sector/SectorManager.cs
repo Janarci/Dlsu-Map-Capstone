@@ -17,7 +17,8 @@ public class SectorManager : MonoBehaviour, IDataPersistence
      * 1 = LS
      * 2 = Henry Sy
      */
-    [SerializeField] private Dictionary<Building.Type, Sector> sectorList;
+    [SerializeField] public Dictionary<Building.Type, Sector> sectorList
+    { get; private set; }
     public List<Sector> visualList;
 
     private float spawnCatInterval = 4.0f;
@@ -122,7 +123,7 @@ public class SectorManager : MonoBehaviour, IDataPersistence
             s.SetSectorBlockerObj(s.gameObject.transform.GetChild(0).gameObject);
             Debug.Log("adding sector with id: " + s.getID() + " to sector list");
             //s.InitializeSector();
-            UnlockSector(s.type);
+            //UnlockSector(s.type);
 
             CatsManager.instance.num_sectors = sectorList.Keys.Count;
 
@@ -172,6 +173,7 @@ public class SectorManager : MonoBehaviour, IDataPersistence
     {
         if(sectorList.ContainsKey(bldgType))
         {
+            Debug.Log("unlockingt" + sectorList[bldgType].name);
             sectorList[bldgType].Unlock();
         }
     }

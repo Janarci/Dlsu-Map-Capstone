@@ -9193,7 +9193,7 @@ GameObject:
   - component: {fileID: 2019825656169994732}
   m_Layer: 0
   m_Name: LockedIndicator
-  m_TagString: Untagged
+  m_TagString: Sector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9271,7 +9271,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 823663909062612770}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -17423,7 +17423,7 @@ GameObject:
   - component: {fileID: 7312632480731704457}
   m_Layer: 0
   m_Name: LockedIndicator
-  m_TagString: Untagged
+  m_TagString: Sector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17501,7 +17501,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619172821774223424}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -31273,7 +31273,7 @@ GameObject:
   - component: {fileID: 2313121093173072858}
   m_Layer: 0
   m_Name: LockedIndicator
-  m_TagString: Untagged
+  m_TagString: Sector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31351,7 +31351,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2936212187376097528}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -36821,7 +36821,7 @@ GameObject:
   - component: {fileID: 5214945933167978085}
   m_Layer: 0
   m_Name: LockedIndicator
-  m_TagString: Untagged
+  m_TagString: Sector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36899,7 +36899,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3400062794186447924}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -41647,7 +41647,7 @@ GameObject:
   - component: {fileID: 6668377305587857566}
   m_Layer: 0
   m_Name: LockedIndicator
-  m_TagString: Untagged
+  m_TagString: Sector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41725,7 +41725,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3833087578935330057}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -51534,7 +51534,7 @@ GameObject:
   - component: {fileID: 6746249077519822963}
   m_Layer: 0
   m_Name: LockedIndicator
-  m_TagString: Untagged
+  m_TagString: Sector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51612,7 +51612,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4697711558901855547}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -51978,7 +51978,7 @@ GameObject:
   - component: {fileID: 5361728043306110480}
   m_Layer: 0
   m_Name: LockedIndicator
-  m_TagString: Untagged
+  m_TagString: Sector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52056,7 +52056,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4722197752575805744}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -55152,7 +55152,7 @@ GameObject:
   - component: {fileID: 4849923408436964129}
   m_Layer: 0
   m_Name: LockedIndicator
-  m_TagString: Untagged
+  m_TagString: Sector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55230,7 +55230,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5066500569543231791}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -58874,7 +58874,7 @@ GameObject:
   - component: {fileID: 8507528032414296735}
   m_Layer: 0
   m_Name: LockedIndicator
-  m_TagString: Untagged
+  m_TagString: Sector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58952,7 +58952,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5434940804993296512}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -65111,7 +65111,7 @@ GameObject:
   - component: {fileID: 2758002719372010090}
   m_Layer: 0
   m_Name: LockedIndicator
-  m_TagString: Untagged
+  m_TagString: Sector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65189,7 +65189,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6024370443422806723}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -77359,7 +77359,7 @@ GameObject:
   - component: {fileID: 6395571072369691395}
   m_Layer: 0
   m_Name: LockedIndicator
-  m_TagString: Untagged
+  m_TagString: Sector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77437,7 +77437,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7103760865626187126}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -89060,7 +89060,7 @@ GameObject:
   - component: {fileID: 4161144581927444770}
   m_Layer: 0
   m_Name: LockedIndicator
-  m_TagString: Untagged
+  m_TagString: Sector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89138,7 +89138,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8120304534371497276}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -91265,7 +91265,7 @@ GameObject:
   - component: {fileID: 7066107211355475275}
   m_Layer: 0
   m_Name: LockedIndicator
-  m_TagString: Untagged
+  m_TagString: Sector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91343,7 +91343,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8327592058771897972}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -97023,7 +97023,7 @@ GameObject:
   - component: {fileID: 8180123478566392289}
   m_Layer: 0
   m_Name: LockedIndicator
-  m_TagString: Untagged
+  m_TagString: Sector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97101,7 +97101,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8921264759831684373}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
