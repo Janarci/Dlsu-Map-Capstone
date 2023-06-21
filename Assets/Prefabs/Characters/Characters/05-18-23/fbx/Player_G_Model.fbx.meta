@@ -1,0 +1,257 @@
+fileFormatVersion: 2
+guid: 57bf260bbb9f6884e9c579cf7c3aad8f
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Player_G_Model(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_G
+      parentName: Player_G_Model(Clone)
+      position: {x: 7.5106506e-14, y: -1.3341596e-28, z: -6.0085205e-13}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.70710677}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesPelvis
+      parentName: Player_G_Model(Clone)
+      position: {x: 6.9291034e-17, y: 0.0011330814, z: -2.207308e-10}
+      rotation: {x: 0.50000006, y: -0.5, z: -0.4999999, w: 0.5}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesLegL1
+      parentName: Player_bonesPelvis
+      position: {x: -1.5381812e-10, y: -0.00008298381, z: 0.00027697897}
+      rotation: {x: -0.10421566, y: 0.9939006, z: -0.004863695, w: 0.035736274}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesLegL2
+      parentName: Player_bonesLegL1
+      position: {x: -0.0006370018, y: -3.845453e-10, z: -0.000000003460908}
+      rotation: {x: -0.0076051233, y: -0.014504817, z: 0.28920317, w: 0.9571277}
+      scale: {x: 1, y: 0.999999, z: 1}
+    - name: Player_bonesLegLAnkle
+      parentName: Player_bonesLegL2
+      position: {x: -0.00041212112, y: -1.9227266e-11, z: 0}
+      rotation: {x: -0.02270832, y: 0.051555783, z: -0.4774494, w: 0.87685144}
+      scale: {x: 0.999998, y: 1.000002, z: 1}
+    - name: Player_bonesLegR1
+      parentName: Player_bonesPelvis
+      position: {x: -1.5381812e-10, y: -0.00008298381, z: -0.00027697897}
+      rotation: {x: -0.10421606, y: 0.99390054, z: 0.004863703, w: -0.035736166}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesLegR2
+      parentName: Player_bonesLegR1
+      position: {x: -0.00063700177, y: -3.6531805e-10, z: 0.000000003460908}
+      rotation: {x: 0.007604965, y: 0.014506313, z: 0.28922424, w: 0.95712125}
+      scale: {x: 1, y: 0.999999, z: 1}
+    - name: Player_bonesLegRAnkle
+      parentName: Player_bonesLegR2
+      position: {x: -0.00041212112, y: -1.9227266e-11, z: 0}
+      rotation: {x: 0.02270793, y: -0.05155779, z: -0.47746846, w: 0.87684095}
+      scale: {x: 0.999998, y: 1.000003, z: 1}
+    - name: Player_bonesSpine1
+      parentName: Player_bonesPelvis
+      position: {x: -0.00020866613, y: 3.3996018e-11, z: 5.538655e-18}
+      rotation: {x: 7.10543e-15, y: 2.5571745e-14, z: 7.1054274e-15, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesSpine2
+      parentName: Player_bonesSpine1
+      position: {x: -0.00021839023, y: 1.833655e-17, z: 5.372471e-18}
+      rotation: {x: 0, y: 1.2300171e-14, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesChest
+      parentName: Player_bonesSpine2
+      position: {x: -0.00021839023, y: 1.833655e-17, z: 5.372474e-18}
+      rotation: {x: -7.1054274e-15, y: -1.3271574e-14, z: -7.1054274e-15, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesNeck
+      parentName: Player_bonesChest
+      position: {x: -0.00037392802, y: 6.092062e-11, z: 9.925227e-18}
+      rotation: {x: 7.10543e-15, y: 2.5571745e-14, z: 7.1054274e-15, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesHead
+      parentName: Player_bonesNeck
+      position: {x: -0.000065498374, y: -1.833655e-17, z: 1.6112831e-18}
+      rotation: {x: -7.1054274e-15, y: -1.3271574e-14, z: -7.1054274e-15, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesArmLCollarbone
+      parentName: Player_bonesChest
+      position: {x: -0.00028570162, y: -0.00008118239, z: 0.0001244721}
+      rotation: {x: -2.5410988e-21, y: 0.8126232, z: 0.000000048428774, w: 0.5827894}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesArmL11
+      parentName: Player_bonesArmLCollarbone
+      position: {x: -0.00039815195, y: 1.9227266e-11, z: 0}
+      rotation: {x: 0.05021686, y: -0.13981095, z: 0.016095944, w: 0.98877305}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesArmL12
+      parentName: Player_bonesArmL11
+      position: {x: -0.00012264935, y: 0, z: 0}
+      rotation: {x: -0.00007756799, y: -0.000000014900583, z: -0.000000007451736,
+        w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesArmL13
+      parentName: Player_bonesArmL12
+      position: {x: -0.00012264942, y: 0, z: 0}
+      rotation: {x: -0.0001439154, y: -0.000000014900089, z: -0.000000007452725, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesArmL21
+      parentName: Player_bonesArmL13
+      position: {x: -0.00012264927, y: 3.845453e-11, z: 0}
+      rotation: {x: -0.00005153579, y: -0.00081367296, z: -0.24342646, w: 0.969919}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesArmL22
+      parentName: Player_bonesArmL21
+      position: {x: -0.00013368603, y: 3.845453e-11, z: 0}
+      rotation: {x: -0.0031427555, y: 0.000017402575, z: 0.17029849, w: 0.98538756}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesArmL23
+      parentName: Player_bonesArmL22
+      position: {x: -0.0001336858, y: 5.76818e-11, z: -1.5381812e-10}
+      rotation: {x: -0.0059179105, y: -0.000000013578142, z: -0.00000022360166, w: 0.9999825}
+      scale: {x: 1, y: 1.000001, z: 1}
+    - name: Player_bonesArmLPalm
+      parentName: Player_bonesArmL23
+      position: {x: -0.00013368591, y: 5.76818e-11, z: 0}
+      rotation: {x: -0.7041127, y: -0.050397653, z: 0.11042048, w: 0.6996376}
+      scale: {x: 1, y: 1, z: 1.000001}
+    - name: Player_bonesArmRCollarbone
+      parentName: Player_bonesChest
+      position: {x: -0.00028570162, y: -0.00008118239, z: -0.0001244721}
+      rotation: {x: 0.0000000037252899, y: -0.81262314, z: -0.000000029802319, w: 0.5827895}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesArmR11
+      parentName: Player_bonesArmRCollarbone
+      position: {x: -0.00039815198, y: 0, z: 0}
+      rotation: {x: -0.050216924, y: 0.13981041, z: 0.016096069, w: 0.9887731}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesArmR12
+      parentName: Player_bonesArmR11
+      position: {x: -0.00012264942, y: 0, z: 0}
+      rotation: {x: 0.000077560544, y: 0.000000014900004, z: -0.000000014902316, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesArmR13
+      parentName: Player_bonesArmR12
+      position: {x: -0.00012264919, y: 0, z: 1.5381812e-10}
+      rotation: {x: 0.00014392287, y: 0.000000014897942, z: -0.000000022353884, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesArmR21
+      parentName: Player_bonesArmR13
+      position: {x: -0.0001226495, y: -3.845453e-11, z: 0}
+      rotation: {x: 0.000051538897, y: 0.00081373425, z: -0.24343015, w: 0.96991813}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesArmR22
+      parentName: Player_bonesArmR21
+      position: {x: -0.00013368596, y: 1.9227266e-11, z: 0}
+      rotation: {x: 0.0031420412, y: -0.00001707737, z: 0.17030282, w: 0.9853867}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesArmR23
+      parentName: Player_bonesArmR22
+      position: {x: -0.0001336858, y: 0, z: 0}
+      rotation: {x: 0.0059173033, y: 0.000000118810426, z: -0.00000006775946, w: 0.99998254}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_bonesArmRPalm
+      parentName: Player_bonesArmR23
+      position: {x: -0.00013368599, y: 0, z: 0}
+      rotation: {x: 0.7041143, y: 0.0503973, z: 0.11041943, w: 0.6996361}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.0254
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

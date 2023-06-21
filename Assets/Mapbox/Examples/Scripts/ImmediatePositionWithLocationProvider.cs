@@ -44,20 +44,25 @@
 				if (SettingsModes.locationMode == SettingsModes.Location.Automated)
 				{
                     transform.localPosition = map.GeoToWorldPosition(new Utils.Vector2d(14.56473f, 120.993796f));
+					map.SetCenterLatitudeLongitude(new Utils.Vector2d(14.56473f, 120.993796f));
 					
 				}
 
 				else if (SettingsModes.locationMode == SettingsModes.Location.Tracking)
 				{
                     transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
+					map.SetCenterLatitudeLongitude(LocationProvider.CurrentLocation.LatitudeLongitude);
                 }
                 Vector3 finalPos = transform.localPosition;
 
 
-				if (Vector3.Distance(transform.position, CameraManager.Instance.transform.position) > 900.0f)
+				if (Vector3.Distance(transform.position, CameraManager.Instance.transform.position) > 1000.0f)
 				{
 					CameraManager.Instance.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 					CameraManager.Instance.SetWorldCameraPosition(new Vector3(transform.position.x, transform.position.y + 50, transform.position.z - 20));
+					Debug.Log("Respoitioning camera");
+					map.UpdateMap();
+
 				}
 
 				//else

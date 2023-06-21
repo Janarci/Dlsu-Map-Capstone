@@ -146,6 +146,8 @@ namespace Mapbox.Examples
 					_shouldDrag = true;
 					_origin = _referenceCamera.ScreenToWorldPoint(mousePosition);
 				}
+
+				//Debug.Log("Mouse position : " + mousePosition + "\nScreen point: " + _referenceCamera.ScreenToWorldPoint(mousePosition) + "\nDelta: " + _delta + "\nOrigin: " + _origin);
 			}
 			else
 			{
@@ -180,15 +182,15 @@ namespace Mapbox.Examples
 
 		void ResetCamera()
 		{
-            Vector3 newPos = Vector3.zero;
+			Vector3 newPos = Vector3.zero;
 
-            newPos.x = Math.Clamp(transform.localPosition.x, -300, 300);
-            newPos.y = Math.Clamp(transform.localPosition.y, 62.5f, 200);
-            newPos.z = Math.Clamp(transform.localPosition.z, -300, 300);
+			newPos.x = Math.Clamp(transform.localPosition.x, -300, 300);
+			newPos.y = Math.Clamp(transform.localPosition.y, 62.5f, 200);
+			newPos.z = Math.Clamp(transform.localPosition.z, -300, 300);
 
 
-            transform.localPosition = newPos;
-        }
+			transform.localPosition = newPos;
+		}
 		void Awake()
 		{
 			_originalRotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);

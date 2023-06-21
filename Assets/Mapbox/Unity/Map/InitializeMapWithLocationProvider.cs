@@ -10,21 +10,62 @@
 		AbstractMap _map;
 
 		ILocationProvider _locationProvider;
-    
+		public bool isInitialized = false;
+        bool isLocationProvided = false;
+
+		public static InitializeMapWithLocationProvider instance;
 		private void Awake()
 		{
+			instance = this;
 			// Prevent double initialization of the map. 
 			_map.InitializeOnStart = false;
 		}
+        Unity.Location.Location initial_loc;
 
-		protected virtual IEnumerator Start()
+        protected IEnumerator Start()
+        {
+            yield return null;
+            _locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
+            _locationProvider.OnLocationUpdated += LocationProvider_OnLocationUpdated;
+
+            //LocationProvider_OnLocationUpdated();
+        }
+
+        public IEnumerator Initialize()
+        {
+            while(!isLocationProvided)
+            {
+                yield return null;
+            }
+
+            InitializeMap();
+
+            while(!isInitialized)
+            {
+                yield return null;
+            }
+        }
+        public void InitializeMap()
 		{
-			yield return null;
-			_locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
-			_locationProvider.OnLocationUpdated += LocationProvider_OnLocationUpdated;
+            Debug.Log("INITIALIZING MAP 2!!!!!!");
 
-			//LocationProvider_OnLocationUpdated();
-		}
+            if (SettingsModes.locationMode == SettingsModes.Location.Tracking)
+            {
+                _map.Initialize(initial_loc.LatitudeLongitude, _map.AbsoluteZoom);
+            }
+
+            else
+            {
+                Location tempLoc = new Location();
+                tempLoc.LatitudeLongitude = new Utils.Vector2d(14.56473f, 120.993796f);
+                _map.Initialize(tempLoc.LatitudeLongitude, _map.AbsoluteZoom);
+            }
+
+            MapTracker.isMapInitialized = true;
+            EventManager.InitializeMap();
+            isInitialized = true;
+
+        }
 
         public void ResetPosition()
         {
@@ -58,30 +99,24 @@
         void LocationProvider_OnLocationUpdated(Unity.Location.Location location)
 		{
             _locationProvider.OnLocationUpdated -= LocationProvider_OnLocationUpdated;
+            initial_loc = location;            
+            isLocationProvided = true;
+            Debug.Log("INITIALIZING MAP 1!!!!!!");
 
-            if (SettingsModes.locationMode == SettingsModes.Location.Tracking)
-			{
-                _map.Initialize(location.LatitudeLongitude, _map.AbsoluteZoom);
-            }
+        }
 
-			else
-			{
-                Location tempLoc = new Location();
-                tempLoc.LatitudeLongitude = new Utils.Vector2d(14.56473f, 120.993796f);
-                _map.Initialize(tempLoc.LatitudeLongitude, _map.AbsoluteZoom);
-            }
-			
-			MapTracker.isMapInitialized = true;
-			EventManager.InitializeMap();
-		}
+        //void LocationProvider_OnLocationUpdated()
+        //{
+        //	Location tempLoc = new Location();
+        //	tempLoc.LatitudeLongitude = new Utils.Vector2d(14.56473f, 120.993796f);
+        //	_map.Initialize(tempLoc.LatitudeLongitude, _map.AbsoluteZoom);
+        //	MapTracker.isMapInitialized = true;
+        //	EventManager.InitializeMap();
+        //}
 
-		//void LocationProvider_OnLocationUpdated()
-		//{
-		//	Location tempLoc = new Location();
-		//	tempLoc.LatitudeLongitude = new Utils.Vector2d(14.56473f, 120.993796f);
-		//	_map.Initialize(tempLoc.LatitudeLongitude, _map.AbsoluteZoom);
-		//	MapTracker.isMapInitialized = true;
-		//	EventManager.InitializeMap();
-		//}
-	}
+        private void OnDestroy()
+        {
+            instance = null;
+        }
+    }
 }
