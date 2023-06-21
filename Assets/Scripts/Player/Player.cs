@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     //        Instance = this;
     //        DontDestroyOnLoad(gameObject);
     //    }
-            
+
 
     //    else
     //        Destroy(this.gameObject);
@@ -29,26 +29,26 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-	}
+    }
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.CompareTag("Sector"))
         {
-            Sector sectorScript = other.GetComponent<Sector>();
+            Sector sectorScript = other.transform.parent.GetComponent<Sector>();
             if (sectorScript != null)
-            {
+			{
+                Debug.Log("entered a sector");
+
                 foreach (Building.Type b in SectorManager.Instance.sectorList.Keys)
-                {
-                    if ( sectorScript == SectorManager.Instance.sectorList[b] && !SectorManager.Instance.sectorList[b].isUnlocked)//not unlocked
-                    {
-                        SectorManager.Instance.UnlockSector(b); ;
-                    }
-                }
-            }
-               
-			
-            //isInSector = true;
-            // Perform any actions or set variables related to being inside the sector
-        }
-    }
+				{
+					if (sectorScript == SectorManager.Instance.sectorList[b] && !SectorManager.Instance.sectorList[b].isUnlocked)//not unlocked
+					{
+						SectorManager.Instance.UnlockSector(b); ;
+					}
+				}
+			}
+		}
+	}
+   
 }

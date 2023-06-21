@@ -333,7 +333,7 @@ public class SectorManager : MonoBehaviour, IDataPersistence
         foreach(Building.Type b in gameData.unlocked_sectors)
         {
 
-            UnlockSector(b);
+            //UnlockSector(b);
         }
     }
 
