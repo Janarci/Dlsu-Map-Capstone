@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class CatalogChillSpaceInfo : MonoBehaviour
 {
+    [SerializeField] GameObject infoUI;
     [SerializeField] Image chillSpacePicture;
     [SerializeField] TextMeshProUGUI chillSpaceName;
     [SerializeField] Text chillSpaceInfo;
@@ -14,6 +15,10 @@ public class CatalogChillSpaceInfo : MonoBehaviour
     [SerializeField] Text contactsTxt;
 
     [SerializeField] CatalogCatInfo catalogCatInfo;
+    [SerializeField] Button quizBtn;
+    [SerializeField] QuizController quizController;
+    [SerializeField] ChillspaceQuizPool QuizPool;
+    [SerializeField] GameObject quizUI;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +57,9 @@ public class CatalogChillSpaceInfo : MonoBehaviour
 
             AddItems(null);
         }
+
+        quizBtn.onClick.AddListener(delegate {StartChillspaceQuiz(data.area);});
+
         
     }
 
@@ -78,5 +86,35 @@ public class CatalogChillSpaceInfo : MonoBehaviour
         }
     }
 
+    public void StartChillspaceQuiz(ChillSpace.Area _area)
+    {
+
+        ChillspaceQuizPool.Quizzes.Quiz quiz = QuizPool.GetQuestion(_area);
+
+        if(quiz != null)
+        {
+            infoUI.SetActive(false);
+            quizUI.SetActive(true);
+            quizController.InitializeGame(quiz.quiz, quiz.answer);
+            quizController.OnFinishQuiz += EndQuiz;
+        }
+
+        void EndQuiz(bool _isSuccess)
+        {
+            quizController.OnFinishQuiz -= EndQuiz;
+            quizUI.SetActive(false);
+            infoUI.SetActive(true);
+            ClaimChillspaceItemFromQuiz(_isSuccess, _area);
+        }
+    }
     
+    
+
+    public void ClaimChillspaceItemFromQuiz(bool _isSuccess, ChillSpace.Area _area)
+    {
+        if(_isSuccess)
+        {
+            ChillSpacesManager.Instance.GetItemFromChillspaceQuiz(_area, _isSuccess);
+        }
+    }
 }

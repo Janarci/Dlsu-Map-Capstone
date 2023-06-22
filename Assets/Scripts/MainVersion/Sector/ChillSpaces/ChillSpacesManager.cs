@@ -114,6 +114,11 @@ public class ChillSpacesManager : MonoBehaviour, IDataPersistence
         chillSpacesList[i].GiveItem();
     }
 
+    public void GetItemFromChillspaceQuiz(ChillSpace.Area area, bool _isSuccess)
+    {
+        chillspaceData[area].GiveItemFromQuiz(_isSuccess);
+    }
+
     void OnMissionComplete(int missionID)
     {
         //Debug.Log("getting item from chillspace1");

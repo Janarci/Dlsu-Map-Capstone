@@ -365,8 +365,6 @@ public class Inventory : MonoBehaviour, IDataPersistence
                     isNewItem = false;
                     _itemData.amount = itemList[_type];
                     break;
-
-
                 }
             }
 

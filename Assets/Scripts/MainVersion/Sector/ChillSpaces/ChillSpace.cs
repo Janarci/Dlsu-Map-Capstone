@@ -71,7 +71,7 @@ public class ChillSpace : MonoBehaviour
 
     void Start()
     {
-        isLocked = true;;
+        isLocked = true;
 
         ui.OnChillspaceUIButtonPress += GiveItem;
         ui.OnChillspaceUIPicturePress += DisplayChillspaceInfoInCatalog;
@@ -151,6 +151,76 @@ public class ChillSpace : MonoBehaviour
                 Inventory.Instance?.AddToInventory(q, 2);
                 AchievementsManager.instance?.ProgressQuest(Quest.QuestCode.claim_chillspace_items, 2);
 
+            }
+            foreach (CatEvolutionItem.cat_evolution_item_type item in detail.giveawayItems)
+            {
+                Inventory.Instance?.AddToInventory(item, 2);
+                AchievementsManager.instance?.ProgressQuest(Quest.QuestCode.claim_chillspace_items, 2);
+
+            }
+            TriggerCooldown();
+        }
+
+
+    }
+
+    public void GiveItemFromQuiz(bool _isSuccess)
+    {
+        Debug.Log("giving item");
+        if (isCooldown)
+        {
+            Debug.Log("on cooldown");
+        }
+
+        else if (isLocked)
+        {
+            Debug.Log(detail.areaName + "is locked");
+        }
+
+        if (!isLocked && !isCooldown)
+        {
+
+            if (detail.giveawayItems.Count == 23)
+            {
+                int rndItemIndex = UnityEngine.Random.Range(0, 23);
+                CatEvolutionItem.cat_evolution_item_type q = (CatEvolutionItem.cat_evolution_item_type)rndItemIndex;
+
+                if(_isSuccess)
+                {
+                    Inventory.Instance?.AddToInventory(q, 2);
+                    AchievementsManager.instance?.ProgressQuest(Quest.QuestCode.claim_chillspace_items, 2);
+                }
+                
+                else
+                {
+                    Inventory.Instance?.AddToInventory(q, 2);
+                    AchievementsManager.instance?.ProgressQuest(Quest.QuestCode.claim_chillspace_items, 2);
+                }
+
+            }
+
+            else
+            {
+                if(_isSuccess)
+                {
+                    foreach (CatEvolutionItem.cat_evolution_item_type item in detail.giveawayItems)
+                    {
+                        Inventory.Instance?.AddToInventory(item, 2);
+                        AchievementsManager.instance?.ProgressQuest(Quest.QuestCode.claim_chillspace_items, 2);
+
+                    }
+                }
+
+                else
+                {
+                    foreach (CatEvolutionItem.cat_evolution_item_type item in detail.giveawayItems)
+                    {
+                        Inventory.Instance?.AddToInventory(item, 1);
+                        AchievementsManager.instance?.ProgressQuest(Quest.QuestCode.claim_chillspace_items, 1);
+
+                    }
+                }    
+                
             }
             foreach (CatEvolutionItem.cat_evolution_item_type item in detail.giveawayItems)
             {
