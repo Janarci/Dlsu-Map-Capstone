@@ -3916,7 +3916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1611603657303738, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1852283228421216, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
       propertyPath: m_IsActive
@@ -24805,7 +24805,7 @@ RectTransform:
   m_GameObject: {fileID: 1129776085}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 179761315}
@@ -27652,7 +27652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1240615694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34543,6 +34543,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Archer_Dialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7645025355476234798, guid: 1c94f21678302594a8382e09799e9cf8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8696164124114806610, guid: 1c94f21678302594a8382e09799e9cf8,
         type: 3}
