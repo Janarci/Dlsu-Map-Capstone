@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Splash.unity
+    path: 
     guid: 318863d0f0c1b7a4781d03402c46b32c
   - enabled: 0
-    path: Assets/Scenes/Debug.unity
+    path: 
     guid: 44040cba1b556ce42bc40dbda4b82bd7
   - enabled: 0
-    path: Assets/Scenes/0.unity
+    path: 
     guid: 2c097026e6f4c97408512820bfa5856d
   - enabled: 0
     path: Assets/Scenes/HQ.unity
@@ -29,11 +29,29 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SergaBuild/SergaHQ.unity
     guid: b55b4794751f98e4da100cdf2f4bd465
+  - enabled: 1
+    path: Assets/Scenes/5-22-23/MapSceneOld.unity
+    guid: 2897ac046b4d2134481e0cbac55dae49
+  - enabled: 1
+    path: Assets/Scenes/5-22-23/SergaHQ.unity
+    guid: 8ad6ccc13223dd847bfbbc2ad53caa82
+  - enabled: 1
+    path: Assets/Scenes/5-22-23/MapScene.unity
+    guid: ab3d44be24b67a64b944ddba326ff301
+  - enabled: 1
+    path: Assets/Scenes/5-22-23/LoadingScreen.unity
+    guid: 47c91c3065ee2274ca0e5579242d1098
+  - enabled: 1
+    path: Assets/Scenes/5-22-23/EndScene.unity
+    guid: 3c79abd87037cb245a53072c246a0659
+  - enabled: 1
+    path: Assets/Scenes/5-22-23/BefriendingScene.unity
+    guid: 53910cdcccde3ab47a4dae6cf83524a5
   - enabled: 0
-    path: Assets/Scenes/ARTest.unity
+    path: 
     guid: 8543c75b11edbe247bf0e0e378ec4dea
   - enabled: 0
-    path: Assets/Scenes/PlayingAround.unity
+    path: 
     guid: 348332facb21f5a49a1584024eb0711e
   - enabled: 0
     path: Assets/Mapbox/Examples/0_PrefabScenes/implementingIngame.unity
