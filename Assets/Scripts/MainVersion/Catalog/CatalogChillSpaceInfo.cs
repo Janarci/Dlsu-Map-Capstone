@@ -1,5 +1,8 @@
+using Microsoft.Win32.SafeHandles;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +11,7 @@ public class CatalogChillSpaceInfo : MonoBehaviour
     [SerializeField] GameObject infoUI;
     [SerializeField] Image chillSpacePicture;
     [SerializeField] TextMeshProUGUI chillSpaceName;
+    [SerializeField] TMP_InputField nameField;
     [SerializeField] Text chillSpaceInfo;
     [SerializeField] Transform itemsListContent;
     [SerializeField] GameObject itemsListItem;
@@ -38,6 +42,8 @@ public class CatalogChillSpaceInfo : MonoBehaviour
         {
             chillSpacePicture.sprite = data.picture;
             chillSpaceName.text = data.areaName;
+            chillSpaceName.gameObject.SetActive(true);
+            nameField.gameObject.SetActive(false);
             chillSpaceInfo.text = data.info;
 
             hrsTxt.text = data.officeHours;
@@ -49,7 +55,9 @@ public class CatalogChillSpaceInfo : MonoBehaviour
         else
         {
             chillSpacePicture.sprite = data.picture;
-            chillSpaceName.text = data.areaName;
+            chillSpaceName.gameObject.SetActive(false);
+            nameField.gameObject.SetActive(true);
+            nameField.onEndEdit.AddListener(delegate { ValueChangeCheck(data); });
             chillSpaceInfo.text = null;
 
             hrsTxt.text = null;
@@ -58,9 +66,41 @@ public class CatalogChillSpaceInfo : MonoBehaviour
             AddItems(null);
         }
 
-        quizBtn.onClick.AddListener(delegate {StartChillspaceQuiz(data.area);});
+        //quizBtn.onClick.AddListener(delegate {StartChillspaceQuiz(data.area);});
 
         
+    }
+
+    public void ValueChangeCheck(ChillSpace.Detail data)
+    {
+        Debug.Log("Value Changed");
+
+        if((String.Compare(nameField.text, data.areaName, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols) == 0) || (String.Compare(nameField.text, data.abbreviation, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols) == 0 && data.abbreviation != string.Empty))
+        {
+            Debug.Log("Correct");
+            ChillSpacesManager.Instance.UnlockChillSpace(data.area);
+
+            chillSpacePicture.sprite = data.picture;
+            chillSpaceName.text = data.areaName;
+            chillSpaceName.gameObject.SetActive(true);
+            nameField.gameObject.SetActive(false);
+            chillSpaceInfo.text = data.info;
+
+            hrsTxt.text = data.officeHours;
+            contactsTxt.text = data.email + "\n" + data.contactNumber;
+
+            AddItems(ChillSpaceDatabase.Instance.GetDataInfo(data.area).giveawayItems);
+        }
+
+        else
+        {
+            Debug.Log(data.areaName);
+        }
+    }
+
+    public void OnClaimItemPress(ChillSpace.Area area)
+    {
+        ChillSpacesManager.Instance.GetItemFromChillSpace(area);
     }
 
     public void AddItems(List<CatEvolutionItem.cat_evolution_item_type> data)

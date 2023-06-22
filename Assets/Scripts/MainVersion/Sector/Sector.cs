@@ -76,7 +76,7 @@ public class Sector : MonoBehaviour
         for (int i = 0; i < csCount; i++)
         {
             ChillSpace.Area cs = BuildingDatabase.Instance.GetDataInfo(type).chillspaces[i];
-            ChillSpacesManager.Instance.UnlockChillSpace(cs);
+            //ChillSpacesManager.Instance.UnlockChillSpace(cs);
         }
     }
 

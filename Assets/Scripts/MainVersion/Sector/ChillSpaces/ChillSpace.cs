@@ -46,6 +46,7 @@ public class ChillSpace : MonoBehaviour
     {
         public string areaName;
         [SerializeField] public Area area;
+        [SerializeField] public string abbreviation;
         [SerializeField] public Sprite picture;
         [SerializeField] public string location;
         [SerializeField] public string info;

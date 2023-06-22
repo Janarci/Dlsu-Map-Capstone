@@ -52,8 +52,9 @@ public class PopupGenerator : MonoBehaviour
 
         if (mainCanvas)
         {
-            GameObject newInfoUIObj = Instantiate(infoUICloseableGeneral, mainCanvas.transform);
-            newInfoUIObj.transform.GetChild(0).GetComponent<Text>().text = popupMessage;
+            GameObject newInfoUIObj = Instantiate(infoUICloseableTutorial, mainCanvas.transform);
+            //newInfoUIObj.transform.GetChild(0).GetComponent<Text>().text = popupMessage;
+            newInfoUIObj.GetComponent<TutorialPopup>().SetText(popupMessage);
 
 
             return newInfoUIObj;
