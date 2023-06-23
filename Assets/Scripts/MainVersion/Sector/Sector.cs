@@ -120,6 +120,20 @@ public class Sector : MonoBehaviour
         }
     }
 
+    public void ClaimItem()
+    {
+        if(isUnlocked)
+        {
+            if(BuildingDatabase.Instance.GetDataInfo(type).items.Count > 0)
+            {
+                foreach(CatEvolutionItem.cat_evolution_item_type _item in BuildingDatabase.Instance.GetDataInfo(type).items)
+                {
+                    Inventory.Instance?.AddToInventory(_item, 2);
+                }
+            }
+        }
+    }
+
     public void SetSectorBlockerObj(GameObject template)
     {
         sectorBlockerObj = template;
