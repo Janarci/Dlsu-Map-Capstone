@@ -299,6 +299,11 @@ public class SectorManager : MonoBehaviour, IDataPersistence
     {
         return sectorList.Keys.Count;
     }
+
+    public void ClaimItemFromSector(Building.Type _type)
+    {
+        sectorList[_type].ClaimItem();
+    }
     //private void OnCatClickedInSector(Cat clickedCat)
     //{
 
