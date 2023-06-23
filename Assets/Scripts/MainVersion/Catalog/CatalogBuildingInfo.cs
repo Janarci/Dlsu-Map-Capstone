@@ -11,6 +11,7 @@ public class CatalogBuildingInfo : MonoBehaviour
     [SerializeField] Text buildingInfo;
     [SerializeField] Transform chillspaceListContent;
     [SerializeField] GameObject chillspaceItem;
+    [SerializeField] Button claimItemBtn;
 
     [SerializeField] CatalogChillSpaceInfo chillSpaceInfo;
 
@@ -50,6 +51,17 @@ public class CatalogBuildingInfo : MonoBehaviour
             buildingName.text = data.name;
             buildingInfo.text = data.description;
 
+            if(BuildingDatabase.Instance.GetDataInfo(data.type).items.Count > 0)
+            {
+                claimItemBtn.gameObject.SetActive(true);
+                claimItemBtn.onClick.AddListener(delegate { OnClaimItemPress(data.type); });
+            }
+
+            else
+            {
+                claimItemBtn.gameObject.SetActive(false);
+            }
+
             AddChillSpaces(data.chillspaces);
         }
         
@@ -58,6 +70,7 @@ public class CatalogBuildingInfo : MonoBehaviour
             buildingPicture.sprite = data.picture;
             buildingName.text = data.name;
             buildingInfo.text = "LOCKED";
+            claimItemBtn.gameObject.SetActive(false);
 
             AddChillSpaces(null);
         }
@@ -127,5 +140,10 @@ public class CatalogBuildingInfo : MonoBehaviour
         //buildingInfoMenu.SetActive(false);
         //chillSpaceInfoMenu.SetActive(true);
 
+    }
+
+    public void OnClaimItemPress(Building.Type _type)
+    {
+        SectorManager.Instance?.ClaimItemFromSector(_type);
     }
 }

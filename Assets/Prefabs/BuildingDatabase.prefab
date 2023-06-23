@@ -1,0 +1,364 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5193839717929034132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5193839717929034134}
+  - component: {fileID: 5193839717929034133}
+  m_Layer: 0
+  m_Name: BuildingDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5193839717929034134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5193839717929034132}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5193839717929034133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5193839717929034132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921ad3bb45c78394d88253ee1fa8f2e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+  - type: 0
+    name: Bro. Andrew Gonzalez Hall
+    detail: 
+    description: "The Br. Andrew Gonzalez Hall is a 20-story academic complex designed
+      by Philip H. Recto Architects for De La Salle University. It is located on
+      a 1,700-square meter lot between Taft Avenue and Fidel Reyes St. and in front\n\n\n\nof
+      the Enrique M. Razon Sports Center. The building was formally inaugurated on
+      March 1, 2007 in celebration of Br. Andrew\u2019s 67th birthday. The building
+      was opened for use in May 2006 for the first trimester. Eduardo G. Fajardo,
+      chairman of the Natividad Galang Fajardo Foundation, Inc., contributed a significant
+      amount to DLSU for the construction of the building.\n\n"
+    amentiesList:
+    - floor: 2
+      amenities:
+      - Photocopying Service
+    - floor: 7
+      amenities:
+      - Vending Machine
+    - floor: 8
+      amenities:
+      - Photocopying Service
+    - floor: 15
+      amenities:
+      - Photocopying Service
+    - floor: 18
+      amenities:
+      - Photocopying Service
+    chillspaces: 100000000f000000090000000a000000
+    picture: {fileID: 21300000, guid: c3fd31ef955c4ca4d843ea239724dfb5, type: 3}
+    items: 
+  - type: 1
+    name: Br. Bloemen Hall
+    detail: 
+    description: 'Bloemen Hall, located along St. Joseph Walk, provides the community
+      an access to a wide variety of grab-and-go meals and desserts. It also houses
+      student-run businesses under the ANIMO BIZ (Business Innovation Zone) program,
+      the Bloemen Art Gallery and the Green Giant DJ booths, easily making the area
+      one of the hippest hang out places in the Manila campus.
+
+'
+    amentiesList:
+    - floor: 1
+      amenities:
+      - Colonel's Curry
+      - Dairy Queen (Philippine Pizza, Inc.)
+      - Infinitea (Jogg Enterprise)
+      - LRN Japanese Food Services
+      - Mongolian Faster
+      - Potato Corner (Chivbei Matfran Company)
+      - Queggs Food Cart and Atbp.
+      - Salad Break
+      - Salikneta (DLS - Araneta University)
+      - Sandwich Corner
+      - Sinangag Trip Pampanga's Special
+      - The Healthy Corner
+      - Turks Shawarma (Himmel Baum Ent. Co.)
+    chillspaces: 01000000
+    picture: {fileID: 21300000, guid: c261bb40bf626ba4e82b8b9afe0cb5d7, type: 3}
+    items: 18000000
+  - type: 2
+    name: Br. Connon Hall
+    detail: 
+    description: 'a 5-story building that houses the University Clinic, Waldo Perfecto
+      Seminar Room, discussion rooms, and the offices of various university departments
+      and student organizations
+
+'
+    amentiesList:
+    - floor: 1
+      amenities:
+      - Water Dispenser
+    chillspaces: 1400000019000000020000000e00000015000000
+    picture: {fileID: 21300000, guid: 6c35ae895d9bcb4428b8cf68412b9217, type: 3}
+    items: 
+  - type: 3
+    name: Br. William Hall
+    detail: 
+    description: "houses food stalls and the studio of Green Giant FM.\r\n\r\n\r\nPopular
+      Amenities:\r\n\r\nGround Floor\r\n-Colonel\u2019s Curry\r\n-Dairy Queen (Philippine
+      Pizza, Inc.)\r\n-Infinitea (Jogg Enterprises)\r\n-LRN Japanese Food Services\r\n-Mongolian
+      Master\r\n-Potato Corner (Chivbei Matfran Company)\r\n-Queggs Food Cart and
+      Atbp.\r\n-Salad Break\r\n-Salikneta (DLS - Araneta University)\r\n-Sandwich
+      Corner (Lito-Alex Sandwich)\r\n-Sinangag Trip Pampangas\u2019s Special\r\n-The
+      Healthy Corner\r\n-Turks Shawarma (Himmel Baum Ent. Co.)\r\n\r\n"
+    amentiesList:
+    - floor: 1
+      amenities: []
+    chillspaces: 
+    picture: {fileID: 21300000, guid: 38b1e666b2225b9459c209c57d882165, type: 3}
+    items: 
+  - type: 4
+    name: Enrique Razon Sports Center
+    detail: 
+    description: "a 10-story building that is the main sports facility of De La Salle
+      University. It was built in 1998 to replace the old Br. Athanasius Sports Complex
+      that was demolished in 2000. The Sports Center houses a variety of sports facilities
+      like an olympic-sized pool, a track and field oval with a balcony, basketball
+      courts, volleyball courts, table tennis courts, a dance studio, a martial arts
+      studio, and weight training rooms. Enrique Razon sports center also has its
+      own Gold\u2019s Gym. Aside from sports and athletics, The George T. Yang Performing
+      Arts Studios can also be found here.\r\n\r\n\r\nPopular Amenities:\r\n\r\nGround
+      Floor\r\n-Health Clinic\r\n-Swimming Pool Area\r\n-Locker Area\r\n-Vending
+      Machines\r\n\r\n2nd Floor\r\n-Orchestra Room\r\n\r\n3rd Floor\r\n-Parking Area\r\n\r\n4th
+      Floor\r\n-Parking Area\r\n\r\n5th Floor\r\n-Parking Area\r\n\r\n6th Floor\r\n-Gold\u2019s
+      Gym\r\n-Archery Range\r\n-Chess Room\r\n-Choral\r\n-Innersoul\r\n-Dance Studio\r\n-Male
+      Athlete\u2019s Study Area\r\n-Female Athlete\u2019s Study Area\r\n\r\n7th Floor\r\n-Basketball/Badminton/Volleyball
+      Court Area\r\n-Table Tennis Area\r\n-Showers\r\n-Locker Areas\r\n\r\n8th Floor\r\n-Multipurpose
+      Area/Oval Track\r\n-Dancing Room\r\n-Judo Room\r\n-Taekwondo Room\r\n\r\n9th
+      Floor\r\n-Iron Works Fitness Gym\r\n-Athlete\u2019s Basketball/Volleyball Court
+      Area\r\n-Multipurpose aREA\r\n-Showers\r\n-Locker Areas\r\n\r\n10th Floor\r\n-Bleachers
+      Area\r\n-Dance Rooms\r\n-Physical Fitness Center\r"
+    amentiesList: []
+    chillspaces: 130000000b000000
+    picture: {fileID: 21300000, guid: ebe011ee646b6b0498f606c998386a50, type: 3}
+    items: 
+  - type: 5
+    name: Faculty Center
+    detail: 
+    description: "a 4-story building located behind the St. Joseph Hall, it houses
+      the offices of departments belonging to the College of Liberal Arts and to
+      the College of Business, respectively, and formerly the university library.
+      (https://en.wikipedia.org/wiki/De_La_Salle_University) \n\nPopular Amenities:\r\n\r\nGround
+      Floor\r\n-Vending Machine\r\n\n2nd Floor\r\n-Vending Machine"
+    amentiesList: []
+    chillspaces: 1c000000
+    picture: {fileID: 21300000, guid: 309a54adb54ace349977a30212152b33, type: 3}
+    items: 
+  - type: 6
+    name: Gokongwei Hall
+    detail: 
+    description: 'a four-story building completed in the 1990s. Originally named
+      the INTELLECT (Information Technology Lecture) Building, the building houses
+      the College of Computer Studies, the university''s Information Technology Services
+      (ITS) facilities, National Service Training Program and Formations Office,
+      and 24-hour study hall. There is a bridge on the 3rd Floor of Gokongwei Hall
+      that connects to the 2nd Floor of St. Miguel Hall.
+
+
+      Popular Amenities:
+
+
+      Ground
+      Hall
+
+      -Study Halls
+
+
+      3rd Floor
+
+      -Studying Halls
+
+      -Photocopying
+      Service'
+    amentiesList: []
+    chillspaces: 120000000700000008000000
+    picture: {fileID: 21300000, guid: 4f282b8e9178c324cb12b720c1a7c699, type: 3}
+    items: 
+  - type: 7
+    name: Henry Sy Sr. Hall
+    detail: 
+    description: "This hall was named in honor of its first donor, Henry Sy, Sr.,
+      whose generosity jumpstarted its construction in December 2010. The building\u2019s
+      modern and open design was developed by the renowned architectural firm Leandro
+      V. Locsin Partners. Likened to a \u201Chabitable tree\u201D, it mirrors DLSU\u2019s
+      commitment to environmental responsibility and sustainability. It has pocket
+      indoor gardens, outdoor reading areas, and wide-open spaces. It also boasts
+      of a green roof, a rainwater collection system, and a water reuse system. The
+      hall features a central hub called the Learning Commons, which serves as the
+      intellectual crossroads for university study. It houses the University Libraries
+      and has spaces for both personal and collaborative engagements, meetings, exhibits,
+      film viewings, and other university activities.\r\n\r\nThere is a bridge on
+      the 5th Floor of Henry Sy Sr. Hall that connects to Floor 7A of Don Enrique
+      T. Yuchengco Hall.\r\n"
+    amentiesList:
+    - floor: 1
+      amenities:
+      - BDO ATM Machine
+      - Vending Machine
+    - floor: 5
+      amenities:
+      - Multipurpose Hall
+      - Chill at the Fifth
+    - floor: 6
+      amenities:
+      - The Coffee Bean & Tea Leaf (Library Cafe)
+      - Information Desk
+      - CyberSpace
+      - Printing Service
+    - floor: 7
+      amenities:
+      - Discussion Rooms 7A-7H
+      - Viewing Rooms 7A-7D
+      - 'Conference Room '
+      - 'Printing Service '
+      - 'Photocopying Service '
+    - floor: 8
+      amenities:
+      - 'Discussion Rooms 8A-8H '
+      - 'Quiet Room '
+      - 'Conference Room '
+    - floor: 9
+      amenities:
+      - 'Discussion Rooms 9A-9H '
+      - 'Printing Service '
+      - 'Photocopying Service '
+    - floor: 10
+      amenities:
+      - 'Discussion Rooms 9A-9H '
+      - 'Printing Service '
+      - 'Photocopying Service '
+    - floor: 12
+      amenities:
+      - 'Discussion Rooms 12A-12H '
+    chillspaces: 1b00000005000000030000001100000016000000
+    picture: {fileID: 21300000, guid: eb18fe468797b104c91c96516a4da82c, type: 3}
+    items: 
+  - type: 8
+    name: Science and Technology Research Center
+    detail: 
+    description: The Science & Technology Research Center, a four-story research
+      center along Agno Street that houses various research facilities and laboratories
+      belonging to the Colleges of Science and Engineering. (https://en.wikipedia.org/wiki/De_La_Salle_University)
+    amentiesList: []
+    chillspaces: 0c000000
+    picture: {fileID: 21300000, guid: 6928d42eca32114479167736e8c52eb9, type: 3}
+    items: 
+  - type: 9
+    name: St. Joseph Hall
+    detail: 
+    description: 'a 6-story building completed in 1956. It was the location of the
+      DLSU library from 1956 to 1985. It houses the College of Science and the Lasallian
+      Pastoral Office. (https://en.wikipedia.org/wiki/De_La_Salle_University)
+
+
+
+
+
+      Popular
+      Amenities:
+
+
+
+      Ground Floor
+
+      -Photocopying Service
+
+      -Vending
+      Machine
+
+'
+    amentiesList: []
+    chillspaces: 
+    picture: {fileID: 21300000, guid: 84e20a9e8123e04468e56a09fc727ef7, type: 3}
+    items: 
+  - type: 10
+    name: St. La Salle Hall
+    detail: 
+    description: "St. La Salle Hall is DLSU\u2019s heritage building. This historical
+      landmark is an H-shaped four-storey neoclassical structure built from 1920
+      to 1924 to serve as the new campus of then De La Salle College to accommodate
+      its increasing student population. \r\n\r\nThe senior high school classrooms
+      as well as the Pearl of Great Price Chapel are located on the first floor.
+      The second floor of the St La Salle Hall houses the Chapel of the Most Blessed
+      Sacrament. The fourth level serves as residence of the De La Salle Brothers.\r\n"
+    amentiesList:
+    - floor: 1
+      amenities:
+      - Ameehgo Cafe (Perico's Sub-Con)
+      - Crazy Lemon (Perico's Sub-Con)
+      - Potato Giant (Perico's Sub-Con)
+      - Varda Burgers (Perico's Sub-Con)
+      - Photocopying Service (MRU Office)
+      - RCBC ATM
+    - floor: 2
+      amenities:
+      - Photocopying Service
+    chillspaces: 1700000004000000
+    picture: {fileID: 21300000, guid: 61219ed083dc43a4fbbee7f02772acb2, type: 3}
+    items: 
+  - type: 11
+    name: St. Miguel Hall
+    detail: 
+    description: "a 4-story building that houses the College of Liberal Arts, academic
+      offices, and some laboratories belonging to the College of Engineering. It
+      was originally known as the St. Benilde Hall before being renamed. (https://en.wikipedia.org/wiki/De_La_Salle_University)
+      There is a bridge on the 2nd Floor of Miguel Hall that connects to the 3rd
+      Floor of Gokongwei Hall.\n\n\n\nPopular Amenities:\n\n\nGround Floor\n-Photocopying
+      Service\n\n3rd Floor \n-Photocopying Service\n"
+    amentiesList: []
+    chillspaces: 000000000d000000
+    picture: {fileID: 21300000, guid: 9654674e5fb3b694d95d9e003cd3f3c9, type: 3}
+    items: 
+  - type: 12
+    name: Velasco Hall
+    detail: 
+    description: a five-story building completed in 1981. It houses the Gokongwei
+      College of Engineering as well as the equipment they use. (https://en.wikipedia.org/wiki/De_La_Salle_University)
+    amentiesList: []
+    chillspaces: 1800000006000000
+    picture: {fileID: 21300000, guid: 460fbc78c6e0ee94fb6ae13d151c8d87, type: 3}
+    items: 
+  - type: 13
+    name: Yuchengco Hall
+    detail: 
+    description: "Named in honor of Ambassador Alfonso Yuchengco\u2019s father, the
+      Don Enrique T. Yuchengco Hall is a 9-story neoclassical building comprising
+      4 elevators, 4 exit stairways, 20 classrooms, 6 teleconference rooms, and the
+      Teresa G. Yuchengco Auditorium. It also houses various concessionaires on the
+      ground floor such as Power Mac Center, the Animo Bookstore, and a self-printing
+      service. There is a bridge on Floor 7A of Don Enrique T. Yuchengco Hall that
+      connects to the 5th Floor of Henry Sy Sr. Hall.\n\nPopular Amenities:\r\n\r\nGround
+      Floor\r\n-Animo Bookstore\r\n-The Store\r\n-Power Mac Center, Inc.\r\n-Printing
+      Service\r\n-Vending Machines"
+    amentiesList: []
+    chillspaces: 1a000000
+    picture: {fileID: 21300000, guid: 7eae7ef2b16eb524d944d8e3dbaace05, type: 3}
+    items: 

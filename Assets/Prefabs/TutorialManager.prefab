@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8915165199501150515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8915165199501150517}
+  - component: {fileID: 8915165199501150516}
+  m_Layer: 0
+  m_Name: TutorialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8915165199501150517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915165199501150515}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8915165199501150516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915165199501150515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e21829b3dfea441a6127b80ed239a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorials:
+  - type: 1
+    instruction: 'Welcome to Animeow Space, where cats are humans'' best friend.
+      To begin your journey of befriending cats, unlock a sector by scanning its
+      designated QR. QRs are placed around campus buildings that act as sectors (Hint:
+      There''s one in the middle of Henry Sy. Sr. Hall).'
+    pointers: []
+  - type: 2
+    instruction: This is the AR Camera mode which can be used to scan QR codes by
+      placing QR codes within the camera's view.
+    pointers: []
+  - type: 3
+    instruction: You have successfully scanned a qr code. QR codes are integrated
+      into this game's mechanics.
+    pointers: []
+  - type: 4
+    instruction: A cat has spawned! Cats spawn around unlocked sectors. More unlocked
+      sectors means more chances of cats spawning.
+    pointers: []
+  - type: 5
+    instruction: This is your chance to befriend the approaching cat. Figure out
+      its likes and dislikes and ultimately charm it into friendship!
+    pointers: []
+  - type: 6
+    instruction: You have failed to earn enough favor for the cat to consider starting
+      companionship with you.
+    pointers: []
+  - type: 7
+    instruction: You have earned the cat's companionship. Interact with this cat
+      more to earn its full trust and see where it brings you!
+    pointers: []
+  - type: 7
+    instruction: You have earned the cat's companionship. Interact with this cat
+      more to earn its full trust and see where it brings you!
+    pointers: []
+  - type: 8
+    instruction: You have successfuly improved your relationship with a cat! Doing
+      so could grant hints from cats, and past a certain point will give the cat
+      a chance to evolve.
+    pointers: []
+  - type: 9
+    instruction: All your adventures with the cat has led it to evolve! Could there
+      be more to discover?
+    pointers: []
+  - type: 10
+    instruction: Welcome to the HQ! In here you can interact with all your cats.
+      However, only a limited number of cats choose to stay in the HQ at a time.
+      They come and go in sets, at specific times. Sometimes, a cat will want to
+      stay in the HQ but will find no space to do so, they'll ask permission to take
+      a slot from another cat residing in the HQ at that moment.
+    pointers: []
+  - type: 11
+    instruction: Welcome to the HQ! In here you can interact with all your cats.
+      However, only a limited number of cats choose to stay in the HQ at a time.
+      They come and go in sets, at specific times. Sometimes, a cat will want to
+      stay in the HQ but will find no space to do so, they'll ask permission to take
+      a slot from another cat residing in the HQ at that moment.
+    pointers: []

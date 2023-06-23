@@ -1,0 +1,1193 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1973795072619012562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1973795072619012520}
+  - component: {fileID: 1973795072619012527}
+  - component: {fileID: 1973795072619012512}
+  - component: {fileID: 1973795072619012519}
+  - component: {fileID: 1973795072619012518}
+  - component: {fileID: 1973795072619012517}
+  - component: {fileID: 1973795072619012516}
+  - component: {fileID: 1973795072619012523}
+  - component: {fileID: 1973795072619012522}
+  - component: {fileID: 1973795072619012521}
+  - component: {fileID: 1973795072619012530}
+  - component: {fileID: 1973795072619012529}
+  - component: {fileID: 1973795072619012528}
+  - component: {fileID: 1973795072619012535}
+  - component: {fileID: 1973795072619012534}
+  - component: {fileID: 1973795072619012533}
+  - component: {fileID: 1973795072619012532}
+  - component: {fileID: 1973795072619012539}
+  - component: {fileID: 1973795072619012538}
+  - component: {fileID: 1973795072619012537}
+  - component: {fileID: 1973795072619012536}
+  - component: {fileID: 1973795072619012543}
+  - component: {fileID: 1973795072619012542}
+  - component: {fileID: 1973795072619012541}
+  - component: {fileID: 1973795072619012540}
+  - component: {fileID: 1973795072619012515}
+  - component: {fileID: 1973795072619012514}
+  - component: {fileID: 1973795072619012513}
+  - component: {fileID: 1973795072619012531}
+  - component: {fileID: 1973795072619012490}
+  - component: {fileID: 1973795072619012489}
+  - component: {fileID: 1973795072619012488}
+  - component: {fileID: 1973795072619012495}
+  - component: {fileID: 1973795072619012494}
+  - component: {fileID: 1973795072619012493}
+  - component: {fileID: 1973795072619012492}
+  - component: {fileID: 1973795072619012491}
+  m_Layer: 0
+  m_Name: CatDatabase 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1973795072619012520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1973795072619012527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb664432e4b179c458bf888088e7fa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+  - catTypeLabel: Library Cat
+    type: 4
+    model: {fileID: 2843625035428882704, guid: 632776de6463dff4c907226623154dea, type: 3}
+    script: {fileID: 1973795072619012516}
+    icon: {fileID: 21300000, guid: 25bd4b65229ec524a8e869c1f5a78c5b, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: f6a9994adec2b9a40baae598efeb7375, type: 3}
+    - {fileID: 919132149155446097, guid: 1cfe7d38cf4b96649bf986cf6e49d3a0, type: 3}
+    - {fileID: 919132149155446097, guid: 6261af06a8775f141924a0710c816fe3, type: 3}
+    evolutions:
+    - catType: 12
+      requirement:
+      - item: 7
+        amount: 3
+    tooltips:
+    - "Most students drop by the Learning Commons to study, take online classes,
+      watch films, and even sleep!\r"
+  - catTypeLabel: Performer Cat
+    type: 5
+    model: {fileID: 8557128202915404246, guid: 392b5a5115bac2942a7effebe34b5293, type: 3}
+    script: {fileID: 1973795072619012523}
+    icon: {fileID: 21300000, guid: 58a9dfbc07489d744bcb6b4faec6bac2, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 64c6966502e21ec49beed0fcb5dd27a0, type: 3}
+    evolutions:
+    - catType: 10
+      requirement:
+      - item: 12
+        amount: 3
+    - catType: 30
+      requirement:
+      - item: 9
+        amount: 3
+    - catType: 29
+      requirement:
+      - item: 11
+        amount: 3
+    - catType: 14
+      requirement:
+      - item: 10
+        amount: 3
+    tooltips:
+    - 'The Culture and Arts Office houses the performing arts organizations of DLSU!
+      These include the DLSU Chorale, Lasallian Youth Orchestra, De La Salle Innersoul,
+      the Harlequin Theatre Guild, and the La Salle Dance Companies (Contemporary/Street/Folk).
+
+'
+  - catTypeLabel: Staff Cat
+    type: 6
+    model: {fileID: 4848135757238175078, guid: ee4b52caff6c2e940b4aa6a068a00243, type: 3}
+    script: {fileID: 1973795072619012522}
+    icon: {fileID: 21300000, guid: 9d35901a87941db43ababe2743982d93, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: d1b255011b2e0024880f1ffd5f9f685d, type: 3}
+    evolutions:
+    - catType: 27
+      requirement:
+      - item: 6
+        amount: 3
+    - catType: 28
+      requirement:
+      - item: 4
+        amount: 3
+    - catType: 8
+      requirement:
+      - item: 5
+        amount: 3
+    - catType: 19
+      requirement:
+      - item: 15
+        amount: 1
+      - item: 16
+        amount: 1
+      - item: 17
+        amount: 1
+    - catType: 20
+      requirement:
+      - item: 21
+        amount: 3
+    - catType: 4
+      requirement:
+      - item: 7
+        amount: 3
+    tooltips:
+    - "There\u2019s always DLSU staff available on campus 24/7!\r"
+    - 'Plastics and other non-green products are not allowed on campus.
+
+'
+  - catTypeLabel: Student Cat
+    type: 7
+    model: {fileID: 1361256002752954331, guid: 5b4d74fcecadad64ba3aa20b83a85e4b, type: 3}
+    script: {fileID: 1973795072619012521}
+    icon: {fileID: 21300000, guid: 60cc98bb403ef994db2853e34c47964f, type: 3}
+    accessories: []
+    evolutions:
+    - catType: 33
+      requirement:
+      - item: 8
+        amount: 3
+    tooltips:
+    - 'Hold the door and wait for people to enter and exit the elevator before closing.
+      Other students also have class schedules to follow.
+
+'
+    - 'It is important to practice CLAYGO or Clean As You Go after dining on tables.
+
+'
+    - "If a professor still hasn\u2019t arrived for class after 30 minutes, then
+      that class is considered a free cut!\r\n"
+    - 'You can check your student data and other information through My.LaSalle or
+      MLS (https://my.dlsu.edu.ph/). For pre-enlistment and enrollment, head to Animo.Sys
+      (animo.sys.dlsu.edu.ph)!
+
+'
+    - "There\u2019s free parking at the Razon building!\r\n"
+  - catTypeLabel: Arrows Cat
+    type: 8
+    model: {fileID: 1771142429425375353, guid: 18bdbc0538bcd8840862c4e02b0d4b87, type: 3}
+    script: {fileID: 1973795072619012530}
+    icon: {fileID: 21300000, guid: d9f9e35a87d17fb48b6610ef52f3ccd5, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - 'The Arrows Express is the official DLSU shuttle service available from Mondays
+      to Saturdays. It is free and anyone can get a ride provided they reserve a
+      seat here: https://bit.ly/SSUShuttleSeatReservation'
+    - Riders must reserve a seat at least one day before their intended travel date
+      and it has to be before 10 AM.
+    - "Each van can take 11 riders at most so when a van gets full early, it\u2019ll
+      leave ASAP. Don\u2019t worry though, more than one van is available per time
+      slot."
+    - You can reserve seats ahead of time by 2 weeks at most.
+    - The shuttles always take the Metro Manila Skyway so on average, travel time
+      to and from DLSU Laguna Campus is 1 hour.
+  - catTypeLabel: Athlete Cat
+    type: 9
+    model: {fileID: 3195640339061329943, guid: 1d6fa9d4d9f381e4fb2b6d54d4e57497, type: 3}
+    script: {fileID: 1973795072619012529}
+    icon: {fileID: 21300000, guid: efef3831c7c8a394dae34c1447da01ae, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 46ad206bc830d52498ce444672f81445, type: 3}
+    - {fileID: 919132149155446097, guid: 56fcb9f32cd259b4c83160a5fa66958e, type: 3}
+    - {fileID: 919132149155446097, guid: 42a2ef9e5c8b17c4c8a622efdfd94519, type: 3}
+    evolutions:
+    - catType: 32
+      requirement:
+      - item: 22
+        amount: 3
+    tooltips:
+    - 'You can buy UAAP tickets at the Office of Sports Development!
+
+'
+  - catTypeLabel: Band Cat
+    type: 10
+    model: {fileID: 293309356383813613, guid: 4946629406cfc924cb593448e3c5adcb, type: 3}
+    script: {fileID: 1973795072619012528}
+    icon: {fileID: 21300000, guid: a11897a58c1c69e46a86e1ab2d7be82c, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - "Maybe you\u2019re into singing? Then check out the DLSU Chorale and DLSU Innersoul!\r\n"
+  - catTypeLabel: Broadcaster Cat
+    type: 11
+    model: {fileID: 8976987472181143883, guid: 4efd3eccfef9cf747b72cd8595e6c746, type: 3}
+    script: {fileID: 1973795072619012535}
+    icon: {fileID: 21300000, guid: 72f1d599c7ca3414097961a4b67f816d, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - 'DLSU has its own official radio station under the name of Green Giant FM.
+
+'
+    - 'It also has its own official online television channel, Archer Networks, which
+      features videos, apps, games, and other multimedia contents.
+
+'
+  - catTypeLabel: Conference Cat
+    type: 12
+    model: {fileID: 4339798561389085235, guid: 6f64402bf104db64ebb76056a248088d, type: 3}
+    script: {fileID: 1973795072619012534}
+    icon: {fileID: 21300000, guid: 0cdebce7a328bde4baf8ecb6361a1be2, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - 'The discussion rooms are available to use for everyone for free! Students,
+      faculty, staff are all included! Head to https://libcal.dlsu.edu.ph/r/new to
+      book a reservation. The rooms are first come first serve though and you need
+      to be in a group of at least 3 people.
+
+'
+    - 'Each room has a set maximum capacity of people so be sure to book accordingly!
+
+'
+    - 'The discussion rooms may be used for 2 hours at most but you may extend as
+      long as the room is available!
+
+'
+    - 'Eating, playing tabletop games, and especially gambling are not allowed inside
+      the discussion rooms.
+
+'
+    - "The Library may cancel your reservation if you don\u2019t show up within the
+      first 15 minutes.\r\n"
+  - catTypeLabel: CSO Cat
+    type: 13
+    model: {fileID: 8679810162258229738, guid: ab1c8bc30ac425d49aa06bf90f014360, type: 3}
+    script: {fileID: 1973795072619012533}
+    icon: {fileID: 21300000, guid: abfafa1379c999d44883e7b06633d3a5, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - 'The Council of Student Organizations manages the accredited organizations
+      of DLSU!
+
+'
+    - 'Each college has several associated organizations that are aligned to its
+      field.
+
+'
+    - 'Other accredited organizations are not associated with a specific college
+      but instead are under the Alliance of Special Interest and Socio Civic Organizations
+      (ASPIRE).
+
+'
+    - "ASPIRE organizations such as ENGLICOM, the Outdoor Club, and the Writer\u2019s
+      Guild center on community-building with each having a distinct focus, or special
+      interest..\r\n"
+  - catTypeLabel: Dancer Cat
+    type: 14
+    model: {fileID: 7273789992295802677, guid: 5fd612675d519424c822254234651905, type: 3}
+    script: {fileID: 1973795072619012532}
+    icon: {fileID: 21300000, guid: df0a124ca8addda4ab6c1f51373a6384, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - 'The La Salle Dance Company (LSDC) actually comprises 3 independent organizations
+      according to the style of dance! These are Contemporary, Street, and Folk!
+
+'
+    - "When it comes to corporate launches, informal events, and student events,
+      it\u2019s usually the Contemporary and Street Divisions that hold performances!
+      Meanwhile for cultural presentations, it's the Folk Division as well as Contemporary
+      that perform.\r\n"
+  - catTypeLabel: Disciplinarian Cat
+    type: 15
+    model: {fileID: 8922501893108717393, guid: ddc84dca42826f64c9e4a17e6731307e, type: 3}
+    script: {fileID: 1973795072619012539}
+    icon: {fileID: 21300000, guid: 0317fa067220f2144b77c9d169a9c834, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - 'The SDFO also houses the Lost and Found section.
+
+'
+  - catTypeLabel: Dean Cat
+    type: 16
+    model: {fileID: 8663582819300625562, guid: a957d51e552b25c4a91cb34efeba32d1, type: 3}
+    script: {fileID: 1973795072619012538}
+    icon: {fileID: 21300000, guid: 5af8fafa36fd89c4fa8b4040fccfc610, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - "\u201CTo be entrusted with the teaching of the young is a great gift and grace
+      of God.\u201D (MTR 9.1 [Med 201.1]) - One of the dean's favorite quotes."
+  - catTypeLabel: Dentist Cat
+    type: 17
+    model: {fileID: 1499208133324799694, guid: cc8cd1d0758acd84e9189bf649e26c5b, type: 3}
+    script: {fileID: 1973795072619012536}
+    icon: {fileID: 21300000, guid: 2f99cf59d06c1734ebeee195e47968fc, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - "There are two dentists available at the clinic with one being full-time and
+      the other being part-time.\r"
+  - catTypeLabel: Physician Cat
+    type: 18
+    model: {fileID: 7640891505464791720, guid: b354e65a285a9c3418dd272c5a56c084, type: 3}
+    script: {fileID: 1973795072619012543}
+    icon: {fileID: 21300000, guid: fad971ac4083098449c87804eeeb12fe, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - 'The HSO offers free medical certification for students! Check out the guidelines
+      here: https://www.dlsu.edu.ph/wp-content/uploads/pdf/hso/guidelines-on-requesting-medical-certificate.pdf'
+  - catTypeLabel: Health Cat
+    type: 19
+    model: {fileID: 3358364281961533963, guid: 64260a91d69bcab46a5b02827b752e94, type: 3}
+    script: {fileID: 1973795072619012542}
+    icon: {fileID: 21300000, guid: be6e7c4e4f7a56a4186e46bfb62512f5, type: 3}
+    accessories: []
+    evolutions:
+    - catType: 18
+      requirement:
+      - item: 15
+        amount: 3
+    - catType: 24
+      requirement:
+      - item: 16
+        amount: 3
+    - catType: 17
+      requirement:
+      - item: 17
+        amount: 3
+    tooltips:
+    - Hand washing facilities have been set up at the Marian Quadrangle and the Br.
+      Bloemen Hall.
+    - 'The HSO has a list of accredited clinics! You can find them here: https://www.dlsu.edu.ph/wp-content/uploads/pdf/hso/list-of-accredited-clinics.pdf'
+  - catTypeLabel: IT Cat
+    type: 20
+    model: {fileID: 5438844996569466072, guid: 2f1b850454861ff4aaf8c1277ab29893, type: 3}
+    script: {fileID: 1973795072619012541}
+    icon: {fileID: 21300000, guid: 6cd4a16cbd818a94b8de8162ade938e8, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - To activate/reactivate your MLS account, you will need your official receipt
+      for the current term.
+    - "If you encounter \u201CUsername and password do not match\u201D (and have
+      tried typing my username and password correctly), take note that your username
+      is your student ID number.\r\n"
+    - "If you encounter an issue where you can\u2019t login to your DLSU email account
+      but you can with your MLS account, then try changing your password in MLS and
+      log in again to your DLSU email account using your new password.\r\n"
+    - 'You can view your clearances in MLS so you can coordinate with the departments
+      or offices where you have uncleared records marked in red.
+
+'
+    - "For more concerns with regards to your MLS account, go to The CONCiERGE Support
+      Portal and click Report an issue to log your concern.\r"
+  - catTypeLabel: Journalist Cat
+    type: 21
+    model: {fileID: 3703645196286789089, guid: d4de3f96abe2b00468c3048b58b5a350, type: 3}
+    script: {fileID: 1973795072619012540}
+    icon: {fileID: 21300000, guid: 9eded70641dda814d9b0e927198a9b43, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - 'The LaSallian is the official student publication of DLSU. It is written in
+      English and it releases every first week of the month within each school term.
+
+'
+    - "On the other hand, Ang Pahayagang Plaridel is DLSU\u2019s official Filipino
+      newspaper and it distributes copies every third week of the month.\r\n"
+    - 'Green and White is the official yearbook publication of DLSU. The G&W Yearbook
+      is released by the third month after the last commencement exercise of the
+      academic year.
+
+'
+    - "Malate Literary Folio is the official literary and visual arts publication
+      of De La Salle University \u2013 Manila. MLF is released one week before the
+      end of each trimester\r\n"
+  - catTypeLabel: LAMBs Cat
+    type: 22
+    model: {fileID: 353406528931745869, guid: 8c61969f43b4d074780fc8b392f4bb27, type: 3}
+    script: {fileID: 1973795072619012515}
+    icon: {fileID: 21300000, guid: a3fca3b0629deab49bb52ab0ade8ee54, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - "The Lasallian Ambassadors (LAMBS) are the ones who conducted your LPEP!\r"
+    - 'They are also responsible for ushering guests during special events!
+
+'
+    - 'To apply as a LAMB, you must have at least 5 terms remaining before graduation.
+
+'
+  - catTypeLabel: Leader Cat
+    type: 23
+    model: {fileID: 5950665037084465165, guid: ad29aafd1561f8f48942303459fa84fd, type: 3}
+    script: {fileID: 1973795072619012514}
+    icon: {fileID: 21300000, guid: c093c6ceefe8a0f408fbbfe27a38065d, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 524436b18bf50f544b0daba5df69a260, type: 3}
+    evolutions:
+    - catType: 13
+      requirement:
+      - item: 19
+        amount: 3
+    - catType: 31
+      requirement:
+      - item: 18
+        amount: 3
+    tooltips:
+    - 'When it comes to promoting personal and organizational leadership, the SLIFE
+      orgs are your go to orgs!
+
+'
+    - 'The University Student Government, Council of Student Organizations, and the
+      Lasallian Ambassadors (LAMBS) are all under SLIFE.
+
+'
+  - catTypeLabel: Nurse Cat
+    type: 24
+    model: {fileID: 859276871893585774, guid: e3ba052f484f22445acf7838319afe37, type: 3}
+    script: {fileID: 1973795072619012513}
+    icon: {fileID: 21300000, guid: 0468c07057b86784b8881bfb20babed6, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - "Nurses may conduct your physical exams during consultations!\r"
+  - catTypeLabel: Org Cat
+    type: 25
+    model: {fileID: 1508325852566070084, guid: b7c1b00c148915446ac68b85ef9fdc49, type: 3}
+    script: {fileID: 1973795072619012531}
+    icon: {fileID: 21300000, guid: 160688436320d7643b42806e390db924, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: b21450fd0ad73c04ebd7319760982d6f, type: 3}
+    evolutions:
+    - catType: 5
+      requirement:
+      - item: 10
+        amount: 1
+      - item: 11
+        amount: 1
+      - item: 12
+        amount: 1
+      - item: 9
+        amount: 1
+    - catType: 26
+      requirement:
+      - item: 14
+        amount: 1
+      - item: 13
+        amount: 1
+    - catType: 23
+      requirement:
+      - item: 19
+        amount: 1
+      - item: 18
+        amount: 1
+    - catType: 9
+      requirement:
+      - item: 22
+        amount: 3
+    - catType: 15
+      requirement:
+      - item: 20
+        amount: 3
+    tooltips:
+    - 'There are many student organizations in DLSU! They each have their own respective
+      offices but overall are managed by the Office of Student Affairs.
+
+'
+  - catTypeLabel: Press Cat
+    type: 26
+    model: {fileID: 4807670856821312220, guid: ceb130738df165541b0910b50ca76bd4, type: 3}
+    script: {fileID: 1973795072619012490}
+    icon: {fileID: 21300000, guid: 7b5371c53cef44643948861dba863bce, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: ce58e19762bd06f40b8987d18ecd2f54, type: 3}
+    evolutions:
+    - catType: 11
+      requirement:
+      - item: 13
+        amount: 3
+    - catType: 21
+      requirement:
+      - item: 14
+        amount: 3
+    tooltips:
+    - 'DLSU houses several student media groups such as The Lasallian, Ang Pahayagang
+      Plaridel, Green and White, The Malate Literary Folio, Green Giant FM, and Archers
+      Network!
+
+'
+  - catTypeLabel: Professor Cat
+    type: 27
+    model: {fileID: 8735821861761775494, guid: dff39e26a2b4b9e418d19bb2c2d16302, type: 3}
+    script: {fileID: 1973795072619012489}
+    icon: {fileID: 21300000, guid: ce2298ee924993e4f8e1000c3913e021, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: b6329dc0ce853254a85d613c182ded47, type: 3}
+    - {fileID: 919132149155446097, guid: 396bec5bd8342ff4db8f170dc1ac0ccc, type: 3}
+    evolutions:
+    - catType: 16
+      requirement:
+      - item: 6
+        amount: 3
+    tooltips:
+    - You can check the list of professors who have assigned classes on MLS!
+  - catTypeLabel: Security Cat
+    type: 28
+    model: {fileID: 4796829497351985222, guid: 018ff55107b650a42981a6b9f1ee5092, type: 3}
+    script: {fileID: 1973795072619012488}
+    icon: {fileID: 21300000, guid: e9137d52d140c1943aa2adc446536524, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - Students have to scan their school IDs or present their EAFs with valid ID
+      to enter the gates.
+    - "The school does not allow people to enter the campus before 6 AM unless with
+      valid reason such as riding the Arrow\u2019s Express."
+  - catTypeLabel: Singer Cat
+    type: 29
+    model: {fileID: 43915530017733780, guid: a7e15f51bf089db478451027dfd66589, type: 3}
+    script: {fileID: 1973795072619012495}
+    icon: {fileID: 21300000, guid: cd9f2c57735d0a94ea296376e19caf3f, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 3d2c8abe1266e2a44967d725cc2fab17, type: 3}
+    - {fileID: 919132149155446097, guid: bc80aab6be8dd8e43ac58fa7faa1c5f3, type: 3}
+    - {fileID: 919132149155446097, guid: c8880734728bdb14db9619f9c4f3166a, type: 3}
+    evolutions: []
+    tooltips:
+    - "Maybe you\u2019re into singing? Then check out the DLSU Chorale and DLSU Innersoul!\r\n"
+    - 'While the DLSU Innersoul perform in most events and settings, the DLSU Chorale
+      usually perform during formal events.
+
+'
+    - 'Sometimes the DLSU Innersoul would accompany the Lasallian Youth Orchestra
+      during their performances!
+
+'
+  - catTypeLabel: Theater Cat
+    type: 30
+    model: {fileID: 2662409533677268946, guid: f71bf539f95a3da418050a83179eca6b, type: 3}
+    script: {fileID: 1973795072619012494}
+    icon: {fileID: 21300000, guid: 22225eb3a17502e43bdbb65a28059fe3, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 036ac2eca5c96884684d5407600203a6, type: 3}
+    - {fileID: 919132149155446097, guid: 26b1f8749a5617a49a40e9905fd6a346, type: 3}
+    - {fileID: 919132149155446097, guid: 17b7abc62df2c3448a2d01501bdf4be4, type: 3}
+    evolutions: []
+    tooltips:
+    - 'Are you into theater? Then you might be interested in joining the Harlequin
+      Theatre Guild (HTG)!
+
+'
+    - "The guild specializes in straight plays, musicals, readers\u2019 theater,
+      interpretative movement and poetry reading.\r\n"
+    - 'The HTG performs in various spots around campus such as the Yuchengco Auditorium,
+      the Amphitheater, and sometimes in the William Shaw Little Theater!
+
+'
+  - catTypeLabel: USG Cat
+    type: 31
+    model: {fileID: 1256098818887100091, guid: 46ff20bba5ed54e46a5d61d906df4c89, type: 3}
+    script: {fileID: 1973795072619012493}
+    icon: {fileID: 21300000, guid: 28118ebda10979f4fa35843de9c4a688, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - "The University Student Government is the supreme autonomous representative
+      body of the students who advance and defend students\u2019 rights, promote
+      students\u2019 holistic growth, engage the students in societal development,
+      and strengthen the identity of the Lasallian community.\r\n"
+    - 'Aside from the main executive board, each college also has batch units which
+      cater to concerns for each batch such as BLAZE, FAST, CATCH, ENG, EDGE, FOCUS,
+      and EXCEL.
+
+'
+  - catTypeLabel: Varsity Cat
+    type: 32
+    model: {fileID: 120228632191393387, guid: dc08a6d58c8ef9045b7fe144cb39f49b, type: 3}
+    script: {fileID: 1973795072619012492}
+    icon: {fileID: 21300000, guid: abd503e8727fb33419993a00852f01c2, type: 3}
+    accessories: []
+    evolutions: []
+    tooltips:
+    - 'Athletes and varsity members may enjoy full or partial scholarship or tuition
+      discounts!
+
+'
+  - catTypeLabel: Scholar Cat
+    type: 33
+    model: {fileID: 8163500282374310029, guid: 527ed67074ae00e439e5b8ba2d63f61c, type: 3}
+    script: {fileID: 1973795072619012491}
+    icon: {fileID: 21300000, guid: effa4f5de2b5d7d4e9c2279978d17050, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 16d31154af6993a47a2dd26b394e3da5, type: 3}
+    - {fileID: 919132149155446097, guid: eb8a7842e72ec394eb63b9239182b26b, type: 3}
+    evolutions: []
+    tooltips:
+    - 'DLSU offers a lot of scholarships, student loans and aid programs! You can
+      find the list here (https://www.dlsu.edu.ph/admissions/scholarships/).
+
+'
+    - 'The most common scholarship programs are the St. La Salle Financial Assistance
+      Grant and the Archer Achievers.
+
+'
+    - 'DLSU also acknowledges those who are certified as DOST scholars!
+
+'
+    - 'Athletes and varsity members may also avail a scholarship!
+
+'
+--- !u!114 &1973795072619012512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e3197281b19604abdc74b510f250f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd98a77402745a24ebd0bc19a728bf22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44886a62ffc30143b7136754107f15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd20c2ead210a4d499af331f5602759d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdc8cbd23b5d1447b70e681b7ded694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8202b9c5ebdc13f479b3615b04877f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f005f052ddc3e489f3a77cebd75731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921b79436f8e60d4f94c66d96696eec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ae589d95fb5334ea6279d653f8badf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5574a92f3d1a2f5419263a71edeb6ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7dea4c8bdb01124096a0a3405c0b825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80b1457a210434db76a7d329ee7ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93af7f60965ecd419cf9da9a38c37ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91c14acdb4914544802b504a2ff33ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fdb110b7370254581fe515e156c4e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff4a1326824b9440932954c4f3a72e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 691fd137edc209d469b7285de7a1581f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 691fd137edc209d469b7285de7a1581f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e774af88c1d0e44b5407dc7429a504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64fd9720cf4d8141baf7d8967268ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d5bc238f3428e4ab564aa37b75d7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c5b329282013f4a84680038c82f429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c8b375d702ace1409903deb3e2fae1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442c34dcb687995468bd8cbe07bff7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964e6cbfcdd118f4db0cc164609732e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e55264642f1cac84997698289b274384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae3a0b67e6060d4082b107e116a1a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4068c4ceba47a640aa8d8e864b8d129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0826082c5c0b76d4c84cc606d6097d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2239066663b8e478a08daae7fcb92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f8ac93f5100444a953ca5c9b66a884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 645bf6cb475d4f642924ad610bfddc48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7799743a2bb329c4988608dc74896e14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7e996013848c94bb72693986cf1a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0
+--- !u!114 &1973795072619012491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973795072619012562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62eee946d82aed4d8e1da54f7763081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  school_tip: Welcome to DLSU
+  ui: {fileID: 0}
+  isWalkingTemp: 0

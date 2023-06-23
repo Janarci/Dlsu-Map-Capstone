@@ -22,6 +22,7 @@ public class BuildingDatabase : MonoBehaviour
         public List<AmenitiesData> amentiesList;
         public List<ChillSpace.Area> chillspaces;
         public Sprite picture;
+        public List<CatEvolutionItem.cat_evolution_item_type> items;
     }
 
     public static BuildingDatabase Instance;

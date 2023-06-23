@@ -15170,6 +15170,7 @@ MonoBehaviour:
       - Photocopying Service
     chillspaces: 100000000f000000090000000a000000
     picture: {fileID: 21300000, guid: c3fd31ef955c4ca4d843ea239724dfb5, type: 3}
+    items: 
   - type: 1
     name: Br. Bloemen Hall
     detail: 
@@ -15198,6 +15199,7 @@ MonoBehaviour:
       - Turks Shawarma (Himmel Baum Ent. Co.)
     chillspaces: 01000000
     picture: {fileID: 21300000, guid: c261bb40bf626ba4e82b8b9afe0cb5d7, type: 3}
+    items: 18000000
   - type: 2
     name: Br. Connon Hall
     detail: 
@@ -15212,6 +15214,7 @@ MonoBehaviour:
       - Water Dispenser
     chillspaces: 1400000019000000020000000e00000015000000
     picture: {fileID: 21300000, guid: 6c35ae895d9bcb4428b8cf68412b9217, type: 3}
+    items: 
   - type: 3
     name: Br. William Hall
     detail: 
@@ -15227,6 +15230,7 @@ MonoBehaviour:
       amenities: []
     chillspaces: 
     picture: {fileID: 21300000, guid: 38b1e666b2225b9459c209c57d882165, type: 3}
+    items: 
   - type: 4
     name: Enrique Razon Sports Center
     detail: 
@@ -15251,6 +15255,7 @@ MonoBehaviour:
     amentiesList: []
     chillspaces: 130000000b000000
     picture: {fileID: 21300000, guid: ebe011ee646b6b0498f606c998386a50, type: 3}
+    items: 
   - type: 5
     name: Faculty Center
     detail: 
@@ -15262,6 +15267,7 @@ MonoBehaviour:
     amentiesList: []
     chillspaces: 1c000000
     picture: {fileID: 21300000, guid: 309a54adb54ace349977a30212152b33, type: 3}
+    items: 
   - type: 6
     name: Gokongwei Hall
     detail: 
@@ -15291,6 +15297,7 @@ MonoBehaviour:
     amentiesList: []
     chillspaces: 120000000700000008000000
     picture: {fileID: 21300000, guid: 4f282b8e9178c324cb12b720c1a7c699, type: 3}
+    items: 
   - type: 7
     name: Henry Sy Sr. Hall
     detail: 
@@ -15349,6 +15356,7 @@ MonoBehaviour:
       - 'Discussion Rooms 12A-12H '
     chillspaces: 1b00000005000000030000001100000016000000
     picture: {fileID: 21300000, guid: eb18fe468797b104c91c96516a4da82c, type: 3}
+    items: 
   - type: 8
     name: Science and Technology Research Center
     detail: 
@@ -15358,6 +15366,7 @@ MonoBehaviour:
     amentiesList: []
     chillspaces: 0c000000
     picture: {fileID: 21300000, guid: 6928d42eca32114479167736e8c52eb9, type: 3}
+    items: 
   - type: 9
     name: St. Joseph Hall
     detail: 
@@ -15385,6 +15394,7 @@ MonoBehaviour:
     amentiesList: []
     chillspaces: 
     picture: {fileID: 21300000, guid: 84e20a9e8123e04468e56a09fc727ef7, type: 3}
+    items: 
   - type: 10
     name: St. La Salle Hall
     detail: 
@@ -15409,6 +15419,7 @@ MonoBehaviour:
       - Photocopying Service
     chillspaces: 1700000004000000
     picture: {fileID: 21300000, guid: 61219ed083dc43a4fbbee7f02772acb2, type: 3}
+    items: 
   - type: 11
     name: St. Miguel Hall
     detail: 
@@ -15421,6 +15432,7 @@ MonoBehaviour:
     amentiesList: []
     chillspaces: 000000000d000000
     picture: {fileID: 21300000, guid: 9654674e5fb3b694d95d9e003cd3f3c9, type: 3}
+    items: 
   - type: 12
     name: Velasco Hall
     detail: 
@@ -15429,6 +15441,7 @@ MonoBehaviour:
     amentiesList: []
     chillspaces: 1800000006000000
     picture: {fileID: 21300000, guid: 460fbc78c6e0ee94fb6ae13d151c8d87, type: 3}
+    items: 
   - type: 13
     name: Yuchengco Hall
     detail: 
@@ -15444,6 +15457,7 @@ MonoBehaviour:
     amentiesList: []
     chillspaces: 1a000000
     picture: {fileID: 21300000, guid: 7eae7ef2b16eb524d944d8e3dbaace05, type: 3}
+    items: 
 --- !u!4 &687554574
 Transform:
   m_ObjectHideFlags: 0

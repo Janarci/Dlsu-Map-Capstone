@@ -1,0 +1,309 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4613262506339840662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4613262506339840660}
+  - component: {fileID: 4613262506339840659}
+  m_Layer: 0
+  m_Name: AccomplishmentsDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4613262506339840660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613262506339840662}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4613262506339840659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613262506339840662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117a8add5bdbecc40b6d3325fffcd879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievementsList:
+  - code: 0
+    name: Cat-Friendly
+    description: You have befriended your first cat!
+    icon: {fileID: 0}
+  - code: 1
+    name: Homebase
+    description: You have unlocked your first sector!
+    icon: {fileID: 0}
+  questsList:
+  - code: 0
+    tasks:
+    - requirement: 1
+      rewards:
+      - item: 7
+        amount: 3
+    - requirement: 3
+      rewards:
+      - item: 4
+        amount: 3
+      - item: 5
+        amount: 3
+    - requirement: 7
+      rewards:
+      - item: 22
+        amount: 3
+      - item: 9
+        amount: 3
+      - item: 7
+        amount: 3
+    instruction: Unlock different sectors
+    expanded_tooltip: Sectors can be unlocked by scanning the desginated QRs placed
+      in the vicinity of its physical location. To scan a QR, switch into camera
+      mode.
+  - code: 1
+    tasks:
+    - requirement: 2
+      rewards:
+      - item: 6
+        amount: 3
+    - requirement: 5
+      rewards:
+      - item: 18
+        amount: 3
+      - item: 19
+        amount: 3
+    - requirement: 10
+      rewards:
+      - item: 9
+        amount: 3
+      - item: 10
+        amount: 3
+      - item: 11
+        amount: 3
+      - item: 12
+        amount: 3
+      - item: 13
+        amount: 3
+      - item: 14
+        amount: 3
+      - item: 15
+        amount: 3
+      - item: 16
+        amount: 3
+      - item: 17
+        amount: 3
+    instruction: Befriend cats
+    expanded_tooltip: Cats spawn around unlocked sectors. Attempt befriending by
+      clicking nearby cats. Befriending attempts won't always be succesful, try to
+      discern the cats likes and dislike to gain an advantage.
+  - code: 3
+    tasks:
+    - requirement: 10
+      rewards:
+      - item: 2
+        amount: 1
+      - item: 3
+        amount: 5
+      - item: 4
+        amount: 1
+      - item: 5
+        amount: 1
+      - item: 6
+        amount: 1
+      - item: 7
+        amount: 1
+      - item: 8
+        amount: 1
+      - item: 9
+        amount: 1
+      - item: 10
+        amount: 1
+      - item: 11
+        amount: 1
+      - item: 12
+        amount: 1
+      - item: 13
+        amount: 1
+      - item: 14
+        amount: 1
+      - item: 15
+        amount: 1
+      - item: 16
+        amount: 1
+      - item: 17
+        amount: 1
+      - item: 18
+        amount: 1
+      - item: 19
+        amount: 1
+      - item: 20
+        amount: 1
+      - item: 21
+        amount: 1
+      - item: 22
+        amount: 1
+      - item: 23
+        amount: 1
+      - item: 24
+        amount: 1
+    - requirement: 20
+      rewards:
+      - item: 2
+        amount: 1
+      - item: 3
+        amount: 5
+      - item: 4
+        amount: 1
+      - item: 5
+        amount: 1
+      - item: 6
+        amount: 1
+      - item: 7
+        amount: 1
+      - item: 8
+        amount: 1
+      - item: 9
+        amount: 1
+      - item: 10
+        amount: 1
+      - item: 11
+        amount: 1
+      - item: 12
+        amount: 1
+      - item: 13
+        amount: 1
+      - item: 14
+        amount: 1
+      - item: 15
+        amount: 1
+      - item: 16
+        amount: 1
+      - item: 17
+        amount: 1
+      - item: 18
+        amount: 1
+      - item: 19
+        amount: 1
+      - item: 20
+        amount: 1
+      - item: 21
+        amount: 1
+      - item: 22
+        amount: 1
+      - item: 23
+        amount: 1
+      - item: 24
+        amount: 1
+    - requirement: 30
+      rewards:
+      - item: 2
+        amount: 1
+      - item: 3
+        amount: 5
+      - item: 4
+        amount: 1
+      - item: 5
+        amount: 1
+      - item: 6
+        amount: 1
+      - item: 7
+        amount: 1
+      - item: 8
+        amount: 1
+      - item: 9
+        amount: 1
+      - item: 10
+        amount: 1
+      - item: 11
+        amount: 1
+      - item: 12
+        amount: 1
+      - item: 13
+        amount: 1
+      - item: 14
+        amount: 1
+      - item: 15
+        amount: 1
+      - item: 16
+        amount: 1
+      - item: 17
+        amount: 1
+      - item: 18
+        amount: 1
+      - item: 19
+        amount: 1
+      - item: 20
+        amount: 1
+      - item: 21
+        amount: 1
+      - item: 22
+        amount: 1
+      - item: 23
+        amount: 1
+      - item: 24
+        amount: 1
+    instruction: Claim chill space items
+    expanded_tooltip: Unlocking sectors give access to their respective chill spaces.
+      Scan these chill space QRs to receive an item from them. This has a cooldown
+      of 15s.
+  - code: 2
+    tasks:
+    - requirement: 3
+      rewards:
+      - item: 10
+        amount: 5
+      - item: 11
+        amount: 5
+      - item: 12
+        amount: 5
+    - requirement: 10
+      rewards:
+      - item: 13
+        amount: 12
+      - item: 14
+        amount: 12
+      - item: 18
+        amount: 12
+      - item: 19
+        amount: 12
+    - requirement: 20
+      rewards:
+      - item: 15
+        amount: 25
+      - item: 16
+        amount: 25
+      - item: 17
+        amount: 25
+      - item: 4
+        amount: 25
+      - item: 5
+        amount: 25
+      - item: 20
+        amount: 25
+      - item: 21
+        amount: 25
+      - item: 22
+        amount: 25
+      - item: 24
+        amount: 25
+    instruction: Discover different types of cats
+    expanded_tooltip: Only a certain set of cats will spawn around sectors. To discover
+      more, evolve those cats by meeting certain requirements.
