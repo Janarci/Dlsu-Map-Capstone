@@ -1,13 +1,13 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
+//using UnityEditor.Animations;
 using UnityEngine;
 
 public class CatAnimsTest : MonoBehaviour
 {
     [SerializeField] Animator[] animators;
-    [SerializeField] AnimatorController controller;
+    [SerializeField] RuntimeAnimatorController controller;
     Vector3 jumpTarget = Vector3.zero;
 
     // Start is called before the first frame update
@@ -235,35 +235,35 @@ public class CatAnimsTest : MonoBehaviour
         return animators[0].GetBool("isJumping");
     }
 
-    public float GetAnimDuration(string _anim)
-    {
-        AnimationClip[] clips = animators[0].runtimeAnimatorController.animationClips;
-        float _duration = 0.0f;
+    //public float GetAnimDuration(string _anim)
+    //{
+    //    AnimationClip[] clips = animators[0].runtimeAnimatorController.animationClips;
+    //    float _duration = 0.0f;
 
-        AnimatorController animatorController = animators[0].runtimeAnimatorController as AnimatorController;
+    //    RuntimeAnimatorController animatorController = animators[0].runtimeAnimatorController as RuntimeAnimatorController;
 
-        foreach (AnimatorControllerLayer layer in animatorController.layers)
-        {
-            foreach (ChildAnimatorState childAnimatorState in layer.stateMachine.states)
-            {
-                if (childAnimatorState.state.name == _anim)
-                {
-                    _duration = childAnimatorState.state.motion.averageDuration;
-                    break;
-                }
-            }
-        }
-        //foreach (AnimationClip _clip in clips)
-        //{
+    //    foreach (RuntimeAnimatorController layer in animatorController.layers)
+    //    {
+    //        foreach (RuntimeAnimatorController childAnimatorState in layer.stateMachine.states)
+    //        {
+    //            if (childAnimatorState.state.name == _anim)
+    //            {
+    //                _duration = childAnimatorState.state.motion.averageDuration;
+    //                break;
+    //            }
+    //        }
+    //    }
+    //    //foreach (AnimationClip _clip in clips)
+    //    //{
 
             
-        //}
+    //    //}
                 
                     
 
-        Debug.Log(_duration);
-        return _duration;
-    }
+    //    Debug.Log(_duration);
+    //    return _duration;
+    //}
 
     public bool isWalking()
     {

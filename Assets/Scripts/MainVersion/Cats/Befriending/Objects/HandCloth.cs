@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -28,7 +29,7 @@ public class HandCloth : BefriendingObjects
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Hand cloth collision 2d");
-        if(collision.gameObject.activeInHierarchy && ArrayUtility.Contains(dirtObjects, collision.transform))
+        if(collision.gameObject.activeInHierarchy && (Array.Find(dirtObjects, t => t == collision.transform)) == collision.transform)
         {
             if(!(intersectedDirt.Contains(collision.gameObject)))
             {
@@ -41,7 +42,7 @@ public class HandCloth : BefriendingObjects
     private void OnTriggerExit2D(Collider2D collision)
     {
         //Debug.Log("Hand cloth collision 2d");
-        if (collision.gameObject.activeInHierarchy && ArrayUtility.Contains(dirtObjects, collision.transform))
+        if (collision.gameObject.activeInHierarchy && (Array.Find(dirtObjects, t => t == collision.transform)) == collision.transform)
         {
             if (intersectedDirt.Contains(collision.gameObject))
             {
