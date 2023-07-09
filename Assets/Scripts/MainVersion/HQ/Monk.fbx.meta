@@ -2,7 +2,40 @@ fileFormatVersion: 2
 guid: a432f57c5efaff847bc76ba3d7d6a9dd
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 7674154492727649536
+    second: CharacterArmature|Attack
+  - first:
+      74: 7651902927863357992
+    second: CharacterArmature|Attack2
+  - first:
+      74: 4447012609936615250
+    second: CharacterArmature|Death
+  - first:
+      74: 9061338213343248790
+    second: CharacterArmature|Idle
+  - first:
+      74: 8819464772823671264
+    second: CharacterArmature|Idle_Attacking
+  - first:
+      74: 7022811679865794533
+    second: CharacterArmature|PickUp
+  - first:
+      74: -4856542728082765067
+    second: CharacterArmature|RecieveHit
+  - first:
+      74: -927689670608257901
+    second: CharacterArmature|RecieveHit_Attacking
+  - first:
+      74: -7580519143377161132
+    second: CharacterArmature|Roll
+  - first:
+      74: 1395189703230314720
+    second: CharacterArmature|Run
+  - first:
+      74: -5599002979973759676
+    second: CharacterArmature|Walk
   externalObjects: {}
   materials:
     materialImportMode: 2

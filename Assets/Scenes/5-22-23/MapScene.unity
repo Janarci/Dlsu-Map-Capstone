@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1401,6 +1401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 10
   ui: {fileID: 1713795798}
+  type: 0
 --- !u!1001 &61887579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2223,7 +2224,7 @@ RectTransform:
   m_Children:
   - {fileID: 1501726247}
   m_Father: {fileID: 179761315}
-  m_RootOrder: 10
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -6887,8 +6888,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b32bb42ad53fc742b2cf24f438bd927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infoUI: {fileID: 0}
   chillSpacePicture: {fileID: 1874397771}
   chillSpaceName: {fileID: 641193596}
+  nameField: {fileID: 0}
   chillSpaceInfo: {fileID: 188243947}
   itemsListContent: {fileID: 1050988658}
   itemsListItem: {fileID: 7170307026732518791, guid: 57d68185973d93d4882bea74cf323a8f,
@@ -6896,6 +6899,10 @@ MonoBehaviour:
   hrsTxt: {fileID: 99195264}
   contactsTxt: {fileID: 1755194894}
   catalogCatInfo: {fileID: 1886418020}
+  quizBtn: {fileID: 0}
+  quizController: {fileID: 0}
+  QuizPool: {fileID: 0}
+  quizUI: {fileID: 0}
 --- !u!224 &329626298
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7514,6 +7521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   ui: {fileID: 2056848901}
+  type: 0
 --- !u!1 &348902360
 GameObject:
   m_ObjectHideFlags: 0
@@ -13819,6 +13827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   ui: {fileID: 1093135832}
+  type: 0
 --- !u!1 &606452715
 GameObject:
   m_ObjectHideFlags: 0
@@ -15993,6 +16002,7 @@ MonoBehaviour:
   data:
   - type: 0
     name: Bro. Andrew Gonzalez Hall
+    detail: 
     description: "a 20-story, 90-meter (300 ft) tall building, it is the tallest
       academic building in the Philippines. It was completed in 2006 and it houses
       more than 100 classrooms and faculty rooms, a satellite library called Br.
@@ -16002,10 +16012,13 @@ MonoBehaviour:
       Amenities:\r\n\r\n2nd Floor\r\n-Photocopying Service\r\n\r\n7th Floor\r\n-Vending
       Machine\r\n\r\n8th Floor\r\n-Photocopying Service\r\n\r\n15th Floor\r\n-Photocopying
       Service\r\n\r\n18th Floor\r\n-Vending Machine"
+    amentiesList: []
     chillspaces: 100000000f000000090000000a000000
     picture: {fileID: 21300000, guid: c3fd31ef955c4ca4d843ea239724dfb5, type: 3}
+    items: 
   - type: 1
     name: Br. Bloemen Hall
+    detail: 
     description: "houses food stalls and the studio of Green Giant FM.\r\n\r\n\r\nPopular
       Amenities:\r\n\r\nGround Floor\r\n-Colonel\u2019s Curry\r\n-Dairy Queen (Philippine
       Pizza, Inc.)\r\n-Infinitea (Jogg Enterprises)\r\n-LRN Japanese Food Services\r\n-Mongolian
@@ -16013,17 +16026,23 @@ MonoBehaviour:
       Atbp.\r\n-Salad Break\r\n-Salikneta (DLS - Araneta University)\r\n-Sandwich
       Corner (Lito-Alex Sandwich)\r\n-Sinangag Trip Pampangas\u2019s Special\r\n-The
       Healthy Corner\r\n-Turks Shawarma (Himmel Baum Ent. Co.)\r\n\r\n"
+    amentiesList: []
     chillspaces: 01000000
     picture: {fileID: 21300000, guid: c261bb40bf626ba4e82b8b9afe0cb5d7, type: 3}
+    items: 
   - type: 2
     name: Br. Connon Hall
+    detail: 
     description: a 5-story building that houses the University Clinic, Waldo Perfecto
       Seminar Room, discussion rooms, and the offices of various university departments
       and student organizations
+    amentiesList: []
     chillspaces: 1400000019000000020000000e00000015000000
     picture: {fileID: 21300000, guid: 6c35ae895d9bcb4428b8cf68412b9217, type: 3}
+    items: 
   - type: 3
     name: Br. William Hall
+    detail: 
     description: "houses food stalls and the studio of Green Giant FM.\r\n\r\n\r\nPopular
       Amenities:\r\n\r\nGround Floor\r\n-Colonel\u2019s Curry\r\n-Dairy Queen (Philippine
       Pizza, Inc.)\r\n-Infinitea (Jogg Enterprises)\r\n-LRN Japanese Food Services\r\n-Mongolian
@@ -16031,10 +16050,13 @@ MonoBehaviour:
       Atbp.\r\n-Salad Break\r\n-Salikneta (DLS - Araneta University)\r\n-Sandwich
       Corner (Lito-Alex Sandwich)\r\n-Sinangag Trip Pampangas\u2019s Special\r\n-The
       Healthy Corner\r\n-Turks Shawarma (Himmel Baum Ent. Co.)\r\n\r\n"
+    amentiesList: []
     chillspaces: 
     picture: {fileID: 21300000, guid: 38b1e666b2225b9459c209c57d882165, type: 3}
+    items: 
   - type: 4
     name: Enrique Razon Sports Center
+    detail: 
     description: "a 10-story building that is the main sports facility of De La Salle
       University. It was built in 1998 to replace the old Br. Athanasius Sports Complex
       that was demolished in 2000. The Sports Center houses a variety of sports facilities
@@ -16053,19 +16075,25 @@ MonoBehaviour:
       Floor\r\n-Iron Works Fitness Gym\r\n-Athlete\u2019s Basketball/Volleyball Court
       Area\r\n-Multipurpose aREA\r\n-Showers\r\n-Locker Areas\r\n\r\n10th Floor\r\n-Bleachers
       Area\r\n-Dance Rooms\r\n-Physical Fitness Center\r"
+    amentiesList: []
     chillspaces: 130000000b000000
     picture: {fileID: 21300000, guid: ebe011ee646b6b0498f606c998386a50, type: 3}
+    items: 
   - type: 5
     name: Faculty Center
+    detail: 
     description: "a 4-story building located behind the St. Joseph Hall, it houses
       the offices of departments belonging to the College of Liberal Arts and to
       the College of Business, respectively, and formerly the university library.
       (https://en.wikipedia.org/wiki/De_La_Salle_University) \n\nPopular Amenities:\r\n\r\nGround
       Floor\r\n-Vending Machine\r\n\n2nd Floor\r\n-Vending Machine"
+    amentiesList: []
     chillspaces: 1c000000
     picture: {fileID: 21300000, guid: 309a54adb54ace349977a30212152b33, type: 3}
+    items: 
   - type: 6
     name: Gokongwei Hall
+    detail: 
     description: 'a four-story building completed in the 1990s. Originally named
       the INTELLECT (Information Technology Lecture) Building, the building houses
       the College of Computer Studies, the university''s Information Technology Services
@@ -16089,10 +16117,13 @@ MonoBehaviour:
 
       -Photocopying
       Service'
+    amentiesList: []
     chillspaces: 120000000700000008000000
     picture: {fileID: 21300000, guid: 4f282b8e9178c324cb12b720c1a7c699, type: 3}
+    items: 
   - type: 7
     name: Henry Sy Sr. Hall
+    detail: 
     description: 'A 14-story building composed of eco-friendly learning spaces and
       functions areas, the Henry Sy Sr, Hall also houses administrative offices,
       the academic services hub and the Learning Commons, also known as the University
@@ -16193,17 +16224,23 @@ MonoBehaviour:
       -Discussion Rooms 12A-12H
 
 '
+    amentiesList: []
     chillspaces: 1b00000005000000030000001100000016000000
     picture: {fileID: 21300000, guid: eb18fe468797b104c91c96516a4da82c, type: 3}
+    items: 
   - type: 8
     name: Science and Technology Research Center
+    detail: 
     description: The Science & Technology Research Center, a four-story research
       center along Agno Street that houses various research facilities and laboratories
       belonging to the Colleges of Science and Engineering. (https://en.wikipedia.org/wiki/De_La_Salle_University)
+    amentiesList: []
     chillspaces: 0c000000
     picture: {fileID: 21300000, guid: 6928d42eca32114479167736e8c52eb9, type: 3}
+    items: 
   - type: 9
     name: St. Joseph Hall
+    detail: 
     description: 'a 6-story building completed in 1956. It was the location of the
       DLSU library from 1956 to 1985. It houses the College of Science and the Lasallian
       Pastoral Office. (https://en.wikipedia.org/wiki/De_La_Salle_University)
@@ -16225,10 +16262,13 @@ MonoBehaviour:
       Machine
 
 '
+    amentiesList: []
     chillspaces: 
     picture: {fileID: 21300000, guid: 84e20a9e8123e04468e56a09fc727ef7, type: 3}
+    items: 
   - type: 10
     name: St. La Salle Hall
+    detail: 
     description: "St. La Salle Hall is an H-shaped four-story neoclassical structure.
       It was designed by Tom\xE1s Map\xFAa, founder of Map\xFAa Institute of Technology
       and is one of the few buildings that survived the Battle of Manila during World
@@ -16238,26 +16278,35 @@ MonoBehaviour:
       Cafe (Perico\u2019s Sub-Con)\r\n-Crazy Lemon (Perico\u2019s Sub-Con)\r\n-Potato
       Giant (Perico\u2019s Sub-Con)\r\n-Varda Burgers (Perico\u2019s Sub-Con)\r\n-Photocopying
       Service (MRU Office)\r\n\r\n2nd Floor\r\n-Photocopying Service"
+    amentiesList: []
     chillspaces: 1700000004000000
     picture: {fileID: 21300000, guid: 61219ed083dc43a4fbbee7f02772acb2, type: 3}
+    items: 
   - type: 11
     name: St. Miguel Hall
+    detail: 
     description: "a 4-story building that houses the College of Liberal Arts, academic
       offices, and some laboratories belonging to the College of Engineering. It
       was originally known as the St. Benilde Hall before being renamed. (https://en.wikipedia.org/wiki/De_La_Salle_University)
       There is a bridge on the 2nd Floor of Miguel Hall that connects to the 3rd
       Floor of Gokongwei Hall.\n\n\n\nPopular Amenities:\n\n\nGround Floor\n-Photocopying
       Service\n\n3rd Floor \n-Photocopying Service\n"
+    amentiesList: []
     chillspaces: 000000000d000000
     picture: {fileID: 21300000, guid: 9654674e5fb3b694d95d9e003cd3f3c9, type: 3}
+    items: 
   - type: 12
     name: Velasco Hall
+    detail: 
     description: a five-story building completed in 1981. It houses the Gokongwei
       College of Engineering as well as the equipment they use. (https://en.wikipedia.org/wiki/De_La_Salle_University)
+    amentiesList: []
     chillspaces: 1800000006000000
     picture: {fileID: 21300000, guid: 460fbc78c6e0ee94fb6ae13d151c8d87, type: 3}
+    items: 
   - type: 13
     name: Yuchengco Hall
+    detail: 
     description: "Named in honor of Ambassador Alfonso Yuchengco\u2019s father, the
       Don Enrique T. Yuchengco Hall is a 9-story neoclassical building comprising
       4 elevators, 4 exit stairways, 20 classrooms, 6 teleconference rooms, and the
@@ -16267,8 +16316,10 @@ MonoBehaviour:
       connects to the 5th Floor of Henry Sy Sr. Hall.\n\nPopular Amenities:\r\n\r\nGround
       Floor\r\n-Animo Bookstore\r\n-The Store\r\n-Power Mac Center, Inc.\r\n-Printing
       Service\r\n-Vending Machines"
+    amentiesList: []
     chillspaces: 1a000000
     picture: {fileID: 21300000, guid: 7eae7ef2b16eb524d944d8e3dbaace05, type: 3}
+    items: 
 --- !u!4 &687554574
 Transform:
   m_ObjectHideFlags: 0
@@ -21407,6 +21458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 12
   ui: {fileID: 1086433901}
+  type: 0
 --- !u!1 &948412340
 GameObject:
   m_ObjectHideFlags: 0
@@ -23223,6 +23275,7 @@ MonoBehaviour:
   chillspaceListContent: {fileID: 343068625}
   chillspaceItem: {fileID: 7781124594620223676, guid: 3a64136e9ee93b948b38efc792ccbf15,
     type: 3}
+  claimItemBtn: {fileID: 0}
   chillSpaceInfo: {fileID: 329626297}
   buildingInfoMenu: {fileID: 1053899167}
   chillSpaceInfoMenu: {fileID: 329626296}
@@ -24696,6 +24749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   ui: {fileID: 1240783065}
+  type: 0
 --- !u!1 &1126445420
 GameObject:
   m_ObjectHideFlags: 0
@@ -26875,6 +26929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 13
   ui: {fileID: 606452715}
+  type: 0
 --- !u!4 &1208357422 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2238622820180985132, guid: 524e9e21140fd27468a42042cf30e06a,
@@ -28296,7 +28351,7 @@ RectTransform:
   m_Children:
   - {fileID: 1303639759}
   m_Father: {fileID: 179761315}
-  m_RootOrder: 11
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -28789,6 +28844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   ui: {fileID: 1288655219}
+  type: 0
 --- !u!1 &1283637936
 GameObject:
   m_ObjectHideFlags: 0
@@ -30494,6 +30550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 9
   ui: {fileID: 1965736960}
+  type: 0
 --- !u!1 &1348821682
 GameObject:
   m_ObjectHideFlags: 0
@@ -31113,6 +31170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ARCamera: {fileID: 324370348}
   WorldCamera: {fileID: 8030623}
+  HQCamera: {fileID: 1960707635}
 --- !u!4 &1377080190
 Transform:
   m_ObjectHideFlags: 0
@@ -32881,6 +32939,7 @@ MonoBehaviour:
     model: {fileID: 1264673331477107299, guid: 2fd9c07b3e6984d4081087d34bc7d09b, type: 3}
     script: {fileID: 1414524108}
     icon: {fileID: 0}
+    accessories: []
     evolutions:
     - catType: 5
       requirement:
@@ -32892,6 +32951,7 @@ MonoBehaviour:
     model: {fileID: 2843625035428882704, guid: 632776de6463dff4c907226623154dea, type: 3}
     script: {fileID: 1414524104}
     icon: {fileID: 21300000, guid: 25bd4b65229ec524a8e869c1f5a78c5b, type: 3}
+    accessories: []
     evolutions:
     - catType: 12
       requirement:
@@ -32905,6 +32965,7 @@ MonoBehaviour:
     model: {fileID: 8557128202915404246, guid: 392b5a5115bac2942a7effebe34b5293, type: 3}
     script: {fileID: 1414524103}
     icon: {fileID: 21300000, guid: 58a9dfbc07489d744bcb6b4faec6bac2, type: 3}
+    accessories: []
     evolutions:
     - catType: 10
       requirement:
@@ -32933,6 +32994,7 @@ MonoBehaviour:
     model: {fileID: 4848135757238175078, guid: ee4b52caff6c2e940b4aa6a068a00243, type: 3}
     script: {fileID: 1414524102}
     icon: {fileID: 21300000, guid: 9d35901a87941db43ababe2743982d93, type: 3}
+    accessories: []
     evolutions:
     - catType: 27
       requirement:
@@ -32972,6 +33034,7 @@ MonoBehaviour:
     model: {fileID: 1361256002752954331, guid: 5b4d74fcecadad64ba3aa20b83a85e4b, type: 3}
     script: {fileID: 1414524101}
     icon: {fileID: 21300000, guid: 60cc98bb403ef994db2853e34c47964f, type: 3}
+    accessories: []
     evolutions:
     - catType: 33
       requirement:
@@ -32998,6 +33061,7 @@ MonoBehaviour:
     model: {fileID: 1771142429425375353, guid: 18bdbc0538bcd8840862c4e02b0d4b87, type: 3}
     script: {fileID: 1414524126}
     icon: {fileID: 21300000, guid: d9f9e35a87d17fb48b6610ef52f3ccd5, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - 'The Arrows Express is the official DLSU shuttle service available from Mondays
@@ -33016,6 +33080,7 @@ MonoBehaviour:
     model: {fileID: 3195640339061329943, guid: 1d6fa9d4d9f381e4fb2b6d54d4e57497, type: 3}
     script: {fileID: 1414524125}
     icon: {fileID: 21300000, guid: efef3831c7c8a394dae34c1447da01ae, type: 3}
+    accessories: []
     evolutions:
     - catType: 32
       requirement:
@@ -33030,6 +33095,7 @@ MonoBehaviour:
     model: {fileID: 293309356383813613, guid: 4946629406cfc924cb593448e3c5adcb, type: 3}
     script: {fileID: 1414524124}
     icon: {fileID: 21300000, guid: a11897a58c1c69e46a86e1ab2d7be82c, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - "Maybe you\u2019re into singing? Then check out the DLSU Chorale and DLSU Innersoul!\r\n"
@@ -33038,6 +33104,7 @@ MonoBehaviour:
     model: {fileID: 8976987472181143883, guid: 4efd3eccfef9cf747b72cd8595e6c746, type: 3}
     script: {fileID: 1414524123}
     icon: {fileID: 21300000, guid: 72f1d599c7ca3414097961a4b67f816d, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - 'DLSU has its own official radio station under the name of Green Giant FM.
@@ -33052,6 +33119,7 @@ MonoBehaviour:
     model: {fileID: 4339798561389085235, guid: 6f64402bf104db64ebb76056a248088d, type: 3}
     script: {fileID: 1414524122}
     icon: {fileID: 21300000, guid: 0cdebce7a328bde4baf8ecb6361a1be2, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - 'The discussion rooms are available to use for everyone for free! Students,
@@ -33078,6 +33146,7 @@ MonoBehaviour:
     model: {fileID: 8679810162258229738, guid: ab1c8bc30ac425d49aa06bf90f014360, type: 3}
     script: {fileID: 1414524121}
     icon: {fileID: 21300000, guid: abfafa1379c999d44883e7b06633d3a5, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - 'The Council of Student Organizations manages the accredited organizations
@@ -33101,6 +33170,7 @@ MonoBehaviour:
     model: {fileID: 7273789992295802677, guid: 5fd612675d519424c822254234651905, type: 3}
     script: {fileID: 1414524120}
     icon: {fileID: 21300000, guid: df0a124ca8addda4ab6c1f51373a6384, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - 'The La Salle Dance Company (LSDC) actually comprises 3 independent organizations
@@ -33116,6 +33186,7 @@ MonoBehaviour:
     model: {fileID: 8922501893108717393, guid: ddc84dca42826f64c9e4a17e6731307e, type: 3}
     script: {fileID: 1414524119}
     icon: {fileID: 21300000, guid: 0317fa067220f2144b77c9d169a9c834, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - 'The SDFO also houses the Lost and Found section.
@@ -33126,6 +33197,7 @@ MonoBehaviour:
     model: {fileID: 8663582819300625562, guid: a957d51e552b25c4a91cb34efeba32d1, type: 3}
     script: {fileID: 1414524118}
     icon: {fileID: 21300000, guid: 5af8fafa36fd89c4fa8b4040fccfc610, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - "\u201CTo be entrusted with the teaching of the young is a great gift and grace
@@ -33135,6 +33207,7 @@ MonoBehaviour:
     model: {fileID: 1499208133324799694, guid: cc8cd1d0758acd84e9189bf649e26c5b, type: 3}
     script: {fileID: 1414524116}
     icon: {fileID: 21300000, guid: 2f99cf59d06c1734ebeee195e47968fc, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - "There are two dentists available at the clinic with one being full-time and
@@ -33144,6 +33217,7 @@ MonoBehaviour:
     model: {fileID: 7640891505464791720, guid: b354e65a285a9c3418dd272c5a56c084, type: 3}
     script: {fileID: 1414524115}
     icon: {fileID: 21300000, guid: fad971ac4083098449c87804eeeb12fe, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - 'The HSO offers free medical certification for students! Check out the guidelines
@@ -33153,6 +33227,7 @@ MonoBehaviour:
     model: {fileID: 3358364281961533963, guid: 64260a91d69bcab46a5b02827b752e94, type: 3}
     script: {fileID: 1414524114}
     icon: {fileID: 21300000, guid: be6e7c4e4f7a56a4186e46bfb62512f5, type: 3}
+    accessories: []
     evolutions:
     - catType: 18
       requirement:
@@ -33175,6 +33250,7 @@ MonoBehaviour:
     model: {fileID: 5438844996569466072, guid: 2f1b850454861ff4aaf8c1277ab29893, type: 3}
     script: {fileID: 1414524113}
     icon: {fileID: 21300000, guid: 6cd4a16cbd818a94b8de8162ade938e8, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - To activate/reactivate your MLS account, you will need your official receipt
@@ -33196,6 +33272,7 @@ MonoBehaviour:
     model: {fileID: 3703645196286789089, guid: d4de3f96abe2b00468c3048b58b5a350, type: 3}
     script: {fileID: 1414524112}
     icon: {fileID: 21300000, guid: 9eded70641dda814d9b0e927198a9b43, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - 'The LaSallian is the official student publication of DLSU. It is written in
@@ -33217,6 +33294,7 @@ MonoBehaviour:
     model: {fileID: 353406528931745869, guid: 8c61969f43b4d074780fc8b392f4bb27, type: 3}
     script: {fileID: 1414524111}
     icon: {fileID: 21300000, guid: a3fca3b0629deab49bb52ab0ade8ee54, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - "The Lasallian Ambassadors (LAMBS) are the ones who conducted your LPEP!\r"
@@ -33231,6 +33309,7 @@ MonoBehaviour:
     model: {fileID: 5950665037084465165, guid: ad29aafd1561f8f48942303459fa84fd, type: 3}
     script: {fileID: 1414524110}
     icon: {fileID: 21300000, guid: c093c6ceefe8a0f408fbbfe27a38065d, type: 3}
+    accessories: []
     evolutions:
     - catType: 13
       requirement:
@@ -33254,6 +33333,7 @@ MonoBehaviour:
     model: {fileID: 859276871893585774, guid: e3ba052f484f22445acf7838319afe37, type: 3}
     script: {fileID: 1414524109}
     icon: {fileID: 21300000, guid: 0468c07057b86784b8881bfb20babed6, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - "Nurses may conduct your physical exams during consultations!\r"
@@ -33262,6 +33342,7 @@ MonoBehaviour:
     model: {fileID: 1508325852566070084, guid: b7c1b00c148915446ac68b85ef9fdc49, type: 3}
     script: {fileID: 1414524127}
     icon: {fileID: 21300000, guid: 160688436320d7643b42806e390db924, type: 3}
+    accessories: []
     evolutions:
     - catType: 5
       requirement:
@@ -33297,6 +33378,7 @@ MonoBehaviour:
     model: {fileID: 4807670856821312220, guid: ceb130738df165541b0910b50ca76bd4, type: 3}
     script: {fileID: 1414524134}
     icon: {fileID: 21300000, guid: 7b5371c53cef44643948861dba863bce, type: 3}
+    accessories: []
     evolutions:
     - catType: 11
       requirement:
@@ -33317,6 +33399,7 @@ MonoBehaviour:
     model: {fileID: 8735821861761775494, guid: dff39e26a2b4b9e418d19bb2c2d16302, type: 3}
     script: {fileID: 1414524133}
     icon: {fileID: 21300000, guid: ce2298ee924993e4f8e1000c3913e021, type: 3}
+    accessories: []
     evolutions:
     - catType: 16
       requirement:
@@ -33329,6 +33412,7 @@ MonoBehaviour:
     model: {fileID: 4796829497351985222, guid: 018ff55107b650a42981a6b9f1ee5092, type: 3}
     script: {fileID: 1414524132}
     icon: {fileID: 21300000, guid: e9137d52d140c1943aa2adc446536524, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - Students have to scan their school IDs or present their EAFs with valid ID
@@ -33340,6 +33424,7 @@ MonoBehaviour:
     model: {fileID: 43915530017733780, guid: a7e15f51bf089db478451027dfd66589, type: 3}
     script: {fileID: 1414524131}
     icon: {fileID: 21300000, guid: cd9f2c57735d0a94ea296376e19caf3f, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - "Maybe you\u2019re into singing? Then check out the DLSU Chorale and DLSU Innersoul!\r\n"
@@ -33356,6 +33441,7 @@ MonoBehaviour:
     model: {fileID: 2662409533677268946, guid: f71bf539f95a3da418050a83179eca6b, type: 3}
     script: {fileID: 1414524130}
     icon: {fileID: 21300000, guid: 22225eb3a17502e43bdbb65a28059fe3, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - 'Are you into theater? Then you might be interested in joining the Harlequin
@@ -33373,6 +33459,7 @@ MonoBehaviour:
     model: {fileID: 1256098818887100091, guid: 46ff20bba5ed54e46a5d61d906df4c89, type: 3}
     script: {fileID: 1414524128}
     icon: {fileID: 21300000, guid: 28118ebda10979f4fa35843de9c4a688, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - "The University Student Government is the supreme autonomous representative
@@ -33389,6 +33476,7 @@ MonoBehaviour:
     model: {fileID: 120228632191393387, guid: dc08a6d58c8ef9045b7fe144cb39f49b, type: 3}
     script: {fileID: 1414524129}
     icon: {fileID: 21300000, guid: abd503e8727fb33419993a00852f01c2, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - 'Athletes and varsity members may enjoy full or partial scholarship or tuition
@@ -33400,6 +33488,7 @@ MonoBehaviour:
     model: {fileID: 8163500282374310029, guid: 527ed67074ae00e439e5b8ba2d63f61c, type: 3}
     script: {fileID: 1414524135}
     icon: {fileID: 21300000, guid: effa4f5de2b5d7d4e9c2279978d17050, type: 3}
+    accessories: []
     evolutions: []
     tooltips:
     - 'DLSU offers a lot of scholarships, student loans and aid programs! You can
@@ -34507,6 +34596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   ui: {fileID: 1647454283}
+  type: 0
 --- !u!1001 &1463760934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35275,6 +35365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 6
   ui: {fileID: 1235347249}
+  type: 0
 --- !u!1 &1519244553
 GameObject:
   m_ObjectHideFlags: 0
@@ -35384,8 +35475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea00e039fb0d7142b056dff6a147937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infoUICloseable: {fileID: 4310657011951552502, guid: 231b7a668b4a86d4cb653741c4ca4a94,
-    type: 3}
+  infoUICloseableGeneral: {fileID: 0}
+  infoUICloseableTutorial: {fileID: 0}
   infoUINextable: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
     type: 3}
   infoUIConfirmable: {fileID: 2273805165128551473, guid: 65cbd1e8a015b0c4d9180a65282da3d0,
@@ -36776,6 +36867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 8
   ui: {fileID: 1300002557}
+  type: 0
 --- !u!1 &1618257773
 GameObject:
   m_ObjectHideFlags: 0
@@ -38824,6 +38916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 11
   ui: {fileID: 786077322}
+  type: 0
 --- !u!1 &1721490516 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1912118435774886, guid: 98be219873e6d4dffb5949746f515a33,
@@ -38970,6 +39063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 7
   ui: {fileID: 681528769}
+  type: 0
 --- !u!1001 &1729577989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41988,6 +42082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   ui: {fileID: 241457955}
+  type: 0
 --- !u!1001 &1879565493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44256,7 +44351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 0}
-  visualList: []
+  unlockedSectors: 
 --- !u!4 &1936892758
 Transform:
   m_ObjectHideFlags: 0
@@ -49238,6 +49333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e1c21afdc05724686a3b305dd3ab8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlocked_chillspaces: 
 --- !u!4 &2099564886
 Transform:
   m_ObjectHideFlags: 0
