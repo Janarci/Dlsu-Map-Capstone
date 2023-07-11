@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class Quest : Accomplishment
+public class SideQuest : Accomplishment
 {
     public enum QuestCode
     {
@@ -33,7 +33,7 @@ public class Quest : Accomplishment
     public string instruction;
     [TextArea(3, 5)] public string expanded_tooltip;
 
-    private Quest()
+    private SideQuest()
     {
         base.type = Accomplishment.Type.quest;
     }

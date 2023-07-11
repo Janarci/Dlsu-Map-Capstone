@@ -620,7 +620,7 @@ public class Cat : MonoBehaviour
             EventManager.CatBefriend(this, true);
             Debug.Log("The cat has chosen to be your friend");
             //GameObject.DontDestroyOnLoad(this.gameObject);
-            AchievementsManager.instance?.ProgressQuest(Quest.QuestCode.befriend_cats, 1);
+            AchievementsManager.instance?.ProgressSideQuest(SideQuest.QuestCode.befriend_cats, 1);
             TutorialManager.instance.UnlockTutorial(TutorialManager.Type.cat_befriend_success);
         }
 
@@ -729,6 +729,101 @@ public class Cat : MonoBehaviour
         }
 
         return favor;
+    }
+
+    public void InteractWithCat()
+    {
+        TutorialManager.instance.UnlockTutorial(TutorialManager.Type.cat_relationship_up);
+        //switch (interaction)
+        //{
+        //    case CatInteraction.Type.pet:
+        //        {
+        //            relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]) * (sadnessAilment.currentValue/sadnessAilment.maxValue), 100);
+        //            sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
+        //        }
+        //        break;
+        //    case CatInteraction.Type.feed:
+        //        {
+        //            relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]) * (hungerAilmennt.currentValue / hungerAilmennt.maxValue), 100);
+        //            sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
+        //        }
+        //        break;
+        //    case CatInteraction.Type.play:
+        //        {
+        //            relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]) * (boredomAilment.currentValue / boredomAilment.maxValue), 100);
+        //            sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
+        //        }
+        //        break;
+        //    case CatInteraction.Type.clean:
+        //        {
+        //            relationship_value = Mathf.Min((relationship_value + CatTrait.GetInteractionFavorFromTrait(trait)[interaction]), 100);
+        //            sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
+        //        }
+        //        break;
+        //}
+        //CatTrait.Favor favor = CatTrait.GetInteractionFavorFromTrait(trait)[interaction];
+        //switch (interaction)
+        //{
+        //    case CatInteraction.Type.pet:
+        //        {
+        //            relationship_value = Mathf.Min((relationship_value + (int)favor), 100);
+        //            sadnessAilment.currentValue = Mathf.Max(0, sadnessAilment.currentValue - 10);
+        //        }
+        //        break;
+        //    case CatInteraction.Type.feed:
+        //        {
+        //            relationship_value = Mathf.Min((relationship_value + (int)favor), 100);
+        //            hungerAilmennt.currentValue = Mathf.Max(0, hungerAilmennt.currentValue - 10);
+        //        }
+        //        break;
+        //    case CatInteraction.Type.play:
+        //        {
+        //            relationship_value = Mathf.Min((relationship_value + (int)favor), 100);
+        //            boredomAilment.currentValue = Mathf.Max(0, boredomAilment.currentValue - 10);
+        //        }
+        //        break;
+        //    case CatInteraction.Type.clean:
+        //        {
+        //            relationship_value = Mathf.Min((relationship_value + (int)favor), 100);
+        //            dirtAilment.currentValue = Mathf.Max(0, dirtAilment.currentValue - 10);
+        //        }
+        //        break;
+        //}
+
+        Debug.Log(relationship_value);
+        if (relationship_level < 10)
+        {
+            relationship_level++;
+            relationship_value = 0;
+            ui?.SetLevel(relationship_level);
+            Debug.Log(relationship_level);
+
+            if (relationship_level % 2 == 0)
+            {
+                if (CatDatabase.Instance.GetCatData(type).tooltips.Count() >= (relationship_level / 2) && !(CatsManager.instance.unlocked_tooltips[type][(relationship_level / 2)]))
+                {
+                    CatsManager.instance.unlocked_tooltips[type][(relationship_level / 2)] = true;
+                    if (PopupGenerator.Instance && CatDatabase.Instance)
+                    {
+                        PopupGenerator.Instance?.GenerateCloseablePopup(
+                            CatDatabase.Instance?.GetCatData(type).catTypeLabel + "says: " +
+                            "\n" +
+                            CatDatabase.Instance?.GetCatData(type).tooltips[relationship_level / 2]
+                            );
+                    }
+
+                }
+            }
+        }
+
+        ui?.SetRelationshipBarValue(getRelationshipPercentage());
+        UpdateAilmentBars();
+        if (CanEvolve())
+        {
+            ui?.ShowInteractUI(false);
+            ui?.ShowEvolve(true);
+
+        }
     }
 
     public void TreatAilment(CatInteraction.Type interaction)

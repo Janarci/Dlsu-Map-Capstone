@@ -196,20 +196,25 @@ public class CatUI : MonoBehaviour
 
     public void InteractByPetting()
     {
-        cat?.InteractWithCat(CatInteraction.Type.pet);
+        //cat?.InteractWithCat(CatInteraction.Type.pet);
+        cat?.InteractWithCat();
     }
 
     public void InteractByFeeding()
     {
-        cat?.InteractWithCat(CatInteraction.Type.feed);
+        //cat?.InteractWithCat(CatInteraction.Type.feed);
+        cat?.InteractWithCat();
     }
     public void InteractByPlaying()
     {
-        cat?.InteractWithCat(CatInteraction.Type.play);
+        //cat?.InteractWithCat(CatInteraction.Type.play);
+        cat?.InteractWithCat();
     }
     public void InteractByCleaning()
     {
-        cat?.InteractWithCat(CatInteraction.Type.clean);
+        //cat?.InteractWithCat(CatInteraction.Type.clean);
+        cat?.InteractWithCat();
+
     }
 
 }

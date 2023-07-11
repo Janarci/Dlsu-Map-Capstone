@@ -9,10 +9,12 @@ public class AccomplishmentDatabase : MonoBehaviour
     public static AccomplishmentDatabase Instance;
 
     public List<Achievement> achievementsList;
-    public List<Quest> questsList;
+    public List<SideQuest> sideQuestList;
+    public List<MainQuest> mainQuestList;
 
     private Dictionary<Achievement.AchievementCode, Achievement> achievementMappedDatabase;
-    private Dictionary<Quest.QuestCode, Quest> questMappedDatabase;
+    private Dictionary<SideQuest.QuestCode, SideQuest> sideQuestMappedDatabase;
+    private Dictionary<MainQuest.QuestCode, MainQuest> mainQuestMappedDatabase;
 
     public bool isInitialized { get; private set; }
 
@@ -48,8 +50,10 @@ public class AccomplishmentDatabase : MonoBehaviour
     {
         int i = 0;
         int j = 0;
+        int k = 0;
         achievementMappedDatabase = new Dictionary<Achievement.AchievementCode, Achievement>();
-        questMappedDatabase = new Dictionary<Quest.QuestCode, Quest>();
+        sideQuestMappedDatabase = new Dictionary<SideQuest.QuestCode, SideQuest>();
+        mainQuestMappedDatabase = new Dictionary<MainQuest.QuestCode, MainQuest>();
 
 
         while (i < achievementsList.Count)
@@ -61,11 +65,20 @@ public class AccomplishmentDatabase : MonoBehaviour
             yield return null;
         }
 
-        while (j < questsList.Count)
+        while (j < sideQuestList.Count)
         {
-            Quest dataInstance = questsList[j];
-            questMappedDatabase.Add(dataInstance.code, dataInstance);
+            SideQuest dataInstance = sideQuestList[j];
+            sideQuestMappedDatabase.Add(dataInstance.code, dataInstance);
             j++;
+            //Debug.Log(i);
+            yield return null;
+        }
+
+        while (k < mainQuestList.Count)
+        {
+            MainQuest dataInstance = mainQuestList[k];
+            mainQuestMappedDatabase.Add(dataInstance.info.type, dataInstance);
+            k++;
             //Debug.Log(i);
             yield return null;
         }
@@ -81,8 +94,13 @@ public class AccomplishmentDatabase : MonoBehaviour
         return achievementMappedDatabase[_type];
     }
 
-    public Quest GetQuesttData(Quest.QuestCode _type)
+    public SideQuest GetSideQuestData(SideQuest.QuestCode _type)
     {
-        return questMappedDatabase[_type];
+        return sideQuestMappedDatabase[_type];
+    }
+
+    public MainQuest GetMainQuestData(MainQuest.QuestCode _type)
+    {
+        return mainQuestMappedDatabase[_type];
     }
 }

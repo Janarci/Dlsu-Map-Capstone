@@ -8,7 +8,9 @@ public class AchievementsManager : MonoBehaviour, IDataPersistence
 {
     public static AchievementsManager instance { get; private set; }
     public Dictionary<Achievement.AchievementCode, bool> achievementsAcquired { get; private set; }
-    public Dictionary<Quest.QuestCode, int> questsProgress { get; private set; }
+    public Dictionary<SideQuest.QuestCode, int> sideQuestsProgress { get; private set; }
+
+    public MainQuest currentMainQuest;
 
     public bool isInitialized { get; private set; }
 
@@ -43,13 +45,15 @@ public class AchievementsManager : MonoBehaviour, IDataPersistence
     IEnumerator Initialize()
     {
         achievementsAcquired = new Dictionary<Achievement.AchievementCode, bool>();
-        questsProgress = new Dictionary<Quest.QuestCode, int>();
+        sideQuestsProgress = new Dictionary<SideQuest.QuestCode, int>();
 
-        foreach (Quest q in AccomplishmentDatabase.Instance.questsList)
+        foreach (SideQuest q in AccomplishmentDatabase.Instance.sideQuestList)
         {
             yield return null;
-            questsProgress.Add(q.code, 0);
+            sideQuestsProgress.Add(q.code, 0);
         }
+
+        currentMainQuest = AccomplishmentDatabase.Instance.mainQuestList[0];
 
         isInitialized = true;
     }
@@ -74,21 +78,36 @@ public class AchievementsManager : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void ProgressQuest(Quest.QuestCode _type, int _amount)
+    public void ProgressSideQuest(SideQuest.QuestCode _type, int _amount)
     {
-        if (questsProgress.ContainsKey(_type))
+        if (sideQuestsProgress.ContainsKey(_type))
         {
-            if (!(questsProgress[_type] >= AccomplishmentDatabase.Instance.GetQuesttData(_type).tasks.Last().requirement))
+            if (!(sideQuestsProgress[_type] >= AccomplishmentDatabase.Instance.GetSideQuestData(_type).tasks.Last().requirement))
             {
-                questsProgress[_type] = Math.Min(AccomplishmentDatabase.Instance.GetQuesttData(_type).tasks.Last().requirement, questsProgress[_type] + _amount);
-                Debug.Log("quest progress: " + questsProgress[_type]);
+                sideQuestsProgress[_type] = Math.Min(AccomplishmentDatabase.Instance.GetSideQuestData(_type).tasks.Last().requirement, sideQuestsProgress[_type] + _amount);
+                Debug.Log("quest progress: " + sideQuestsProgress[_type]);
             }
 
             QuestsList ql = null;
             ql = FindObjectOfType<QuestsList>(true);
             if (ql)
             {
-                ql.UpdateQuestItem(_type, questsProgress[_type]);
+                ql.UpdateSideQuestItem(_type, sideQuestsProgress[_type]);
+            }
+        }
+    }
+
+    public void FinishCurrentMainQuest(MainQuest.QuestCode _type)
+    {
+        if(currentMainQuest.info.type == _type && AccomplishmentDatabase.Instance)
+        {
+            currentMainQuest = AccomplishmentDatabase.Instance.GetMainQuestData(currentMainQuest.info.next);
+
+            QuestsList ql = null;
+            ql = FindObjectOfType<QuestsList>(true);
+            if (ql)
+            {
+                ql.UpdateMainQuestItem(_type, currentMainQuest.instruction);
             }
         }
     }
@@ -97,16 +116,16 @@ public class AchievementsManager : MonoBehaviour, IDataPersistence
     {
         foreach(GameData.QuestData _qd in gameData.quest_progress)
         {
-            if(questsProgress.ContainsKey(_qd.type))
+            if(sideQuestsProgress.ContainsKey(_qd.type))
             {
-                questsProgress[_qd.type] = _qd.progress;
+                sideQuestsProgress[_qd.type] = _qd.progress;
             }
         }
     }
 
     public void SaveGameData(ref GameData gameData)
     {
-        foreach(Quest.QuestCode _qc in questsProgress.Keys)
+        foreach(SideQuest.QuestCode _qc in sideQuestsProgress.Keys)
         {
             bool newQuest = true;
 
@@ -115,7 +134,7 @@ public class AchievementsManager : MonoBehaviour, IDataPersistence
                 if(_qd.type == _qc)
                 {
                     newQuest = false;
-                    _qd.progress = questsProgress[_qc];
+                    _qd.progress = sideQuestsProgress[_qc];
                     break;
                 }
             }
@@ -124,7 +143,7 @@ public class AchievementsManager : MonoBehaviour, IDataPersistence
             {
                 GameData.QuestData _qd = new GameData.QuestData();
                 _qd.type = _qc;
-                _qd.progress = questsProgress[_qc];
+                _qd.progress = sideQuestsProgress[_qc];
                 gameData.quest_progress.Add(_qd);
             }
         }
