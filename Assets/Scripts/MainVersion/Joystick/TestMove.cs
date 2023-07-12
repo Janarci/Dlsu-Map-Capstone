@@ -17,8 +17,21 @@ public class TestMove : MonoBehaviour
 
 	private void Update()
 	{
-        Debug.Log(direction.x + " " + direction.y);
+        if (cameraTransform == null)
+        {
+            // Find the camera object by name
+            GameObject cameraObj = GameObject.Find("Main Camera");
 
+            if (cameraObj != null)
+            {
+                cameraTransform = cameraObj.transform;
+            }
+            else
+            {
+                Debug.LogWarning("Camera object not found");
+                return;
+            }
+        }
         // Calculate the movement vector based on the joystick direction
         Vector3 movement = new Vector3(direction.x, 0f, direction.y);
 
