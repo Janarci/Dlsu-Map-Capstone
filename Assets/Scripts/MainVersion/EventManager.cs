@@ -21,7 +21,7 @@ public class EventManager : MonoBehaviour
     public static event Action OnInitializeMap;
 
     public static event Action<Achievement.AchievementCode> OnAchievementUnlock;
-    public static event Action<Quest.QuestCode> OnQuestProgress;
+    public static event Action<SideQuest.QuestCode> OnQuestProgress;
 
     private void Awake()
     {
@@ -116,7 +116,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public static void ProgressQuest(Quest.QuestCode _code)
+    public static void ProgressQuest(SideQuest.QuestCode _code)
     {
         if(OnQuestProgress != null)
         {

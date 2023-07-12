@@ -5,9 +5,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class QuestItemBehaviour : MonoBehaviour
+public class SideQuestItemBehaviour : MonoBehaviour
 {
-    Quest.QuestCode code;
+    SideQuest.QuestCode code;
     [SerializeField] Text TxtTask;
     [SerializeField] TextMeshProUGUI TxtCurrentProgress;
     [SerializeField] Image ImgProgressBar;
@@ -18,7 +18,7 @@ public class QuestItemBehaviour : MonoBehaviour
 
     public bool isSelected = false;
 
-    public Action<Quest.QuestCode> OnMaxOut;
+    public Action<SideQuest.QuestCode> OnMaxOut;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +38,7 @@ public class QuestItemBehaviour : MonoBehaviour
 
     }
 
-    public void SetInfo(string _task, int _currentProgress, int _maxProgress, int _currentIndex, string _tooltip, Quest.QuestCode _code)
+    public void SetInfo(string _task, int _currentProgress, int _maxProgress, int _currentIndex, string _tooltip, SideQuest.QuestCode _code)
     {
         TxtTask.text = _task;
         tooltip = _tooltip;
@@ -82,7 +82,7 @@ public class QuestItemBehaviour : MonoBehaviour
     {
         if(AccomplishmentDatabase.Instance && Inventory.Instance)
         {
-            foreach(Quest.QuestReward reward in AccomplishmentDatabase.Instance.GetQuesttData(code).tasks[currentIndex].rewards)
+            foreach(SideQuest.QuestReward reward in AccomplishmentDatabase.Instance.GetSideQuestData(code).tasks[currentIndex].rewards)
             {
                 Debug.LogWarning(reward.ToString());
                 Inventory.Instance.AddToInventory(reward.item, reward.amount);
@@ -98,7 +98,7 @@ public class QuestItemBehaviour : MonoBehaviour
 
             if (AccomplishmentDatabase.Instance)
             {
-                Quest quest = AccomplishmentDatabase.Instance.GetQuesttData(code);
+                SideQuest quest = AccomplishmentDatabase.Instance.GetSideQuestData(code);
                 if (quest.tasks.Count > currentIndex + 1)
                 {
                     currentIndex++;

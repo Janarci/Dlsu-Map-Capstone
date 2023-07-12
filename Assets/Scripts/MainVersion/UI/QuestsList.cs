@@ -8,10 +8,12 @@ public class QuestsList : MonoBehaviour
 {
 
 
-    [SerializeField] GameObject questItemTemplate;
-    [SerializeField] GameObject questContent;
-    [SerializeField] Dictionary<Quest.QuestCode, GameObject> questList;
-
+    [SerializeField] GameObject sideQuestItemTemplate;
+    [SerializeField] GameObject mainQuestItemTemplate;
+    [SerializeField] GameObject sideQuestContent;
+    [SerializeField] GameObject mainQuestContent;
+    [SerializeField] Dictionary<SideQuest.QuestCode, GameObject> sideQuestList;
+    GameObject mainQuestItem = null;
     bool isDeselecting = false;
     // Start is called before the first frame update
     void Start()
@@ -36,8 +38,10 @@ public class QuestsList : MonoBehaviour
 
     public void StartQuestsUI()
     {
-        if(questList == null)
-        questList = new Dictionary<Quest.QuestCode, GameObject>();
+        if(sideQuestList == null)
+        {
+            sideQuestList = new Dictionary<SideQuest.QuestCode, GameObject>();
+        }
 
         //StartCoroutine(InitializeQuestsUICoroutine());
         InitializeQuestsUI();
@@ -53,20 +57,20 @@ public class QuestsList : MonoBehaviour
             //    yield return null;
             //}
 
-            foreach (Quest quest in AccomplishmentDatabase.Instance.questsList)
+            foreach (SideQuest quest in AccomplishmentDatabase.Instance.sideQuestList)
             {
                 int i = 0;
                 while (i < quest.tasks.Count)
                 {
-                    if (AchievementsManager.instance.questsProgress[quest.code] < quest.tasks[i].requirement)
+                    if (AchievementsManager.instance.sideQuestsProgress[quest.code] < quest.tasks[i].requirement)
                     {
-                        GameObject newQuestItem = Instantiate(questItemTemplate, questContent.transform);
-                        bool hasQuestComp = newQuestItem.TryGetComponent<QuestItemBehaviour>(out QuestItemBehaviour questComp);
-                        if (hasQuestComp)
+                        GameObject newQuestItem = Instantiate(sideQuestItemTemplate, sideQuestContent.transform);
+                        bool hasQuestComp1 = newQuestItem.TryGetComponent<SideQuestItemBehaviour>(out SideQuestItemBehaviour questComp);
+                        if (hasQuestComp1)
                         {
-                            questComp.SetInfo(quest.instruction, AchievementsManager.instance.questsProgress[quest.code], quest.tasks[i].requirement, i, quest.expanded_tooltip, quest.code);
-                            questList.Add(quest.code, newQuestItem);
-                            questComp.OnMaxOut += RemoveQuestItem;
+                            questComp.SetInfo(quest.instruction, AchievementsManager.instance.sideQuestsProgress[quest.code], quest.tasks[i].requirement, i, quest.expanded_tooltip, quest.code);
+                            sideQuestList.Add(quest.code, newQuestItem);
+                            questComp.OnMaxOut += RemoveSideQuestItem;
                         }
 
                         break;
@@ -80,14 +84,33 @@ public class QuestsList : MonoBehaviour
                     //yield return null;
                 }
             }
+
+            if(AchievementsManager.instance.currentMainQuest.info.type != MainQuest.QuestCode.none)
+            {
+                mainQuestItem = Instantiate(mainQuestItemTemplate, mainQuestContent.transform);
+                bool hasQuestComp2 = mainQuestItem.TryGetComponent<MainQuestItemBehaviour>(out MainQuestItemBehaviour questComp);
+                if(hasQuestComp2)
+                {
+                    questComp.SetInfo(AchievementsManager.instance.currentMainQuest.instruction, AchievementsManager.instance.currentMainQuest.info.type);
+                }
+            }
+
+
         }
     }
 
-    public void UpdateQuestItem(Quest.QuestCode _code, int _newCurrentProgress)
+    public void UpdateMainQuestItem(MainQuest.QuestCode _code, string _info)
     {
-        if(questList.ContainsKey(_code))
+        if(mainQuestItem != null)
         {
-            questList[_code].TryGetComponent<QuestItemBehaviour>(out QuestItemBehaviour qb);
+            mainQuestItem.GetComponent<MainQuestItemBehaviour>().SetInfo(_info, _code);
+        }
+    }
+    public void UpdateSideQuestItem(SideQuest.QuestCode _code, int _newCurrentProgress)
+    {
+        if(sideQuestList.ContainsKey(_code))
+        {
+            sideQuestList[_code].TryGetComponent<SideQuestItemBehaviour>(out SideQuestItemBehaviour qb);
             if(qb)
             {
                 qb.SetCurrentProgress(_newCurrentProgress);
@@ -95,13 +118,13 @@ public class QuestsList : MonoBehaviour
         }
     }
 
-    public void RemoveQuestItem(Quest.QuestCode _code)
+    public void RemoveSideQuestItem(SideQuest.QuestCode _code)
     {
 
-        if(questList.ContainsKey(_code))
+        if(sideQuestList.ContainsKey(_code))
         {
 
-            if (questList.Remove(_code, out GameObject _item))
+            if (sideQuestList.Remove(_code, out GameObject _item))
             {
                 Destroy(_item);
             }

@@ -12,6 +12,7 @@ public class MapUI : MonoBehaviour
     public GameObject questsBtn;
     public GameObject HQBtn;
     public GameObject CatalogBtn;
+    public GameObject settingsBtn;
     public GameObject inventoryUI;
     public GameObject questsUI;
     public GameObject SwitchCameraBtn;
@@ -156,12 +157,34 @@ public class MapUI : MonoBehaviour
     {
         HideMiniMenu();
         inventoryUI.SetActive(true);
+        AchievementsManager.instance.FinishCurrentMainQuest(MainQuest.QuestCode.open_inventory);
     }
 
     public void DisplayQuests()
     {
         HideMiniMenu();
         questsUI.SetActive(true);
+    }
+
+    public void OnOpenCatalog()
+    {
+        AchievementsManager.instance.FinishCurrentMainQuest(MainQuest.QuestCode.open_catalog_main);
+        CatalogCanvas.SetActive(true);
+        HQBtn.SetActive(false);
+        mainUIBtn.SetActive(false);
+        playerIconObj.SetActive(false);
+        settingsBtn.SetActive(false);
+        SwitchCameraBtn.SetActive(false);
+    }
+
+    public void OnCloseCatalog()
+    {
+        CatalogCanvas.SetActive(false);
+        HQBtn.SetActive(true);
+        mainUIBtn.SetActive(true);
+        playerIconObj.SetActive(true);
+        settingsBtn.SetActive(true);
+        SwitchCameraBtn.SetActive(true);
     }
 
     public void HideMainCanvasUI()
@@ -175,7 +198,7 @@ public class MapUI : MonoBehaviour
     public void TestAchievement()
     {
         //AchievementsManager.instance.AccomplishAchievemnt(Accomplishment.Type.BefriendedFirstCat);
-        AchievementsManager.instance.ProgressQuest(Quest.QuestCode.befriend_cats, 1);
+        AchievementsManager.instance.ProgressSideQuest(SideQuest.QuestCode.befriend_cats, 1);
     }
 
     public void PlayMapBGM()

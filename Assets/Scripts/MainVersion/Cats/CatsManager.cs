@@ -115,7 +115,7 @@ public class CatsManager : MonoBehaviour, IDataPersistence
     {
         collected_cat_types.Add(catType);
         unlocked_tooltips.Add(catType, new bool[5] { true, false, false, false, false });
-        AchievementsManager.instance?.ProgressQuest(Quest.QuestCode.discover_cat_types, 1);
+        AchievementsManager.instance?.ProgressSideQuest(SideQuest.QuestCode.discover_cat_types, 1);
     }
 
     public void LoadGameData(GameData gameData)

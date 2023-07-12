@@ -31,7 +31,7 @@ public class GameData
     [Serializable]
     public class QuestData
     {
-        public Quest.QuestCode type;
+        public SideQuest.QuestCode type;
         public int progress = 0;
     }
 
