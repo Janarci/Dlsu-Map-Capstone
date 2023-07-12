@@ -5,13 +5,14 @@ using UnityEngine.EventSystems;
 
 public class JoystickController : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
-    private Vector2 joystickDirection;
+    private Vector3 joystickDirection;
 
     // Public event to handle joystick movement
-    public event System.Action<Vector2> OnJoystickMove;
+    public event System.Action<Vector3> OnJoystickMove;
 
     public void OnDrag(PointerEventData eventData)
     {
+
         Vector2 position;
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
             transform.parent.GetComponent<RectTransform>(),
@@ -29,6 +30,7 @@ public class JoystickController : MonoBehaviour, IDragHandler, IPointerUpHandler
             OnJoystickMove?.Invoke(joystickDirection);
 
             transform.localPosition = position * transform.parent.GetComponent<RectTransform>().rect.width * 0.5f;
+
         }
     }
     public void OnPointerDown(PointerEventData eventData)
