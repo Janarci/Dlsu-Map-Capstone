@@ -6,7 +6,7 @@
 
 	public class ImmediatePositionWithLocationProvider : MonoBehaviour
 	{
-
+		public bool joystick = false;
 		[SerializeField] Animator animator;
 		bool _isInitialized;
 		bool _isMoving = false;
@@ -25,6 +25,7 @@
 			}
 		}
 
+
 		Vector3 _targetPosition;
 
 		void Start()
@@ -36,7 +37,7 @@
 
         void LateUpdate()
 		{
-			if (_isInitialized)
+			if (_isInitialized && !joystick)
 			{
 				Vector3 initialPos = initialPos = transform.localPosition;
                 
