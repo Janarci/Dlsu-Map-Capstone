@@ -7,6 +7,9 @@ namespace Mapbox.Examples
 
 	public class CameraMovement : MonoBehaviour
 	{
+		public RectTransform joystickRect;
+		private bool isTouchInsideJoystick = false;
+
 		[SerializeField]
 		AbstractMap _map;
 
@@ -218,16 +221,61 @@ namespace Mapbox.Examples
 		void LateUpdate()
 		{
 
-			if (Input.touchSupported && Input.touchCount > 0)
+			if (_map == null)
 			{
-				HandleTouch();
+				_map = FindObjectOfType<AbstractMap>();
+				if (_map == null)
+				{
+					throw new System.Exception("You must have a reference map assigned!");
+				}
+			}
+
+			if (Input.touchCount > 0)
+			{
+				Touch touch = Input.GetTouch(0);
+
+				if (touch.phase == TouchPhase.Began)
+				{
+					isTouchInsideJoystick = IsWithinJoystickArea(touch.position);
+				}
+				else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+				{
+					isTouchInsideJoystick = false;
+				}
+
+				if (!isTouchInsideJoystick)
+				{
+					if (Input.touchSupported && Input.touchCount > 0)
+					{
+						HandleTouch();
+					}
+				}
+
 			}
 			else
 			{
-				HandleMouseAndKeyBoard();
+				if (Input.GetMouseButtonDown(0))
+				{
+					isTouchInsideJoystick = IsWithinJoystickArea(Input.mousePosition);
+				}
+				else if (Input.GetMouseButtonUp(0))
+				{
+					isTouchInsideJoystick = false;
+				}
+
+				if (!isTouchInsideJoystick)
+				{
+					HandleMouseAndKeyBoard();
+				}
 			}
 
-            ResetCamera();
+
+
+			ResetCamera();
         }
+		private bool IsWithinJoystickArea(Vector2 inputPosition)
+		{
+			return RectTransformUtility.RectangleContainsScreenPoint(joystickRect, inputPosition);
+		}
 	}
 }
