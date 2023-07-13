@@ -99,33 +99,15 @@ public class HQCameraMovement : MonoBehaviour
         {
             // Store both touches.
             Touch touchZero = Input.GetTouch(0);
-            Touch touchOne = Input.GetTouch(1);
-
 
             // Find the position in the previous frame of each touch.
             Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
 
-            // Find the magnitude of the vector (the distance) between the touches in each frame.
-            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
-
-            // Find the difference in the distances between each frame.
-            zoomFactor = 0.0015f * (touchDeltaMag - prevTouchDeltaMag);
-
-
-            var turnAngleF1 = Vector2.Angle(touchZero.position, touchZero.deltaPosition);
-            var turnAngleF2 = Vector2.Angle(touchOne.position, touchOne.deltaPosition);
-
-            var prevDir = touchOnePrevPos - touchZeroPrevPos;
-            var currDir = touchOne.position - touchZero.position;
-
-            //var turnAngle = (turnAngleF1 + turnAngleF2) / 2;
-            var angle = Vector2.SignedAngle(prevDir, currDir);
+            Vector2 moveDirection = (touchZero.position - touchZeroPrevPos);
 
             //Debug.Log(angle);
 
-            hqCamera.transform.position += new Vector3(System.Math.Clamp(touchZero.deltaPosition.x, -300, 300), 0, 0).normalized;
+            hqCamera.transform.position += new Vector3(System.Math.Clamp(moveDirection.x, -300, 300), 0, 0).normalized;
 
         }
     }
