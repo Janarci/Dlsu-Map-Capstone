@@ -230,6 +230,23 @@ namespace Mapbox.Examples
 				}
 			}
 
+			if (joystickRect == null)
+			{
+				// Find the camera object by name
+				GameObject joystickObject = GameObject.Find("JoystickBG");
+				if (joystickObject != null)
+				{
+					joystickRect = joystickObject.GetComponent<RectTransform>();
+				}
+				else
+				{
+					Debug.LogWarning("joystick object not found");
+					return;
+				}
+			}
+
+
+
 			if (Input.touchCount > 0)
 			{
 				Touch touch = Input.GetTouch(0);

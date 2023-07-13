@@ -8,7 +8,7 @@ public class TestMove : MonoBehaviour
     public Transform cameraTransform;
     Vector3 direction;
 
-    int speed = 5;
+    int speed = 20;
     private void Start()
     {
         //joystick = FindObjectOfType<JoystickController>();
