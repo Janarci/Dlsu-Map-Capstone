@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4188,6 +4188,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 833504988, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -170.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 833504988, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 251.2
+      objectReference: {fileID: 0}
     - target: {fileID: 833504989, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -4203,6 +4211,26 @@ PrefabInstance:
     - target: {fileID: 979561976, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032550263, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032550263, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032550263, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032550263, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -120.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032550263, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -167.3
       objectReference: {fileID: 0}
     - target: {fileID: 1032550264, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -39101,7 +39129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 120.6, y: -261.4}
+  m_AnchoredPosition: {x: 106.4, y: -261.4}
   m_SizeDelta: {x: 113.8025, y: 113.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1543541516
