@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2833,6 +2833,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstraintCount
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138361048562299190, guid: f02811f61c7c8ff4387c18a528d876a7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.027759831
       objectReference: {fileID: 0}
     - target: {fileID: 8138361049286038056, guid: f02811f61c7c8ff4387c18a528d876a7,
         type: 3}
@@ -5684,7 +5689,7 @@ PrefabInstance:
     - target: {fileID: 8138361048562299190, guid: f02811f61c7c8ff4387c18a528d876a7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 162.99683
+      value: 0.0040979665
       objectReference: {fileID: 0}
     - target: {fileID: 8138361048562299190, guid: f02811f61c7c8ff4387c18a528d876a7,
         type: 3}
@@ -7057,6 +7062,7 @@ MonoBehaviour:
     - 'Athletes and varsity members may also avail a scholarship!
 
 '
+  furPatternPool: []
 --- !u!4 &975475984
 Transform:
   m_ObjectHideFlags: 0
@@ -12091,6 +12097,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstraintCount
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138361048562299190, guid: f02811f61c7c8ff4387c18a528d876a7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.048671335
       objectReference: {fileID: 0}
     - target: {fileID: 8138361048562299190, guid: f02811f61c7c8ff4387c18a528d876a7,
         type: 3}
