@@ -76,9 +76,10 @@ public class CatsManager : MonoBehaviour, IDataPersistence
     public void SpawnCat(Transform areaTransform, Rect areaRect)
     {
         CatSpawnerUpdated csu = FindObjectOfType<CatSpawnerUpdated>();
-        if (csu)
+        GameObject cat_spawn = csu.InstantiateDroid();
+
+        if (cat_spawn != null)
         {
-            GameObject cat_spawn = csu.InstantiateDroid();
             Transform CubeBoundsObj = areaTransform.GetChild(0);
 
             int spawnAttempts = 0;

@@ -41,6 +41,10 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
 
     public GameObject InstantiateDroid()
 	{
+		if (spawnedCats.Count > 10)
+		{
+            return null;
+		}
         //GameObject newDroid = Instantiate(availableDroids[index], new Vector3(x, y, z), Quaternion.identity);
 
 
@@ -131,7 +135,7 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
 
         foreach(GameObject spawnedCatObj in spawnedCats)
         {
-            if(Vector3.Distance(pointOfComparison, spawnedCatObj.transform.position) <= 300.0f)
+            if(Vector3.Distance(pointOfComparison, spawnedCatObj.transform.position) <= 30.0f)
             {
                 catsWithinDetectionRange.Add(spawnedCatObj);
             }
@@ -161,6 +165,8 @@ public class CatSpawnerUpdated : Singleton<CatSpawnerUpdated>
         Debug.Log(Vector3.Distance(player.transform.position, clickedCat.transform.position));
         if(IsWithinRangeOfCats(player.transform.position).Contains(clickedCat.gameObject))
         {
+            Debug.Log("animeowing time");
+
             //Values.approached_cat = GameObject.Instantiate(clickedCat.gameObject);
             DataPersistenceManager.instance.gameData.approached_cat = clickedCat.gameObject;
             DataPersistenceManager.instance.gameData.approached_cat.SetActive(false);

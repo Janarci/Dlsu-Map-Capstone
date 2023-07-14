@@ -46,25 +46,25 @@ public class CatSpawn : MonoBehaviour
     }
 
 
-	private void OnMouseDown()
+	private void OnMouseDown()//not used. go to catspawnerupdated instead
 	{
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
-        Debug.Log("cat click");
-        AnimeowSceneManager[] managers = FindObjectsOfType<AnimeowSceneManager>();
-		foreach (AnimeowSceneManager animeowSceneManager in managers)
-		{
-			if (animeowSceneManager.gameObject.activeSelf)
-			{
-                animeowSceneManager.catTapped(this.gameObject);
-                DataPersistenceManager.instance.gameData.approached_cat = GameObject.Instantiate(this.gameObject);
-                DataPersistenceManager.instance.gameData.approached_cat.SetActive(false);
-				GameObject.DontDestroyOnLoad(DataPersistenceManager.instance.gameData.approached_cat);
-				LoadScene.LoadCatBefriendingScene();
-			}
-		}
+  //      if (EventSystem.current.IsPointerOverGameObject())
+  //      {
+  //          return;
+  //      }
+  //      Debug.Log("catspawn.cs click");
+  //      AnimeowSceneManager[] managers = FindObjectsOfType<AnimeowSceneManager>();
+		//foreach (AnimeowSceneManager animeowSceneManager in managers)
+		//{
+		//	if (animeowSceneManager.gameObject.activeSelf)
+		//	{
+  //              animeowSceneManager.catTapped(this.gameObject);
+  //              DataPersistenceManager.instance.gameData.approached_cat = GameObject.Instantiate(this.gameObject);
+  //              DataPersistenceManager.instance.gameData.approached_cat.SetActive(false);
+		//		GameObject.DontDestroyOnLoad(DataPersistenceManager.instance.gameData.approached_cat);
+		//		LoadScene.LoadCatBefriendingScene();
+		//	}
+		//}
 
 	}
 }
