@@ -46,7 +46,14 @@ public class CatType
         theater_cat,
         USG_cat,
         varisty_cat,
-        scholar_cat
+        scholar_cat,
+        BAGCED_cat,
+        RVRCOB_cat,
+        CLA_cat,
+        COS_cat,
+        CCS_cat,
+        GCOE_cat,
+        SOE_cat
     }
 
     public Type type = Type.basic_cat;

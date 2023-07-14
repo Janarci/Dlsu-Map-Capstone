@@ -35642,7 +35642,7 @@ MonoBehaviour:
 
 '
   - catTypeLabel: BAGCED Cat
-    type: 33
+    type: 34
     model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524135}
     icon: {fileID: 21300000, guid: 425c4fcba5950104f95b4920cdf366e0, type: 3}
@@ -35666,7 +35666,7 @@ MonoBehaviour:
 
 '
   - catTypeLabel: RVRCOB Cat
-    type: 33
+    type: 35
     model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524135}
     icon: {fileID: 21300000, guid: b18fc89e626163747b1ee47384485e7a, type: 3}
@@ -35690,7 +35690,7 @@ MonoBehaviour:
 
 '
   - catTypeLabel: CLA Cat
-    type: 33
+    type: 36
     model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524135}
     icon: {fileID: 21300000, guid: 0279ec5d23587b94fb71a5d22c8365a0, type: 3}
@@ -35714,7 +35714,7 @@ MonoBehaviour:
 
 '
   - catTypeLabel: COS Cat
-    type: 33
+    type: 37
     model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524135}
     icon: {fileID: 21300000, guid: cb9f4814e5e8a3c489a9c963323b26f2, type: 3}
@@ -35738,7 +35738,7 @@ MonoBehaviour:
 
 '
   - catTypeLabel: CCS Cat
-    type: 33
+    type: 38
     model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524135}
     icon: {fileID: 21300000, guid: f4fc1bd32c166354f97052198c510993, type: 3}
@@ -35762,7 +35762,7 @@ MonoBehaviour:
 
 '
   - catTypeLabel: GCOE Cat
-    type: 33
+    type: 39
     model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524135}
     icon: {fileID: 21300000, guid: 067b932762834114196aa6e3976645a9, type: 3}
@@ -35786,7 +35786,7 @@ MonoBehaviour:
 
 '
   - catTypeLabel: SOE Cat
-    type: 33
+    type: 40
     model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524135}
     icon: {fileID: 21300000, guid: 7a6941cd7c5ab0544adfb7e9d02b22f0, type: 3}
