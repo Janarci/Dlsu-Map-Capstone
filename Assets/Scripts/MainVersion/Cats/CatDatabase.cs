@@ -27,6 +27,8 @@ public class CatDatabase : MonoBehaviour
     public static CatDatabase Instance;
 
     public List<CatData> data;
+    [SerializeField] public Material[] furPatternPool;
+
     private Dictionary<CatType.Type, CatData> mappedDatabase;
 
     public bool isInitialized { get; private set; }

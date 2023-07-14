@@ -114,12 +114,14 @@ public class Inventory : MonoBehaviour, IDataPersistence
     }
     public void OpenInventory()
     {
-        inventoryUI.SetActive(true);
+        inventoryContent.gameObject?.SetActive(true);
+        AchievementsManager.instance.PerformMainQuest(MainQuest.QuestCode.open_inventory);
     }
 
     public void CloseInventory()
     {
-        inventoryUI.SetActive(false);
+        inventoryContent.gameObject?.SetActive(false);
+
     }
 
     private void UpdateInventory()

@@ -12,6 +12,8 @@ public class AchievementsManager : MonoBehaviour, IDataPersistence
 
     public MainQuest currentMainQuest;
 
+    public Dictionary<MainQuest.QuestCode, bool> mainQuestPerformed;
+
     public bool isInitialized { get; private set; }
 
 
@@ -46,6 +48,7 @@ public class AchievementsManager : MonoBehaviour, IDataPersistence
     {
         achievementsAcquired = new Dictionary<Achievement.AchievementCode, bool>();
         sideQuestsProgress = new Dictionary<SideQuest.QuestCode, int>();
+        mainQuestPerformed = new Dictionary<MainQuest.QuestCode, bool>();
 
         foreach (SideQuest q in AccomplishmentDatabase.Instance.sideQuestList)
         {
@@ -54,6 +57,12 @@ public class AchievementsManager : MonoBehaviour, IDataPersistence
         }
 
         currentMainQuest = AccomplishmentDatabase.Instance.mainQuestList[0];
+
+        foreach(MainQuest q in AccomplishmentDatabase.Instance.mainQuestList)
+        {
+            yield return null;
+            mainQuestPerformed.Add(q.info.type, false);
+        }
 
         isInitialized = true;
     }
@@ -97,17 +106,45 @@ public class AchievementsManager : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void FinishCurrentMainQuest(MainQuest.QuestCode _type)
+    public void FinishCurrentMainQuest()
     {
-        if(currentMainQuest.info.type == _type && AccomplishmentDatabase.Instance)
+        
+        if(mainQuestPerformed.ContainsKey(currentMainQuest.info.type) && AccomplishmentDatabase.Instance)
         {
-            currentMainQuest = AccomplishmentDatabase.Instance.GetMainQuestData(currentMainQuest.info.next);
-
-            QuestsList ql = null;
-            ql = FindObjectOfType<QuestsList>(true);
-            if (ql)
+            if(mainQuestPerformed.ContainsKey(currentMainQuest.info.type))
             {
-                ql.UpdateMainQuestItem(_type, currentMainQuest.instruction);
+                if (mainQuestPerformed[currentMainQuest.info.type])
+                {
+                    currentMainQuest = AccomplishmentDatabase.Instance.GetMainQuestData(currentMainQuest.info.next);
+
+                    QuestsList ql = null;
+                    ql = FindObjectOfType<QuestsList>(true);
+                    if (ql)
+                    {
+                        ql.UpdateMainQuestItem(currentMainQuest.info.type, currentMainQuest.instruction);
+                    }
+
+                    //PopupGenerator.Instance?.GenerateTutorialPopup(currentMainQuest.expanded_tooltip);
+                    if (!(currentMainQuest.dialogue.Count == 0))
+                    {
+                        foreach (MainQuest.Dialogue d in currentMainQuest.dialogue)
+                        {
+                            PopupGenerator.Instance?.GenerateTutorialPopup(d.script);
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+
+    public void PerformMainQuest(MainQuest.QuestCode _type)
+    {
+        if (mainQuestPerformed.ContainsKey(_type))
+        {
+            if (mainQuestPerformed[_type] == false)
+            {
+                mainQuestPerformed[_type] = true;
             }
         }
     }

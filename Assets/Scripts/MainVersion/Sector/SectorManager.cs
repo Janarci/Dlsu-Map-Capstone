@@ -183,7 +183,7 @@ public class SectorManager : MonoBehaviour, IDataPersistence
         {
             unlockedSectors.Add(bldgType);
         }
-
+        AchievementsManager.instance.PerformMainQuest(MainQuest.QuestCode.unlock_sector);
     }
 
     void OnMissionComplete(int missionID)

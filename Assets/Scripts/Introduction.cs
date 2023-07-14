@@ -19,5 +19,6 @@ public class Introduction : MonoBehaviour
     public void Intro()
     {
         TutorialManager.instance.UnlockTutorial(TutorialManager.Type.intro);
+        AchievementsManager.instance.PerformMainQuest(MainQuest.QuestCode.intro);
     }
 }

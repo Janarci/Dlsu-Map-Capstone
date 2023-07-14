@@ -19,6 +19,7 @@ public class GameData
         public float hungerAilmentValue;
         public float boredomAilmentValue;
         public float dirtAilmentValue;
+        public int mat = -1;
     }
 
     [Serializable]

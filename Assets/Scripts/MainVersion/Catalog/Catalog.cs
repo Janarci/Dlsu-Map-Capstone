@@ -209,7 +209,7 @@ public class Catalog : MonoBehaviour
         menuHistory.Add(currentMenu);
         currentMenu = allCatsMenu;
         currentMenu.SetActive(true);
-        AchievementsManager.instance?.FinishCurrentMainQuest(MainQuest.QuestCode.open_catalog_cats);
+        AchievementsManager.instance?.PerformMainQuest(MainQuest.QuestCode.open_catalog_cats);
 
 
         //catalogMenu.SetActive(false);
@@ -239,7 +239,7 @@ public class Catalog : MonoBehaviour
         menuHistory.Add(currentMenu);
         currentMenu = allBuildingsMenu;
         currentMenu.SetActive(true);
-        AchievementsManager.instance?.FinishCurrentMainQuest(MainQuest.QuestCode.open_catalog_buildings);
+        AchievementsManager.instance?.PerformMainQuest(MainQuest.QuestCode.open_catalog_buildings);
 
         //catalogMenu.SetActive(false);
         //allBuildingsMenu.SetActive(true);

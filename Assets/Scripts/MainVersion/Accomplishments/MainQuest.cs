@@ -9,6 +9,7 @@ public class MainQuest : Accomplishment
     public enum QuestCode
     {
         none,
+        intro,
         open_catalog_main,
         open_catalog_cats,
         open_catalog_buildings,
@@ -30,9 +31,15 @@ public class MainQuest : Accomplishment
         public QuestCode next;
     }
 
+    [Serializable]
+    public class Dialogue
+    {
+        [TextArea(8, 5)] public string script;
+    }
+
     public Node info;
     public string instruction;
-    [TextArea(3, 5)] public string expanded_tooltip;
+    public List<Dialogue> dialogue;
 
     private MainQuest()
     {

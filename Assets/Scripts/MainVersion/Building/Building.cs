@@ -21,7 +21,8 @@ public class Building : MonoBehaviour
         st_lasalle_hall,
         st_miguel_hall,
         velasco_hall,
-        yuchengco_hall
+        yuchengco_hall,
+        agno_gate
     }
 
     [SerializeField] private List<Parts> buildingParts;

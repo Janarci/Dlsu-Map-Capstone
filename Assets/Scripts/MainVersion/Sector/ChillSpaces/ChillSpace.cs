@@ -24,8 +24,8 @@ public class ChillSpace : MonoBehaviour
         gate_6,
         gate_7,
         gate_8,
-        health_services_office,
-        la_casita_roja_restaurant,
+        health_services_office_connon,
+        la_casita_roja_restaurant_andrew,
         natividad_fajardo_rosario_gonzales,
         office_of_admissions_and_scholarships,
         office_of_information_technology_services,
@@ -38,7 +38,13 @@ public class ChillSpace : MonoBehaviour
         student_media_office,
         teresa_g_yuchengco_auditorium,
         the_learning_commons,
-        william_shaw_little_theater
+        william_shaw_little_theater,
+        health_services_office_razon,
+        center_for_social_concern_and_action,
+        office_of_counseling_and_career_services,
+        lasallian_pastoral_office,
+        la_casita_roja_restaurant_razon,
+
     }
 
     [Serializable]
@@ -66,7 +72,7 @@ public class ChillSpace : MonoBehaviour
 
     [SerializeField] ChillspaceUI ui;
     [SerializeField] public Detail detail;
-    [SerializeField] bool isCooldown;
+    [SerializeField] public bool isCooldown { get; private set; }
 
 
 

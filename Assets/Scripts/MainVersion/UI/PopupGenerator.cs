@@ -55,12 +55,25 @@ public class PopupGenerator : MonoBehaviour
             GameObject newInfoUIObj = Instantiate(infoUICloseableTutorial, mainCanvas.transform);
             //newInfoUIObj.transform.GetChild(0).GetComponent<Text>().text = popupMessage;
             newInfoUIObj.GetComponent<TutorialPopup>().SetText(popupMessage);
+            newInfoUIObj.GetComponent<TutorialPopup>().OnPress += DestroyTutorialPopup;
+            dontOverwrite = false;
+            newInfoUIObj.SetActive(false);
+            popupQueue.Enqueue(newInfoUIObj);
+
 
 
             return newInfoUIObj;
+
+            void DestroyTutorialPopup()
+            {
+                Destroy(newInfoUIObj);
+                infoUIObj = null;
+            }
         }
 
         else return null;
+
+        
     }
     public void GenerateCloseablePopup(string popupMessage)
     {
@@ -88,6 +101,8 @@ public class PopupGenerator : MonoBehaviour
         //    }
 
         //}
+
+
     }
 
     public Button AssignCloseableFunction(string message)

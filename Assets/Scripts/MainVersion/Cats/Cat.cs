@@ -306,7 +306,7 @@ public class Cat : MonoBehaviour
     private Ailment boredomAilment;
     private Ailment dirtAilment;
 
-
+    public int furMat { get; private set; }
     public CatUI ui;
 
     public bool isWalkingTemp = false;
@@ -314,6 +314,7 @@ public class Cat : MonoBehaviour
     private void Awake()
     {
         id = -1;
+        furMat = -1;
         //InitializeCat();
         ui = GetComponentInChildren<CatUI>();
 
@@ -386,9 +387,25 @@ public class Cat : MonoBehaviour
         InitializeInventory();
         InitializeEvolutionPath();
         InitializeAilments();
+
+        if (furMat == -1 && transform.childCount > 0)
+            InitializeFurType();
     }
 
-    public void InitializeCat(int _id, float _friendshipValue, float _relationshipValue, int _relationshipLevel, int _befriendAttempts, CatTrait.Type _trait, float _sadnessValue, float _boredomValue, float _dirtValue, float _hungerValue)
+    private void InitializeFurType()
+    {
+        if (CatDatabase.Instance.GetCatData(type).accessories.Length != 0)
+        {
+            if (CatDatabase.Instance.furPatternPool.Length > 0)
+            {
+                int matIndex = UnityEngine.Random.Range(0, CatDatabase.Instance.furPatternPool.Length);
+                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material = CatDatabase.Instance.furPatternPool[matIndex];
+                furMat = matIndex;
+            }
+        }
+    }
+
+    public void InitializeCat(int _id, float _friendshipValue, float _relationshipValue, int _relationshipLevel, int _befriendAttempts, CatTrait.Type _trait, float _sadnessValue, float _boredomValue, float _dirtValue, float _hungerValue, int _mat)
     {
         id = _id;
         friendship_value = _friendshipValue;
@@ -400,6 +417,14 @@ public class Cat : MonoBehaviour
         boredomAilment.currentValue = _boredomValue;
         dirtAilment.currentValue = _dirtValue;
         hungerAilmennt.currentValue = _hungerValue;
+
+        if(_mat >= 0)
+        {
+            furMat = _mat;
+
+            if(CatDatabase.Instance.furPatternPool.Length-1 <= _mat)
+                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SkinnedMeshRenderer>().material = CatDatabase.Instance.furPatternPool[_mat];
+        }
     }
 
     protected virtual void InitializeCatType()
@@ -622,6 +647,7 @@ public class Cat : MonoBehaviour
             //GameObject.DontDestroyOnLoad(this.gameObject);
             AchievementsManager.instance?.ProgressSideQuest(SideQuest.QuestCode.befriend_cats, 1);
             TutorialManager.instance.UnlockTutorial(TutorialManager.Type.cat_befriend_success);
+            AchievementsManager.instance.PerformMainQuest(MainQuest.QuestCode.befriend_cat);
         }
 
         else if (befriendAttempts >= 5)

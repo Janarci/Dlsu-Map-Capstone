@@ -13,6 +13,7 @@ public class MapUI : MonoBehaviour
     public GameObject HQBtn;
     public GameObject CatalogBtn;
     public GameObject settingsBtn;
+    public GameObject joystickUI;
     public GameObject inventoryUI;
     public GameObject questsUI;
     public GameObject SwitchCameraBtn;
@@ -129,10 +130,10 @@ public class MapUI : MonoBehaviour
         Vector3 btn3InitialPos = CatalogBtn.transform.position;
         Vector3 btn4InitialPos = questsBtn.transform.position;
 
-        Vector3 btn1FinalPos = new Vector3(mainUIBtn.transform.position.x - (220 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (90.0f * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
-        Vector3 btn2FinalPos = new Vector3(mainUIBtn.transform.position.x - (110 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (215 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
-        Vector3 btn3FinalPos = new Vector3(mainUIBtn.transform.position.x + (220 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (90.0f * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
-        Vector3 btn4FinalPos = new Vector3(mainUIBtn.transform.position.x + (110 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (215 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
+        Vector3 btn1FinalPos = new Vector3(mainUIBtn.transform.position.x + (20 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (300 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
+        Vector3 btn2FinalPos = new Vector3(mainUIBtn.transform.position.x + (190 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (285 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
+        Vector3 btn3FinalPos = new Vector3(mainUIBtn.transform.position.x + (310 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (170 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
+        Vector3 btn4FinalPos = new Vector3(mainUIBtn.transform.position.x + (320 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (20 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
 
         isShowingMiniMenu = true;
         while (isShowingMiniMenu)
@@ -156,8 +157,9 @@ public class MapUI : MonoBehaviour
     public void DisplayInventory()
     {
         HideMiniMenu();
-        inventoryUI.SetActive(true);
-        AchievementsManager.instance.FinishCurrentMainQuest(MainQuest.QuestCode.open_inventory);
+        //inventoryUI.SetActive(true);
+        Inventory.Instance?.OpenInventory();
+        AchievementsManager.instance.PerformMainQuest(MainQuest.QuestCode.open_inventory);
     }
 
     public void DisplayQuests()
@@ -168,13 +170,14 @@ public class MapUI : MonoBehaviour
 
     public void OnOpenCatalog()
     {
-        AchievementsManager.instance.FinishCurrentMainQuest(MainQuest.QuestCode.open_catalog_main);
+        AchievementsManager.instance.PerformMainQuest(MainQuest.QuestCode.open_catalog_main);
         CatalogCanvas.SetActive(true);
         HQBtn.SetActive(false);
         mainUIBtn.SetActive(false);
         playerIconObj.SetActive(false);
         settingsBtn.SetActive(false);
         SwitchCameraBtn.SetActive(false);
+        joystickUI?.SetActive(false);
     }
 
     public void OnCloseCatalog()
@@ -185,6 +188,7 @@ public class MapUI : MonoBehaviour
         playerIconObj.SetActive(true);
         settingsBtn.SetActive(true);
         SwitchCameraBtn.SetActive(true);
+        joystickUI?.SetActive(true);
     }
 
     public void HideMainCanvasUI()

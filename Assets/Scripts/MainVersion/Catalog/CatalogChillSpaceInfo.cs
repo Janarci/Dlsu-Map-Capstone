@@ -17,6 +17,7 @@ public class CatalogChillSpaceInfo : MonoBehaviour
     [SerializeField] GameObject itemsListItem;
     [SerializeField] Text hrsTxt;
     [SerializeField] Text contactsTxt;
+    [SerializeField] Button claimBtn;
 
     [SerializeField] CatalogCatInfo catalogCatInfo;
     [SerializeField] Button quizBtn;
@@ -44,12 +45,15 @@ public class CatalogChillSpaceInfo : MonoBehaviour
             chillSpaceName.text = data.areaName;
             chillSpaceName.gameObject.SetActive(true);
             nameField.gameObject.SetActive(false);
+
+            claimBtn.onClick.AddListener(delegate { OnClaimItemPress(data.area); });
             chillSpaceInfo.text = data.info;
 
             hrsTxt.text = data.officeHours;
             contactsTxt.text = data.email + "\n" + data.contactNumber;
 
             AddItems(ChillSpaceDatabase.Instance.GetDataInfo(data.area).giveawayItems);
+
         }
 
         else
@@ -100,7 +104,10 @@ public class CatalogChillSpaceInfo : MonoBehaviour
 
     public void OnClaimItemPress(ChillSpace.Area area)
     {
-        ChillSpacesManager.Instance.GetItemFromChillSpace(area);
+        if(ChillSpacesManager.Instance.GetItemFromChillSpace(area))
+        {
+            claimBtn.gameObject.SetActive(false);
+        }
     }
 
     public void AddItems(List<CatEvolutionItem.cat_evolution_item_type> data)

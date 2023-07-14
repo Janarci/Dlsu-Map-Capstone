@@ -1957,12 +1957,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorials:
-  - type: 1
-    instruction: 'Welcome to Animeow Space, where cats are humans'' best friend.
-      To begin your journey of befriending cats, unlock a sector by scanning its
-      designated QR. QRs are placed around campus buildings that act as sectors (Hint:
-      There''s one in the middle of Henry Sy. Sr. Hall).'
-    pointers: []
   - type: 2
     instruction: This is the AR Camera mode which can be used to scan QR codes by
       placing QR codes within the camera's view.
@@ -4119,6 +4113,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 359185015, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 179761317}
+    - target: {fileID: 359185015, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 873256870}
@@ -4127,8 +4125,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 359185015, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 359185015, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 359185015, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MapUI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 359185015, guid: 98be219873e6d4dffb5949746f515a33, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -4641,6 +4647,11 @@ PrefabInstance:
       propertyPath: questsUI
       value: 
       objectReference: {fileID: 179761315}
+    - target: {fileID: 3030448867745690305, guid: 98be219873e6d4dffb5949746f515a33,
+        type: 3}
+      propertyPath: joystickUI
+      value: 
+      objectReference: {fileID: 1543541514}
     - target: {fileID: 3030448867745690305, guid: 98be219873e6d4dffb5949746f515a33,
         type: 3}
       propertyPath: settingsBtn
@@ -6235,6 +6246,10 @@ MonoBehaviour:
   - {fileID: 90375494201784556, guid: 6bdf930f866859d42a8749e2f6c465db, type: 3}
   - {fileID: 2345178926045592007, guid: d473b99ede8635c4982c4fe32760cf36, type: 3}
   - {fileID: 6672692447957118830, guid: 5a88108179001654aa3370258c722e11, type: 3}
+  BasicCatSpawnPool: 190000000600000007000000
+  AdvancedCatSpawnPool: 04000000050000000500000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f0000002000000021000000
+  baseCatTemplate: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4,
+    type: 3}
   player: {fileID: 1065619797808470}
   catsPerSpawn: 3
   minRange: 5
@@ -7372,6 +7387,7 @@ MonoBehaviour:
     type: 3}
   hrsTxt: {fileID: 99195264}
   contactsTxt: {fileID: 1755194894}
+  claimBtn: {fileID: 0}
   catalogCatInfo: {fileID: 1886418020}
   quizBtn: {fileID: 0}
   quizController: {fileID: 0}
@@ -8619,7 +8635,7 @@ MonoBehaviour:
       prev: 0
       next: 0
     instruction: 
-    expanded_tooltip: 
+    dialogue: []
 --- !u!1 &366206727
 GameObject:
   m_ObjectHideFlags: 0
@@ -9473,7 +9489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -15021,6 +15037,7 @@ MonoBehaviour:
     type: 3}
   hrsTxt: {fileID: 1599187835}
   contactsTxt: {fileID: 86247200}
+  claimBtn: {fileID: 1072743992}
   catalogCatInfo: {fileID: 0}
   quizBtn: {fileID: 1072743992}
   quizController: {fileID: 670686629}
@@ -15439,7 +15456,9 @@ MonoBehaviour:
   data:
   - type: 0
     name: Bro. Andrew Gonzalez Hall
-    detail: 
+    detail: 'Andrew is the tallest building of DLSU Manila and houses more than 100
+      rooms that serve as classrooms for all colleges, faculty rooms, conference
+      rooms and more. '
     description: "The Br. Andrew Gonzalez Hall is a 20-story academic complex designed
       by Philip H. Recto Architects for De La Salle University. It is located on
       a 1,700-square meter lot between Taft Avenue and Fidel Reyes St. and in front\n\n\n\nof
@@ -15469,7 +15488,7 @@ MonoBehaviour:
     items: 
   - type: 1
     name: Br. Bloemen Hall
-    detail: 
+    detail: 'Bloemen houses a variety of food stalls and the Green Giant FM studio. '
     description: 'Bloemen Hall, located along St. Joseph Walk, provides the community
       an access to a wide variety of grab-and-go meals and desserts. It also houses
       student-run businesses under the ANIMO BIZ (Business Innovation Zone) program,
@@ -15493,12 +15512,13 @@ MonoBehaviour:
       - Sinangag Trip Pampanga's Special
       - The Healthy Corner
       - Turks Shawarma (Himmel Baum Ent. Co.)
-    chillspaces: 01000000
+    chillspaces: 
     picture: {fileID: 21300000, guid: c261bb40bf626ba4e82b8b9afe0cb5d7, type: 3}
     items: 18000000
   - type: 2
     name: Br. Connon Hall
-    detail: 
+    detail: 'Most of the offices of student organizations and other services can
+      be found in Connon. '
     description: 'a 5-story building that houses the University Clinic, Waldo Perfecto
       Seminar Room, discussion rooms, and the offices of various university departments
       and student organizations
@@ -15508,28 +15528,27 @@ MonoBehaviour:
     - floor: 1
       amenities:
       - Water Dispenser
-    chillspaces: 1400000019000000020000000e00000015000000
+    chillspaces: 1400000019000000020000000e000000150000001e000000
     picture: {fileID: 21300000, guid: 6c35ae895d9bcb4428b8cf68412b9217, type: 3}
     items: 
   - type: 3
     name: Br. William Hall
-    detail: 
-    description: "houses food stalls and the studio of Green Giant FM.\r\n\r\n\r\nPopular
-      Amenities:\r\n\r\nGround Floor\r\n-Colonel\u2019s Curry\r\n-Dairy Queen (Philippine
-      Pizza, Inc.)\r\n-Infinitea (Jogg Enterprises)\r\n-LRN Japanese Food Services\r\n-Mongolian
-      Master\r\n-Potato Corner (Chivbei Matfran Company)\r\n-Queggs Food Cart and
-      Atbp.\r\n-Salad Break\r\n-Salikneta (DLS - Araneta University)\r\n-Sandwich
-      Corner (Lito-Alex Sandwich)\r\n-Sinangag Trip Pampangas\u2019s Special\r\n-The
-      Healthy Corner\r\n-Turks Shawarma (Himmel Baum Ent. Co.)\r\n\r\n"
+    detail: 'William houses the College of Science and the William Shaw Little Theater. '
+    description: 'a 7-story building that houses the College of Science and the William
+      Shaw Little Theater. It is currently under construction. (https://en.wikipedia.org/wiki/De_La_Salle_University)
+
+'
     amentiesList:
     - floor: 1
       amenities: []
-    chillspaces: 
+    chillspaces: 1c000000
     picture: {fileID: 21300000, guid: 38b1e666b2225b9459c209c57d882165, type: 3}
     items: 
   - type: 4
     name: Enrique Razon Sports Center
-    detail: 
+    detail: 'Razon serves as the main sports facility of DLSU and is well-equipped
+      to provide students with areas to conduct physical activities such as basketball,
+      archery, dancing, and swimming. '
     description: "a 10-story building that is the main sports facility of De La Salle
       University. It was built in 1998 to replace the old Br. Athanasius Sports Complex
       that was demolished in 2000. The Sports Center houses a variety of sports facilities
@@ -15548,25 +15567,88 @@ MonoBehaviour:
       Floor\r\n-Iron Works Fitness Gym\r\n-Athlete\u2019s Basketball/Volleyball Court
       Area\r\n-Multipurpose aREA\r\n-Showers\r\n-Locker Areas\r\n\r\n10th Floor\r\n-Bleachers
       Area\r\n-Dance Rooms\r\n-Physical Fitness Center\r"
-    amentiesList: []
-    chillspaces: 130000000b000000
+    amentiesList:
+    - floor: 1
+      amenities:
+      - 'Health Clinic '
+      - 'Swimming Pool Area '
+      - 'Locker Area '
+      - 'Vending Machines '
+    - floor: 2
+      amenities:
+      - 'Orchestra Room '
+    - floor: 3
+      amenities:
+      - 'Parking Area '
+    - floor: 4
+      amenities:
+      - 'Parking Area '
+    - floor: 5
+      amenities:
+      - 'Parking Area '
+    - floor: 6
+      amenities:
+      - "Gold\u2019s Gym "
+      - 'Archery Range '
+      - 'Chess Room '
+      - Choral
+      - 'Innersoul '
+      - 'Dance Studio '
+      - "Male Athlete\u2019s Study Area "
+      - "Female Athlete\u2019s Study Area "
+    - floor: 7
+      amenities:
+      - 'Basketball/Badminton/Volleyball Court Area '
+      - Table Tennis Area
+      - 'Showers '
+      - 'Locker Areas '
+    - floor: 8
+      amenities:
+      - 'Multipurpose Area/Oval Track '
+      - 'Dancing Room '
+      - 'Judo Room '
+      - 'Taekwondo Room '
+    - floor: 9
+      amenities:
+      - 'Iron Works Fitness Gym '
+      - "Athlete\u2019s Basketball/Volleyball Court Area "
+      - 'Multipurpose aREA '
+      - 'Showers '
+      - 'Locker Areas '
+    - floor: 10
+      amenities:
+      - 'Bleachers Area '
+      - 'Dance Rooms '
+      - 'Physical Fitness Center '
+    chillspaces: 130000000b0000001d00000021000000
     picture: {fileID: 21300000, guid: ebe011ee646b6b0498f606c998386a50, type: 3}
     items: 
   - type: 5
     name: Faculty Center
-    detail: 
+    detail: 'The Faculty Center houses the offices of departments belonging to the
+      College of Liberal Arts and the Ramon V. del Rosario College of Business. '
     description: "a 4-story building located behind the St. Joseph Hall, it houses
       the offices of departments belonging to the College of Liberal Arts and to
       the College of Business, respectively, and formerly the university library.
       (https://en.wikipedia.org/wiki/De_La_Salle_University) \n\nPopular Amenities:\r\n\r\nGround
       Floor\r\n-Vending Machine\r\n\n2nd Floor\r\n-Vending Machine"
-    amentiesList: []
-    chillspaces: 1c000000
+    amentiesList:
+    - floor: 1
+      amenities:
+      - 'Vending Machine '
+    - floor: 2
+      amenities:
+      - 'Vending Machine '
+    chillspaces: 
     picture: {fileID: 21300000, guid: 309a54adb54ace349977a30212152b33, type: 3}
     items: 
   - type: 6
     name: Gokongwei Hall
-    detail: 
+    detail: "\u2018Goks\u2019 contains the recently constructed Br. Rafael Donato
+      Study Hall where most College of Computer Studies students stay. It also contains
+      classrooms that are readily equipped for computer-related courses and activities. 
+      There is a bridge on the 3rd Floor that connects to the 2nd Floor of St. Miguel
+      Hall. "
     description: 'a four-story building completed in the 1990s. Originally named
       the INTELLECT (Information Technology Lecture) Building, the building houses
       the College of Computer Studies, the university''s Information Technology Services
@@ -15590,13 +15672,24 @@ MonoBehaviour:
 
       -Photocopying
       Service'
-    amentiesList: []
+    amentiesList:
+    - floor: 1
+      amenities:
+      - 'Br. Rafael Donato Study Hall '
+      - 'Photocopying Service '
+    - floor: 2
+      amenities:
+      - 'Water Dispenser '
     chillspaces: 120000000700000008000000
     picture: {fileID: 21300000, guid: 4f282b8e9178c324cb12b720c1a7c699, type: 3}
     items: 
   - type: 7
     name: Henry Sy Sr. Hall
-    detail: 
+    detail: 'Henry Sy Sr. Hall is most known for its multi-level library where students
+      stay to study, take online classes, hold meetings, or even to relax. Various
+      offices that cater to enrollment concerns of students can also be found here.  
+      There is a bridge on the 5th Floor that connects to Floor 7A of Don Enrique
+      T. Yuchengco Hall. '
     description: "This hall was named in honor of its first donor, Henry Sy, Sr.,
       whose generosity jumpstarted its construction in December 2010. The building\u2019s
       modern and open design was developed by the renowned architectural firm Leandro
@@ -15655,7 +15748,8 @@ MonoBehaviour:
     items: 
   - type: 8
     name: Science and Technology Research Center
-    detail: 
+    detail: 'The STRC houses various research facilities and laboratories belonging
+      to the College of Science and Gokongwei College of Engineering. '
     description: The Science & Technology Research Center, a four-story research
       center along Agno Street that houses various research facilities and laboratories
       belonging to the Colleges of Science and Engineering. (https://en.wikipedia.org/wiki/De_La_Salle_University)
@@ -15665,7 +15759,11 @@ MonoBehaviour:
     items: 
   - type: 9
     name: St. Joseph Hall
-    detail: 
+    detail: "The iconic \u2018Frosh Walk\u2019 to welcome each year\u2019s new froshies
+      is held at the \u2018SJ\u2019 Walkway beside \u2018SJ\u2019 Hall. While the
+      building is used as classrooms for senior high school and college students,
+      the benches around the area are often used to set up booths especially during
+      school events. "
     description: 'a 6-story building completed in 1956. It was the location of the
       DLSU library from 1956 to 1985. It houses the College of Science and the Lasallian
       Pastoral Office. (https://en.wikipedia.org/wiki/De_La_Salle_University)
@@ -15687,13 +15785,22 @@ MonoBehaviour:
       Machine
 
 '
-    amentiesList: []
+    amentiesList:
+    - floor: 1
+      amenities:
+      - 'Photocopying Service '
+      - 'Vending Machine '
+    - floor: 2
+      amenities:
+      - 'Water Dispenser '
     chillspaces: 
     picture: {fileID: 21300000, guid: 84e20a9e8123e04468e56a09fc727ef7, type: 3}
     items: 
   - type: 10
     name: St. La Salle Hall
-    detail: 
+    detail: 'St. La Salle Hall or LS is home to the Senior Ramon V. del Rosario College
+      of Business (RVRCOB) and School of Economics (SOE) students. With its iconic
+      neoclassical facade, it is the first building of DLSU. '
     description: "St. La Salle Hall is DLSU\u2019s heritage building. This historical
       landmark is an H-shaped four-storey neoclassical structure built from 1920
       to 1924 to serve as the new campus of then De La Salle College to accommodate
@@ -15713,12 +15820,16 @@ MonoBehaviour:
     - floor: 2
       amenities:
       - Photocopying Service
+      - 'Medrano Study Hall '
     chillspaces: 1700000004000000
     picture: {fileID: 21300000, guid: 61219ed083dc43a4fbbee7f02772acb2, type: 3}
     items: 
   - type: 11
     name: St. Miguel Hall
-    detail: 
+    detail: 'The real life cats of DLSU can often be found near the entrance of Miguel.
+      Classes of College of Liberal Arts students are held here and the building
+      holds some of the equipment of the Gokongwei College of Engineering.  There
+      is a bridge on the 2nd Floor that connects to the 3rd Floor of Gokongwei Hall. '
     description: "a 4-story building that houses the College of Liberal Arts, academic
       offices, and some laboratories belonging to the College of Engineering. It
       was originally known as the St. Benilde Hall before being renamed. (https://en.wikipedia.org/wiki/De_La_Salle_University)
@@ -15731,29 +15842,71 @@ MonoBehaviour:
     items: 
   - type: 12
     name: Velasco Hall
-    detail: 
+    detail: "Velasco\u2019s classrooms mostly cater to the needs of the Gokongwei
+      College of Engineering students and their equipment, but are also often used
+      for General Education (GE) courses. Students also tend to stay on the benches
+      surrounding the building. "
     description: a five-story building completed in 1981. It houses the Gokongwei
       College of Engineering as well as the equipment they use. (https://en.wikipedia.org/wiki/De_La_Salle_University)
-    amentiesList: []
+    amentiesList:
+    - floor: 1
+      amenities:
+      - 'Photocopying Service '
+    - floor: 2
+      amenities:
+      - 'Photocopying Service '
     chillspaces: 1800000006000000
     picture: {fileID: 21300000, guid: 460fbc78c6e0ee94fb6ae13d151c8d87, type: 3}
     items: 
   - type: 13
     name: Yuchengco Hall
-    detail: 
-    description: "Named in honor of Ambassador Alfonso Yuchengco\u2019s father, the
-      Don Enrique T. Yuchengco Hall is a 9-story neoclassical building comprising
-      4 elevators, 4 exit stairways, 20 classrooms, 6 teleconference rooms, and the
-      Teresa G. Yuchengco Auditorium. It also houses various concessionaires on the
-      ground floor such as Power Mac Center, the Animo Bookstore, and a self-printing
-      service. There is a bridge on Floor 7A of Don Enrique T. Yuchengco Hall that
-      connects to the 5th Floor of Henry Sy Sr. Hall.\n\nPopular Amenities:\r\n\r\nGround
-      Floor\r\n-Animo Bookstore\r\n-The Store\r\n-Power Mac Center, Inc.\r\n-Printing
-      Service\r\n-Vending Machines"
+    detail: "Yuchengco or \u2018Yuch\u2019 houses the Teresa G. Yuchengco Auditorium
+      where a lot of events and activities are held. It also houses a selection of
+      third-party stores in its ground area.  There is a bridge on Floor 7A that
+      connects to the 5th Floor of Henry Sy Sr. Hall. "
+    description: 'Ambassador Alfonso Yuchengco supported the construction of a nine-storey
+      neoclassical building on the Manila campus and had it named The Don Enrique
+      T. Yuchengco Hall (Building code: Y; also as Yuchengco Hall) in honor of his
+      father. Inaugurated in 2002, the building initially housed the central administrative
+      offices of the University. It currently features modern learning spaces and
+      the three-story state-of-the-art Teresa Yuchengco Auditorium, a venue for major
+      cultural and academic activities. The building also houses The Museum at DLSU
+      on the second floor.
+
+'
     amentiesList: []
     chillspaces: 1a000000
     picture: {fileID: 21300000, guid: 7eae7ef2b16eb524d944d8e3dbaace05, type: 3}
     items: 
+  - type: 14
+    name: Agno Gate
+    detail: 'Street leading towards the Agno Food Court and the eastern side of DLSU
+      campus '
+    description: "Agno Gate connects students to the buildings on the eastern side
+      of DLSU such as Gokongwei and Andrew from the main campus. It is also beside
+      the Agno Food Court which may not be officially part of DLSU, but has played
+      a huge role in shaping the Lasallian life with some of the stalls being an
+      all-time Lasallian favorite like Ate Rica\u2019s Bacsilog. Students can get
+      your delicious food hot and quick just in time for your next class!\r\n"
+    amentiesList:
+    - floor: 1
+      amenities:
+      - "Colonel\u2019s Curry "
+      - 'Dairy Queen (Philippine Pizza, Inc.) '
+      - 'Infinitea (Jogg Enterprises) '
+      - 'LRN Japanese Food Services '
+      - 'Mongolian Master '
+      - 'Potato Corner (Chivbei Matfran Company) '
+      - 'Queggs Food Cart and Atbp. '
+      - 'Salad Break '
+      - 'Salikneta (DLS - Araneta University) '
+      - 'Sandwich Corner (Lito-Alex Sandwich) '
+      - "Sinangag Trip Pampangas\u2019s Special "
+      - 'The Healthy Corner '
+      - 'Turks Shawarma (Himmel Baum Ent. Co.) '
+    chillspaces: 1a000000
+    picture: {fileID: 21300000, guid: 7eae7ef2b16eb524d944d8e3dbaace05, type: 3}
+    items: 18000000
 --- !u!4 &687554574
 Transform:
   m_ObjectHideFlags: 0
@@ -20703,33 +20856,153 @@ MonoBehaviour:
   - info:
       type: 1
       prev: 0
-      next: 2
-    instruction: Visit the catalog
-    expanded_tooltip: 
-  - info:
-      type: 2
-      prev: 1
-      next: 3
-    instruction: Open the cats section of the catalog
-    expanded_tooltip: 
-  - info:
-      type: 3
-      prev: 2
-      next: 4
-    instruction: Open the buildings section of the catalog
-    expanded_tooltip: 
-  - info:
-      type: 4
-      prev: 3
       next: 5
-    instruction: Unlock a sector
-    expanded_tooltip: 
+    instruction: Introduction
+    dialogue:
+    - script: Hello there! I'm Archer, the wise and whiskered Archive Cat, here to
+        guide you through this enchanting adventure! Welcome to Animeow Space!
+    - script: Animeow Space is an immersive augmented reality game set in the campus
+        of De La Salle University or DLSU in short! Together, we'll go on an adventure
+        around the campus, build strong relationships, embrace the vibrant culture,
+        and immerse ourselves in the wonders of DLSU. Shall we get started?
   - info:
       type: 5
+      prev: 1
+      next: 2
+    instruction: Unlock a sector
+    dialogue:
+    - script: "First things first, do you see these grayed-out buildings? They\u2019re
+        called Sectors and each represents an actual building in DLSU! Let\u2019s
+        try unlocking a Sector that\u2019s close to us. When you're near one, tap
+        on it! to unlock it and gain access to the building it represents. Unlocking
+        sectors will bring you closer to immersing yourself in the vibrant world
+        of the university.\r\n"
+  - info:
+      type: 2
+      prev: 5
+      next: 4
+    instruction: Visit the catalog
+    dialogue:
+    - script: "Great job! You have unlocked your first Sector! Let\u2019s try opening
+        the CATalog and see what\u2019s up there.\r\n"
+    - script: "The CATalog is\u2026well a catalog! It contains everything you need
+        to know about the game such as the Sectors!\r\n"
+  - info:
+      type: 4
+      prev: 2
+      next: 7
+    instruction: Open the buildings section of the catalog
+    dialogue:
+    - script: "Let\u2019s try checking out the Sector you just unlocked. Click on
+        the building icon!\r\n"
+    - script: "You\u2019ll find the list of Sectors available in this section. Each
+        Sector has its own page where you can read more information about it. They\u2019re
+        mostly still hidden though except for the one you unlocked just now."
+    - script: "Information includes description of the Sector and a list of amenities
+        available in its area! But before we continue, let\u2019s go back to the
+        main map. I can hear some meows already.\r"
+  - info:
+      type: 7
       prev: 4
       next: 6
-    instruction: Unlock a chillspace
-    expanded_tooltip: 
+    instruction: Befriend an encountered cat
+    dialogue:
+    - script: "Once you've unlocked a sector, keep your eyes peeled for cats! There
+        are many types of cats but they will always start as either a Student, Staff
+        or Org cat! Let\u2019s try befriending one! Find a cat and tap on it!\r\n"
+    - script: 'When befriending a cat, you can interact with them through a selection
+        of gestures to establish your bond. These include petting, playing, feeding,
+        and cleaning. Each cat has its own preference so observe their reactions
+        and adjust accordingly!
+
+'
+  - info:
+      type: 6
+      prev: 7
+      next: 9
+    instruction: Unlock a chill space
+    dialogue:
+    - script: "Each sector contains a list of Chill Spaces. These represent various
+        offices, facilities, services or other relevant locations. Let\u2019s try
+        unlocking one by tapping the sector you unlocked and viewing its Chill Spaces.\r\n"
+    - script: "To unlock a Chill Space, you must first figure out the name of the
+        Space! Don\u2019t worry, there\u2019ll be a photo that will act as your guide
+        in figuring out the place! Some are quite obvious actually HEHE. But if you
+        still can\u2019t figure it out, you can always go to the place yourself or
+        even ask a friend!\r\n"
+  - info:
+      type: 9
+      prev: 6
+      next: 10
+    instruction: Visit the HQ
+    dialogue:
+    - script: "Lookie here! Great job unlocking that Chill Space! You\u2019ll now
+        be able to access the information it provides similar to Sectors! Scroll
+        down and you'll see a list of items. Each Chill Space has a specific list
+        of items it provides when you unlock it! But don\u2019t worry! Since you\u2019ve
+        already guessed the name of the Chill Space, you won\u2019t have to go about
+        typing its name again the next time you visit and want to get items. You\u2019ll
+        see a \u2018Claim Button\u2019 below actually but right now, this Chill Space
+        is on cooldown so maybe let\u2019s go to our HQ for the meantime.\r\n"
+  - info:
+      type: 10
+      prev: 9
+      next: 8
+    instruction: Level up a cat
+    dialogue:
+    - script: "Welcome to the HQ! This is where the cats you\u2019ll find the cats
+        you befriended hang out.This is also where you can interact with your cats
+        and deepen your relationship with them with the same gestures during the
+        befriendship process. Getting multiple copies of the same cat can also allow
+        you to merge or \u2018harmonize\u2019 them, granting bonus relationship XP
+        to the original copy. But of course you have the choice of keeping multiple
+        copies!\r\n"
+    - script: "Keep track of your cats\u2019 statuses to keep them happy because
+        otherwise they might leave! Yup you heard me right! After all, you don\u2019t
+        actually own the cats but of course they\u2019ll always come back on their
+        own! Remember only 4 cats can stay active though at a given time otherwise
+        it can get pretty cramped!\r\n"
+    - script: "As your relationship grows with your cat, they\u2019ll provide you
+        with tips associated with their type! Org cats can tell you about orgs, Staff
+        cats can tell you about staff stuff, you get the idea! Since this is a quick
+        playthrough for now, I brought the friendliest cats along to speed up this
+        process for you to see how it goes quickly.\r\n"
+  - info:
+      type: 8
+      prev: 10
+      next: 11
+    instruction: Open the item inventory
+    dialogue:
+    - script: "Once you\u2019ve fully maxed your relationship level with a cat, you
+        can then evolve them! Yup just like that other popular game I won\u2019t
+        talk about. Here we call it Promotion. But before you can do that, you must
+        first possess the correct promotion item for the cat you want to promote
+        it to. Maybe you can already promote your feline friend right now with the
+        item you got from the Chill Space earlier! If not, try unlocking other Sectors
+        and visiting other Chill Spaces until you get the right one!\r\n"
+  - info:
+      type: 11
+      prev: 8
+      next: 3
+    instruction: Evolve a cat
+    dialogue:
+    - script: "Tada! Thank you for helping our friend get a promotion! Promoting
+        a cat changes its appearance to the type it's promoted to! It\u2019ll also
+        have a new set of tips it can provide as you continue your relationship with
+        it! Once a cat is max promoted, it can actually help you get items on their
+        own!\r\n"
+    - script: "Sometimes, you\u2019ll find promoted cats appear on the map itself
+        so you better be ready!\r\n"
+  - info:
+      type: 3
+      prev: 11
+      next: 0
+    instruction: 
+    dialogue:
+    - script: "That\u2019s about it actually! If you want to check out all the available
+        cat types or read more about the tips they have, you can always visit the
+        cat section of the CATalog. Let the wonders of Animeow Space and the vibrant
+        spirit of De La Salle University guide our paws and hearts!\r\n"
 --- !u!1 &945205547
 GameObject:
   m_ObjectHideFlags: 0
@@ -31280,7 +31553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -34864,7 +35137,8 @@ MonoBehaviour:
     model: {fileID: 1361256002752954331, guid: 5b4d74fcecadad64ba3aa20b83a85e4b, type: 3}
     script: {fileID: 1414524101}
     icon: {fileID: 21300000, guid: 60cc98bb403ef994db2853e34c47964f, type: 3}
-    accessories: []
+    accessories:
+    - {fileID: 919132149155446097, guid: 1b92fb7d805c8414ba9f437ee8a83650, type: 3}
     evolutions:
     - catType: 33
       requirement:
@@ -35357,6 +35631,14 @@ MonoBehaviour:
     - 'Athletes and varsity members may also avail a scholarship!
 
 '
+  furPatternPool:
+  - {fileID: 2100000, guid: 9d013bfcacdcc95438a4a4f9ff31ffe9, type: 2}
+  - {fileID: 2100000, guid: e5fbbe83cdcdd9b4a81a3b44a732f473, type: 2}
+  - {fileID: 2100000, guid: f3d6ad2d03671b442ba9d5eec64e58f0, type: 2}
+  - {fileID: 2100000, guid: 22e4e210c0c1c474ba7fd1e78661b51c, type: 2}
+  - {fileID: 2100000, guid: 10e4c2a64d330d544a09589a9c2238b6, type: 2}
+  - {fileID: 2100000, guid: 4051094e46366234caec204e6aa632d7, type: 2}
+  - {fileID: 2100000, guid: 3e15dbd0b40a60942a208b1d61e90c3a, type: 2}
 --- !u!4 &1414524100
 Transform:
   m_ObjectHideFlags: 0

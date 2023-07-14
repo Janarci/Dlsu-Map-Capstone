@@ -311,7 +311,14 @@ public class HQUI : MonoBehaviour
 
     public void OnInventoryBtnPress()
     {
-        inventoryUI.SetActive(!(inventoryUI.gameObject.activeInHierarchy));
+        //inventoryUI.SetActive(!(inventoryUI.gameObject.activeInHierarchy));
+        if (inventoryUI.gameObject.activeInHierarchy)
+        {
+            Inventory.Instance?.CloseInventory();
+        }
+        else
+        Inventory.Instance?.OpenInventory();
+
     }
     public void OnCatsListBtnPress()
     {

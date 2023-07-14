@@ -91,6 +91,7 @@ public class ChillSpacesManager : MonoBehaviour, IDataPersistence
         if (chillspaceData.ContainsKey(area))
         {
             chillspaceData[area].Unlock();
+            AchievementsManager.instance.PerformMainQuest(MainQuest.QuestCode.unlock_chillspace);
         }
     }
 
@@ -114,9 +115,11 @@ public class ChillSpacesManager : MonoBehaviour, IDataPersistence
         chillSpacesList[i].GiveItem();
     }
 
-    public void GetItemFromChillSpace(ChillSpace.Area area)
+    public bool GetItemFromChillSpace(ChillSpace.Area area)
     {
         chillspaceData[area].GiveItem();
+
+        return chillspaceData[area].isCooldown;
     }
 
     public void GetItemFromChillspaceQuiz(ChillSpace.Area area, bool _isSuccess)

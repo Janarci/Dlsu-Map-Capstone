@@ -128,7 +128,7 @@ public class CatsManager : MonoBehaviour, IDataPersistence
             CatType.Type loadedCatType = loadedCatData.type;
             Cat newCat = CatDatabase.Instance.GetCatData(loadedCatType).script;
             Cat loadedCatComp = (Cat)loadedCatObj.AddComponent(Type.GetType(newCat.GetType().ToString()));
-            loadedCatComp.InitializeCat(loadedCatData.id, loadedCatData.friendship_value, loadedCatData.relationship_value, loadedCatData.relationship_level, loadedCatData.befriend_attempts, loadedCatData.trait, loadedCatData.sadnessAilmentValue, loadedCatData.boredomAilmentValue, loadedCatData.dirtAilmentValue, loadedCatData.hungerAilmentValue);
+            loadedCatComp.InitializeCat(loadedCatData.id, loadedCatData.friendship_value, loadedCatData.relationship_value, loadedCatData.relationship_level, loadedCatData.befriend_attempts, loadedCatData.trait, loadedCatData.sadnessAilmentValue, loadedCatData.boredomAilmentValue, loadedCatData.dirtAilmentValue, loadedCatData.hungerAilmentValue, loadedCatData.mat);
             Debug.Log("Loaded Cat of type " + newCat + " from file");
 
             if(CatDatabase.Instance.GetCatData(loadedCatType).accessories.Length != 0 )
@@ -227,6 +227,7 @@ public class CatsManager : MonoBehaviour, IDataPersistence
                 catData.boredomAilmentValue = catComp.getAilmentValue(Ailment.Type.boredom);
                 catData.dirtAilmentValue = catComp.getAilmentValue(Ailment.Type.dirt);
                 catData.hungerAilmentValue = catComp.getAilmentValue(Ailment.Type.hunger);
+                catData.mat = catComp.furMat;
                 gameData.befriended_cats.Add(catData);
             }
             
