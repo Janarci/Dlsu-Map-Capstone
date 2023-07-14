@@ -35046,9 +35046,9 @@ MonoBehaviour:
   data:
   - catTypeLabel: Library Cat
     type: 4
-    model: {fileID: 2843625035428882704, guid: 632776de6463dff4c907226623154dea, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524104}
-    icon: {fileID: 21300000, guid: 25bd4b65229ec524a8e869c1f5a78c5b, type: 3}
+    icon: {fileID: 21300000, guid: da75213872f8ac44d9d74a7c7a24424d, type: 3}
     accessories:
     - {fileID: 919132149155446097, guid: f6a9994adec2b9a40baae598efeb7375, type: 3}
     - {fileID: 919132149155446097, guid: 1cfe7d38cf4b96649bf986cf6e49d3a0, type: 3}
@@ -35063,11 +35063,12 @@ MonoBehaviour:
       watch films, and even sleep!\r"
   - catTypeLabel: Performer Cat
     type: 5
-    model: {fileID: 8557128202915404246, guid: 392b5a5115bac2942a7effebe34b5293, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524103}
-    icon: {fileID: 21300000, guid: 58a9dfbc07489d744bcb6b4faec6bac2, type: 3}
+    icon: {fileID: 21300000, guid: eadcb2659f74ee04f90b5ecd3e01df79, type: 3}
     accessories:
     - {fileID: 919132149155446097, guid: 64c6966502e21ec49beed0fcb5dd27a0, type: 3}
+    - {fileID: 919132149155446097, guid: 8486d53096851f24587d4ee68e06de19, type: 3}
     evolutions:
     - catType: 10
       requirement:
@@ -35093,9 +35094,9 @@ MonoBehaviour:
 '
   - catTypeLabel: Staff Cat
     type: 6
-    model: {fileID: 4848135757238175078, guid: ee4b52caff6c2e940b4aa6a068a00243, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524102}
-    icon: {fileID: 21300000, guid: 9d35901a87941db43ababe2743982d93, type: 3}
+    icon: {fileID: 21300000, guid: fcd395759e718574e88fbf6b6021f57e, type: 3}
     accessories:
     - {fileID: 919132149155446097, guid: d1b255011b2e0024880f1ffd5f9f685d, type: 3}
     evolutions:
@@ -35134,9 +35135,9 @@ MonoBehaviour:
 '
   - catTypeLabel: Student Cat
     type: 7
-    model: {fileID: 1361256002752954331, guid: 5b4d74fcecadad64ba3aa20b83a85e4b, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524101}
-    icon: {fileID: 21300000, guid: 60cc98bb403ef994db2853e34c47964f, type: 3}
+    icon: {fileID: 21300000, guid: 20d15068b1eac514cbd8a624143b990b, type: 3}
     accessories:
     - {fileID: 919132149155446097, guid: 1b92fb7d805c8414ba9f437ee8a83650, type: 3}
     evolutions:
@@ -35162,10 +35163,12 @@ MonoBehaviour:
     - "There\u2019s free parking at the Razon building!\r\n"
   - catTypeLabel: Arrows Cat
     type: 8
-    model: {fileID: 1771142429425375353, guid: 18bdbc0538bcd8840862c4e02b0d4b87, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524126}
-    icon: {fileID: 21300000, guid: d9f9e35a87d17fb48b6610ef52f3ccd5, type: 3}
-    accessories: []
+    icon: {fileID: 21300000, guid: e52a1bca21a72594585fcf2224af387c, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 648aa5fa6d637bf4986142c7f02d2f69, type: 3}
+    - {fileID: 919132149155446097, guid: dcc0ed15d109feb4087d02eddd3031dc, type: 3}
     evolutions: []
     tooltips:
     - 'The Arrows Express is the official DLSU shuttle service available from Mondays
@@ -35181,9 +35184,9 @@ MonoBehaviour:
       to and from DLSU Laguna Campus is 1 hour.
   - catTypeLabel: Athlete Cat
     type: 9
-    model: {fileID: 3195640339061329943, guid: 1d6fa9d4d9f381e4fb2b6d54d4e57497, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524125}
-    icon: {fileID: 21300000, guid: efef3831c7c8a394dae34c1447da01ae, type: 3}
+    icon: {fileID: 21300000, guid: 31060552b9165bf4881628494ed1b205, type: 3}
     accessories:
     - {fileID: 919132149155446097, guid: 46ad206bc830d52498ce444672f81445, type: 3}
     - {fileID: 919132149155446097, guid: 56fcb9f32cd259b4c83160a5fa66958e, type: 3}
@@ -35354,10 +35357,13 @@ MonoBehaviour:
     - 'The HSO has a list of accredited clinics! You can find them here: https://www.dlsu.edu.ph/wp-content/uploads/pdf/hso/list-of-accredited-clinics.pdf'
   - catTypeLabel: IT Cat
     type: 20
-    model: {fileID: 5438844996569466072, guid: 2f1b850454861ff4aaf8c1277ab29893, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524113}
-    icon: {fileID: 21300000, guid: 6cd4a16cbd818a94b8de8162ade938e8, type: 3}
-    accessories: []
+    icon: {fileID: 21300000, guid: 4a723e1e34a53df47a54f80dfc855a6e, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: f141e6694b4f81348a76e63200e29e58, type: 3}
+    - {fileID: 919132149155446097, guid: ebf4a0825a3060944819944cc4259c2f, type: 3}
+    - {fileID: 919132149155446097, guid: 8486d53096851f24587d4ee68e06de19, type: 3}
     evolutions: []
     tooltips:
     - To activate/reactivate your MLS account, you will need your official receipt
@@ -35413,11 +35419,12 @@ MonoBehaviour:
 '
   - catTypeLabel: Leader Cat
     type: 23
-    model: {fileID: 5950665037084465165, guid: ad29aafd1561f8f48942303459fa84fd, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524110}
-    icon: {fileID: 21300000, guid: c093c6ceefe8a0f408fbbfe27a38065d, type: 3}
+    icon: {fileID: 21300000, guid: b80747416fcc1694eb32acc77ad71b20, type: 3}
     accessories:
     - {fileID: 919132149155446097, guid: 524436b18bf50f544b0daba5df69a260, type: 3}
+    - {fileID: 919132149155446097, guid: 396bec5bd8342ff4db8f170dc1ac0ccc, type: 3}
     evolutions:
     - catType: 13
       requirement:
@@ -35447,9 +35454,9 @@ MonoBehaviour:
     - "Nurses may conduct your physical exams during consultations!\r"
   - catTypeLabel: Org Cat
     type: 25
-    model: {fileID: 1508325852566070084, guid: b7c1b00c148915446ac68b85ef9fdc49, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524127}
-    icon: {fileID: 21300000, guid: 160688436320d7643b42806e390db924, type: 3}
+    icon: {fileID: 21300000, guid: aa3873e647291734ba296cd84c7ae21c, type: 3}
     accessories:
     - {fileID: 919132149155446097, guid: b21450fd0ad73c04ebd7319760982d6f, type: 3}
     evolutions:
@@ -35490,11 +35497,12 @@ MonoBehaviour:
 '
   - catTypeLabel: Press Cat
     type: 26
-    model: {fileID: 4807670856821312220, guid: ceb130738df165541b0910b50ca76bd4, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524134}
-    icon: {fileID: 21300000, guid: 7b5371c53cef44643948861dba863bce, type: 3}
+    icon: {fileID: 21300000, guid: 206cc52cb8fea1344bb55a8a69415b24, type: 3}
     accessories:
     - {fileID: 919132149155446097, guid: ce58e19762bd06f40b8987d18ecd2f54, type: 3}
+    - {fileID: 919132149155446097, guid: 8486d53096851f24587d4ee68e06de19, type: 3}
     evolutions:
     - catType: 11
       requirement:
@@ -35512,9 +35520,9 @@ MonoBehaviour:
 '
   - catTypeLabel: Professor Cat
     type: 27
-    model: {fileID: 8735821861761775494, guid: dff39e26a2b4b9e418d19bb2c2d16302, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524133}
-    icon: {fileID: 21300000, guid: ce2298ee924993e4f8e1000c3913e021, type: 3}
+    icon: {fileID: 21300000, guid: 0926bd5d82c0c9643bf65e92f7721063, type: 3}
     accessories:
     - {fileID: 919132149155446097, guid: b6329dc0ce853254a85d613c182ded47, type: 3}
     - {fileID: 919132149155446097, guid: 396bec5bd8342ff4db8f170dc1ac0ccc, type: 3}
@@ -35527,10 +35535,12 @@ MonoBehaviour:
     - You can check the list of professors who have assigned classes on MLS!
   - catTypeLabel: Security Cat
     type: 28
-    model: {fileID: 4796829497351985222, guid: 018ff55107b650a42981a6b9f1ee5092, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524132}
-    icon: {fileID: 21300000, guid: e9137d52d140c1943aa2adc446536524, type: 3}
-    accessories: []
+    icon: {fileID: 21300000, guid: 80858e99a9eea2446b32911e31d94a06, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 60727c62c4d4513499e2c0f4503f704a, type: 3}
+    - {fileID: 919132149155446097, guid: 396bec5bd8342ff4db8f170dc1ac0ccc, type: 3}
     evolutions: []
     tooltips:
     - Students have to scan their school IDs or present their EAFs with valid ID
@@ -35539,9 +35549,9 @@ MonoBehaviour:
       valid reason such as riding the Arrow\u2019s Express."
   - catTypeLabel: Singer Cat
     type: 29
-    model: {fileID: 43915530017733780, guid: a7e15f51bf089db478451027dfd66589, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524131}
-    icon: {fileID: 21300000, guid: cd9f2c57735d0a94ea296376e19caf3f, type: 3}
+    icon: {fileID: 21300000, guid: b9bf71102846bd742a8fb8ab4e712001, type: 3}
     accessories:
     - {fileID: 919132149155446097, guid: 3d2c8abe1266e2a44967d725cc2fab17, type: 3}
     - {fileID: 919132149155446097, guid: bc80aab6be8dd8e43ac58fa7faa1c5f3, type: 3}
@@ -35559,9 +35569,9 @@ MonoBehaviour:
 '
   - catTypeLabel: Theater Cat
     type: 30
-    model: {fileID: 2662409533677268946, guid: f71bf539f95a3da418050a83179eca6b, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524130}
-    icon: {fileID: 21300000, guid: 22225eb3a17502e43bdbb65a28059fe3, type: 3}
+    icon: {fileID: 21300000, guid: 68c9c998b977e0e4b98098913edbb727, type: 3}
     accessories:
     - {fileID: 919132149155446097, guid: 036ac2eca5c96884684d5407600203a6, type: 3}
     - {fileID: 919132149155446097, guid: 26b1f8749a5617a49a40e9905fd6a346, type: 3}
@@ -35609,12 +35619,180 @@ MonoBehaviour:
 '
   - catTypeLabel: Scholar Cat
     type: 33
-    model: {fileID: 8163500282374310029, guid: 527ed67074ae00e439e5b8ba2d63f61c, type: 3}
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
     script: {fileID: 1414524135}
-    icon: {fileID: 21300000, guid: effa4f5de2b5d7d4e9c2279978d17050, type: 3}
+    icon: {fileID: 21300000, guid: 6e3e6dc6f523ef24c9cb11319898ebef, type: 3}
     accessories:
     - {fileID: 919132149155446097, guid: 16d31154af6993a47a2dd26b394e3da5, type: 3}
     - {fileID: 919132149155446097, guid: eb8a7842e72ec394eb63b9239182b26b, type: 3}
+    evolutions: []
+    tooltips:
+    - 'DLSU offers a lot of scholarships, student loans and aid programs! You can
+      find the list here (https://www.dlsu.edu.ph/admissions/scholarships/).
+
+'
+    - 'The most common scholarship programs are the St. La Salle Financial Assistance
+      Grant and the Archer Achievers.
+
+'
+    - 'DLSU also acknowledges those who are certified as DOST scholars!
+
+'
+    - 'Athletes and varsity members may also avail a scholarship!
+
+'
+  - catTypeLabel: BAGCED Cat
+    type: 33
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
+    script: {fileID: 1414524135}
+    icon: {fileID: 21300000, guid: 425c4fcba5950104f95b4920cdf366e0, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 8486d53096851f24587d4ee68e06de19, type: 3}
+    - {fileID: 919132149155446097, guid: 38eb19919d554684086c97812387fe5f, type: 3}
+    evolutions: []
+    tooltips:
+    - 'DLSU offers a lot of scholarships, student loans and aid programs! You can
+      find the list here (https://www.dlsu.edu.ph/admissions/scholarships/).
+
+'
+    - 'The most common scholarship programs are the St. La Salle Financial Assistance
+      Grant and the Archer Achievers.
+
+'
+    - 'DLSU also acknowledges those who are certified as DOST scholars!
+
+'
+    - 'Athletes and varsity members may also avail a scholarship!
+
+'
+  - catTypeLabel: RVRCOB Cat
+    type: 33
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
+    script: {fileID: 1414524135}
+    icon: {fileID: 21300000, guid: b18fc89e626163747b1ee47384485e7a, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 8486d53096851f24587d4ee68e06de19, type: 3}
+    - {fileID: 919132149155446097, guid: 38eb19919d554684086c97812387fe5f, type: 3}
+    evolutions: []
+    tooltips:
+    - 'DLSU offers a lot of scholarships, student loans and aid programs! You can
+      find the list here (https://www.dlsu.edu.ph/admissions/scholarships/).
+
+'
+    - 'The most common scholarship programs are the St. La Salle Financial Assistance
+      Grant and the Archer Achievers.
+
+'
+    - 'DLSU also acknowledges those who are certified as DOST scholars!
+
+'
+    - 'Athletes and varsity members may also avail a scholarship!
+
+'
+  - catTypeLabel: CLA Cat
+    type: 33
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
+    script: {fileID: 1414524135}
+    icon: {fileID: 21300000, guid: 0279ec5d23587b94fb71a5d22c8365a0, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 8486d53096851f24587d4ee68e06de19, type: 3}
+    - {fileID: 919132149155446097, guid: 38eb19919d554684086c97812387fe5f, type: 3}
+    evolutions: []
+    tooltips:
+    - 'DLSU offers a lot of scholarships, student loans and aid programs! You can
+      find the list here (https://www.dlsu.edu.ph/admissions/scholarships/).
+
+'
+    - 'The most common scholarship programs are the St. La Salle Financial Assistance
+      Grant and the Archer Achievers.
+
+'
+    - 'DLSU also acknowledges those who are certified as DOST scholars!
+
+'
+    - 'Athletes and varsity members may also avail a scholarship!
+
+'
+  - catTypeLabel: COS Cat
+    type: 33
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
+    script: {fileID: 1414524135}
+    icon: {fileID: 21300000, guid: cb9f4814e5e8a3c489a9c963323b26f2, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 8486d53096851f24587d4ee68e06de19, type: 3}
+    - {fileID: 919132149155446097, guid: 38eb19919d554684086c97812387fe5f, type: 3}
+    evolutions: []
+    tooltips:
+    - 'DLSU offers a lot of scholarships, student loans and aid programs! You can
+      find the list here (https://www.dlsu.edu.ph/admissions/scholarships/).
+
+'
+    - 'The most common scholarship programs are the St. La Salle Financial Assistance
+      Grant and the Archer Achievers.
+
+'
+    - 'DLSU also acknowledges those who are certified as DOST scholars!
+
+'
+    - 'Athletes and varsity members may also avail a scholarship!
+
+'
+  - catTypeLabel: CCS Cat
+    type: 33
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
+    script: {fileID: 1414524135}
+    icon: {fileID: 21300000, guid: f4fc1bd32c166354f97052198c510993, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 8486d53096851f24587d4ee68e06de19, type: 3}
+    - {fileID: 919132149155446097, guid: 38eb19919d554684086c97812387fe5f, type: 3}
+    evolutions: []
+    tooltips:
+    - 'DLSU offers a lot of scholarships, student loans and aid programs! You can
+      find the list here (https://www.dlsu.edu.ph/admissions/scholarships/).
+
+'
+    - 'The most common scholarship programs are the St. La Salle Financial Assistance
+      Grant and the Archer Achievers.
+
+'
+    - 'DLSU also acknowledges those who are certified as DOST scholars!
+
+'
+    - 'Athletes and varsity members may also avail a scholarship!
+
+'
+  - catTypeLabel: GCOE Cat
+    type: 33
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
+    script: {fileID: 1414524135}
+    icon: {fileID: 21300000, guid: 067b932762834114196aa6e3976645a9, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 8486d53096851f24587d4ee68e06de19, type: 3}
+    - {fileID: 919132149155446097, guid: 38eb19919d554684086c97812387fe5f, type: 3}
+    evolutions: []
+    tooltips:
+    - 'DLSU offers a lot of scholarships, student loans and aid programs! You can
+      find the list here (https://www.dlsu.edu.ph/admissions/scholarships/).
+
+'
+    - 'The most common scholarship programs are the St. La Salle Financial Assistance
+      Grant and the Archer Achievers.
+
+'
+    - 'DLSU also acknowledges those who are certified as DOST scholars!
+
+'
+    - 'Athletes and varsity members may also avail a scholarship!
+
+'
+  - catTypeLabel: SOE Cat
+    type: 33
+    model: {fileID: 6672692447957118830, guid: 85849e225c7e0634db971cc826e1d6a4, type: 3}
+    script: {fileID: 1414524135}
+    icon: {fileID: 21300000, guid: 7a6941cd7c5ab0544adfb7e9d02b22f0, type: 3}
+    accessories:
+    - {fileID: 919132149155446097, guid: 8486d53096851f24587d4ee68e06de19, type: 3}
+    - {fileID: 919132149155446097, guid: 38eb19919d554684086c97812387fe5f, type: 3}
     evolutions: []
     tooltips:
     - 'DLSU offers a lot of scholarships, student loans and aid programs! You can
@@ -35638,7 +35816,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 22e4e210c0c1c474ba7fd1e78661b51c, type: 2}
   - {fileID: 2100000, guid: 10e4c2a64d330d544a09589a9c2238b6, type: 2}
   - {fileID: 2100000, guid: 4051094e46366234caec204e6aa632d7, type: 2}
-  - {fileID: 2100000, guid: 3e15dbd0b40a60942a208b1d61e90c3a, type: 2}
 --- !u!4 &1414524100
 Transform:
   m_ObjectHideFlags: 0
