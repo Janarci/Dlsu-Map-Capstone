@@ -1,8 +1,8 @@
 ﻿namespace Mapbox.Unity.Map
 {
 	using System.Collections;
-	using Mapbox.Unity.Location;
-	using UnityEngine;
+    using Mapbox.Unity.Location;
+    using UnityEngine;
 
 	public class InitializeMapWithLocationProvider : MonoBehaviour
 	{
@@ -11,6 +11,7 @@
 
 		ILocationProvider _locationProvider;
 		public bool isInitialized = false;
+        [SerializeField] GameObject player;
         bool isLocationProvided = false;
 
 		public static InitializeMapWithLocationProvider instance;
@@ -69,12 +70,18 @@
 
         public void ResetPosition()
         {
-			//_map.ResetMap();
-			if (SettingsModes.locationMode == SettingsModes.Location.Automated)
+            //_map.ResetMap();
+            var map = LocationProviderFactory.Instance.mapManager;
+
+            if (SettingsModes.locationMode == SettingsModes.Location.Automated)
 			{
                 Debug.Log("Automated");
+
+                player.transform.localPosition = map.GeoToWorldPosition(new Utils.Vector2d(14.56473f, 120.993796f));
+                map.SetCenterLatitudeLongitude(new Utils.Vector2d(14.56473f, 120.993796f));
+                map.UpdateMap();
                 //LocationProvider_OnLocationUpdated();
-				//_map.SetCenterLatitudeLongitude(new Utils.Vector2d(14.56473f, 120.993796f));
+                //_map.SetCenterLatitudeLongitude(new Utils.Vector2d(14.56473f, 120.993796f));
                 //LocationProvider_OnLocationUpdated();	
                 //Location tempLoc = new Location();
                 //tempLoc.LatitudeLongitude = new Utils.Vector2d(14.56473f, 120.993796f);
@@ -86,12 +93,16 @@
 			{
 				Debug.Log("Tracking");
 				Debug.Log(_locationProvider.CurrentLocation.LatitudeLongitude);
+                player.transform.localPosition = map.GeoToWorldPosition(_locationProvider.CurrentLocation.LatitudeLongitude);
+                map.SetCenterLatitudeLongitude(_locationProvider.CurrentLocation.LatitudeLongitude);
+                map.UpdateMap();
+
                 //LocationProvider_OnLocationUpdated(_locationProvider.CurrentLocation);
-				//_map.SetCenterLatitudeLongitude(_locationProvider.CurrentLocation.LatitudeLongitude);
-				//if(_locationProvider != null)
-				//{
-				//	_map.Initialize(_locationProvider.CurrentLocation.LatitudeLongitude, _map.AbsoluteZoom);
-    //            }
+                //_map.SetCenterLatitudeLongitude(_locationProvider.CurrentLocation.LatitudeLongitude);
+                //if(_locationProvider != null)
+                //{
+                //	_map.Initialize(_locationProvider.CurrentLocation.LatitudeLongitude, _map.AbsoluteZoom);
+                //            }
 
             }
         }

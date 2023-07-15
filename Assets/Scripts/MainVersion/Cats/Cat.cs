@@ -562,6 +562,8 @@ public class Cat : MonoBehaviour
         this.relationship_value = 0;
         this.friendship_value = copy_cat.friendship_value;
         this.id = copy_cat.id;
+        this.trait = copy_cat.trait;
+        this.furMat = copy_cat.furMat;
     }
 
 

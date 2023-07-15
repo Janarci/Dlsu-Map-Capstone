@@ -27,6 +27,8 @@ public class HQCatsPanelIndex : MonoBehaviour
             icon.sprite = CatDatabase.Instance.GetCatData(replacementCat.GetComponent<Cat>().GetCatType()).icon;
             EventManager.HQCatReplaced(replacementCat.GetComponent<Cat>(), id);
         }
+
+        Destroy(transform.parent);
     }
 
     public void OnReplaceCat(Cat _replacementCat, int _index)

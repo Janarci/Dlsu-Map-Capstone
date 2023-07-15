@@ -6,12 +6,16 @@ using UnityEngine.UI;
 
 public class CatalogBuildingInfo : MonoBehaviour
 {
+    Building.Type currentType;
     [SerializeField] Image buildingPicture;
     [SerializeField] TextMeshProUGUI buildingName;
     [SerializeField] Text buildingInfo;
     [SerializeField] Transform chillspaceListContent;
     [SerializeField] GameObject chillspaceItem;
     [SerializeField] Button claimItemBtn;
+    [SerializeField] Button descBtn;
+    [SerializeField] Button infoBtn;
+    [SerializeField] Button amenitiesBtn;
 
     [SerializeField] CatalogChillSpaceInfo chillSpaceInfo;
 
@@ -47,9 +51,10 @@ public class CatalogBuildingInfo : MonoBehaviour
         
         if(SectorManager.Instance.unlockedSectors.Contains(data.type))
         {
+            currentType = data.type;
             buildingPicture.sprite = data.picture;
             buildingName.text = data.name;
-            buildingInfo.text = data.description;
+            buildingInfo.text = data.detail;
 
             if(BuildingDatabase.Instance.GetDataInfo(data.type).items.Count > 0)
             {
@@ -62,6 +67,12 @@ public class CatalogBuildingInfo : MonoBehaviour
                 claimItemBtn.gameObject.SetActive(false);
             }
 
+            infoBtn.gameObject.SetActive(true);
+            descBtn.gameObject.SetActive(true);
+            amenitiesBtn.gameObject.SetActive(true);
+
+            SetButtonFunctions(data.type);
+
             AddChillSpaces(data.chillspaces);
         }
         
@@ -71,6 +82,9 @@ public class CatalogBuildingInfo : MonoBehaviour
             buildingName.text = data.name;
             buildingInfo.text = "LOCKED";
             claimItemBtn.gameObject.SetActive(false);
+            infoBtn.gameObject.SetActive(false);
+            descBtn.gameObject.SetActive(false);
+            amenitiesBtn.gameObject.SetActive(false);
 
             AddChillSpaces(null);
         }
@@ -145,5 +159,29 @@ public class CatalogBuildingInfo : MonoBehaviour
     public void OnClaimItemPress(Building.Type _type)
     {
         SectorManager.Instance?.ClaimItemFromSector(_type);
+    }
+
+    void SetButtonFunctions(Building.Type _type)
+    {
+        descBtn.onClick.AddListener(delegate { buildingInfo.text = BuildingDatabase.Instance.GetDataInfo(_type).detail; });
+        infoBtn.onClick.AddListener(delegate { buildingInfo.text = BuildingDatabase.Instance.GetDataInfo(_type).description; });
+
+        amenitiesBtn.onClick.AddListener(delegate
+        {
+            buildingInfo.text = string.Empty;
+            foreach(BuildingDatabase.AmenitiesData a in BuildingDatabase.Instance.GetDataInfo(_type).amentiesList)
+            {
+                buildingInfo.text += "Floor: " + a.floor + ": \n";
+
+                foreach(string s in a.amenities)
+                {
+                    buildingInfo.text += "- "  + s + "\n";
+                }
+
+                buildingInfo.text += "\n\n";
+            }
+        }
+        );
+
     }
 }

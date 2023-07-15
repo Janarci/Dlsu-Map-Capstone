@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MainQuestItemBehaviour : MonoBehaviour
@@ -45,6 +46,20 @@ public class MainQuestItemBehaviour : MonoBehaviour
         if (AchievementsManager.instance.currentMainQuest.info.type == _code)
         {
             AchievementsManager.instance.FinishCurrentMainQuest();
+        }
+    }
+
+    public void OnMainQuestItemClick()
+    {
+        if(code != MainQuest.QuestCode.none && !isComplete)
+        {
+            if (AchievementsManager.instance.currentMainQuest.info.type == code)
+            {
+                foreach (MainQuest.Dialogue d in AchievementsManager.instance.currentMainQuest.dialogue)
+                {
+                    PopupGenerator.Instance?.GenerateTutorialPopup(d.script);
+                }
+            }
         }
     }
 }

@@ -549,6 +549,7 @@ public class BefriendingGestures : MonoBehaviour
                         {
                             playingProgress += maxProgress / 2;
                             playingYarnComp.OnCatPlay(cat);
+                            AudioManager.Instance.Play("Gesture Play", "sfx", false);
                             //if(cat.GetComponent<CatAnimsTest>() == null)
                             //{
                             //    playingYarnComp.UnselectObject();

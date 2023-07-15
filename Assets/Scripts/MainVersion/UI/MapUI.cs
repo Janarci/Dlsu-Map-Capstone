@@ -159,7 +159,6 @@ public class MapUI : MonoBehaviour
         HideMiniMenu();
         //inventoryUI.SetActive(true);
         Inventory.Instance?.OpenInventory();
-        AchievementsManager.instance.PerformMainQuest(MainQuest.QuestCode.open_inventory);
     }
 
     public void DisplayQuests()
