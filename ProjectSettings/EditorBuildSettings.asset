@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
+    path: Assets/Scenes/06-13-23/MapScene.unity
+    guid: f1e6126178ec9984d9785bb8a9850e28
+  - enabled: 1
+    path: Assets/Scenes/06-13-23/MapTemp.unity
+    guid: 0f55892a6dfeabf4a8041feb10e1dc8f
+  - enabled: 1
     path: Assets/Scenes/06-13-23/BefriendingScene.unity
     guid: 6eb55ceea5d51f24f9ca64b8c6308144
   - enabled: 1
@@ -27,17 +33,11 @@ EditorBuildSettings:
     path: Assets/Scenes/06-13-23/EvolutionTest.unity
     guid: 7de8e6b06339df74b96bb89f04e85e3f
   - enabled: 1
-    path: Assets/Scenes/06-13-23/LoadingScreen.unity
-    guid: 4f5a2fafbd555e24b8d06df7fca05ea1
-  - enabled: 1
-    path: Assets/Scenes/06-13-23/MapScene.unity
-    guid: f1e6126178ec9984d9785bb8a9850e28
-  - enabled: 1
-    path: Assets/Scenes/06-13-23/MapTemp.unity
-    guid: 0f55892a6dfeabf4a8041feb10e1dc8f
-  - enabled: 1
     path: Assets/Scenes/06-13-23/SergaHQ.unity
     guid: 3cdba364fcbb3a44db6e99c6add09fcc
+  - enabled: 0
+    path: Assets/Scenes/06-13-23/LoadingScreen.unity
+    guid: 4f5a2fafbd555e24b8d06df7fca05ea1
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
