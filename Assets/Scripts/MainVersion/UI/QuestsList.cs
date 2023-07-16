@@ -24,10 +24,26 @@ public class QuestsList : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        if(Input.touchSupported)
         {
-            isDeselecting = true;
+            if (Input.touchCount > 0)
+            {
+                if (Input.GetMouseButtonDown(0) && ((!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))))
+                {
+                    isDeselecting = true;
+                }
+            }
         }
+        
+
+        else
+        {
+            if (Input.GetMouseButtonDown(0) && ((!EventSystem.current.IsPointerOverGameObject())))
+            {
+                isDeselecting = true;
+            }
+        }
+        
 
         if(Input.GetMouseButtonUp(0) && isDeselecting)
         {

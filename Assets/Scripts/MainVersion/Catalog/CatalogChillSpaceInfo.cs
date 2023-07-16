@@ -62,7 +62,7 @@ public class CatalogChillSpaceInfo : MonoBehaviour
             chillSpaceName.gameObject.SetActive(false);
             nameField.gameObject.SetActive(true);
             nameField.onEndEdit.AddListener(delegate { ValueChangeCheck(data); });
-            chillSpaceInfo.text = null;
+            chillSpaceInfo.text = data.info;
 
             hrsTxt.text = null;
             contactsTxt.text = null;
@@ -84,16 +84,7 @@ public class CatalogChillSpaceInfo : MonoBehaviour
             Debug.Log("Correct");
             ChillSpacesManager.Instance.UnlockChillSpace(data.area);
 
-            chillSpacePicture.sprite = data.picture;
-            chillSpaceName.text = data.areaName;
-            chillSpaceName.gameObject.SetActive(true);
-            nameField.gameObject.SetActive(false);
-            chillSpaceInfo.text = data.info;
-
-            hrsTxt.text = data.officeHours;
-            contactsTxt.text = data.email + "\n" + data.contactNumber;
-
-            AddItems(ChillSpaceDatabase.Instance.GetDataInfo(data.area).giveawayItems);
+            SetChillSpaceDetails(ChillSpaceDatabase.Instance.GetDataInfo(data.area));
         }
 
         else
