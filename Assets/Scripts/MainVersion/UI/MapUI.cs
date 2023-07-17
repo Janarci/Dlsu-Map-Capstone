@@ -130,10 +130,10 @@ public class MapUI : MonoBehaviour
         Vector3 btn3InitialPos = CatalogBtn.transform.position;
         Vector3 btn4InitialPos = questsBtn.transform.position;
 
-        Vector3 btn1FinalPos = new Vector3(mainUIBtn.transform.position.x + (20 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (300 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
-        Vector3 btn2FinalPos = new Vector3(mainUIBtn.transform.position.x + (190 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (285 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
-        Vector3 btn3FinalPos = new Vector3(mainUIBtn.transform.position.x + (310 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (170 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
-        Vector3 btn4FinalPos = new Vector3(mainUIBtn.transform.position.x + (320 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (20 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
+        Vector3 btn1FinalPos = new Vector3(mainUIBtn.transform.position.x + (20 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (310 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
+        Vector3 btn2FinalPos = new Vector3(mainUIBtn.transform.position.x + (167.5f * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (290 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
+        Vector3 btn3FinalPos = new Vector3(mainUIBtn.transform.position.x + (287.5f* (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (190 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
+        Vector3 btn4FinalPos = new Vector3(mainUIBtn.transform.position.x + (275 * (Screen.width / 720.0f)), mainUIBtn.transform.position.y + (35 * (Screen.height / 1440.0f)), mainUIBtn.transform.position.z);
 
         isShowingMiniMenu = true;
         while (isShowingMiniMenu)

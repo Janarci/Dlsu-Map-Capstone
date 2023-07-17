@@ -111,7 +111,7 @@ public class CatalogCatInfo : MonoBehaviour
                     GameObject textComp = newButtonObj.transform.GetChild(1).gameObject;
                     textComp.GetComponent<Text>().text = ChillSpaceDatabase.Instance.GetDataInfo(chillspace).areaName;
 
-                    buttonComp.onClick.AddListener(delegate { chillspaceInfo.SetChillSpaceDetails(ChillSpaceDatabase.Instance.GetDataInfo(chillspace)); DisplayHabitatInfo(); });
+                    buttonComp.onClick.AddListener(delegate { chillspaceInfo.SetChillSpaceDetails(ChillSpaceDatabase.Instance.GetDataInfo(chillspace), ref newButtonObj); DisplayHabitatInfo(); });
 
                     if (ChillSpaceDatabase.Instance.GetDataInfo(chillspace).picture)
                     {

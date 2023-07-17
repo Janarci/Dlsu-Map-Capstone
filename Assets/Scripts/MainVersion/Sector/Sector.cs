@@ -63,7 +63,7 @@ public class Sector : MonoBehaviour
         //}
 
         isUnlocked = true;
-        HideBlocker();
+        //HideBlocker();
         MakeDesignatedBuildingOpaque();
         //DisplayTooltip();
 

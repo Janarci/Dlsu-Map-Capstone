@@ -53,7 +53,8 @@ public class CatType
         COS_cat,
         CCS_cat,
         GCOE_cat,
-        SOE_cat
+        SOE_cat,
+        chef_cat
     }
 
     public Type type = Type.basic_cat;
@@ -756,7 +757,14 @@ public class Cat : MonoBehaviour
 
         ui?.SetRelationshipBarValue(getRelationshipPercentage());
         UpdateAilmentBars();
-        if (CanEvolve())
+        //if (CanEvolve())
+        //{
+        //    ui?.ShowInteractUI(false);
+        //    ui?.ShowEvolve(true);
+
+        //}
+
+        if (relationship_level == 10)
         {
             ui?.ShowInteractUI(false);
             ui?.ShowEvolve(true);
@@ -768,7 +776,7 @@ public class Cat : MonoBehaviour
 
     public void InteractWithCat()
     {
-        TutorialManager.instance.UnlockTutorial(TutorialManager.Type.cat_relationship_up);
+        TutorialManager.instance?.UnlockTutorial(TutorialManager.Type.cat_relationship_up);
         //switch (interaction)
         //{
         //    case CatInteraction.Type.pet:

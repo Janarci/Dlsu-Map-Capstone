@@ -44,7 +44,8 @@ public class ChillSpace : MonoBehaviour
         office_of_counseling_and_career_services,
         lasallian_pastoral_office,
         la_casita_roja_restaurant_razon,
-
+        brother_rafael_donato_study_hall,
+        medrano_hall
     }
 
     [Serializable]
@@ -275,7 +276,8 @@ public class ChillSpace : MonoBehaviour
         CatalogChillSpaceInfo ccsi = FindObjectOfType<CatalogChillSpaceInfo>(true);
         if (ccsi)
         {
-            ccsi.SetChillSpaceDetails(detail);
+            GameObject dummy = null;
+            ccsi.SetChillSpaceDetails(detail, ref dummy);
         }
     }
 

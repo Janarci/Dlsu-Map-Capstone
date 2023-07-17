@@ -88,7 +88,7 @@ public class Timers : MonoBehaviour
         {
             base.Execute();
             DataPersistenceManager.instance.gameData.runTime = elapsedTime;
-            LoadScene.LoadEndScene();
+            //LoadScene.LoadEndScene();
         }
     }
     public class ChillspaceScanCooldown : Timer

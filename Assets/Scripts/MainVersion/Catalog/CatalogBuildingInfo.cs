@@ -16,6 +16,7 @@ public class CatalogBuildingInfo : MonoBehaviour
     [SerializeField] Button descBtn;
     [SerializeField] Button infoBtn;
     [SerializeField] Button amenitiesBtn;
+    [SerializeField] ScrollRect pageScroll;
 
     [SerializeField] CatalogChillSpaceInfo chillSpaceInfo;
 
@@ -49,6 +50,7 @@ public class CatalogBuildingInfo : MonoBehaviour
         //    }
         //}
         
+        pageScroll.verticalNormalizedPosition = 1;
         if(SectorManager.Instance.unlockedSectors.Contains(data.type))
         {
             currentType = data.type;
@@ -118,7 +120,7 @@ public class CatalogBuildingInfo : MonoBehaviour
                 GameObject textComp1 = newButtonObj.transform.GetChild(1).GetChild(0).gameObject;
                 textComp1.GetComponent<Text>().text = ChillSpaceDatabase.Instance.GetDataInfo(area).areaName;
 
-                buttonComp.onClick.AddListener(delegate { chillSpaceInfo.SetChillSpaceDetails(ChillSpaceDatabase.Instance.GetDataInfo(area)); DisplayChillSpaceMenu(); });
+                buttonComp.onClick.AddListener(delegate { chillSpaceInfo.SetChillSpaceDetails(ChillSpaceDatabase.Instance.GetDataInfo(area), ref newButtonObj); DisplayChillSpaceMenu(); });
                 GameObject textComp2 = newButtonObj.transform.GetChild(0).GetChild(0).gameObject;
                 textComp2.GetComponent<Text>().text = ChillSpaceDatabase.Instance.GetDataInfo(area).location;
             }
@@ -130,7 +132,7 @@ public class CatalogBuildingInfo : MonoBehaviour
                 GameObject textComp1 = newButtonObj.transform.GetChild(1).GetChild(0).gameObject;
                 textComp1.GetComponent<Text>().text = "LOCKED";
 
-                buttonComp.onClick.AddListener(delegate { chillSpaceInfo.SetChillSpaceDetails(ChillSpaceDatabase.Instance.GetDataInfo(area)); DisplayChillSpaceMenu(); });
+                buttonComp.onClick.AddListener(delegate { chillSpaceInfo.SetChillSpaceDetails(ChillSpaceDatabase.Instance.GetDataInfo(area), ref newButtonObj); DisplayChillSpaceMenu(); });
                 GameObject textComp2 = newButtonObj.transform.GetChild(0).GetChild(0).gameObject;
                 textComp2.GetComponent<Text>().text = ChillSpaceDatabase.Instance.GetDataInfo(area).location;
             }

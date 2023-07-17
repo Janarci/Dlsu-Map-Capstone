@@ -20,5 +20,15 @@ public class Introduction : MonoBehaviour
     {
         TutorialManager.instance.UnlockTutorial(TutorialManager.Type.intro);
         AchievementsManager.instance.PerformMainQuest(MainQuest.QuestCode.intro);
+
+        if(AchievementsManager.instance.currentMainQuest.info.type == MainQuest.QuestCode.intro)
+        {
+
+                foreach (MainQuest.Dialogue d in AchievementsManager.instance.currentMainQuest.dialogue)
+                {
+                    PopupGenerator.Instance?.GenerateTutorialPopup(d.script);
+                }
+            
+        }
     }
 }

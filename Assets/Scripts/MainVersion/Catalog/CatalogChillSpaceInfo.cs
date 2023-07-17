@@ -24,6 +24,7 @@ public class CatalogChillSpaceInfo : MonoBehaviour
     [SerializeField] QuizController quizController;
     [SerializeField] ChillspaceQuizPool QuizPool;
     [SerializeField] GameObject quizUI;
+    GameObject refButtonObj = null;
 
     // Start is called before the first frame update
     void Start()
@@ -37,8 +38,12 @@ public class CatalogChillSpaceInfo : MonoBehaviour
 
     }
 
-    public void SetChillSpaceDetails(ChillSpace.Detail data)
+    public void SetChillSpaceDetails(ChillSpace.Detail data, ref GameObject originButton)
     {
+
+        refButtonObj = null;
+        nameField.text = string.Empty;
+        nameField.onEndEdit.RemoveAllListeners();
         if(ChillSpacesManager.Instance.unlocked_chillspaces.Contains(data.area))
         {
             chillSpacePicture.sprite = data.picture;
@@ -62,11 +67,15 @@ public class CatalogChillSpaceInfo : MonoBehaviour
             chillSpaceName.gameObject.SetActive(false);
             nameField.gameObject.SetActive(true);
             nameField.onEndEdit.AddListener(delegate { ValueChangeCheck(data); });
-            chillSpaceInfo.text = data.info;
+            chillSpaceInfo.text = data.location;
 
             hrsTxt.text = null;
             contactsTxt.text = null;
 
+            if(originButton != null)
+            {
+                refButtonObj = originButton;
+            }
             AddItems(null);
         }
 
@@ -84,7 +93,45 @@ public class CatalogChillSpaceInfo : MonoBehaviour
             Debug.Log("Correct");
             ChillSpacesManager.Instance.UnlockChillSpace(data.area);
 
-            SetChillSpaceDetails(ChillSpaceDatabase.Instance.GetDataInfo(data.area));
+            GameObject dummy = null;
+
+            if (refButtonObj != null)
+            {
+                Button buttonComp = refButtonObj.transform.GetChild(1).GetComponent<Button>();
+                GameObject textComp1 = refButtonObj.transform.GetChild(1).GetChild(0).gameObject;
+                textComp1.GetComponent<Text>().text = ChillSpaceDatabase.Instance.GetDataInfo(data.area).areaName;
+            }
+
+            SetChillSpaceDetails(ChillSpaceDatabase.Instance.GetDataInfo(data.area), ref dummy);
+
+            
+            
+        }
+
+        else if(!(data.alternativeNames.Count == 0))
+        {
+            foreach(string n in data.alternativeNames)
+            {
+                if ((String.Compare(nameField.text, n, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols) == 0))
+                {
+                    Debug.Log("Correct");
+                    ChillSpacesManager.Instance.UnlockChillSpace(data.area);
+
+                    GameObject dummy = null;
+                    
+
+                    if(refButtonObj != null)
+                    {
+                        Button buttonComp = refButtonObj.transform.GetChild(1).GetComponent<Button>();
+                        GameObject textComp1 = refButtonObj.transform.GetChild(1).GetChild(0).gameObject;
+                        textComp1.GetComponent<Text>().text = ChillSpaceDatabase.Instance.GetDataInfo(data.area).areaName;
+                    }
+
+                    SetChillSpaceDetails(ChillSpaceDatabase.Instance.GetDataInfo(data.area), ref dummy);
+
+                    break;
+                }
+            }
         }
 
         else

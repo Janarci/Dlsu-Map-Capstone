@@ -150,7 +150,7 @@ public class CatUI : MonoBehaviour
             Image evolutionChoiceImgComp = evolutionChoiceBtnObj.GetComponent<Image>();
             Text evolutionChoiceTxtComp = evolutionChoiceBtnObj.transform.GetChild(0).gameObject.GetComponent<Text>();
 
-            Transform itemRequirementContent = evolutionChoiceBtnObj.transform.GetChild(1).gameObject.transform;
+            Transform itemRequirementContent = evolutionChoiceBtnObj.transform.GetChild(1).GetChild(0).gameObject.transform;
 
             evolutionChoiceTxtComp.text = CatDatabase.Instance?.GetCatData(type).catTypeLabel;
 
@@ -173,10 +173,10 @@ public class CatUI : MonoBehaviour
             {
                 CatEvolutionItem.cat_evolution_item_type item = req.item;
                 GameObject itemRequirementObj = Instantiate(itemRequirementItem, itemRequirementContent);
-                //itemRequirementObj.GetComponent<Image>().sprite = Inventory.Instance?.GetDataInfo(item).icon;
-                //itemRequirementObj.GetComponent<LayoutElement>().preferredHeight = 80;
-                //itemRequirementObj.GetComponent<LayoutElement>().preferredWidth = 80;
-                //itemRequirementObj.transform.GetChild(0).GetComponent<Text>().text = cat.evolution_requirements[type][item].ToString();
+                itemRequirementObj.GetComponent<Image>().sprite = Inventory.Instance?.GetDataInfo(item).icon;
+                itemRequirementObj.GetComponent<LayoutElement>().preferredHeight = 80;
+                itemRequirementObj.GetComponent<LayoutElement>().preferredWidth = 80;
+                itemRequirementObj.transform.GetChild(0).GetComponent<Text>().text = req.amount.ToString();
 
             }
         }

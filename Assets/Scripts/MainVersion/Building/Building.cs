@@ -22,7 +22,7 @@ public class Building : MonoBehaviour
         st_miguel_hall,
         velasco_hall,
         yuchengco_hall,
-        agno_gate
+        agno_gate,
     }
 
     [SerializeField] private List<Parts> buildingParts;
