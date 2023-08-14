@@ -10,5 +10,5 @@ public class SettingsModes : MonoBehaviour
         Tracking,
     }
    
-    public static Location locationMode = Location.Tracking;
+    public static Location locationMode = Location.Automated;
 }

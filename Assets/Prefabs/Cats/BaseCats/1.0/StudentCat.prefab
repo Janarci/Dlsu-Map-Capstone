@@ -1856,6 +1856,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 285176028547756791, guid: 576d7483e2f883a4797049f0039351e9,
         type: 3}
+      propertyPath: cat
+      value: 
+      objectReference: {fileID: 8395607511921878053}
+    - target: {fileID: 285176028547756791, guid: 576d7483e2f883a4797049f0039351e9,
+        type: 3}
       propertyPath: evolutionChoiceUI
       value: 
       objectReference: {fileID: 2857492706518521645}

@@ -15,6 +15,8 @@ public class QuestsList : MonoBehaviour
     [SerializeField] Dictionary<SideQuest.QuestCode, GameObject> sideQuestList;
     GameObject mainQuestItem = null;
     bool isDeselecting = false;
+
+    [SerializeField] MainQuestDisplay mqd;
     // Start is called before the first frame update
     void Start()
     {
@@ -108,6 +110,7 @@ public class QuestsList : MonoBehaviour
                 if(hasQuestComp2)
                 {
                     questComp.SetInfo(AchievementsManager.instance.currentMainQuest.instruction, AchievementsManager.instance.currentMainQuest.info.type);
+                    mqd?.SetText(AchievementsManager.instance.currentMainQuest.instruction);
                 }
             }
 
@@ -120,6 +123,7 @@ public class QuestsList : MonoBehaviour
         if(mainQuestItem != null)
         {
             mainQuestItem.GetComponent<MainQuestItemBehaviour>().SetInfo(_info, _code);
+            mqd?.SetText(_info);
         }
     }
     public void UpdateSideQuestItem(SideQuest.QuestCode _code, int _newCurrentProgress)

@@ -153,7 +153,7 @@ public class HQBehaviour : MonoBehaviour
                 cat.GetComponent<Cat>().ui.ShowAll(false);
                 cat.GetComponent<Cat>().ui.ShowInteractUI(false);
                 cat.GetComponent<Cat>().ui.ShowEvolve(false);
-
+                cat.GetComponent<NavMeshAgent>()?.Destroy();
                 cat.SetActive(false);
             }
             

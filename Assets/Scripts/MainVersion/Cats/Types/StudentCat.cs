@@ -34,8 +34,8 @@ public class StudentCat : Cat
     void Start()
     {
         base.Start();
-        Debug.Log(this.GetCatType());
-        relationship_level = 10;
+        //Debug.Log(this.GetCatType());
+        //relationship_level = 10;
     }
 
     // Update is called once per frame

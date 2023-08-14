@@ -50,16 +50,16 @@ public class Inventory : MonoBehaviour, IDataPersistence
         itemList = new Dictionary<cat_evolution_item_type, int>();
         inventoryItems = new Dictionary<cat_evolution_item_type, GameObject>();
         isInitialized = false;
-        //foreach (ItemData item in allItemsList)
-        //{
-        //    itemDatabase[item.type] = item;
-        //    AddToInventory(item.type, 99);
-        //    Debug.Log("adding item " + item.type);
-        //}
+        foreach (ItemData item in allItemsList)
+        {
+            itemDatabase[item.type] = item;
+            AddToInventory(item.type, 99);
+            Debug.Log("adding item " + item.type);
+        }
 
         //Debug.Log("Items declared: " + allItemsList.Count);
 
-        
+
 
 
 

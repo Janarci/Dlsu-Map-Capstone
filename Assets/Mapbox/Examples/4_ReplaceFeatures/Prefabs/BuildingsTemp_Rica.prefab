@@ -1095,6 +1095,8 @@ GameObject:
   - component: {fileID: 7991142558777369149}
   - component: {fileID: 6035036715858071200}
   - component: {fileID: 6376731078162337177}
+  - component: {fileID: 321277901631703013}
+  - component: {fileID: 9022287573855295560}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1181,6 +1183,43 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &321277901631703013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093607957887189497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff8668c47a1ab743a90832a4474fcef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 14
+  sectorBlockerObj: {fileID: 4960751867495695651}
+  TooltipUI: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
+    type: 3}
+  type: 14
+--- !u!114 &9022287573855295560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093607957887189497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216bea2de14261341bf70f5d8cc1a0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingParts: []
+  InfoUITemplate: {fileID: 4310657011951552502, guid: 1b40007ad474ede4e8bf89b1ba5c4ef5,
+    type: 3}
+  buildingName: Agno
+  buildingAbout: 
+  buildingPic: {fileID: 21300000, guid: 7ac4770091794374dac5cdfa36b19441, type: 3}
+  buttonPopup: {fileID: 0}
+  type: 14
 --- !u!1 &4697711558901855547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,7 +1442,7 @@ Transform:
   m_GameObject: {fileID: 4960751867495695651}
   m_LocalRotation: {x: -0, y: 0.024650753, z: -0, w: 0.99969614}
   m_LocalPosition: {x: 0, y: 0.92776006, z: 0}
-  m_LocalScale: {x: 3, y: 2.85552, z: 3}
+  m_LocalScale: {x: 2, y: 2.85552, z: 2.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4189073707706032203}

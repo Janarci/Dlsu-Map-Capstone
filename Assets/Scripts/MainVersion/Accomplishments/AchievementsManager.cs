@@ -151,13 +151,15 @@ public class AchievementsManager : MonoBehaviour, IDataPersistence
 
     public void LoadGameData(GameData gameData)
     {
-        foreach(GameData.QuestData _qd in gameData.quest_progress)
+        foreach(GameData.QuestData _qd in gameData.side_quests_progress)
         {
             if(sideQuestsProgress.ContainsKey(_qd.type))
             {
                 sideQuestsProgress[_qd.type] = _qd.progress;
             }
         }
+
+        currentMainQuest = AccomplishmentDatabase.Instance.mainQuestList[gameData.main_quest_index];
     }
 
     public void SaveGameData(ref GameData gameData)
@@ -166,7 +168,7 @@ public class AchievementsManager : MonoBehaviour, IDataPersistence
         {
             bool newQuest = true;
 
-            foreach(GameData.QuestData _qd in gameData.quest_progress)
+            foreach(GameData.QuestData _qd in gameData.side_quests_progress)
             {
                 if(_qd.type == _qc)
                 {
@@ -181,8 +183,19 @@ public class AchievementsManager : MonoBehaviour, IDataPersistence
                 GameData.QuestData _qd = new GameData.QuestData();
                 _qd.type = _qc;
                 _qd.progress = sideQuestsProgress[_qc];
-                gameData.quest_progress.Add(_qd);
+                gameData.side_quests_progress.Add(_qd);
             }
+        }
+
+        int _mqIndex = 0;
+        foreach(MainQuest mq in AccomplishmentDatabase.Instance.mainQuestList)
+        {
+            if(currentMainQuest == mq)
+            {
+                gameData.main_quest_index = _mqIndex;
+                break;
+            }
+            _mqIndex++;
         }
     }
 }

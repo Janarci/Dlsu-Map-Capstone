@@ -42,7 +42,8 @@ public class GameData
     public  List<Building.Type> unlocked_sectors;
     public  List<ChillSpace.Area> unlocked_chillspaces;
     public List<ItemData> inventory_items;
-    public List<QuestData> quest_progress;
+    public List<QuestData> side_quests_progress;
+    public int main_quest_index;
     public string unlocked_tooltips;
     public List<Item> inventory;
     public  CatData[] selected_cats;
@@ -58,7 +59,8 @@ public class GameData
         unlocked_sectors = new List<Building.Type>();
         unlocked_chillspaces = new List<ChillSpace.Area>();
         inventory_items = new List<ItemData>();
-        quest_progress = new List<QuestData>();
+        side_quests_progress = new List<QuestData>();
+        main_quest_index = 0;
         unlocked_tooltips = string.Empty;
         approached_cat = null;
         belonging_sector = -1;

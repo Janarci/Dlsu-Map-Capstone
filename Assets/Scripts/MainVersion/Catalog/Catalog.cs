@@ -244,16 +244,27 @@ public class Catalog : MonoBehaviour
         //catalogMenu.SetActive(false);
         //allBuildingsMenu.SetActive(true);
         //Debug.Log(BuildingDatabase.Instance.data.Count);
+
         if (buildingListContent.transform.childCount == 0)
         foreach (BuildingDatabase.BuildingData building in BuildingDatabase.Instance.data)
         {
-            //Debug.Log("here");
             GameObject newButtonObj = Instantiate(buildingListItemObj, buildingListContent.transform);
             Button buttonComp = newButtonObj.GetComponent<Button>();
             GameObject textComp = newButtonObj.transform.GetChild(0).gameObject;
             textComp.GetComponent<Text>().text = BuildingDatabase.Instance.GetDataInfo(building.type).name.ToString();
 
             buttonComp.onClick.AddListener(delegate { DisplayBuildingInfo(building); });
+
+                if (SectorManager.Instance.GetSector(building.type).isUnlocked)
+                {
+                    newButtonObj.GetComponent<Image>().color = Color.white;
+                }
+
+                else
+                {
+                    newButtonObj.GetComponent<Image>().color = new Color(255, 105, 255);
+                }
+
         }
     }
 

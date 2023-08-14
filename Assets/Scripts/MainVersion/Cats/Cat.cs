@@ -193,7 +193,7 @@ public class Ailment
     {
         this.type = type;
 
-        increaseFrequency = UnityEngine.Random.Range(10, 20);
+        increaseFrequency = UnityEngine.Random.Range(22, 28);
         currentTimer = 0.0f;
     }
 
@@ -207,7 +207,7 @@ public class Ailment
             currentValue = Math.Min(currentValue + 4, maxValue);
             //Debug.Log("[AILING] " +type.ToString() + " | " + currentValue);
             currentTimer = 0.0f;
-            increaseFrequency = UnityEngine.Random.Range(12, 18);
+            increaseFrequency = UnityEngine.Random.Range(22, 28);
 
         }
     }
@@ -833,12 +833,11 @@ public class Cat : MonoBehaviour
         //        break;
         //}
 
-        Debug.Log(relationship_value);
+        Debug.Log(relationship_level);
         if (relationship_level < 10)
         {
             relationship_level++;
             relationship_value = 0;
-            ui?.SetLevel(relationship_level);
             Debug.Log(relationship_level);
 
             if (relationship_level % 2 == 0)
@@ -858,7 +857,7 @@ public class Cat : MonoBehaviour
                 }
             }
         }
-
+        ui?.SetLevel(relationship_level);
         ui?.SetRelationshipBarValue(getRelationshipPercentage());
         UpdateAilmentBars();
         if (CanEvolve())
